@@ -562,8 +562,6 @@ WantedBy=multi-user.target
     sleep(1)
     subprocess.run(['systemctl', 'restart', 'ping_ip.service'])
 
-import os
-import subprocess
 
 def ipip6_tunnel(remote_ip, local_ip, num_additional_ips):
     file_path = '/etc/ipip.sh'
@@ -818,8 +816,6 @@ WantedBy=multi-user.target
     sleep(1)
     subprocess.run(['systemctl', 'restart', 'ping_ip.service'])
 
-import os
-import subprocess
 
 def ipip6_iran_tunnel(remote_ip, local_ip, num_additional_ips):
     file_path = '/etc/ipip.sh'
@@ -2655,7 +2651,6 @@ WantedBy=multi-user.target'''
 
     display_checkmark("\033[92m6to4 Service has been added successfully!\033[0m")
 	
-import subprocess
 
 def clear():
     subprocess.run(['clear'])
