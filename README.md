@@ -22,7 +22,7 @@
 **دسترسی سریع به اسکریپت**
 
 
-- [کلیک - click](https://github.com/Azumi67/Haproxy_TCP_loadbalance#%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA-%D9%85%D9%86)
+- [کلیک - click](https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/blob/main/README.md#%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA-%D9%85%D9%86)
 ------------------------
 ![check](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/13de8d36-dcfe-498b-9d99-440049c0cf14)
 **امکانات**
@@ -34,6 +34,7 @@
  
 
 ![Exclamation-Mark-PNG-Clipart](https://github.com/Azumi67/Haproxy_TCP_loadbalance/assets/119934376/a462de6d-be16-46dc-aaa8-c21a4c6df669)این پروژه آموزشی هست و خوشحال میشم اگر فیدبکی داشتید به من بگید که از آن برای یادگیری بیشتر استفاده کنم.
+- اگر میخواهید به چندین سرور تانل بزنید به [اینجا](https://github.com/Azumi67/6TO4-PrivateIP) مراجعه کنید
 
  
  ------------------------------------------------------
