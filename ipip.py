@@ -1342,13 +1342,13 @@ def Native_menu():
     print("\033[92m \"-\"\033[93m═════════════════════\033[0m")
     display_logo2()
     print("\033[93m.-------------------------------------------------------------------------------------------------------.\033[0m")
-    print("\033[93m| \033[92mIf it didn't work, please uninstall it and add extra ip manually  \033[0m")
+    print("\033[93m| \033[92mIf it didn't work, please uninstall it and add extra IP manually  \033[0m")
+    print("\033[93m|\033[0m  If you don't have native IPv6, please use a private IP instead.                                             \033[0m")
     print("\033[93m'-------------------------------------------------------------------------------------------------------'\033[0m")
-    display_notification("\033[93mAdding extra Native IPV6 [Kharej]...\033[0m")
+    display_notification("\033[93mAdding extra Native IPv6 [Kharej]...\033[0m")
     print("\033[93m╭──────────────────────────────────────────────────────────╮\033[0m")
 
     try:
-        
         interface = subprocess.run("ip route | awk '/default/ {print $5; exit}'", shell=True, capture_output=True, text=True).stdout.strip()
         ipv6_addresses = subprocess.run(f"ip -6 addr show dev {interface} | awk '/inet6 .* global/ {{print $2}}' | cut -d'/' -f1", shell=True, capture_output=True, text=True).stdout.strip().split('\n')
 
@@ -1358,10 +1358,9 @@ def Native_menu():
 
         confirm = input("\033[93mAre these your current IPv6 addresses? (y/n): \033[0m")
         if confirm.lower() != "y":
-            display_error("\033[91mAborted. Please manually configure the correct IPv6 addresses.\033[0m")
+            print("\033[91mAborted. Please manually configure the correct IPv6 addresses.\033[0m")
             return
 
-      
         sorted_addresses = sorted(ipv6_addresses, reverse=True)
         additional_address = ""
         for i in range(len(sorted_addresses)):
@@ -1374,28 +1373,23 @@ def Native_menu():
                 break
 
         if not additional_address:
-            display_error("\033[91mNo additional address to add.\033[0m")
+            print("\033[91mNo additional address to add.\033[0m")
             return
 
-        
         subprocess.run(["ip", "addr", "add", f"{additional_address}/64", "dev", interface])
 
-        
         script_file = "/etc/ipv6.sh"
-        with open(script_file, "w") as file:
-            file.write("#!/bin/bash\n")
+        with open(script_file, "a") as file:
             file.write(f"ip addr add {additional_address}/64 dev {interface}\n")
 
         subprocess.run(["chmod", "+x", script_file])
 
         subprocess.run("crontab -l | grep -v '/etc/ipv6.sh' | crontab -", shell=True)
 
-
-        display_notification("\033[93mAdding cronjob for the server...\033[0m")
+        print("\033[93mAdding cron job for the server...\033[0m")
         subprocess.run("(crontab -l 2>/dev/null; echo \"@reboot /bin/bash /etc/ipv6.sh\") | crontab -", shell=True)
-        sleep(1)
 
-        display_checkmark("\033[92mIPv6 addresses added successfully!\033[0m")
+        print("\033[92mIPv6 addresses added successfully!\033[0m")
     except ValueError as e:
         print("\033[91mAn error occurred while adding IPv6 addresses:", str(e), "\033[0m")
         
