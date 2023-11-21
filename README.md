@@ -18,6 +18,12 @@
 
 - SIT (Simple Internet Transition): Lightweight encapsulation method for tunneling IPv6 packets over an IPv4 infrastructure, requiring minimal configuration.
 ------------------------
+![Update-Note--Arvin61r58](https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/a149bfde-0f8f-44db-8360-0f9e9325983b) **اپدیت**
+
+- مشکل ذخیره نکردن ایپی های جدید Native IPV6 حل شد
+
+--------------------------------
+
 ![R (a2)](https://github.com/Azumi67/RTT-Wireguard/assets/119934376/3f64bfa8-3785-4a0b-beba-366b3cb73719)
 **دسترسی سریع به اسکریپت**
 
