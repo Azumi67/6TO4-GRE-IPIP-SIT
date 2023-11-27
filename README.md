@@ -261,7 +261,7 @@ bash <(curl -s -L https://raw.githubusercontent.com/opiran-club/softether/main/o
 ----------------
 
 
-- اگر با دستورات زیر نتوانستید اسکریپت را اجرا کنید، نخست دستور زیر را اجرا نمایید و سپس دستور اسکریپت را اجرا نمایید.
+- اگر با دستوردوم نتوانستید اسکریپت را اجرا کنید، نخست دستور زیر را اجرا نمایید و سپس دستور اصلی اسکریپت را اجرا نمایید.(تنها زمانی این دستور را استفاده کنید که با دستور موفق به اجرای اسکریپت نشدید)
 
 ```
 sudo apt-get install python-pip -y  &&  apt-get install python3 -y && alias python=python3 && python -m pip install colorama && python -m pip install netifaces
