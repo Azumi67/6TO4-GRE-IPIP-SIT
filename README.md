@@ -269,7 +269,7 @@ sudo apt-get install python-pip -y  &&  apt-get install python3 -y && alias pyth
 - سپس این دستور را اجرا نمایید.
 
 ```
-apt install python3 -y && apt install pip -y &&  pip install colorama && pip install netifaces && apt install curl -y && python3 <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ipip.py --ipv4)
+apt install python3 -y && sudo apt install python3-pip &&  pip install colorama && pip install netifaces && apt install curl -y && python3 <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ipip.py --ipv4)
 ```
 --------------------------------------
  <div dir="rtl">&bull;  دستور زیر برای کسانی هست که پیش نیاز ها را در سرور، نصب شده دارند</div>
