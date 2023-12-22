@@ -270,6 +270,7 @@ apt install python3 -y && sudo apt install python3-pip &&  pip install colorama 
 ```
 sudo apt-get install python-pip -y  &&  apt-get install python3 -y && alias python=python3 && python -m pip install colorama && python -m pip install netifaces
 ```
+- سپس این دستور را اجرا کنید python3 install colorama و سپس دستور اول را دوباره اجرا کنید.
 --------------------------------------
  <div dir="rtl">&bull;  دستور زیر برای کسانی هست که پیش نیاز ها را در سرور، نصب شده دارند</div>
  
