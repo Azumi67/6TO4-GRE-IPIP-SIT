@@ -2,7 +2,6 @@
 نام پروژه : 6TO4 | GRE | GRE6 | IP6IP6 | SIT
 ---------------------------------------------------------------
 ----------------------------------
-![33399-icq-flower-logo-icon-vector-icon-vector-eps](https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/9e736d80-9378-447d-a403-2ce0dacc3bec)
 **توضیح کوتاه در مورد این پروژه :**
 
 -----------------------
@@ -265,7 +264,7 @@ apt install python3 -y && sudo apt install python3-pip &&  pip install colorama 
 ```
 
 
-- اگر با دستور بالا نتوانستید اسکریپت را اجرا کنید، نخست دستور زیر را اجرا نمایید و سپس دستور بالا را دوباره اجرا نمایید.
+- اگر با دستور بالا نتوانستید اسکریپت را اجرا کنید، نخست دستور زیر را اجرا نمایید.
 
 ```
 sudo apt-get install python-pip -y  &&  apt-get install python3 -y && alias python=python3 && python -m pip install colorama && python -m pip install netifaces
