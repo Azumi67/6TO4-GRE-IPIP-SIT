@@ -22,6 +22,9 @@ import subprocess
 from time import sleep
 import readline
 import netifaces as ni
+import io
+
+sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8', errors='replace')
 
 if os.geteuid() != 0:
     print("\033[91mThis script must be run as root. Please use sudo -i.\033[0m")
