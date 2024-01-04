@@ -19,6 +19,17 @@
 ------------------------
 ![Update-Note--Arvin61r58](https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/a149bfde-0f8f-44db-8360-0f9e9325983b) **اپدیت**
 
+- چندین دستور ip اضافه شد
+- از این به بعد میتوانید MTU را خودتان تنظیم کنید یا به صورت اتوماتیک مانند قدیم انتخاب شود.
+- اگر MTU مورد نظر شما ثبت نشد، هم سرور خارج و سرور ایران را یک بار ریبوت کنید.
+<p align="right">
+  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/c97b05b4-3714-42c3-b5d4-1cd56d6c24b4" alt="Image" />
+</p>
+
+```
+apt install python3 -y && sudo apt install python3-pip &&  pip install colorama && pip install netifaces && apt install curl -y && python3 <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ipip2.py --ipv4)
+```
+
 - مشکل ذخیره نکردن ایپی های جدید Native IPV6 حل شد
 - کانفیگ سرور خارج و ایران باید سریع انجام شود. نخست سرور خارج را کانفیگ کنید و سپس سرور ایران را کانفیگ کنید.
 - پس از uninstall قبل از انجام تانل های دیگر، یک بار هم ریبوت کنید.
@@ -260,7 +271,7 @@ bash <(curl -s -L https://raw.githubusercontent.com/opiran-club/softether/main/o
 ----------------
 
 ```
-apt install python3 -y && sudo apt install python3-pip &&  pip install colorama && pip install netifaces && apt install curl -y && python3 <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ipip.py --ipv4)
+apt install python3 -y && sudo apt install python3-pip &&  pip install colorama && pip install netifaces && apt install curl -y && python3 <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ipip2.py --ipv4)
 ```
 
 
@@ -273,7 +284,7 @@ sudo apt-get install python-pip -y  &&  apt-get install python3 -y && alias pyth
  <div dir="rtl">&bull;  دستور زیر برای کسانی هست که پیش نیاز ها را در سرور، نصب شده دارند</div>
  
 ```
-python3 <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ipip.py --ipv4)
+python3 <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ipip2.py --ipv4)
 ```
 --------------------------------------
  <div dir="rtl">&bull; اگر سرور شما خطای externally-managed-environment داد از دستور زیر اقدام به اجرای اسکریپت نمایید.</div>
