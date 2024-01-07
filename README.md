@@ -50,7 +50,6 @@ apt install python3 -y && sudo apt install python3-pip &&  pip install colorama 
 
  
 
-![Exclamation-Mark-PNG-Clipart](https://github.com/Azumi67/Haproxy_TCP_loadbalance/assets/119934376/a462de6d-be16-46dc-aaa8-c21a4c6df669)این پروژه آموزشی هست و خوشحال میشم اگر فیدبکی داشتید به من بگید که از آن برای یادگیری بیشتر استفاده کنم.لطفا اگر جایی اشتباه دیدید بگید که من هم بیشتر یاد بگیرم .thanks
 - اگر میخواهید به چندین سرور تانل بزنید به [اینجا](https://github.com/Azumi67/6TO4-PrivateIP) مراجعه کنید
 
  
