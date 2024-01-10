@@ -34,7 +34,17 @@
 </div>
 
 -----------------------
+<div align="right">
+  <details>
+    <summary><strong>چند نکته در مورد خطا ها </strong></summary>
+  
+- اگز خطای buffer size گرفتید، اطمینان پیدا کنید که هر دو طرف سرور قبلا تانل 6to4 ای فعال ندارند.تانل بروکر هم پاک کنید
+- اگر مشکلی در پینگ گرفتن داشتید، اطمینان پیدا کنید که ایپی ها را به درستی وارد کردید
 
+  </details>
+</div>
+
+------------------------
  <div align="right">
   <details>
     <summary><strong><img src="https://github.com/Azumi67/Rathole_reverseTunnel/assets/119934376/3cfd920d-30da-4085-8234-1eec16a67460" alt="Image"> آپدیت</strong></summary>
