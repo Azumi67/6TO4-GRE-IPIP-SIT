@@ -143,34 +143,37 @@ def main_menu():
             print(border)
             print(footer)
             print(border)
-            print("1. \033[92mIPIP6\033[0m")
-            print("2. \033[93mPrivate IP\033[0m")
-            print("3. \033[36mExtra Native IPV6\033[0m")
-            print("4. \033[93mGRE\033[0m")
-            print("5. \033[92mGRE6\033[0m")
-            print("6. \033[96m6TO4 \033[0m")
-            print("7. \033[93m6TO4 \033[97m[Anycasnt] \033[0m")
-            print("8. \033[91mUninstall\033[0m")
+            print("1. \033[36mExtra Native IPV6\033[0m")
+            print("2. \033[93mEdit \033[92mMTU\033[0m")
+            print("3. \033[92mIPIP6\033[0m")
+            print("4. \033[96mPrivate IP\033[0m")
+            print("5. \033[93mGRE\033[0m")
+            print("6. \033[92mGRE6\033[0m")
+            print("7. \033[96m6TO4 \033[0m")
+            print("8. \033[93m6TO4 \033[97m[Anycasnt] \033[0m")
+            print("9. \033[91mUninstall\033[0m")
             print("0. Exit")
             print("\033[93m╰─────────────────────────────────────────────────────────────────────╯\033[0m")
 
             choice = input("\033[5mEnter your choice Please: \033[0m")
             print("choice:", choice)
             if choice == '1':
-                ipip_menu()
+                Native_menu()
             elif choice == '2':
+                mtu_menu()   
+            elif choice == '4':
                 private_ip()
             elif choice == '3':
-                Native_menu()
-            elif choice == '4':
-                gre_menu()
+                ipip_menu()
             elif choice == '5':
-                gre6_menu()
+                gre_menu()
             elif choice == '6':
-                i6to4_no()
+                gre6_menu()
             elif choice == '7':
-                i6to4_any()
+                i6to4_no()
             elif choice == '8':
+                i6to4_any()
+            elif choice == '9':
                 remove_menu()
             elif choice == '0':
                 print("Exiting...")
@@ -183,7 +186,186 @@ def main_menu():
     except KeyboardInterrupt:
         display_error("\033[91m\nProgram interrupted. Exiting...\033[0m")
         sys.exit()
-     
+
+def mtu_menu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mEdit MTU Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mPrivate IP\033[0m')
+    print('2. \033[93mIP6IP6 \033[0m')
+    print('3. \033[96mGRE \033[0m')
+    print('4. \033[92mGRE6 \033[0m')
+    print('5. \033[93m6to4 \033[0m')
+    print('6. \033[96m6to4 anycast \033[0m')
+    print('0. \033[94mback to the main menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            private_mtu()
+            break
+        elif server_type == '2':
+            ipip_mtu()
+            break
+        elif server_type == '3':
+            gre_mtu()
+            break
+        elif server_type == '4':
+            gre6_mtu()
+            break
+        elif server_type == '5':
+            i6to4_mtu()
+            break        
+        elif server_type == '6':
+            i6to4any_mtu()
+            break
+        elif server_type == '0':
+            clear()
+            main_menu()
+            break
+        else:
+            print('Invalid choice.')
+
+def private_mtu():
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mPrivate IP \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/private.sh"):
+        with open("/etc/private.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumi mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumi mtu" not in line]
+
+            with open("/etc/private.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/private.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def gre6_mtu():
+    private_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre6.sh"):
+        with open("/etc/gre6.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig6 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig6 mtu" not in line]
+
+            with open("/etc/gre6.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre6.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def gre_mtu():
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre.sh"):
+        with open("/etc/gre.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig mtu" not in line]
+
+            with open("/etc/gre.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+        
+def i6to4_mtu():
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96m6to4 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumi6 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/6to4.sh"):
+        with open("/etc/6to4.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumi6 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumi6 mtu" not in line]
+
+            with open("/etc/6to4.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/6to4.sh", "a") as file:
+            file.write(mtu_command)
+
+        display_checkmark("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def i6to4any_mtu():
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96m6to4 anycast \033[93m]:\033[0m ")
+    mtu_command = f"/sbin/ip -6 link set dev azumi6 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/6to4.sh"):
+        with open("/etc/6to4.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumi6 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumi6 mtu" not in line]
+
+            with open("/etc/6to4.sh", "w") as file:
+                file.writelines(sh_contents)
+
+        with open("/etc/6to4.sh", "a") as file:
+            file.write(mtu_command)
+
+        display_checkmark("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def ipip_mtu():
+    
+    private_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mIP6IP6 \033[93m]:\033[0m ")
+    mtu_command = f"/sbin/ip -6 link set dev azumip mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/ipip.sh"):
+        with open("/etc/ipip.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumip mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumip mtu" not in line]
+
+            with open("/etc/ipip.sh", "w") as file:
+                file.writelines(sh_contents)
+
+        with open("/etc/ipip.sh", "a") as file:
+            file.write(mtu_command)
+
+        display_checkmark("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+                
 def ip_menu():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -3094,11 +3276,12 @@ def remove_menu():
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mUninstall IPIP6\033[0m')
     print('2. \033[93mUninstall 6to4\033[0m')
-    print('3. \033[96mUninstall Gre\033[0m')
-    print('4. \033[92mUninstall Gre6\033[0m')
-    print('5. \033[93mUninstall Private IP\033[0m')
-    print('6. \033[96mUninstall Native IP\033[0m')
-    print('7. \033[91mback to the main menu\033[0m')
+    print('3. \033[93mUninstall 6to4 \033[96manycast\033[0m')
+    print('4. \033[96mUninstall Gre\033[0m')
+    print('5. \033[92mUninstall Gre6\033[0m')
+    print('6. \033[93mUninstall Private IP\033[0m')
+    print('7. \033[96mUninstall Native IP\033[0m')
+    print('8. \033[91mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
     while True:
@@ -3106,22 +3289,25 @@ def remove_menu():
         if server_type == '1':
             remove_ipip6()
             break
-        if server_type == '2':
+        elif server_type == '2':
             remove_6to4()
             break
-        if server_type == '3':
+        elif server_type == '3':
+            remove_6to4()
+            break
+        elif server_type == '4':
             remove_gre()
             break
-        if server_type == '4':
+        elif server_type == '5':
             remove_gre6()
             break
-        elif server_type == '5':
+        elif server_type == '6':
             remove_private()
             break
-        elif server_type == '6':
+        elif server_type == '7':
             extra_uninstall()
             break
-        elif server_type == '7':
+        elif server_type == '8':
             clear()
             main_menu()
             break
