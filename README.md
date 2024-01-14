@@ -1,5 +1,5 @@
 ![R (2)](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/a064577c-9302-4f43-b3bf-3d4f84245a6f)
-نام پروژه : 6TO4 | GRE | GRE6 | IP6IP6 | SIT
+نام پروژه : anycast | 6TO4 | GRE | GRE6 | IP6IP6 | SIT
 ---------------------------------------------------------------
 ----------------------------------
 ![check](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/13de8d36-dcfe-498b-9d99-440049c0cf14)
