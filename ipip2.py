@@ -152,7 +152,7 @@ def main_menu():
             print("7. \033[96m6TO4 \033[0m")
             print("8. \033[93m6TO4 \033[97m[Anycasnt] \033[0m")
             print("9. \033[91mUninstall\033[0m")
-            print("0. Exit")
+            print("q. Exit")
             print("\033[93m╰─────────────────────────────────────────────────────────────────────╯\033[0m")
 
             choice = input("\033[5mEnter your choice Please: \033[0m")
@@ -175,9 +175,9 @@ def main_menu():
                 i6to4_any()
             elif choice == '9':
                 remove_menu()
-            elif choice == '0':
+            elif choice == 'q':
                 print("Exiting...")
-                break
+                sys.exit()
             else:
                 print("Invalid choice.")
 
