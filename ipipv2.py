@@ -21,6 +21,7 @@ from colorama import Fore, Style
 import subprocess
 from time import sleep
 import readline
+import netifaces
 import netifaces as ni
 import io
 
@@ -80,34 +81,48 @@ def display_logo2():
     print(logo2)
     
 def display_logo():
-    colorama.init()
-    logo = """
-    ⠀⠀    \033[1;96m       ⠄⠠⠤⠤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⢀⠠⢀⣢⣈⣉⠁⡆⠀⠀⠀⠀⠀⠀
-⠀⠀             ⠀⡏⢠⣾⢷⢶⣄⣕⠢⢄⠀⠀⣀⣠⠤⠔⠒⠒⠒⠒⠒⠒⠢⠤⠄⣀⠤⢊⣤⣶⣿⡿⣿⢹⢀⡇⠀⠀⠀⠀⠀⠀
-⠀⠀             ⠀⢻⠈⣿⢫⡞⠛⡟⣷⣦⡝⠋⠉⣤⣤⣶⣶⣶⣿⣿⣿⡗⢲⣴⠀⠈⠑⣿⡟⡏⠀⢱⣮⡏⢨⠃⠀⠀⠀⠀⠀⠀
-⠀⠀             ⠀⠸⡅⣹⣿⠀⠀⢩⡽⠋⣠⣤⣿⣿⣏⣛⡻⠿⣿⢟⣹⣴⢿⣹⣿⡟⢦⣀⠙⢷⣤⣼⣾⢁⡾⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀             ⠀⢻⡀⢳⣟⣶⠯⢀⡾⢍⠻⣿⣿⣽⣿⣽⡻⣧⣟⢾⣹⡯⢷⡿⠁⠀⢻⣦⡈⢿⡟⠁⡼⠁⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀             ⠀⢷⠠⢻⠏⢰⣯⡞⡌⣵⠣⠘⡉⢈⠓⡿⠳⣯⠋⠁⠀⠀⢳⡀⣰⣿⣿⣷⡈⢣⡾⠁⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀             ⠀⠀⠙⣎⠀⣿⣿⣷⣾⣷⣼⣵⣆⠂⡐⢀⣴⣌⠀⣀⣤⣾⣿⣿⣿⣿⣿⣿⣷⣀⠣⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀            ⠀⠀  ⠄⠑⢺⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣳⣿⢽⣧⡤⢤⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀            ⠀⠀  ⢸⣈⢹⣟⣿⣿⣿⣿⣿⣻⢹⣿⣻⢿⣿⢿⣽⣳⣯⣿⢷⣿⡷⣟⣯⣻⣽⠧⠾⢤⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀             ⠀ ⢇⠤⢾⣟⡾⣽⣿⣽⣻⡗⢹⡿⢿⣻⠸⢿⢯⡟⡿⡽⣻⣯⣿⣎⢷⣣⡿⢾⢕⣎⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀             ⠀⡠⡞⡟⣻⣮⣍⡛⢿⣽⣻⡀⠁⣟⣣⠿⡠⣿⢏⡞⠧⠽⢵⣳⣿⣺⣿⢿⡋⠙⡀⠇⠱⠀⠀⠀
-⠀⠀⠀             ⠀⢰⠠⠁⠀⢻⡿⣛⣽⣿⢟⡁\033[1;91m⣭⣥⣅⠀⠀⠀⠀⠀⠀⣶⣟⣧\033[1;96m⠿⢿⣿⣯⣿⡇⠀⡇⠀⢀⡇⠀⠀⠀⠀⠀⠀
-⠀⠀             ⠀⠀⢸⠀⠀⡇⢹⣾⣿⣿⣷⡿⢿\033[1;91m⢷⡏⡈⠀⠀⠀⠀⠀⠀⠈⡹⡷⡎\033[1;96m⢸⣿⣿⣿⡇⠀⡇⠀⠸⡇⠀⠀⠀⠀⠀⠀
-⠀             ⠀⠀⠀⢸⡄⠂⠖⢸⣿⣿⣿⡏⢃⠘\033[1;91m⡊⠩⠁⠀⠀⠀⠀⠀⠀⠀⠁⠀⠁\033[1;96m⢹⣿⣿⣿⡇⢰⢁⡌⢀⠇⠀⠀⠀⠀⠀⠀
-⠀⠀             ⠀⠀⠀⢷⡘⠜⣤⣿⣿⣿⣷⡅⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣧⣕⣼⣠⡵⠋⠀⠀⠀⠀⠀⠀⠀
-⠀⠀              ⠀⠀⠀⣸⣻⣿⣾⣿⣿⣿⣿⣾⡄⠀⠀⠀⠀⠀⢀⣀⠀⠀⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⢀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀             ⠀⠀⡇⣿⣻⣿⣿⣿⣿⣿⣿⣿⣦⣤⣀⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⣿⣿⣿⣳⣿⡸⡀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀             ⠀⠀\033[1;96m⣸⢡⣿⢿⣿⣿⣿⣿⣿⣿⣿⢿⣿⡟⣽⠉⠀⠒⠂⠉⣯⢹⣿⡿⣿⣿⣿⣿⣿⣯⣿⡇⠇ ⡇ \033[1;92mAuthor: github.com/Azumi67  \033[1;96m⡇⠀⠀⠀⠀⠀⠀⠀
-⠀⠀             ⠀\033[1;96m⢰⡏⣼⡿⣿⣻⣿⣿⣿⣿⣿⢿⣻⡿⠁⠘⡆⠀⠀⠀⢠⠇⠘⣿⣿⣽⣿⣿⣿⣿⣯⣿⣷⣸⠀⠀ ⠀⠀⠀⠀
-  \033[1;96m  ______   \033[1;94m _______  \033[1;92m __    \033[1;93m  _______     \033[1;91m    __      \033[1;96m  _____  ___  
- \033[1;96m  /    " \  \033[1;94m|   __ "\ \033[1;92m|" \  \033[1;93m  /"      \    \033[1;91m   /""\     \033[1;96m (\"   \|"  \ 
- \033[1;96m // ____  \ \033[1;94m(. |__) :)\033[1;92m||  |  \033[1;93m|:        |   \033[1;91m  /    \   \033[1;96m  |.\\   \    |
- \033[1;96m/  /    ) :)\033[1;94m|:  ____/ \033[1;92m|:  |  \033[1;93m|_____/   )   \033[1;91m /' /\  \   \033[1;96m |: \.   \\  |
-\033[1;96m(: (____/ // \033[1;94m(|  /     \033[1;92m|.  | \033[1;93m //       /   \033[1;91m //  __'  \  \033[1;96m |.  \    \ |
- \033[1;96m\        / \033[1;94m/|__/ \   \033[1;92m/\  |\ \033[1;93m |:  __   \  \033[1;91m /   /  \\   \ \033[1;96m |    \    \|
- \033[1;96m \"_____ / \033[1;94m(_______) \033[1;92m(__\_|_)\033[1;93m |__|  \___) \033[1;91m(___/    \___) \033[1;96m\___|\____\)
+    colorama.init()  
+    logo = """ 
+\033[1;96m          
+                 
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠀⠀⢀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠀⠀⡀⠤⠒⠊⠉⠀⠀⠀⠀⠈⠁⠢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀\033[1;93m⠀⢀⠔⠉⠀⠀⠀⠀⢀⡠⠤⠐⠒⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠀⠀⣀⡠⠤⠤⠀⠀⠂⠐\033[1;96m⠀⠠⢤⠎⢑⡭⣽⣳⠶⣖⡶⣤⣖⣬⡽⡭⣥⣄\033[1;93m⠒⠒⠀⠐⠁⠑⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠀⢀⠴⠊⠁⠀⠀⠀⠀⡀⠀\033[1;96m⣠⣴⡶⣿⢏⡿⣝⡳⢧⡻⣟⡻⣞⠿⣾⡽⣳⣯⣳⣞⡻⣦⡀⠀⠀\033[1;93m⠀⠈⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⢨⠀⠀⠀⢀⠤⠂⠁\033[1;96m⢠⣾⡟⣧⠿⣝⣮⣽⢺⣝⣳⡽⣎⢷⣫⡟⡵⡿⣵⢫⡷⣾⢷⣭⢻⣦⡄\033[1;93m⠤⡸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠘⡄⠀⠀⠓⠂⠀\033[1;96m⣴⣿⢷⡿⣝⣻⣏⡷⣾⣟⡼⣣⢟⣼⣣⢟⣯⢗⣻⣽⣏⡾⡽⣟⣧⠿⡼⣿⣦\033[1;93m⣃⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⢀⠇⠀⠀⠀⠀\033[1;96m⣼⣿⢿⣼⡻⣼⡟⣼⣧⢿⣿⣸⡧⠿⠃⢿⣜⣻⢿⣤⣛⣿⢧⣻⢻⢿⡿⢧⣛⣿⣧⠀\033[1;93m⠛⠤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠀⢸⠁⠀⠀⠀⠀\033[1;96m⣼⣻⡿⣾⣳⡽⣾⣽⡷⣻⣞⢿⣫⠕⣫⣫⣸⢮⣝⡇⠱⣏⣾⣻⡽⣻⣮⣿⣻⡜⣞⡿⣷\033[1;93m⢀⠀⠀⠑⠢⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠘⣧⠀⠀⠀\033[1;96m⣼⣳⢯⣿⣗⣿⣏⣿⠆⣟⣿⣵⢛⣵⡿⣿⣏⣟⡾⣜⣻⠀⢻⡖⣷⢳⣏⡶⣻⡧⣟⡼⣻⡽⣇\033[1;93m⠁⠢⡀⠠⡀⠑⡄⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠀⠈⢦⠀\033[1;96m⣰⣯⣟⢯⣿⢾⣹⢾⡟⠰⣏⡾⣾⣟⡷⣿⣻⣽⣷⡶⣟⠿⡆⠀⢻⣝⣯⢷⣹⢧⣿⢧⡻⣽⣳⢽⡀\033[1;93m⠀⠈⠀⠈⠂⡼⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠀⠀⡀⢵\033[1;96m⣟⣾⡟⣾⣿⣻⢽⣺⠇⠀⣿⡱⢿⡞⣵⡳⣭⣿⡜⣿⣭⣻⣷⠲⠤⢿⣾⢯⢯⣛⢿⣳⡝⣾⣿⢭⡇⠀\033[1;93m⠀⠀⠀⡰⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⢀⠤⠊⠀\033[1;96m⣼⢻⣿⢞⣯⢿⡽⣸⣹⡆⠀⢷⣏⢯⣿⣧⣛⠶⣯⢿⣽⣷⣧⣛⣦⠀⠀⠙⢿⣳⣽⣿⣣⢟⡶⣿⣫⡇⠀⠀\033[1;93m⠀⠰⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⣠⠖⠁⠀⠀⡄\033[1;96m⡿⣯⣷⣻⡽⣞⡟⣿⣿⣟⠉⠈⢯⣗⣻⣕⢯⣛⡞⣯⢮⣷⣭⡚⠓⠋⠀⠀⠀⠈⠉⣿⡽⣎⠷⡏⡷⣷⠀⠀⠀\033[1;93m⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠐⣇⠀⠀⢀⠊\033[1;96m⣼⣇⣿⡗⣿⣽⣷⡿⣿⣱⡿⣆⠀⠀⠙⠒⠛⠓⠋⠉⠉⠀⠀⠀\033[1;91m⢠⣴⣯⣶⣶⣤⡀\033[1;96m ⠀⣿⣟⡼⣛⡇⣟⣿⡆\033[1;93m⡀⠀⢀⠇⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠀⠘⢤⠀⠃⠌\033[1;96m⣸⣿⢾⡽⣹⣾⠹⣞⡵⣳⣽⡽⣖⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\033[1;91m⣤⣖⣻⣾⣝⢿⡄\033[1;96m ⢸⣯⢳⣏⡿⣏⣾⢧\033[1;93m⠈⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠀⠘⠀⠈⠀\033[1;96m⡿⣿⣻⡽⣽⣿⢧⠌⠉\033[1;91m⠉⣴⣿⣿⣫⣅⡀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣛⠿⠿⢟⢙⡄⠙\033[1;96m ⠘⣯⢳⣞⡟⣯⢾⣻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠀⡇⠀⠀⠀\033[1;96m⡿⣿⣿⢵⣫⣿⣆⠁⠂\033[1;91m⣼⡿⢹⣿⡿⠽⠟⢢⠀⠀⠀⠀⠀⠀⠀⢹⠀⢄⢀⠀⡿⠀⠀\033[1;96m ⢰⣯⢷⣺⣏⣯⢻⡽⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠀⡇⠀⢀⠠\033[1;96m⣿⣿⢾⣛⡶⣽⠈⢓⠀\033[1;91m⢻⠁⢸⠇⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠑⠠⠤⠔⠂⠀⠀\033[1;96m ⢸⣿⢮⣽⠿⣜⣻⡝⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀\033[1;93m⠀⠑⠊⠁\033[1;96m⢠⡷⡇⣿⣿⢼⣹⡀⠀⠑⢄⠀\033[1;91m⠀⠃⠌⣁⠦⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠂⠀⠀\033[1;96m⢀⣿⢾⡝⣾⡽⣺⢽⣹⣽⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣻⢽⣻⡟⣮⣝⡷⢦⣄⣄⣢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣯⢿⡺⣟⢷⡹⢾⣷⡞⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣟⡿⣎⢿⡽⣳⢮⣿⣹⣾⣯⡝⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠃⠀⠀⠀⠀⠀⠀⣀⣴⡟⣿⢧⣏⢷⡟⣮⠝⢿⣹⣯⡽⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣯⡷⣏⣾⡳⣽⢺⣷⡹⣟⢶⡹⣾⡽⣷⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠔⣾⢯⣷⡇⣿⢳⣎⢿⡞⣽⢦⣼⡽⣧⢻⡽⣆⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣟⢾⡷⣭⣿⢳⣭⢻⣷⡻⣜⣻⡵⣻⡼⣿⠾⠫\033[1;96m⣽⣟⣶⣶⣶⠒⠒⠂⠉⠀\033[1;96m⢸⣽⢺⡷⣷⣯⢗⣮⣟⢾⢧⣻⠼⡿⣿⢣⡟⣼⣆⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡾⣝⣾⢳⢧⣟⡳⣎⣿⣿⣱⢏⣾⣽⣳⠟\033[1;92m⠁⠀⡌⠈\033[1;96m⢹⡯⠟⠛⠀⠀⠀⠀⠀⠈\033[1;96m⣷⢻⣼⣽⣿⡾⣼⣏⣾⣻⡜⣯⣷⢿⣟⣼⡳⣞⣦⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⢿⡸⣎⠿⣾⡏⣷⣉⣷⣿⢹⣎⡿\033[1;92m⠎⡎⠀⠀⠀⡇⠀⣾⠱⡀⠀⠀⠀⠀⠀⠀⠀⠈⣹⠉⡏⠀\033[1;96m⠹⣾⣏⢹⣶⢹⣶⢿⡾⣿⢶⣿⣸⠾⣇⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣠⣾⢫⣞⡽⣯⢿⣹⡟⣶⣹⢷⣻\033[1;92m⡷⠊⠀⡜⠀⠀⠀⠀⢱⠀⣿⡀⠈⠢⢀⣀⣀⠠⠄⠒⢈⡏⡰⠀⠀⠀\033[1;96m⠀⣿⡜⣮⢟⡼⣻⡵⣻⣗⠾⣟⣯⢻⣆⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢀⣴⣿⢣⣟⡾⣽⣯⢳⣿⡹⣖⣿⡳\033[1;92m⠋⠀⠀⡸⠀⠀⠀⠀⠀⢸⠀⢺⢂⠀⠀⠀⠀⠀⠀⠀⢠⡺⡱⠁⠀⠀⠀⠀\033[1;96m⢹⣧⣻⢮⡳⣝⡷⢧⣻⢯⢿⣻⣳⢞⡆⠀⠀⠀
+⠀⠀⠀⠀⢀⡾⣽⣣⡿⣼⣏⡿⣼⣳⡯⢷⣹⣯⠇\033[1;92m⠀⠀⢠⠁⠀⠀⠀⠀⠀⠈⡆⠈⢹⡰⠤⡀⠀⠀⠀⢠⡼⢱⠁⠀⠀⠀⠀⠀⠀\033[1;96m⠹⣿⣿⣱⣻⣼⣏⢷⣯⣿⡳⣿⣎⢿⡀⠀⠀
+⠀⠀⠀⠀⣾⣽⠷⣿⣵⡿⣼⡟⣭⣷⡟⣿⢯⡏⠀\033[1;92m⠀⠀⠘⠀⠀⠒⠈⢡⠀⠀⢗⢄⠀⠃⠀⠺⢁⢈⠥⠋⣀⠇⠀⠀⠀⠀⠀⠀⡀⠀\033[1;96m⠈⠙⢿⣳⢞⣽⢯⣞⣾⣯⡝⣿⡾⡇⠀⠀\033[1;92mAuthor: github.com/Azumi67  \033[1;96m  ⠀⠀
+
+  \033[96m  ______   \033[1;94m _______  \033[1;92m __    \033[1;93m  _______     \033[1;91m    __      \033[1;96m  _____  ___  
+ \033[96m  /    " \  \033[1;94m|   __ "\ \033[1;92m|" \  \033[1;93m  /"      \    \033[1;91m   /""\     \033[1;96m (\"   \|"  \ 
+ \033[96m // ____  \ \033[1;94m(. |__) :)\033[1;92m||  |  \033[1;93m|:        |   \033[1;91m  /    \   \033[1;96m  |.\\   \    |
+ \033[96m/  /    ) :)\033[1;94m|:  ____/ \033[1;92m|:  |  \033[1;93m|_____/   )   \033[1;91m /' /\  \   \033[1;96m |: \.   \\  |
+\033[96m(: (____/ // \033[1;94m(|  /     \033[1;92m|.  | \033[1;93m //       /   \033[1;91m //  __'  \  \033[1;96m |.  \    \ |
+ \033[96m\        / \033[1;94m/|__/ \   \033[1;92m/\  |\ \033[1;93m |:  __   \  \033[1;91m /   /  \\   \ \033[1;96m |    \    \|
+ \033[96m \"_____ / \033[1;94m(_______) \033[1;92m(__\_|_)\033[1;93m |__|  \___) \033[1;91m(___/    \___) \033[1;96m\___|\____\)
 """
     print(logo)
 def main_menu():
@@ -129,38 +144,41 @@ def main_menu():
             print(border)
             print(footer)
             print(border)
-            print("1. \033[92mIPIP6\033[0m")
-            print("2. \033[93mPrivate IP\033[0m")
-            print("3. \033[36mExtra Native IPV6\033[0m")
-            print("4. \033[93mGRE\033[0m")
-            print("5. \033[92mGRE6\033[0m")
-            print("6. \033[96m6TO4 \033[0m")
-            print("7. \033[93m6TO4 \033[97m[Anycasnt] \033[0m")
-            print("8. \033[91mUninstall\033[0m")
-            print("0. Exit")
+            print("1. \033[36mExtra Native IPV6\033[0m")
+            print("2. \033[93mEdit \033[92mMTU\033[0m")
+            print("3. \033[92mIPIP6\033[0m")
+            print("4. \033[96mPrivate IP\033[0m")
+            print("5. \033[93mGRE\033[0m")
+            print("6. \033[92mGRE6\033[0m")
+            print("7. \033[96m6TO4 \033[0m")
+            print("8. \033[93m6TO4 \033[97m[Anycasnt] \033[0m")
+            print("9. \033[91mUninstall\033[0m")
+            print("q. Exit")
             print("\033[93m╰─────────────────────────────────────────────────────────────────────╯\033[0m")
 
             choice = input("\033[5mEnter your choice Please: \033[0m")
             print("choice:", choice)
             if choice == '1':
-                ipip_menu()
+                Native_menu()
             elif choice == '2':
+                mtu_menu()   
+            elif choice == '4':
                 private_ip()
             elif choice == '3':
-                Native_menu()
-            elif choice == '4':
-                gre_menu()
+                ipip_menu()
             elif choice == '5':
-                gre6_menu()
+                gre_menu()
             elif choice == '6':
-                i6to4_no()
+                gre6_menu()
             elif choice == '7':
-                i6to4_any()
+                i6to4_no()
             elif choice == '8':
+                i6to4_any()
+            elif choice == '9':
                 remove_menu()
-            elif choice == '0':
+            elif choice == 'q':
                 print("Exiting...")
-                break
+                sys.exit()
             else:
                 print("Invalid choice.")
 
@@ -169,7 +187,186 @@ def main_menu():
     except KeyboardInterrupt:
         display_error("\033[91m\nProgram interrupted. Exiting...\033[0m")
         sys.exit()
-     
+
+def mtu_menu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mEdit MTU Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mPrivate IP\033[0m')
+    print('2. \033[93mIP6IP6 \033[0m')
+    print('3. \033[96mGRE \033[0m')
+    print('4. \033[92mGRE6 \033[0m')
+    print('5. \033[93m6to4 \033[0m')
+    print('6. \033[96m6to4 anycast \033[0m')
+    print('0. \033[94mback to the main menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            private_mtu()
+            break
+        elif server_type == '2':
+            ipip_mtu()
+            break
+        elif server_type == '3':
+            gre_mtu()
+            break
+        elif server_type == '4':
+            gre6_mtu()
+            break
+        elif server_type == '5':
+            i6to4_mtu()
+            break        
+        elif server_type == '6':
+            i6to4any_mtu()
+            break
+        elif server_type == '0':
+            clear()
+            main_menu()
+            break
+        else:
+            print('Invalid choice.')
+
+def private_mtu():
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mPrivate IP \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/private.sh"):
+        with open("/etc/private.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumi mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumi mtu" not in line]
+
+            with open("/etc/private.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/private.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def gre6_mtu():
+    private_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre6.sh"):
+        with open("/etc/gre6.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig6 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig6 mtu" not in line]
+
+            with open("/etc/gre6.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre6.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def gre_mtu():
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre.sh"):
+        with open("/etc/gre.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig mtu" not in line]
+
+            with open("/etc/gre.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+        
+def i6to4_mtu():
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96m6to4 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumi6 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/6to4.sh"):
+        with open("/etc/6to4.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumi6 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumi6 mtu" not in line]
+
+            with open("/etc/6to4.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/6to4.sh", "a") as file:
+            file.write(mtu_command)
+
+        display_checkmark("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def i6to4any_mtu():
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96m6to4 anycast \033[93m]:\033[0m ")
+    mtu_command = f"/sbin/ip -6 link set dev azumi6 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/6to4.sh"):
+        with open("/etc/6to4.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumi6 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumi6 mtu" not in line]
+
+            with open("/etc/6to4.sh", "w") as file:
+                file.writelines(sh_contents)
+
+        with open("/etc/6to4.sh", "a") as file:
+            file.write(mtu_command)
+
+        display_checkmark("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def ipip_mtu():
+    
+    private_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mIP6IP6 \033[93m]:\033[0m ")
+    mtu_command = f"/sbin/ip -6 link set dev azumip mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/ipip.sh"):
+        with open("/etc/ipip.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumip mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumip mtu" not in line]
+
+            with open("/etc/ipip.sh", "w") as file:
+                file.writelines(sh_contents)
+
+        with open("/etc/ipip.sh", "a") as file:
+            file.write(mtu_command)
+
+        display_checkmark("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+                
 def ip_menu():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -580,6 +777,12 @@ def ipip6_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"echo 'ip -6 addr add 2002:0db8:1234:a220::1/64 dev azumip' >> {file_path}"
     subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumip up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumip' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
 
     created_ips = []
     for i in range(2, num_additional_ips + 2):
@@ -588,13 +791,32 @@ def ipip6_tunnel(remote_ip, local_ip, num_additional_ips):
         command = f"echo 'ip -6 addr add {ip_address}/64 dev azumip' >> {file_path}"
         subprocess.run(command, shell=True, check=True)
 
-    command = f"echo 'ip link set azumip up' >> {file_path}"
-    subprocess.run(command, shell=True, check=True)
+
+    
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:0db8:1234:a220::1".format(interface)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f'ip link set dev azumip mtu {mtu_value}'
+        with open('/etc/ipip.sh', 'a') as f:
+            f.write(mtu_command)
+            f.write(rt_command)
+        subprocess.run(command, shell=True, check=True)
 
     subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
 
     print("\033[93mCreated IPv6 Addresses:\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -714,18 +936,28 @@ def kharej_ipip6_menu():
 
     initial_ip = "fd1d:fc98:b73e:b481::1/64"
     subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi"], stdout=subprocess.DEVNULL)
-
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     with open("/etc/private.sh", "w") as f:
         f.write("/sbin/modprobe sit\n")
         f.write(f"ip tunnel add azumi mode sit remote {remote_ip} local {local_ip} ttl 255\n")
         f.write("ip link set dev azumi up\n")
         f.write("ip addr add fd1d:fc98:b73e:b481::1/64 dev azumi\n")
-
+        f.write("ip -6 route add fd1d::/16 dev azumi\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+        with open("/etc/private.sh", "a") as f:
+            f.write(mtu_command)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private.sh'
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    
+
 
     sleep(1)
     add_cron_job()
@@ -772,6 +1004,8 @@ done
     print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
     ipip_kharej()
     sleep(1)	
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
 
 
     
@@ -825,37 +1059,54 @@ def ipip6_iran_tunnel(remote_ip, local_ip, num_additional_ips):
 
     if os.path.exists(file_path):
         os.remove(file_path)
+
+    with open(file_path, 'w') as f:
+        f.write('/sbin/modprobe ipip\n')
+        f.write(f'ip -6 tunnel add azumip mode ip6ip6 remote {remote_ip} local {local_ip} ttl 255\n')
+        f.write('ip -6 addr add 2002:0db8:1234:a220::2/64 dev azumip\n')
+        f.write('ip link set azumip up\n')
+        f.write('ip -6 route add 2002::/16 dev azumip\n')
+        created_ips = []
+        for i in range(2, num_additional_ips + 2):
+            ip_address = f'2002:0db8:1234:a22{i}::2'
+            created_ips.append(ip_address)
+            f.write(f'ip -6 addr add {ip_address}/64 dev azumip\n')
+
         
-    command = f"echo '/sbin/modprobe ipip' >> {file_path}"
-    subprocess.run(command, shell=True, check=True)
 
-    command = f"echo 'ip -6 tunnel add azumip mode ip6ip6 remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    command = f'chmod +x {file_path}'
     subprocess.run(command, shell=True, check=True)
-
-    command = f"echo 'ip -6 addr add 2002:0db8:1234:a220::2/64 dev azumip' >> {file_path}"
-    subprocess.run(command, shell=True, check=True)
-
-    created_ips = []
-    for i in range(2, num_additional_ips + 2):
-        ip_address = f"2002:0db8:1234:a22{i}::2"
-        created_ips.append(ip_address)
-        command = f"echo 'ip -6 addr add {ip_address}/64 dev azumip' >> {file_path}"
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:0db8:1234:a220::2".format(interface)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f'ip link set dev azumip mtu {mtu_value}'
+        with open('/etc/ipip.sh', 'a') as f:
+            f.write(mtu_command)
+            f.write(rt_command)
         subprocess.run(command, shell=True, check=True)
 
-    command = f"echo 'ip link set azumip up' >> {file_path}"
-    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f'bash {file_path}', shell=True, check=True)
+    
 
-    command = f"chmod +x {file_path}"
-    subprocess.run(command, shell=True, check=True)
-
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
-
-    print("\033[93mCreated IPv6 Addresses:\033[0m")
-    print("\033[92m" + "+---------------------------+" + "\033[0m")
-    print("\033[92m" + f"| 2002:0db8:1234:a220::1    |" + "\033[0m")
+   
+    print('\033[93mCreated IPv6 Addresses:\033[0m')
+    print('\033[92m' + '+---------------------------+' + '\033[0m')
+    print('\033[92m' + '| 2002:0db8:1234:a220::1    |' + '\033[0m')
     for ip_address in created_ips:
-        print("\033[92m" + f"| {ip_address}    |" + "\033[0m")
-    print("\033[92m" + "+---------------------------+" + "\033[0m")
+        print('\033[92m' + f'| {ip_address}    |' + '\033[0m')
+    print('\033[92m' + '+---------------------------+' + '\033[0m')
+
+
 
 def ipip_cronjob():
     try:
@@ -928,7 +1179,9 @@ def ipip_iran():
     max_pings = 3
     interval = 60
     iran_ping_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
     print(ping_result)
 
@@ -968,18 +1221,29 @@ def iran_ipip6_menu():
 
     initial_ip = "fd1d:fc98:b73e:b481::2/64"
     subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi"], stdout=subprocess.DEVNULL)
-
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     with open("/etc/private.sh", "w") as f:
         f.write("/sbin/modprobe sit\n")
         f.write(f"ip tunnel add azumi mode sit remote {remote_ip} local {local_ip} ttl 255\n")
         f.write("ip link set dev azumi up\n")
         f.write("ip addr add fd1d:fc98:b73e:b481::2/64 dev azumi\n")
-
+        f.write("ip -6 route add fd1d::/16 dev azumi\n")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+        with open("/etc/private.sh", "a") as f:
+            f.write(mtu_command)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private.sh'
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    
+
 
     sleep(1)
     add_cron_job()
@@ -1028,7 +1292,7 @@ done
     sleep(1)	
     print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
 
-	
+
     
     
     ##### PRIVATE & NATIVE
@@ -1075,16 +1339,19 @@ def add_cron_job():
         print("\033[91mFailed to add cronjob:\033[0m", e)
         
 def run_ping():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     try:
         print("\033[96mPlease Wait, Azumi is pinging...")
-        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b481::2"], check=True, stdout=subprocess.DEVNULL)
+        subprocess.run(["ping", "-c", "2", "2001:831b::2"], check=True, stdout=subprocess.DEVNULL)
     except subprocess.CalledProcessError as e:
         print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
  
 def run_ping_iran():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     try:
         print("\033[96mPlease Wait, Azumi is pinging...")
-        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b481::1"], check=True, stdout=subprocess.DEVNULL)
+        subprocess.run(["ping", "-c", "2", "2001:831b::1"], check=True, stdout=subprocess.DEVNULL)
     except subprocess.CalledProcessError as e:
         print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
         
@@ -1137,53 +1404,74 @@ def kharej_private_menu():
     subprocess.run(["ip", "tunnel", "add", "azumi", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
     subprocess.run(["ip", "link", "set", "dev", "azumi", "up"], stdout=subprocess.DEVNULL)
 
-    initial_ip = "fd1d:fc98:b73e:b481::1/64"
-    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi"], stdout=subprocess.DEVNULL)
+    initial_ip = "2001:831b::1/64"
+    subprocess.run(["ip", "-6", "addr", "add", initial_ip, "dev", "azumi"], stdout=subprocess.DEVNULL)
+    
+    subprocess.run(["ip", "-6", "route", "add", "2001::/16", "dev", "azumi"], stdout=subprocess.DEVNULL)
 
-    num_ips = int(input("\033[93mHow many \033[92madditional private IPs\033[93m do you need? \033[0m"))
+    num_ips = int(input("\033[93mHow many \033[92mprivate IPs\033[93m do you need? \033[0m"))
     print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
 
     for i in range(1, num_ips + 1):
         ip_suffix = hex(i)[2:]
-        ip_addr = f"fd1d:fc98:b73e:b48{ip_suffix}::1/64"
+        ip_addr = f"2001:83{ip_suffix}b::1/64"
 
-        result = subprocess.run(["ip", "addr", "show", "dev", "azumi"], capture_output=True, text=True)
+        result = subprocess.run(["ip", "-6", "addr", "show", "dev", "azumi"], capture_output=True, text=True)
         if ip_addr in result.stdout:
             print(f"IP address {ip_addr} already exists. Skipping...")
         else:
-            subprocess.run(["ip", "addr", "add", ip_addr, "dev", "azumi"], stdout=subprocess.DEVNULL)
-
+            subprocess.run(["ip", "-6", "addr", "add", ip_addr, "dev", "azumi"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     with open("/etc/private.sh", "w") as f:
         f.write("/sbin/modprobe sit\n")
         f.write(f"ip tunnel add azumi mode sit remote {remote_ip} local {local_ip} ttl 255\n")
         f.write("ip link set dev azumi up\n")
-        f.write("ip addr add fd1d:fc98:b73e:b481::1/64 dev azumi\n")
+        f.write("ip -6 addr add 2001:831b::1/64 dev azumi\n")
+        f.write("ip -6 route add 2001::/16 dev azumi\n")
         for i in range(1, num_ips + 1):
             ip_suffix = hex(i)[2:]
-            ip_addr = f"fd1d:fc98:b73e:b48{ip_suffix}::1/64"
-            f.write(f"ip addr add {ip_addr} dev azumi\n")
-
+            ip_addr = f"2001:83{ip_suffix}b::1/64"
+            f.write(f"ip -6 addr add {ip_addr} dev azumi\n")
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:831b::1".format(interface)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+        with open("/etc/private.sh", "a") as f:
+            f.write(mtu_command)
+            f.write(rt_command)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
 
     add_cron_job()
 
     display_checkmark("\033[92mkeepalive service Configured!\033[0m")
     run_ping()
-    sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print("\033[93mCreated Private IP Addresses (Kharej):\033[0m")
     for i in range(1, num_ips + 1):
         ip_suffix = hex(i)[2:]
-        ip_addr = f"fd1d:fc98:b73e:b48{ip_suffix}::1"
+        ip_addr = f"2001:83{ip_suffix}b::1"
         print("\033[92m" + "+---------------------------+" + "\033[0m")
-        print("\033[92m" + f"| {ip_addr}    |" + "\033[0m")
+        print("\033[92m" + f" {ip_addr}    " + "\033[0m")
         print("\033[92m" + "+---------------------------+" + "\033[0m")
 
 
     script_content1 = '''#!/bin/bash
 
 
-ip_address="fd1d:fc98:b73e:b481::2"
+ip_address="2001:831b::2"
 
 
 max_pings=3
@@ -1245,37 +1533,58 @@ def iran_private_menu():
     subprocess.run(["ip", "link", "set", "dev", "azumi", "up"], stdout=subprocess.DEVNULL)
     
     
-    initial_ip = "fd1d:fc98:b73e:b481::2/64"
-    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi"], stdout=subprocess.DEVNULL)
+    initial_ip = "2001:831b::2/64"
+    subprocess.run(["ip", "-6", "addr", "add", initial_ip, "dev", "azumi"], stdout=subprocess.DEVNULL)
+    
+    subprocess.run(["ip", "-6", "route", "add", "2001::/16", "dev", "azumi"], stdout=subprocess.DEVNULL)
     
    
-    num_ips = int(input("\033[93mHow many \033[92madditional private IPs\033[93m do you need? \033[0m"))
+    num_ips = int(input("\033[93mHow many \033[92mprivate IPs\033[93m do you need? \033[0m"))
     print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
     
     
     for i in range(1, num_ips + 1):
         ip_suffix = hex(i)[2:]
-        ip_addr = f"fd1d:fc98:b73e:b48{ip_suffix}::2/64"
+        ip_addr = f"2001:83{ip_suffix}b::2/64"
         
 
-        result = subprocess.run(["ip", "addr", "show", "dev", "azumi"], capture_output=True, text=True)
+        result = subprocess.run(["ip", "-6", "addr", "show", "dev", "azumi"], capture_output=True, text=True)
         if ip_addr in result.stdout:
             print(f"IP address {ip_addr} already exists. Skipping...")
         else:
-            subprocess.run(["ip", "addr", "add", ip_addr, "dev", "azumi"], stdout=subprocess.DEVNULL)
+            subprocess.run(["ip", "-6", "addr", "add", ip_addr, "dev", "azumi"], stdout=subprocess.DEVNULL)
     
-
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     with open("/etc/private.sh", "w") as f:
         f.write("/sbin/modprobe sit\n")
         f.write(f"ip tunnel add azumi mode sit remote {remote_ip} local {local_ip} ttl 255\n")
         f.write("ip link set dev azumi up\n")
-        f.write("ip addr add fd1d:fc98:b73e:b481::2/64 dev azumi\n")
+        f.write("ip -6 addr add 2001:831b::2/64 dev azumi\n")
+        f.write("ip -6 route add 2001::/16 dev azumi\n")
         for i in range(1, num_ips + 1):
             ip_suffix = hex(i)[2:]
-            ip_addr = f"fd1d:fc98:b73e:b48{ip_suffix}::2/64"
-            f.write(f"ip addr add {ip_addr} dev azumi\n")
-    
+            ip_addr = f"2001:83{ip_suffix}b::2/64"
+            f.write(f"ip -6 addr add {ip_addr} dev azumi\n")
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:831b::2".format(interface)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+        with open("/etc/private.sh", "a") as f:
+            f.write(mtu_command)
+            f.write(rt_command)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     
 
@@ -1287,12 +1596,13 @@ def iran_private_menu():
    
     run_ping_iran()
     sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print("\033[93mCreated Private IP Addresses (IRAN):\033[0m")
     for i in range(1, num_ips + 1):
         ip_suffix = hex(i)[2:]
-        ip_addr = f"fd1d:fc98:b73e:b48{ip_suffix}::2"
+        ip_addr = f"2001:83{ip_suffix}b::2"
         print("\033[92m" + "+---------------------------+" + "\033[0m")
-        print("\033[92m" + f"| {ip_addr}    |" + "\033[0m")
+        print("\033[92m" + f" {ip_addr}    " + "\033[0m")
         print("\033[92m" + "+---------------------------+" + "\033[0m")
     
 
@@ -1300,7 +1610,7 @@ def iran_private_menu():
     script_content = '''#!/bin/bash
 
 
-ip_address="fd1d:fc98:b73e:b481::2"
+ip_address="2001:831b::1"
 
 
 max_pings=3
@@ -1483,6 +1793,7 @@ def gre6_menu():
 			
    ##gre6         
 def run_ping():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     try:
         subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b481::2"], check=True, stdout=subprocess.DEVNULL)
     except subprocess.CalledProcessError as e:
@@ -1514,6 +1825,7 @@ WantedBy=multi-user.target
 
 	
 def display_kharej_ip():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print("\033[93mCreated Private IP Addresses (Kharej):\033[0m")
     ip_addr = "fd1d:fc98:b73e:b481::1"
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -1606,6 +1918,12 @@ def gre6_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"echo 'ip -6 addr add 2002:831a::1/64 dev azumig6' >> {file_path}"
     subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
 
     created_ips = []
     for i in range(2, num_additional_ips + 2):
@@ -1614,15 +1932,30 @@ def gre6_tunnel(remote_ip, local_ip, num_additional_ips):
         command = f"echo 'ip -6 addr add {ip_address}/64 dev azumig6' >> {file_path}"
         subprocess.run(command, shell=True, check=True)
 
-    command = f"echo 'ip link set azumig6 up' >> {file_path}"
-    subprocess.run(command, shell=True, check=True)
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
- 
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::1".format(interface)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f'ip link set dev azumig6 mtu {mtu_value}'
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+            f.write(rt_command)
+        subprocess.run(command, shell=True, check=True)
     sleep(1)
     subprocess.run(f"bash {file_path}", shell=True, check=True)
-    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print("\033[93mCreated IPv6 Addresses:\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
     print("\033[92m" + f"| 2002:831a::1               |" + "\033[0m")
@@ -1719,20 +2052,27 @@ def kharej_gre6_menu():
 
     initial_ip = "fd1d:fc98:b73e:b481::1/64"
     subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi"], stdout=subprocess.DEVNULL)
-
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     with open("/etc/private.sh", "w") as f:
         f.write("/sbin/modprobe sit\n")
         f.write(f"ip tunnel add azumi mode sit remote {remote_ip} local {local_ip} ttl 255\n")
         f.write("ip link set dev azumi up\n")
         f.write("ip addr add fd1d:fc98:b73e:b481::1/64 dev azumi\n")
-
+        f.write("ip -6 route add fd1d::/16 dev azumi\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+        with open("/etc/private.sh", "a") as f:
+            f.write(mtu_command)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private.sh'
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
 
-    sleep(1)
     add_cron_job()
 
     display_checkmark("\033[92mkeepalive service Configured!\033[0m")
@@ -1791,6 +2131,7 @@ def iran_ping():
     
 	
 def display_iran_ip():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print("\033[93mCreated Private IP Addresses (Kharej):\033[0m")
     ip_addr = "fd1d:fc98:b73e:b481::2"
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -1836,6 +2177,12 @@ def gre6_iran_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"echo 'ip -6 addr add 2002:831a::2/64 dev azumig6' >> {file_path}"
     subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
 
     created_ips = []
     for i in range(2, num_additional_ips + 2):
@@ -1844,15 +2191,30 @@ def gre6_iran_tunnel(remote_ip, local_ip, num_additional_ips):
         command = f"echo 'ip -6 addr add {ip_address}/64 dev azumig6' >> {file_path}"
         subprocess.run(command, shell=True, check=True)
 
-    command = f"echo 'ip link set azumig6 up' >> {file_path}"
-    subprocess.run(command, shell=True, check=True)
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
-
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2".format(interface)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f'ip link set dev azumig6 mtu {mtu_value}'
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+            f.write(rt_command)
+        subprocess.run(command, shell=True, check=True)
     sleep(1)
     subprocess.run(f"bash {file_path}", shell=True, check=True)
-
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print("\033[93mCreated IPv6 Addresses:\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
     print("\033[92m" + f"| 2002:831a::2               |" + "\033[0m")
@@ -1911,7 +2273,9 @@ def gre6_iran():
     max_pings = 3
     interval = 50
     iran_ping_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
     print(ping_result)
 
@@ -1951,14 +2315,22 @@ def iran_gre6_menu():
 
     initial_ip = "fd1d:fc98:b73e:b481::2/64"
     subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi"], stdout=subprocess.DEVNULL)
-
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     with open("/etc/private.sh", "w") as f:
         f.write("/sbin/modprobe sit\n")
         f.write(f"ip tunnel add azumi mode sit remote {remote_ip} local {local_ip} ttl 255\n")
         f.write("ip link set dev azumi up\n")
         f.write("ip addr add fd1d:fc98:b73e:b481::2/64 dev azumi\n")
-
+        f.write("ip -6 route add fd1d::/16 dev azumi\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+        with open("/etc/private.sh", "a") as f:
+            f.write(mtu_command)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private.sh'
     command = f"chmod +x {file_path}"
@@ -2085,7 +2457,9 @@ def gre_iran():
     max_pings = 3
     interval = 30
     gre_ping_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     ping_result = subprocess.run(['ping6', '-c', '2', remote_prefix], capture_output=True, text=True).stdout.strip()
     
     print(ping_result)
@@ -2105,7 +2479,9 @@ def gre_kharej():
     max_pings = 3
     interval = 40
     gre_ping_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     ping_result = subprocess.run(['ping6', '-c', '2', remote_prefix], capture_output=True, text=True).stdout.strip()
     
     print(ping_result)
@@ -2177,17 +2553,40 @@ def kharej_gre_menu():
     command = f"echo 'ip addr add {ipv6}/16 dev azumig' >> {file_path}"
     subprocess.run(command, shell=True, check=True)
     
+    command = f"echo 'ip link set azumig up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    
 
     for i in range(2, num_additional_ips + 2):
         ip_address = f"{ipv6[:-1]}{i}/16"  
         command = f"echo 'ip addr add {ip_address} dev azumig' >> {file_path}"
         subprocess.run(command, shell=True, check=True)
 
-    command = f"echo 'ip link set azumig up' >> {file_path}"
-    subprocess.run(command, shell=True, check=True)
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("Error: No network interface with IPv6 address.")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src {}".format(interface, ipv6_address)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f'ip link set dev azumig mtu {mtu_value}'
+        with open('/etc/gre.sh', 'a') as f:
+            f.write(mtu_command)
+            f.write(rt_command)
+        subprocess.run(command, shell=True, check=True)
     subprocess.run(f"bash {file_path}", shell=True, check=True)
 
 
@@ -2259,17 +2658,39 @@ def iran_gre_menu():
     command = f"echo 'ip addr add {ipv6}/16 dev azumig' >> {file_path}"
     subprocess.run(command, shell=True, check=True)
     
+    command = f"echo 'ip link set azumig up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
 
     for i in range(2, num_additional_ips + 2):
         ip_address = f"{ipv6[:-1]}{i}/16"  
         command = f"echo 'ip addr add {ip_address} dev azumig' >> {file_path}"
         subprocess.run(command, shell=True, check=True)
 
-    command = f"echo 'ip link set azumig up' >> {file_path}"
-    subprocess.run(command, shell=True, check=True)
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("Error: No network interface with IPv6 address.")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src {}".format(interface, ipv6_address)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f'ip link set dev azumig mtu {mtu_value}'
+        with open('/etc/gre.sh', 'a') as f:
+            f.write(mtu_command)
+            f.write(rt_command)
+        subprocess.run(command, shell=True, check=True)
     subprocess.run(f"bash {file_path}", shell=True, check=True)
 
  
@@ -2340,7 +2761,14 @@ def i6to4_no():
             break
         else:
             print("Invalid choice.")
-			
+            
+def ipv6_int():
+    interfaces = netifaces.interfaces()
+    for iface in interfaces:
+        if iface != 'lo' and netifaces.AF_INET6 in netifaces.ifaddresses(iface):
+            return iface
+    return None
+	
 def i6to4_kharej():
     clear_screen()
     print("\033[92m ^ ^\033[0m")
@@ -2388,18 +2816,33 @@ def i6to4_kharej():
     else:
         gateway = prefix[:-3] + "::1"
     
-
+   
     with open("/etc/6to4.sh", "w") as f:
         f.write("#!/bin/bash\n")
         f.write("/sbin/modprobe sit\n")
         f.write("/sbin/ip tunnel add azumi6 mode sit remote {} local {} ttl 255\n".format(remote_ip, local_ip))
-        f.write("/sbin/ip -6 link set dev azumi6 mtu 1480\n")
+        
+        set_mtu = input('\033[93mDo you want to set \033[92m MTU?\033[93m (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m')
+        if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+            mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+            f.write("/sbin/ip -6 link set dev azumi6 mtu {}\n".format(mtu_value))
+        else:
+            f.write("/sbin/ip -6 link set dev azumi6 mtu 1480\n")
+        
         f.write("/sbin/ip link set dev azumi6 up\n")
         f.write("/sbin/ip -6 addr add {}/16 dev azumi6\n".format(prefix))
         f.write("/sbin/ip -6 route add 2000::/3 via {} dev azumi6 metric 1\n".format(gateway))
-        f.write("ip -6 route add {} dev azumi6 metric 1\n".format(gateway))
         f.write("ip -6 route add ::/0 dev azumi6\n")
-
+        answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+        if answer.lower() in ['yes', 'y']:
+            interface = ipv6_int()
+            if interface is None:
+               print("Error: No network interface with IPv6 address.")
+            else:
+               print("Interface:", interface)
+               f.write("ip -6 route replace default via fe80::1 dev {} src {}\n".format(interface, prefix))
+        else:
+            print("Skipping changing the default route.")
     num_ips = int(input("\033[93mHow many \033[92madditional IPs\033[93m do you need? \033[0m"))
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
     
@@ -2547,12 +2990,26 @@ def i6to4_iran():
         f.write("#!/bin/bash\n")
         f.write("/sbin/modprobe sit\n")
         f.write("/sbin/ip tunnel add azumi6 mode sit remote {} local {} ttl 255\n".format(remote_ip, local_ip))
-        f.write("/sbin/ip -6 link set dev azumi6 mtu 1480\n")
+        set_mtu = input('\033[93mDo you want to set \033[92m MTU?\033[93m (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m')
+        if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+            mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+            f.write("/sbin/ip -6 link set dev azumi6 mtu {}\n".format(mtu_value))
+        else:
+            f.write("/sbin/ip -6 link set dev azumi6 mtu 1480\n")
         f.write("/sbin/ip link set dev azumi6 up\n")
         f.write("/sbin/ip -6 addr add {}/16 dev azumi6\n".format(prefix))
         f.write("/sbin/ip -6 route add 2000::/3 via {} dev azumi6 metric 1\n".format(gateway))
-        f.write("ip -6 route add {} dev azumi6 metric 1\n".format(gateway))
-        f.write("ip -6 route add ::/0 dev azumi6\n")
+        answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+        if answer.lower() in ['yes', 'y']:
+            interface = ipv6_int()
+            if interface is None:
+               print("Error: No network interface with IPv6 address.")
+            else:
+               print("Interface:", interface)
+               f.write("ip -6 route replace default via fe80::1 dev {} src {}\n".format(interface, prefix))
+        else:
+            print("Skipping changing the default route.")
+        
 
     num_ips = int(input("\033[93mHow many \033[92madditional IPs\033[93m do you need? \033[0m"))
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
@@ -2721,11 +3178,16 @@ def i6to4_any_kharej():
         f.write("#!/bin/bash\n")
         f.write("/sbin/modprobe sit\n")
         f.write("/sbin/ip tunnel add azumi6 mode sit remote any local {} ttl 255\n".format(local_ip))
-        f.write("/sbin/ip -6 link set dev azumi6 mtu 1480\n")
+        set_mtu = input('\033[93mDo you want to set \033[92m MTU?\033[93m (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m')
+        if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+            mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+            f.write("/sbin/ip -6 link set dev azumi6 mtu {}\n".format(mtu_value))
+        else:
+            f.write("/sbin/ip -6 link set dev azumi6 mtu 1480\n")
         f.write("/sbin/ip link set dev azumi6 up\n")
         f.write("/sbin/ip -6 addr add {}/16 dev azumi6\n".format(prefix))
         f.write("/sbin/ip -6 route add 2000::/3 via ::192.88.99.1 dev azumi6 metric 1\n")
-    
+        
     num_ips = input("\033[93mHow many \033[92madditional IPs\033[93m do you need? \033[0m")
     print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
     
@@ -2851,10 +3313,25 @@ def i6to4_any_iran():
         f.write("#!/bin/bash\n")
         f.write("/sbin/modprobe sit\n")
         f.write("/sbin/ip tunnel add azumi6 mode sit remote any local {} ttl 255\n".format(local_ip))
-        f.write("/sbin/ip -6 link set dev azumi6 mtu 1480\n")
+        set_mtu = input('\033[93mDo you want to set \033[92m MTU?\033[93m (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m')
+        if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+            mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+            f.write("/sbin/ip -6 link set dev azumi6 mtu {}\n".format(mtu_value))
+        else:
+            f.write("/sbin/ip -6 link set dev azumi6 mtu 1480\n")
         f.write("/sbin/ip link set dev azumi6 up\n")
         f.write("/sbin/ip -6 addr add {}/16 dev azumi6\n".format(prefix))
         f.write("/sbin/ip -6 route add 2000::/3 via ::192.88.99.1 dev azumi6 metric 1\n")
+        answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+        if answer.lower() in ['yes', 'y']:
+            interface = ipv6_int()
+            if interface is None:
+               print("Error: No network interface with IPv6 address.")
+            else:
+               print("Interface:", interface)
+               f.write("ip -6 route replace default via fe80::1 dev {} src {}\n".format(interface, prefix))
+        else:
+            print("Skipping changing the default route.")
 
     num_ips = int(input("\033[93mHow many \033[92madditional IPs\033[93m do you need? \033[0m"))
     print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
@@ -2948,11 +3425,12 @@ def remove_menu():
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mUninstall IPIP6\033[0m')
     print('2. \033[93mUninstall 6to4\033[0m')
-    print('3. \033[96mUninstall Gre\033[0m')
-    print('4. \033[92mUninstall Gre6\033[0m')
-    print('5. \033[93mUninstall Private IP\033[0m')
-    print('6. \033[96mUninstall Native IP\033[0m')
-    print('7. \033[91mback to the main menu\033[0m')
+    print('3. \033[93mUninstall 6to4 \033[96manycast\033[0m')
+    print('4. \033[96mUninstall Gre\033[0m')
+    print('5. \033[92mUninstall Gre6\033[0m')
+    print('6. \033[93mUninstall Private IP\033[0m')
+    print('7. \033[96mUninstall Native IP\033[0m')
+    print('8. \033[91mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
     while True:
@@ -2960,22 +3438,25 @@ def remove_menu():
         if server_type == '1':
             remove_ipip6()
             break
-        if server_type == '2':
+        elif server_type == '2':
             remove_6to4()
             break
-        if server_type == '3':
+        elif server_type == '3':
+            remove_6to4()
+            break
+        elif server_type == '4':
             remove_gre()
             break
-        if server_type == '4':
+        elif server_type == '5':
             remove_gre6()
             break
-        elif server_type == '5':
+        elif server_type == '6':
             remove_private()
             break
-        elif server_type == '6':
+        elif server_type == '7':
             extra_uninstall()
             break
-        elif server_type == '7':
+        elif server_type == '8':
             clear()
             main_menu()
             break
