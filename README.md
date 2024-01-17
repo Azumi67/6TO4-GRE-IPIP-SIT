@@ -278,7 +278,7 @@
 
 
 <p align="right">
-  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/6f9aad9f-b53c-4ebc-8200-61de73f33a59" alt="Image" />
+  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/1c53419e-dcbe-43b5-aacf-570e0f2c37c6" alt="Image" />
 </p>
    <div dir="rtl">&bull;ایپی 4 سرور خارج را وارد نمایید </div>
     <div dir="rtl">&bull; تعداد ایپی مورد نیاز خود را وارد نمایید. به طور مثال 2 تا</div>
