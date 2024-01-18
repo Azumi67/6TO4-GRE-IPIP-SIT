@@ -293,8 +293,9 @@
 
 ![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/c14c77ec-dc4e-4c8a-bdc2-4dc4e42a1815) **سرور ایران**
 
+
 <p align="right">
-  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/1bffb577-88b8-4086-b70c-7aa3998098ae" alt="Image" />
+  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/5207faf2-3d0f-43dc-90a7-9ea14c536d40" alt="Image" />
 </p>
    <div dir="rtl">&bull;ایپی 4 سرور ایران را وارد نمایید </div>
     <div dir="rtl">&bull; تعداد ایپی مورد نیاز خود را وارد نمایید. به طور مثال 2 تا</div>
