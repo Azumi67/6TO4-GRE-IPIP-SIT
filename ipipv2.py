@@ -1101,7 +1101,7 @@ def ipip6_iran_tunnel(remote_ip, local_ip, num_additional_ips):
    
     print('\033[93mCreated IPv6 Addresses:\033[0m')
     print('\033[92m' + '+---------------------------+' + '\033[0m')
-    print('\033[92m' + '| 2002:0db8:1234:a220::1    |' + '\033[0m')
+    print('\033[92m' + '| 2002:0db8:1234:a220::2    |' + '\033[0m')
     for ip_address in created_ips:
         print('\033[92m' + f'| {ip_address}    |' + '\033[0m')
     print('\033[92m' + '+---------------------------+' + '\033[0m')
