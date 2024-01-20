@@ -1326,17 +1326,6 @@ def private_ip():
         else:
             print('Invalid choice.')
         
-def add_cron_job():
-    try:
-        subprocess.run(
-            "echo '@reboot /bin/bash /etc/private.sh' | crontab -",
-            shell=True,
-            capture_output=True,
-            text=True
-        )
-        display_checkmark("\033[92mCronjob added successfully!\033[0m")
-    except subprocess.CalledProcessError as e:
-        print("\033[91mFailed to add cronjob:\033[0m", e)
         
 def run_ping():
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
