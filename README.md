@@ -1,4 +1,4 @@
-**در حال کار بر روی این پروژه و اضافه کردن چندین سرور هستم**
+**در حال نوشتن آموزش**
 
 ![R (2)](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/a064577c-9302-4f43-b3bf-3d4f84245a6f)
 نام پروژه : anycast | 6TO4 | GRE | GRE6 | IP6IP6 | SIT
