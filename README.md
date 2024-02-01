@@ -1,7 +1,7 @@
 **کمی free time ام بیشتر بشه، چند روش دیگر هم اضافه میکنم**
 
 ![R (2)](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/a064577c-9302-4f43-b3bf-3d4f84245a6f)
-نام پروژه : anycast | 6TO4 | GRE | GRE6 | IP6IP6 | SIT - چندین سرور ایران و خارج
+نام پروژه :  Geneve | anycast | 6TO4 | GRE | GRE6 | IP6IP6 | SIT - چندین سرور ایران و خارج
 ---------------------------------------------------------------
 ----------------------------------
 ![check](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/13de8d36-dcfe-498b-9d99-440049c0cf14)
@@ -9,7 +9,7 @@
 
 
 
-- امکان تانل های متفاوت که شامل IP6IP6 | 6TO4 | GRE6 و غیره میشود
+- امکان تانل های متفاوت که شامل IP6IP6 | 6TO4 | GRE6 | Geneve و غیره میشود
 - امکان تانل 6TO4 و ANYCAST و IP6IP6 و GRE6 بین چندین سرور خارج و ایران
 - امکان پورت فوروارد و تانل اصلی پس از اجرای 6TO4 و سایر تانل ها
 - امکان حذف جداگانه
@@ -57,6 +57,10 @@
 
 - SIT (Simple Internet Transition): Lightweight encapsulation method for tunneling IPv6 packets over an IPv4 infrastructure, requiring minimal configuration.
 
+- Geneve : (Generic Network Virtualization Encapsulation) is a network tunneling protocol that provides a mechanism for encapsulating and decapsulating network packets for virtualized environments. It is designed to enable efficient network virtualization and overlay network solutions in cloud computing, data centers, and software-defined networking (SDN) environments.
+
+Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol and addresses certain limitations of VXLAN. It provides enhanced scalability, extensibility, and flexibility for network virtualization. Geneve encapsulates the original network packets inside a new tunneling header, allowing these packets to traverse an underlay network while being associated with specific virtual networks or tenants.
+
   </details>
 </div>
 
@@ -68,6 +72,7 @@
   
 ------------------------------------ 
 
+- تانل geneve اضافه شد
 - امکان تانل بین چندین سرور اضافه شد.
 - چندین دستور ip اضافه شد
 - امکان replace route اضافه شد
@@ -85,7 +90,137 @@
   
   ![6348248](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/398f8b07-65be-472e-9821-631f7b70f783)
 **آموزش تک سرور**
+ <div align="right">
+  <details>
+    <summary><strong><img src="https://github.com/Azumi67/Rathole_reverseTunnel/assets/119934376/fcbbdc62-2de5-48aa-bbdd-e323e96a62b5" alt="Image"> </strong>روش Geneve + GRE6</summary>
+  
+  
+------------------------------------ 
 
+
+![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/902a2efa-f48f-4048-bc2a-5be12143bef3) **سرور خارج** 
+
+
+
+ <p align="right">
+  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/c9d176d3-56ca-42a4-88c4-729c98effd45" alt="Image" />
+</p>
+
+- سرور خارج را کانفیگ میکنیم.
+- ایپی 4 ایران و خارج را وارد میکنم
+- اگرنمیدانید چه mtu مناسب شما هست گزینه No رو بزنید. بعدا میتوانید در منو آن را ویرایش کنید و پکت لاست خود را با mtu های متفاوت بررسی کنید.
+- مسیر اصلی default route را تغییر میدهم. شما میتوانید اینکار را نکنید.
+ <p align="right">
+  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/00f6eb28-194c-4cd8-9cde-f55229f81749" alt="Image" />
+</p>
+
+- برای geneve تنظیم mtu رو به صورت اتوماتیک انتخاب میکنم. شما میتوانید گزینه yes را بزنید و به صورت دستی وارد نمایید.
+- کانفیگ انجام شد و ایپی نهایی به شما نمایش داده میشود
+- در این روش اگر ufw انلاین باشد ، ارتباط شما قطع میشود تا بعدا این مورد را بررسی کنم.( در geneve بدون gre6، ایپی های شما را به صورت اتوماتیک در فایروال قرار داده میشود و ارتباط برقرار خواهد بود)
+
+----------------------
+
+![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/49000de2-53b6-4c5c-888d-f1f397d77b92)**سرور ایران**
+
+
+<p align="right">
+  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/4c8edc1c-89ac-474c-9696-cf676e5df508" alt="Image" />
+</p>
+
+- سرور ایران را کانفیگ میکنیم.
+- ایپی 4 ایران و خارج را وارد میکنم
+- اگرنمیدانید چه mtu مناسب شما هست گزینه No رو بزنید. بعدا میتوانید در منو آن را ویرایش کنید و پکت لاست خود را با mtu های متفاوت بررسی کنید.
+- مسیر اصلی default route را تغییر میدهم. شما میتوانید اینکار را نکنید.
+ <p align="right">
+  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/d56b7258-6249-4776-9cf5-06451e88e0fb" alt="Image" />
+</p>
+
+- برای geneve تنظیم mtu رو به صورت اتوماتیک انتخاب میکنم. شما میتوانید گزینه yes را بزنید و به صورت دستی وارد نمایید.
+- کانفیگ انجام شد و ایپی نهایی به شما نمایش داده میشود
+- در این روش اگر ufw انلاین باشد ، ارتباط شما قطع میشود تا بعدا این مورد را بررسی کنم.( در geneve بدون gre6، ایپی های شما را به صورت اتوماتیک در فایروال قرار داده میشود و ارتباط برقرار خواهد بود)
+
+------------------
+
+  </details>
+</div>
+ <div align="right">
+  <details>
+    <summary><strong><img src="https://github.com/Azumi67/Rathole_reverseTunnel/assets/119934376/fcbbdc62-2de5-48aa-bbdd-e323e96a62b5" alt="Image"> </strong>روش Geneve Method 2</summary>
+  
+  
+------------------------------------ 
+
+
+![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/902a2efa-f48f-4048-bc2a-5be12143bef3) **سرور خارج** 
+
+
+
+ <p align="right">
+  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/0295c4a9-bb58-4bd0-af67-9d144c577a23" alt="Image" />
+</p>
+
+- سرور خارج را کانفیگ میکنیم.
+- ایپی 4 ایران را وارد میکنم
+- اگرنمیدانید چه mtu مناسب شما هست گزینه No رو بزنید. بعدا میتوانید در منو آن را ویرایش کنید و پکت لاست خود را با mtu های متفاوت بررسی کنید.
+- ایپی ساخته شده شما در آخر به شما نمایش داده میشود
+
+----------------------
+
+![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/49000de2-53b6-4c5c-888d-f1f397d77b92)**سرور ایران**
+
+
+<p align="right">
+  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/b11b694b-2ef9-4e42-84c7-a6269e7fa8d4" alt="Image" />
+</p>
+
+
+- سرور ایران را کانفیگ میکنیم.
+- ایپی 4  ایران را وارد میکنم
+- اگرنمیدانید چه mtu مناسب شما هست گزینه No رو بزنید. بعدا میتوانید در منو آن را ویرایش کنید و پکت لاست خود را با mtu های متفاوت بررسی کنید.
+- ایپی ساخته شده در اخر به شما نمایش داده میشود.
+------------------
+
+  </details>
+</div>
+ <div align="right">
+  <details>
+    <summary><strong><img src="https://github.com/Azumi67/Rathole_reverseTunnel/assets/119934376/fcbbdc62-2de5-48aa-bbdd-e323e96a62b5" alt="Image"> </strong>روش Geneve Method 1</summary>
+  
+  
+------------------------------------ 
+
+
+![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/902a2efa-f48f-4048-bc2a-5be12143bef3) **سرور خارج** 
+
+
+
+ <p align="right">
+  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/b26218bc-60de-4c3b-b313-67a570c66649" alt="Image" />
+</p>
+
+- سرور خارج را کانفیگ میکنیم.
+- ایپی 4 ایران را وارد میکنم
+- اگرنمیدانید چه mtu مناسب شما هست گزینه No رو بزنید. بعدا میتوانید در منو آن را ویرایش کنید و پکت لاست خود را با mtu های متفاوت بررسی کنید.
+- ایپی ساخته شده شما در آخر به شما نمایش داده میشود
+
+----------------------
+
+![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/49000de2-53b6-4c5c-888d-f1f397d77b92)**سرور ایران**
+
+
+<p align="right">
+  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/95d43702-5d66-4cf2-aee2-9197b9f3c584" alt="Image" />
+</p>
+
+
+- سرور ایران را کانفیگ میکنیم.
+- ایپی 4  ایران را وارد میکنم
+- اگرنمیدانید چه mtu مناسب شما هست گزینه No رو بزنید. بعدا میتوانید در منو آن را ویرایش کنید و پکت لاست خود را با mtu های متفاوت بررسی کنید.
+- ایپی ساخته شده در اخر به شما نمایش داده میشود.
+------------------
+
+  </details>
+</div>
  <div align="right">
   <details>
     <summary><strong><img src="https://github.com/Azumi67/Rathole_reverseTunnel/assets/119934376/fcbbdc62-2de5-48aa-bbdd-e323e96a62b5" alt="Image"> </strong>روش IP6IP6</summary>
