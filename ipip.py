@@ -14073,6 +14073,7 @@ def remove_menu():
     print('6. \033[93mUninstall Private IP\033[0m')
     print('7. \033[96mUninstall Native IP\033[0m')
     print('8. \033[92mUninstall Geneve\033[0m')
+    print('9. \033[93mUninstall Geneve + GRE6\033[0m')
     print('0. \033[91mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -14101,6 +14102,9 @@ def remove_menu():
             break
         elif server_type == '8':
             gen_uninstall()
+            break
+        elif server_type == '9':
+            gen2_uninstall()
             break
         elif server_type == '0':
             clear()
@@ -15851,6 +15855,51 @@ def remove_private():
         print("Error:", e.output.decode().strip())
     
 def gen_uninstall():
+    os.system("clear")
+    display_notification("\033[93mRemoving Geneve Tunnel...\033[0m")
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    remote_ip = input("\033[93mEnter \033[92mRemote\033[93m IPV4 address: \033[0m")
+    delufw(remote_ip)
+    delufw("80.200.1.1")
+    delufw("80.200.1.2")
+    delufw("80.200.2.1")
+    try:
+        if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gen.sh", shell=True)
+            
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gen.sh\" | crontab -", shell=True)
+        
+        subprocess.run("sudo rm /etc/ping_gen.sh", shell=True)
+        
+        subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
+  
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
+        
+        print("Progress: ", end="")
+        
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1  
+        end_time = time.time() + duration
+        
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+        
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+
+def gen2_uninstall():
+    remove_gre6()
     os.system("clear")
     display_notification("\033[93mRemoving Geneve Tunnel...\033[0m")
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
