@@ -14749,12 +14749,20 @@ def gen_job():
         print("\033[91mFailed to add cronjob:\033[0m", e)
 def ufw(ip_address):
     subprocess.run(["sudo", "ufw", "allow", "from", ip_address])
-
+def ufwr():
+    subprocess.run(["sudo", "ufw", "reload"])
 def ipv4_address():
     result = subprocess.run(["curl", "-s", "https://ipinfo.io/ip"], capture_output=True, text=True)
     return result.stdout.strip()            
 def kharej1_gen_menu():
     kharej_gree6_menu()
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+    ufw("2001:831b::1")
+    ufw("2001:831b::2")
+    ufwr()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print('\033[92m Configuring Kharej server Geneve\033[0m')
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -14839,6 +14847,13 @@ done
 
 def iran1_gen_menu():
     iran_gree6_menu()
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+    ufw("2001:831b::1")
+    ufw("2001:831b::2")
+    ufwr()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print('\033[92m Configuring Iran server Geneve\033[0m')
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -15903,11 +15918,12 @@ def gen2_uninstall():
     os.system("clear")
     display_notification("\033[93mRemoving Geneve Tunnel...\033[0m")
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
-    remote_ip = input("\033[93mEnter \033[92mRemote\033[93m IPV4 address: \033[0m")
-    delufw(remote_ip)
     delufw("80.200.1.1")
-    delufw("80.200.1.2")
     delufw("80.200.2.1")
+    delufw("2002:831a::1")
+    delufw("2002:831a::2")
+    delufw("2001:831b::1")
+    delufw("2001:831b::2")
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
             subprocess.run("rm /etc/gen.sh", shell=True)
