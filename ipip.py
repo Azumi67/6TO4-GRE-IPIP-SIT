@@ -15199,6 +15199,7 @@ def kharejm2_gen_menu():
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
     ufw(remote_ip)
     ufw("80.200.1.1")
+    ufw("80.200.1.2")
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip,], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
  
@@ -15383,6 +15384,7 @@ def iranm2_gen_menu():
     remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
     ufw(remote_ip)
     ufw("80.200.1.2")
+    ufw("80.200.1.1")
     
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip,], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
@@ -15855,6 +15857,7 @@ def gen_uninstall():
     remote_ip = input("\033[93mEnter \033[92mRemote\033[93m IPV4 address: \033[0m")
     delufw(remote_ip)
     delufw("80.200.1.1")
+    delufw("80.200.1.2")
     delufw("80.200.2.1")
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
