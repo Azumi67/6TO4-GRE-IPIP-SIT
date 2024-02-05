@@ -1,4 +1,4 @@
-**کمی free time ام بیشتر بشه، چند روش دیگر هم اضافه میکنم** فردا اپدیت خواهد شد
+**کمی free time ام بیشتر بشه، چند روش دیگر هم اضافه میکنم**|  فردا اپدیت خواهد شد
 
 ![R (2)](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/a064577c-9302-4f43-b3bf-3d4f84245a6f)
 نام پروژه :  Geneve | anycast | 6TO4 | GRE | GRE6 | IP6IP6 | SIT - چندین سرور ایران و خارج
@@ -270,7 +270,7 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
 
 
  <p align="right">
-  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/c4507396-28f4-4a87-9770-b06d859a462" alt="Image" />
+  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/a07b5e50-73d5-444e-af0d-56038a39b101" alt="Image" />
 </p>
 
 - سرور خارج را کانفیگ میکنیم.
