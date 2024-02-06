@@ -16058,7 +16058,7 @@ def genf3_ip():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
     print('\033[92m(\033[91mO,O\033[92m)\033[0m')
-    print('\033[92m(   ) \033[93mGeneve +  \033[96mNative \033[93m+\033[92m Gre6 + SIT \033[93mMenu\033[0m')
+    print('\033[92m(   ) \033[93mGeneve +  \033[96mNative \033[93m+\033[92m Gre6 + IP6tnl \033[93mMenu\033[0m')
     print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
