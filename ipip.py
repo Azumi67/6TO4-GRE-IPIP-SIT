@@ -149,23 +149,22 @@ def main_menu():
             print("1. \033[36mExtra Native IPV6\033[0m")
             print("2. \033[93mEdit \033[92mMTU\033[0m")
             print("3. \033[92mGeneve UDP \033[0m")
-            print("4. \033[93mGeneve + Gre6 UDP\033[0m")
-            print("5. \033[96mIP6IP6\033[0m")
-            print("6. \033[93mPrivate IP\033[0m")
-            print("7. \033[92mGRE\033[0m")
-            print("8. \033[96mGRE6\033[0m")
-            print("9. \033[93m6TO4 \033[0m")
-            print("10. \033[92m6TO4 \033[97m[Anycasnt] \033[0m")
-            print("11. \033[91mUninstall\033[0m")
+            print("4. \033[96mIP6IP6\033[0m")
+            print("5. \033[93mPrivate IP\033[0m")
+            print("6. \033[92mGRE\033[0m")
+            print("7. \033[96mGRE6\033[0m")
+            print("8. \033[93m6TO4 \033[0m")
+            print("9. \033[92m6TO4 \033[97m[Anycasnt] \033[0m")
+            print("10. \033[91mUninstall\033[0m")
             print("\033[93m─────────────────────────────────────────────────────────────────────\033[0m")
             display_notification("\033[93m Multiple Servers\033[0m")
             print("\033[93m─────────────────────────────────────────────────────────────────────\033[0m")
-            print("12. \033[96mIP6IP6 Multiple Servers\033[0m")
-            print("13. \033[92mGRE6 Multiple Servers\033[0m")
-            print("14. \033[93m6tO4 Multiple Servers\033[0m")
-            print("15. \033[96mAnycast Multiple Servers\033[0m")
-            print("16. \033[93mEdit \033[92mMTU\033[0m")
-            print("17. \033[91mUninstall\033[0m")
+            print("11. \033[96mIP6IP6 Multiple Servers\033[0m")
+            print("12. \033[92mGRE6 Multiple Servers\033[0m")
+            print("13. \033[93m6tO4 Multiple Servers\033[0m")
+            print("14. \033[96mAnycast Multiple Servers\033[0m")
+            print("15. \033[93mEdit \033[92mMTU\033[0m")
+            print("16. \033[91mUninstall\033[0m")
             print("q. Exit")
             print("\033[93m╰─────────────────────────────────────────────────────────────────────╯\033[0m")
 
@@ -176,34 +175,32 @@ def main_menu():
             elif choice == '2':
                 mtu_menu() 
             elif choice == '3':
-                gen_ip() 
+                genz_ip()                 
             elif choice == '4':
-                genf_ip()                   
-            elif choice == '5':
                 ipip_menu()                
-            elif choice == '6':
+            elif choice == '5':
                 private_ip()
-            elif choice == '7':
+            elif choice == '6':
                 gre_menu()
-            elif choice == '8':
+            elif choice == '7':
                 gre6_menu()
-            elif choice == '9':
+            elif choice == '8':
                 i6to4_no()
-            elif choice == '10':
+            elif choice == '9':
                 i6to4_any()
-            elif choice == '11':
+            elif choice == '10':
                 remove_menu()
-            elif choice == '12':
+            elif choice == '11':
                 ip6_mnu_ip()
-            elif choice == '13':
+            elif choice == '12':
                 gre6_mnu_ip()
-            elif choice == '14':
+            elif choice == '13':
                 priv_mnu_ip()
-            elif choice == '15':
+            elif choice == '14':
                 i6to41_any()
-            elif choice == '16':
+            elif choice == '15':
                 mtu2_menu()
-            elif choice == '17':
+            elif choice == '16':
                 remove2_menu()
             elif choice == 'q':
                 print("Exiting...")
@@ -217,6 +214,69 @@ def main_menu():
         display_error("\033[91m\nProgram interrupted. Exiting...\033[0m")
         sys.exit()
         
+def genz_ip():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mGeneve\033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print("1. \033[92mGeneve UDP \033[0m")
+    print("2. \033[93mGeneve UDP \033[93m+ \033[92mNative \033[93m| \033[92mTunnelbroker \033[0m")
+    print("3. \033[96mGeneve UDP + GRE6 \033[0m")
+    print("4. \033[92mGeneve + ICMP\033[0m")
+    print('0. \033[91mback to the main menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gen_ip()
+            break
+        elif server_type == '2':
+            gen2_ip()
+            break
+        elif server_type == '3':
+            genf_ip()
+            break
+        elif server_type == '4':
+            gen_icmp_install()
+            break
+        elif server_type == '0':
+            clear()
+            main_menu()
+            break
+        else:
+            print('Invalid choice.')        
+def gen_icmp_install():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mGen + ICMP\033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKHAREJ\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('0. \033[91mback to the main menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gen_ipicmp()
+            break
+        elif server_type == '2':
+            gen_ipicmpi()
+            break
+        elif server_type == '0':
+            clear()
+            main_menu()
+            break
+        else:
+            print('Invalid choice.')
+            
 def remove2_menu():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -375,8 +435,9 @@ def rmv2_q():
         
 def remove_ipip64():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving \033[92mIPIP6\033[93m Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
         if subprocess.call("test -f /etc/ipip1.sh", shell=True) == 0:
@@ -463,8 +524,9 @@ def remove_ipip64():
         
 def remove_ipip61():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving \033[92mIPIP6\033[93m Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
         if subprocess.call("test -f /etc/ipip1.sh", shell=True) == 0:
@@ -516,8 +578,9 @@ def remove_ipip61():
 
 def remove_ipip62():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving \033[92mIPIP6\033[93m Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
         if subprocess.call("test -f /etc/ipip2.sh", shell=True) == 0:
@@ -569,8 +632,9 @@ def remove_ipip62():
 
 def remove_ipip63():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving \033[92mIPIP6\033[93m Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
         if subprocess.call("test -f /etc/ipip3.sh", shell=True) == 0:
@@ -742,8 +806,9 @@ def rmv4_q():
         
 def remove_gre64():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving \033[92mGRE6\033[93m Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
         if subprocess.call("test -f /etc/gre61.sh", shell=True) == 0:
@@ -829,8 +894,9 @@ def remove_gre64():
 		
 def remove_gre61():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving \033[92mGRE6\033[93m Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
         if subprocess.call("test -f /etc/gre61.sh", shell=True) == 0:
@@ -882,8 +948,9 @@ def remove_gre61():
 
 def remove_gre62():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving \033[92mGRE6\033[93m Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
         if subprocess.call("test -f /etc/gre62.sh", shell=True) == 0:
@@ -935,8 +1002,9 @@ def remove_gre62():
 
 def remove_gre63():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving \033[92mGRE6\033[93m Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
         if subprocess.call("test -f /etc/gre63.sh", shell=True) == 0:
@@ -1126,8 +1194,9 @@ def rmv6_q():
         
 def remove_private6():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving private IP addresses...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
     
     try:
         if subprocess.call("test -f /etc/private1.sh", shell=True) == 0:
@@ -1204,8 +1273,9 @@ def remove_private6():
         
 def remove_private1():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving private IP addresses...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
     
     try:
         if subprocess.call("test -f /etc/private1.sh", shell=True) == 0:
@@ -1247,8 +1317,9 @@ def remove_private1():
         
 def remove_private2():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving private IP addresses...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
     
     try:
         if subprocess.call("test -f /etc/private2.sh", shell=True) == 0:
@@ -1290,8 +1361,9 @@ def remove_private2():
         
 def remove_private3():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving private IP addresses...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
     
     try:
         if subprocess.call("test -f /etc/private3.sh", shell=True) == 0:
@@ -1334,8 +1406,9 @@ def remove_private3():
 
 def remove_private4():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving private IP addresses...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
     
     try:
         if subprocess.call("test -f /etc/private4.sh", shell=True) == 0:
@@ -1377,8 +1450,9 @@ def remove_private4():
         
 def remove_private5():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving private IP addresses...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
     
     try:
         if subprocess.call("test -f /etc/private5.sh", shell=True) == 0:
@@ -1634,15 +1708,17 @@ def gre61_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
         mtu_command = f'ip link set dev azumig61 mtu {mtu_value}'
         with open('/etc/gre61.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     sleep(1)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
     
     print("\033[93mCreated IPv6 Addresses \033[92mServer 1:\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -1743,11 +1819,11 @@ def kharej_gre61_menu():
         mtu_command = f"ip link set dev azumi1 mtu {mtu_value}\n"
         with open("/etc/private1.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
 
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private1.sh'
     command = f"chmod +x {file_path}"
-    subprocess.run(command, shell=True, check=True)
 
     add_cron1_job()
 
@@ -1831,6 +1907,7 @@ def kharej2_gre61_menu():
         mtu_command = f"ip link set dev azumi1 mtu {mtu_value}\n"
         with open("/etc/private1.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
 
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private1.sh'
@@ -2023,15 +2100,17 @@ def gre62_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
         mtu_command = f'ip link set dev azumig62 mtu {mtu_value}'
         with open('/etc/gre62.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     sleep(1)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
     
     print("\033[93mCreated IPv6 Addresses \033[92mServer 2:\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -2132,6 +2211,7 @@ def kharej_gre62_menu():
         mtu_command = f"ip link set dev azumi2 mtu {mtu_value}\n"
         with open("/etc/private2.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
 
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private2.sh'
@@ -2220,6 +2300,7 @@ def kharej2_gre62_menu():
         mtu_command = f"ip link set dev azumi2 mtu {mtu_value}\n"
         with open("/etc/private2.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
 
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private2.sh'
@@ -2412,15 +2493,17 @@ def gre63_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
         mtu_command = f'ip link set dev azumig63 mtu {mtu_value}'
         with open('/etc/gre63.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     sleep(1)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
     
     print("\033[93mCreated IPv6 Addresses \033[92mServer 3:\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -2521,6 +2604,7 @@ def kharej_gre63_menu():
         mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
         with open("/etc/private3.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
 
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private3.sh'
@@ -2607,7 +2691,7 @@ def kharej2_gre63_menu():
         mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
         with open("/etc/private3.sh", "a") as f:
             f.write(mtu_command)
-
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private3.sh'
     command = f"chmod +x {file_path}"
@@ -2730,15 +2814,17 @@ def gre61_iran_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
         mtu_command = f'ip link set dev azumig61 mtu {mtu_value}'
         with open('/etc/gre61.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     sleep(1)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
 
     print("\033[93mCreated IPv6 Addresses \033[92mServer 1:\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -2779,6 +2865,7 @@ def gre61_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
     if answer.lower() in ['yes', 'y']:
         interface = ipv6_int()
@@ -2786,20 +2873,23 @@ def gre61_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2\n".format(interface)
+        with open('/etc/gre61.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumig61 mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumig61 mtu {mtu_value}\n"
         with open('/etc/gre61.sh', 'a') as f:
             f.write(mtu_command)
-            f.write(rt_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     sleep(1)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
 
     print("\033[93mCreated IPv6 Addresses \033[92mServer 1:\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -2921,7 +3011,7 @@ def iran_gre61_menu():
         mtu_command = f"ip link set dev azumi1 mtu {mtu_value}\n"
         with open("/etc/private1.sh", "a") as f:
             f.write(mtu_command)
-
+        subprocess.run(mtu_command, shell=True, check=True)
 
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private1.sh'
@@ -3012,7 +3102,7 @@ def iran2_gre61_menu():
         mtu_command = f"ip link set dev azumi1 mtu {mtu_value}\n"
         with open("/etc/private1.sh", "a") as f:
             f.write(mtu_command)
-
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private1.sh'
     command = f"chmod +x {file_path}"
@@ -3139,15 +3229,17 @@ def gre62_iran_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
         mtu_command = f'ip link set dev azumig62 mtu {mtu_value}'
         with open('/etc/gre62.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)    
+
     sleep(1)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
 
     print("\033[93mCreated IPv6 Addresses \033[92mServer 2:\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -3184,7 +3276,7 @@ def gre62_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
         created_ips.append(ip_address)
         command = f"echo 'ip -6 addr add {ip_address}/64 dev azumig62' >> {file_path}"
         subprocess.run(command, shell=True, check=True)
-
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
     if answer.lower() in ['yes', 'y']:
         interface = ipv6_int()
@@ -3192,21 +3284,25 @@ def gre62_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:841a::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:841a::2\n".format(interface)
+        with open('/etc/gre62.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumig62 mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumig62 mtu {mtu_value}\n"
         with open('/etc/gre62.sh', 'a') as f:
             f.write(mtu_command)
-            f.write(rt_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     sleep(1)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
 
     print("\033[93mCreated IPv6 Addresses \033[92mServer 2:\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -3328,6 +3424,7 @@ def iran_gre62_menu():
         mtu_command = f"ip link set dev azumi2 mtu {mtu_value}\n"
         with open("/etc/private2.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
 
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private2.sh'
@@ -3419,6 +3516,7 @@ def iran2_gre62_menu():
         mtu_command = f"ip link set dev azumi2 mtu {mtu_value}\n"
         with open("/etc/private2.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
 
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private2.sh'
@@ -3545,15 +3643,17 @@ def gre63_iran_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
         mtu_command = f'ip link set dev azumig63 mtu {mtu_value}'
         with open('/etc/gre63.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     sleep(1)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
 
     print("\033[93mCreated IPv6 Addresses \033[92mServer 3:\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -3595,6 +3695,7 @@ def gre63_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
     if answer.lower() in ['yes', 'y']:
         interface = ipv6_int()
@@ -3602,19 +3703,22 @@ def gre63_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:851a::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:851a::2\n".format(interface)
+        with open('/etc/gre63.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumig63 mtu {mtu_value}'
+        mtu_command = "ip link set dev azumig63 mtu {mtu_value}\n"
         with open('/etc/gre63.sh', 'a') as f:
             f.write(mtu_command)
-            f.write(rt_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     sleep(1)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
 
     print("\033[93mCreated IPv6 Addresses \033[92mServer 3:\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -3737,6 +3841,8 @@ def iran_gre63_menu():
         mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
         with open("/etc/private3.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
 
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private3.sh'
@@ -3826,6 +3932,7 @@ def iran2_gre63_menu():
         mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
         with open("/etc/private3.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
 
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private3.sh'
@@ -4074,15 +4181,16 @@ def ipip61_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
         mtu_command = f'ip link set dev azumip1 mtu {mtu_value}'
         with open('/etc/ipip1.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
 
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
     
 
     print("\033[93mCreated IPv6 Addresses \033[92mServer 1:\033[0m")
@@ -4207,6 +4315,8 @@ def kharej_ipip61_menu():
         mtu_command = f"ip link set dev azumi1 mtu {mtu_value}\n"
         with open("/etc/private1.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private1.sh'
     command = f"chmod +x {file_path}"
@@ -4293,6 +4403,7 @@ def kharej2_ipip61_menu():
         mtu_command = f"ip link set dev azumi1 mtu {mtu_value}\n"
         with open("/etc/private1.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private1.sh'
     command = f"chmod +x {file_path}"
@@ -4414,15 +4525,16 @@ def ipip62_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
         mtu_command = f'ip link set dev azumip2 mtu {mtu_value}'
         with open('/etc/ipip2.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
 
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
     
 
     print("\033[93mCreated IPv6 Addresses \033[92mServer 2:\033[0m")
@@ -4547,6 +4659,7 @@ def kharej_ipip62_menu():
         mtu_command = f"ip link set dev azumi2 mtu {mtu_value}\n"
         with open("/etc/private2.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private2.sh'
     command = f"chmod +x {file_path}"
@@ -4633,6 +4746,7 @@ def kharej2_ipip62_menu():
         mtu_command = f"ip link set dev azumi2 mtu {mtu_value}\n"
         with open("/etc/private2.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private2.sh'
     command = f"chmod +x {file_path}"
@@ -4756,15 +4870,16 @@ def ipip63_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
         mtu_command = f'ip link set dev azumip3 mtu {mtu_value}'
         with open('/etc/ipip3.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
 
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
     
 
     print("\033[93mCreated IPv6 Addresses \033[92mServer 3:\033[0m")
@@ -4889,6 +5004,7 @@ def kharej_ipip63_menu():
         mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
         with open("/etc/private3.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private3.sh'
     command = f"chmod +x {file_path}"
@@ -4976,6 +5092,7 @@ def kharej2_ipip63_menu():
         mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
         with open("/etc/private3.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private3.sh'
     command = f"chmod +x {file_path}"
@@ -5092,15 +5209,16 @@ def ipip61_iran_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f'chmod +x {file_path}'
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f'bash {file_path}', shell=True, check=True)
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
         mtu_command = f'ip link set dev azumip1 mtu {mtu_value}'
         with open('/etc/ipip1.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
 
-    subprocess.run(f'bash {file_path}', shell=True, check=True)
+    
     
 
 
@@ -5130,7 +5248,7 @@ def ipip61_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
             created_ips.append(ip_address)
             f.write(f'ip -6 addr add {ip_address}/64 dev azumip1\n')
 
-        
+    subprocess.run(f'bash {file_path}', shell=True, check=True)   
     answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
     if answer.lower() in ['yes', 'y']:
         interface = ipv6_int()
@@ -5138,20 +5256,25 @@ def ipip61_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:0db8:1234:a220::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:0db8:1234:a220::2\n".format(interface)
+        with open('/etc/ipip1.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     command = f'chmod +x {file_path}'
     subprocess.run(command, shell=True, check=True)
+    
+    
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumip1 mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumip1 mtu {mtu_value}\n"
         with open('/etc/ipip1.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
 
-    subprocess.run(f'bash {file_path}', shell=True, check=True)
+    
     
 
 
@@ -5302,6 +5425,7 @@ def iran_ipip61_menu():
         mtu_command = f"ip link set dev azumi1 mtu {mtu_value}\n"
         with open("/etc/private1.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private1.sh'
     command = f"chmod +x {file_path}"
@@ -5392,6 +5516,7 @@ def iran2_ipip61_menu():
         mtu_command = f"ip link set dev azumi1 mtu {mtu_value}\n"
         with open("/etc/private1.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private1.sh'
     command = f"chmod +x {file_path}"
@@ -5513,15 +5638,17 @@ def ipip62_iran_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f'chmod +x {file_path}'
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f'bash {file_path}', shell=True, check=True)
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
         mtu_command = f'ip link set dev azumip2 mtu {mtu_value}'
         with open('/etc/ipip2.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
 
-    subprocess.run(f'bash {file_path}', shell=True, check=True)
+
+    
     
 
 
@@ -5551,7 +5678,7 @@ def ipip62_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
             created_ips.append(ip_address)
             f.write(f'ip -6 addr add {ip_address}/64 dev azumip2\n')
 
-        
+    subprocess.run(f'bash {file_path}', shell=True, check=True)    
     answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
     if answer.lower() in ['yes', 'y']:
         interface = ipv6_int()
@@ -5559,20 +5686,25 @@ def ipip62_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:0db8:1234:a320::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:0db8:1234:a320::2\n".format(interface)
+        with open('/etc/ipip2.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     command = f'chmod +x {file_path}'
     subprocess.run(command, shell=True, check=True)
+    
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumip2 mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumip2 mtu {mtu_value}\n"
         with open('/etc/ipip2.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
 
-    subprocess.run(f'bash {file_path}', shell=True, check=True)
+
+    
     
 
 
@@ -5724,6 +5856,7 @@ def iran_ipip62_menu():
         mtu_command = f"ip link set dev azumi2 mtu {mtu_value}\n"
         with open("/etc/private2.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)           
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private2.sh'
     command = f"chmod +x {file_path}"
@@ -5814,6 +5947,7 @@ def iran2_ipip62_menu():
         mtu_command = f"ip link set dev azumi2 mtu {mtu_value}\n"
         with open("/etc/private2.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private2.sh'
     command = f"chmod +x {file_path}"
@@ -5934,15 +6068,16 @@ def ipip63_iran_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f'chmod +x {file_path}'
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f'bash {file_path}', shell=True, check=True)
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
         mtu_command = f'ip link set dev azumip3 mtu {mtu_value}'
         with open('/etc/ipip3.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
 
-    subprocess.run(f'bash {file_path}', shell=True, check=True)
+    
     
 
 
@@ -5972,7 +6107,7 @@ def ipip63_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
             created_ips.append(ip_address)
             f.write(f'ip -6 addr add {ip_address}/64 dev azumip3\n')
 
-        
+    subprocess.run(f'bash {file_path}', shell=True, check=True)    
     answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
     if answer.lower() in ['yes', 'y']:
         interface = ipv6_int()
@@ -5980,20 +6115,24 @@ def ipip63_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:0db8:1234:a420::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:0db8:1234:a420::2\n".format(interface)
+        with open('/etc/ipip3.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     command = f'chmod +x {file_path}'
     subprocess.run(command, shell=True, check=True)
+    
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumip3 mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumip3 mtu {mtu_value}\n"
         with open('/etc/ipip3.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
 
-    subprocess.run(f'bash {file_path}', shell=True, check=True)
+    
     
 
 
@@ -6145,6 +6284,7 @@ def iran_ipip63_menu():
         mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
         with open("/etc/private3.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)         
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private3.sh'
     command = f"chmod +x {file_path}"
@@ -6234,6 +6374,7 @@ def iran2_ipip63_menu():
         mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
         with open("/etc/private3.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)           
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private3.sh'
     command = f"chmod +x {file_path}"
@@ -6353,15 +6494,16 @@ def ipip64_iran_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f'chmod +x {file_path}'
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f'bash {file_path}', shell=True, check=True)
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
         mtu_command = f'ip link set dev azumip4 mtu {mtu_value}'
         with open('/etc/ipip4.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
 
-    subprocess.run(f'bash {file_path}', shell=True, check=True)
+    
     
 
 
@@ -6493,6 +6635,7 @@ def iran_ipip64_menu():
         mtu_command = f"ip link set dev azumi4 mtu {mtu_value}\n"
         with open("/etc/private4.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private4.sh'
     command = f"chmod +x {file_path}"
@@ -6610,15 +6753,16 @@ def ipip65_iran_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f'chmod +x {file_path}'
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f'bash {file_path}', shell=True, check=True)
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
         mtu_command = f'ip link set dev azumip5 mtu {mtu_value}'
         with open('/etc/ipip5.sh', 'a') as f:
             f.write(mtu_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
 
-    subprocess.run(f'bash {file_path}', shell=True, check=True)
+    
     
 
 
@@ -6750,6 +6894,7 @@ def iran_ipip65_menu():
         mtu_command = f"ip link set dev azumi5 mtu {mtu_value}\n"
         with open("/etc/private5.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private5.sh'
     command = f"chmod +x {file_path}"
@@ -7052,6 +7197,7 @@ def kharej1_private_menu():
         mtu_command = f"ip link set dev azumi1 mtu {mtu_value}\n"
         with open("/etc/private1.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
 
     add_cron1_job()
@@ -7160,6 +7306,7 @@ def kharej1_private2_menu():
         mtu_command = f"ip link set dev azumi1 mtu {mtu_value}\n"
         with open("/etc/private1.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
 
     add_cron1_job()
@@ -7324,6 +7471,7 @@ def kharej2_private_menu():
         mtu_command = f"ip link set dev azumi2 mtu {mtu_value}\n"
         with open("/etc/private2.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
 
     add_cron2_job()
@@ -7434,6 +7582,7 @@ def kharej2_private2_menu():
         mtu_command = f"ip link set dev azumi2 mtu {mtu_value}\n"
         with open("/etc/private2.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
 
     add_cron2_job()
@@ -7599,6 +7748,7 @@ def kharej3_private_menu():
         mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
         with open("/etc/private3.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
 
     add_cron3_job()
@@ -7709,6 +7859,7 @@ def kharej3_private2_menu():
         mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
         with open("/etc/private3.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
 
     add_cron3_job()
@@ -7871,6 +8022,7 @@ def kharej4_private_menu():
         mtu_command = f"ip link set dev azumi4 mtu {mtu_value}\n"
         with open("/etc/private4.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
 
     add_cron4_job()
@@ -7980,6 +8132,7 @@ def kharej4_private2_menu():
         mtu_command = f"ip link set dev azumi4 mtu {mtu_value}\n"
         with open("/etc/private4.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
 
     add_cron4_job()
@@ -8142,6 +8295,7 @@ def kharej5_private_menu():
         mtu_command = f"ip link set dev azumi5 mtu {mtu_value}\n"
         with open("/etc/private5.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
 
     add_cron5_job()
@@ -8251,6 +8405,8 @@ def kharej5_private2_menu():
         mtu_command = f"ip link set dev azumi5 mtu {mtu_value}\n"
         with open("/etc/private5.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
 
     add_cron5_job()
@@ -8375,6 +8531,7 @@ def iran1_private_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     
@@ -8497,7 +8654,10 @@ def iran1_private2_menu():
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:831b::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:831b::2\n".format(interface)
+        with open('/etc/private.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
@@ -8506,7 +8666,8 @@ def iran1_private2_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
-            f.write(rt_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     
@@ -8635,6 +8796,7 @@ def iran2_private_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     
@@ -8756,7 +8918,10 @@ def iran2_private2_menu():
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:841b::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:841b::2\n".format(interface)
+        with open('/etc/private.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
@@ -8765,7 +8930,8 @@ def iran2_private2_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
-            f.write(rt_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     
@@ -8893,6 +9059,7 @@ def iran3_private_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     
@@ -9013,7 +9180,10 @@ def iran3_private2_menu():
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:851b::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:851b::2\n".format(interface)
+        with open('/etc/private.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
@@ -9022,7 +9192,8 @@ def iran3_private2_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
-            f.write(rt_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     
@@ -9150,6 +9321,7 @@ def iran4_private_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     
@@ -9270,7 +9442,10 @@ def iran4_private2_menu():
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:861b::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:861b::2\n".format(interface)
+        with open('/etc/private.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
@@ -9279,7 +9454,8 @@ def iran4_private2_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
-            f.write(rt_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     
@@ -9407,6 +9583,7 @@ def iran5_private_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     
@@ -9528,7 +9705,10 @@ def iran5_private2_menu():
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:871b::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:871b::2\n".format(interface)
+        with open('/etc/private.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
@@ -9537,7 +9717,8 @@ def iran5_private2_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
-            f.write(rt_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     
@@ -10864,6 +11045,52 @@ def mtu_menu():
             print('Invalid choice.')
 
 def gen_mtu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mGENEVE MTU Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mGENEVE\033[0m')
+    print('2. \033[97mGENEVE + Native\033[0m')
+    print('3. \033[93mGRE6 + IPV4 GENEVE  \033[0m')
+    print('4. \033[96mGRE6 + Native GENEVE \033[0m')
+    print('5. \033[92mGENEVE + IP6tnl + GRE6 \033[0m')
+    print('6. \033[96mGENEVE + ICMP \033[0m')
+    print('0. \033[94mback to the main menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gen1_mtu()
+            break
+        elif server_type == '2':
+            gen1_mtu()
+            break
+        elif server_type == '3':
+            gen4_mtu()
+            break
+        elif server_type == '4':
+            gen2_mtu()
+            break
+        elif server_type == '5':
+            gen3_mtu()
+            break
+        elif server_type == '6':
+            gen1_mtu()
+            break
+        elif server_type == '0':
+            clear()
+            main_menu()
+            break
+        else:
+            print('Invalid choice.')
+
+def gen4_mtu():
+    private_mtu()
+    gre621_mtu()
     mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGeneve \033[93m]:\033[0m ")
     mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
 
@@ -10871,14 +11098,125 @@ def gen_mtu():
         with open("/etc/gen.sh", "r") as file:
             sh_contents = file.readlines()
 
-        if any("link set dev azumigen mtu" in line for line in sh_contents):
-            sh_contents = [line for line in sh_contents if "link set dev azumigen mtu" not in line]
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumigen mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
 
-            with open("/etc/gen.sh", "w") as file:
-                file.writelines(sh_contents)
-            
-        with open("/etc/gen.sh", "a") as file:
-            file.write(mtu_command)
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/gen.sh", "w") as file:
+            file.writelines(sh_contents)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+        
+def gen1_mtu():
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGeneve \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gen.sh"):
+        with open("/etc/gen.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumigen mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
+
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/gen.sh", "w") as file:
+            file.writelines(sh_contents)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def gen2_mtu():
+    gre621_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGeneve \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gen.sh"):
+        with open("/etc/gen.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumigen mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
+
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/gen.sh", "w") as file:
+            file.writelines(sh_contents)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def gen3_mtu():
+    private2_mtu()
+    gre621_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGeneve \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gen.sh"):
+        with open("/etc/gen.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumigen mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
+
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/gen.sh", "w") as file:
+            file.writelines(sh_contents)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def private2_mtu():
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[\033[96mIP6tnl\033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/private.sh"):
+        with open("/etc/private.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumi mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
+
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/private.sh", "w") as file:
+            file.writelines(sh_contents)
 
         print("\033[92mMTU command edited successfully\033[0m")
         subprocess.run(mtu_command, shell=True)
@@ -10893,14 +11231,44 @@ def private_mtu():
         with open("/etc/private.sh", "r") as file:
             sh_contents = file.readlines()
 
-        if any("link set dev azumi mtu" in line for line in sh_contents):
-            sh_contents = [line for line in sh_contents if "link set dev azumi mtu" not in line]
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumi mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
 
-            with open("/etc/private.sh", "w") as file:
-                file.writelines(sh_contents)
-            
-        with open("/etc/private.sh", "a") as file:
-            file.write(mtu_command)
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/private.sh", "w") as file:
+            file.writelines(sh_contents)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+        
+def gre621_mtu():
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre6.sh"):
+        with open("/etc/gre6.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumig6 mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
+
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/gre6.sh", "w") as file:
+            file.writelines(sh_contents)
 
         print("\033[92mMTU command edited successfully\033[0m")
         subprocess.run(mtu_command, shell=True)
@@ -10916,19 +11284,24 @@ def gre6_mtu():
         with open("/etc/gre6.sh", "r") as file:
             sh_contents = file.readlines()
 
-        if any("link set dev azumig6 mtu" in line for line in sh_contents):
-            sh_contents = [line for line in sh_contents if "link set dev azumig6 mtu" not in line]
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumig6 mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
 
-            with open("/etc/gre6.sh", "w") as file:
-                file.writelines(sh_contents)
-            
-        with open("/etc/gre6.sh", "a") as file:
-            file.write(mtu_command)
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/gre6.sh", "w") as file:
+            file.writelines(sh_contents)
 
         print("\033[92mMTU command edited successfully\033[0m")
         subprocess.run(mtu_command, shell=True)
     else:
         print("\033[91mCommand file doesn't exist\033[0m")
+        
 
 def gre_mtu():
     mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE \033[93m]:\033[0m ")
@@ -10938,14 +11311,18 @@ def gre_mtu():
         with open("/etc/gre.sh", "r") as file:
             sh_contents = file.readlines()
 
-        if any("link set dev azumig mtu" in line for line in sh_contents):
-            sh_contents = [line for line in sh_contents if "link set dev azumig mtu" not in line]
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumig mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
 
-            with open("/etc/gre.sh", "w") as file:
-                file.writelines(sh_contents)
-            
-        with open("/etc/gre.sh", "a") as file:
-            file.write(mtu_command)
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/gre.sh", "w") as file:
+            file.writelines(sh_contents)
 
         print("\033[92mMTU command edited successfully\033[0m")
         subprocess.run(mtu_command, shell=True)
@@ -10960,14 +11337,18 @@ def i6to4_mtu():
         with open("/etc/6to4.sh", "r") as file:
             sh_contents = file.readlines()
 
-        if any("link set dev azumi6 mtu" in line for line in sh_contents):
-            sh_contents = [line for line in sh_contents if "link set dev azumi6 mtu" not in line]
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumi6 mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
 
-            with open("/etc/6to4.sh", "w") as file:
-                file.writelines(sh_contents)
-            
-        with open("/etc/6to4.sh", "a") as file:
-            file.write(mtu_command)
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/6to4.sh", "w") as file:
+            file.writelines(sh_contents)
 
         display_checkmark("\033[92mMTU command edited successfully\033[0m")
         subprocess.run(mtu_command, shell=True)
@@ -10982,14 +11363,18 @@ def i6to4any_mtu():
         with open("/etc/6to4.sh", "r") as file:
             sh_contents = file.readlines()
 
-        if any("link set dev azumi6 mtu" in line for line in sh_contents):
-            sh_contents = [line for line in sh_contents if "link set dev azumi6 mtu" not in line]
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumi6 mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
 
-            with open("/etc/6to4.sh", "w") as file:
-                file.writelines(sh_contents)
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
 
-        with open("/etc/6to4.sh", "a") as file:
-            file.write(mtu_command)
+        with open("/etc/6to4.sh", "w") as file:
+            file.writelines(sh_contents)
 
         display_checkmark("\033[92mMTU command edited successfully\033[0m")
         subprocess.run(mtu_command, shell=True)
@@ -10997,7 +11382,6 @@ def i6to4any_mtu():
         print("\033[91mCommand file doesn't exist\033[0m")
 
 def ipip_mtu():
-    
     private_mtu()
     mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mIP6IP6 \033[93m]:\033[0m ")
     mtu_command = f"/sbin/ip -6 link set dev azumip mtu {mtu_value}\n"
@@ -11006,14 +11390,18 @@ def ipip_mtu():
         with open("/etc/ipip.sh", "r") as file:
             sh_contents = file.readlines()
 
-        if any("link set dev azumip mtu" in line for line in sh_contents):
-            sh_contents = [line for line in sh_contents if "link set dev azumip mtu" not in line]
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumip mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
 
-            with open("/etc/ipip.sh", "w") as file:
-                file.writelines(sh_contents)
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
 
-        with open("/etc/ipip.sh", "a") as file:
-            file.write(mtu_command)
+        with open("/etc/ipip.sh", "w") as file:
+            file.writelines(sh_contents)
 
         display_checkmark("\033[92mMTU command edited successfully\033[0m")
         subprocess.run(mtu_command, shell=True)
@@ -11449,6 +11837,7 @@ def ipip6_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
     if answer.lower() in ['yes', 'y']:
         interface = ipv6_int()
@@ -11456,19 +11845,22 @@ def ipip6_tunnel(remote_ip, local_ip, num_additional_ips):
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:0db8:1234:a220::1".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:0db8:1234:a220::1\n".format(interface)
+        with open('/etc/ipip.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumip mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumip mtu {mtu_value}\n"
         with open('/etc/ipip.sh', 'a') as f:
             f.write(mtu_command)
-            f.write(rt_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
 
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+
+    
     
 
     print("\033[93mCreated IPv6 Addresses :\033[0m")
@@ -11604,6 +11996,8 @@ def kharej_ipip6_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private.sh'
@@ -11729,6 +12123,7 @@ def ipip6_iran_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f'chmod +x {file_path}'
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f'bash {file_path}', shell=True, check=True)
     answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
     if answer.lower() in ['yes', 'y']:
         interface = ipv6_int()
@@ -11736,19 +12131,22 @@ def ipip6_iran_tunnel(remote_ip, local_ip, num_additional_ips):
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:0db8:1234:a220::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:0db8:1234:a220::2\n".format(interface)
+        with open('/etc/ipip.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumip mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumip mtu {mtu_value}\n"
         with open('/etc/ipip.sh', 'a') as f:
             f.write(mtu_command)
-            f.write(rt_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
 
-    subprocess.run(f'bash {file_path}', shell=True, check=True)
+
+    
     
 
    
@@ -11890,6 +12288,8 @@ def iran_ipip6_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private.sh'
@@ -12083,7 +12483,10 @@ def kharej_private_menu():
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:831b::1".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:831b::1\n".format(interface)
+        with open('/etc/private.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
@@ -12092,7 +12495,8 @@ def kharej_private_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
-            f.write(rt_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
 
@@ -12216,7 +12620,10 @@ def iran_private_menu():
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:831b::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:831b::2\n".format(interface)
+        with open('/etc/private.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
@@ -12225,7 +12632,8 @@ def iran_private_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
-            f.write(rt_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     
@@ -12577,6 +12985,7 @@ def gre6_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
     if answer.lower() in ['yes', 'y']:
         interface = ipv6_int()
@@ -12584,19 +12993,22 @@ def gre6_tunnel(remote_ip, local_ip, num_additional_ips):
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::1".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::1\n".format(interface)
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumig6 mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n" 
         with open('/etc/gre6.sh', 'a') as f:
             f.write(mtu_command)
-            f.write(rt_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     sleep(1)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print("\033[93mCreated IPv6 Addresses:\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -12709,6 +13121,7 @@ def kharej_gre6_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private.sh'
@@ -12836,6 +13249,7 @@ def gre6_iran_tunnel(remote_ip, local_ip, num_additional_ips):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
     if answer.lower() in ['yes', 'y']:
         interface = ipv6_int()
@@ -12843,19 +13257,22 @@ def gre6_iran_tunnel(remote_ip, local_ip, num_additional_ips):
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2\n".format(interface)
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumig6 mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
         with open('/etc/gre6.sh', 'a') as f:
             f.write(mtu_command)
-            f.write(rt_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     sleep(1)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print("\033[93mCreated IPv6 Addresses:\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -12972,6 +13389,7 @@ def iran_gre6_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private.sh'
@@ -13211,6 +13629,7 @@ def kharej_gre_menu():
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
     if answer.lower() in ['yes', 'y']:
         interface = ipv6_int()
@@ -13218,18 +13637,21 @@ def kharej_gre_menu():
             print("Error: No network interface with IPv6 address.")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src {}".format(interface, ipv6_address)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src {}\n".format(interface, ipv6_address)
+        with open('/etc/gre.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumig mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumig mtu {mtu_value}\n"
         with open('/etc/gre.sh', 'a') as f:
             f.write(mtu_command)
-            f.write(rt_command)
-        subprocess.run(command, shell=True, check=True)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
+ 
+    
 
 
 
@@ -13315,6 +13737,7 @@ def iran_gre_menu():
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
     if answer.lower() in ['yes', 'y']:
         interface = ipv6_int()
@@ -13322,18 +13745,21 @@ def iran_gre_menu():
             print("Error: No network interface with IPv6 address.")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src {}".format(interface, ipv6_address)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src {}\n".format(interface, ipv6_address)
+        with open('/etc/gre.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumig mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumig mtu {mtu_value}\n"
         with open('/etc/gre.sh', 'a') as f:
             f.write(mtu_command)
-            f.write(rt_command)
-        subprocess.run(command, shell=True, check=True)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    
 
  
     config_file_path = '/etc/gre.sh'
@@ -14067,13 +14493,12 @@ def remove_menu():
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mUninstall IPIP6\033[0m')
     print('2. \033[93mUninstall 6to4\033[0m')
-    print('3. \033[93mUninstall 6to4 \033[96manycast\033[0m')
+    print('3. \033[92mUninstall 6to4 \033[96manycast\033[0m')
     print('4. \033[96mUninstall Gre\033[0m')
     print('5. \033[92mUninstall Gre6\033[0m')
     print('6. \033[93mUninstall Private IP\033[0m')
-    print('7. \033[96mUninstall Native IP\033[0m')
+    print('7. \033[96mUninstall Extra Native IP\033[0m')
     print('8. \033[92mUninstall Geneve\033[0m')
-    print('9. \033[93mUninstall Geneve + GRE6\033[0m')
     print('0. \033[91mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -14101,10 +14526,7 @@ def remove_menu():
             extra_uninstall()
             break
         elif server_type == '8':
-            gen_uninstall()
-            break
-        elif server_type == '9':
-            gen2_uninstall()
+            genx_ip()
             break
         elif server_type == '0':
             clear()
@@ -14112,11 +14534,657 @@ def remove_menu():
             break
         else:
             print('Invalid choice.')
+            
+def genx_ip():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mGeneve\033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print("1. \033[92mGeneve \033[0m")
+    print("2. \033[93mGeneve + Native \033[0m")
+    print("3. \033[96mGeneve + Gre6 + Native \033[0m")
+    print("4. \033[92mGeneve + Gre6 + IPV4 \033[0m")
+    print("5. \033[97mGeneve + IP6tnl + Gre6 + Native \033[0m")
+    print("7. \033[93mGeneve + ICMP\033[0m")
+    print('0. \033[91mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gen_uninstall()
+            break
+        elif server_type == '2':
+            genz_uninstall()
+            break
+        elif server_type == '3':
+            gen2_uninstall()
+            break
+        elif server_type == '5':
+            gen4_uninstall()
+            break
+        elif server_type == '4':
+            gen6_uninstall()
+            break    
+        elif server_type == '7':
+            gen_icmp()
+            break
+        elif server_type == '0':
+            clear()
+            remove_menu()
+            break
+        else:
+            print('Invalid choice.')   
+## gen ic
+def reset_icmp():
+    try:
+        reset_ipv4 = False
+        reset_ipv6 = False
+
+        os.system("sysctl -w net.ipv4.icmp_echo_ignore_all=0")
+        reset_ipv4 = True
+
+        os.system("sudo sysctl -w net.ipv6.icmp.echo_ignore_all=0")
+        reset_ipv6 = True
+
+        if reset_ipv4 or reset_ipv6:
+            display_checkmark("\033[92mICMP has been reset to default!\033[0m")
+        else:
+            display_notification("\033[93mICMP settings has been reset.\033[0m")
+    except Exception as e:
+        display_error("\033[91mAn error occurred: {}\033[0m".format(str(e)))
+
+def install_icmp():
+    print("\033[93m──────────────────────────────────────────────────\033[0m")
+    display_loading()
+
+    subprocess.run(['sudo', 'tee', '/etc/resolv.conf'], input='nameserver 1.1.1.1\n', capture_output=True, text=True)
+
+
+    ipv4_forward_status = subprocess.run(["sysctl", "net.ipv4.ip_forward"], capture_output=True, text=True)
+    if "net.ipv4.ip_forward = 0" not in ipv4_forward_status.stdout:
+        subprocess.run(["sudo", "sysctl", "-w", "net.ipv4.ip_forward=1"])
+
+
+    ipv6_forward_status = subprocess.run(["sysctl", "net.ipv6.conf.all.forwarding"], capture_output=True, text=True)
+    if "net.ipv6.conf.all.forwarding = 0" not in ipv6_forward_status.stdout:
+        subprocess.run(["sudo", "sysctl", "-w", "net.ipv6.conf.all.forwarding=1"])
+
+
+    if os.path.exists("/root/icmptunnel"):
+        shutil.rmtree("/root/icmptunnel")
+
+
+    clone_command = 'git clone https://github.com/jamesbarlow/icmptunnel.git icmptunnel'
+    clone_result = os.system(clone_command)
+    if clone_result != 0:
+        print("Error: Failed to clone Repo.")
+        return
+
+
+    if os.path.exists("/root/icmptunnel"):
+
+        os.chdir("/root/icmptunnel")
+
+
+        subprocess.run(['sudo', 'apt', 'install', '-y', 'net-tools'], capture_output=True, text=True)
+        subprocess.run(['sudo', 'apt', 'install', '-y', 'make'], capture_output=True, text=True)
+        subprocess.run(['sudo', 'apt-get', 'install', '-y', 'libssl-dev'], capture_output=True, text=True)
+        subprocess.run(['sudo', 'apt', 'install', '-y', 'g++'], capture_output=True, text=True)
+
+
+        subprocess.run(['make'], capture_output=True, text=True)
+
+
+        os.chdir("..")
+    else:
+        display_error("\033[91micmptunnel folder not found.\033[0m")
+def up_up():
+    ulimit_setting = 'ulimit -n 65535'
+    bashrc_path = os.path.expanduser('~/.bashrc')
+
+    with open(bashrc_path, 'r') as f:
+        existing_bashrc = f.read()
+
+    if ulimit_setting not in existing_bashrc:
+        with open(bashrc_path, 'a') as f:
+            f.write('\n')
+            f.write(ulimit_setting)
+            f.write('\n')
+
+    sysctl_conf_path = '/etc/sysctl.conf'
+    sysctl_params = [
+        'net.core.rmem_max=26214400',
+        'net.core.rmem_default=26214400',
+        'net.core.wmem_max=26214400',
+        'net.core.wmem_default=26214400',
+        'net.core.netdev_max_backlog=2048'
+    ]
+
+    with open(sysctl_conf_path, 'r') as f:
+        existing_sysctl_conf = f.read()
+
+    params_to_add = []
+    for param in sysctl_params:
+        if param not in existing_sysctl_conf:
+            params_to_add.append(param)
+
+    if params_to_add:
+        with open(sysctl_conf_path, 'a') as f:
+            f.write('\n')
+            f.write('\n'.join(params_to_add))
+            f.write('\n')
+        try:
+            subprocess.run(["sudo", "sysctl", "-p"], stderr=subprocess.DEVNULL, check=True)
+            display_checkmark("\033[92mLimit has been Set!\033[0m")
+        except subprocess.CalledProcessError:
+            print("\033[91mAn error occurred setting it up.\033[0m")
+    else:
+        display_checkmark("\033[92mLimit Increase was already Done.\033[0m")
+        
+def ic_kharej():
+    if not os.path.exists("/root/icmptunnel"):
+        install_icmp()
+    up_up()
+    print("\033[93m──────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mConfiguring Kharej ...\033[0m")
+    print("\033[93m──────────────────────────────────────────────────\033[0m")
+    
+
+    if os.path.exists("/etc/icmp.sh"):
+        os.remove("/etc/icmp.sh")
+
+    with open("/etc/icmp.sh", "w") as f:
+        f.write("#!/bin/bash\n")
+        f.write("/root/icmptunnel/icmptunnel -s -d\n")
+        f.write("/sbin/ifconfig tun0 70.0.0.1 netmask 255.255.255.0\n")
+
+    subprocess.run(["chmod", "700", "/etc/icmp.sh"], stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, check=True)
+
+    os.system("/bin/bash /etc/icmp.sh")
+
+    cron_job_command = "@reboot root /bin/bash /etc/icmp.sh\n"
+    with open("/etc/cron.d/icmp-kharej", "w") as f:
+        f.write(cron_job_command)
+
+    subprocess.call("crontab -u root /etc/cron.d/icmp-kharej", shell=True)
+
+    display_checkmark("\033[92mCronjob added successfully!\033[0m")
+
+def ic_iran():
+    if not os.path.exists("/root/icmptunnel"):
+        install_icmp()
+    up_up()    
+    print("\033[93m──────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mConfiguring IRAN ...\033[0m")
+    print("\033[93m──────────────────────────────────────────────────\033[0m")
+    
+
+    os.chdir("/root/icmptunnel")
+
+    server_ipv4 = input("\033[93mEnter \033[92mKharej\033[93m IPv4 address:\033[0m ")
+
+    if os.path.exists("/etc/icmp-iran.sh"):
+        os.remove("/etc/icmp-iran.sh")
+
+    with open("/etc/icmp-iran.sh", "w") as f:
+        f.write("#!/bin/bash\n")
+        f.write(f"/root/icmptunnel/icmptunnel {server_ipv4} -d\n")
+        f.write("/sbin/ifconfig tun0 70.0.0.2 netmask 255.255.255.0\n")
+
+    subprocess.run(["chmod", "700", "/etc/icmp-iran.sh"], stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, check=True)
+
+    os.system("/bin/bash /etc/icmp-iran.sh")
+
+    cron_job_command = "@reboot root /bin/bash /etc/icmp-iran.sh\n"
+    with open("/etc/cron.d/icmp-iran", "w") as f:
+        f.write(cron_job_command)
+
+    subprocess.call("crontab -u root /etc/cron.d/icmp-iran", shell=True)
+
+    display_checkmark("\033[92mCronjob added successfully!\033[0m")
+
+def gen_ipicmp():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            geneve_icmpk_version1()
+            break
+        elif server_type == '2':
+            geneve_icmpk_version2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def geneve_icmpk_version1():
+    ic_kharej()
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
+    ufw("70.0.0.1")
+    ufw("70.0.0.2")
+    ufwr()
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "70.0.0.2"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::2\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumigen\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genkhm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "        80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+    
+def geneve_icmpk_version2():
+    ic_kharej()
+    ufw("70.0.0.1")
+    ufw("70.0.0.2")
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "70.0.0.2"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::2\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genkhm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mIRAN IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+	
+def gen_ipicmpi():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            geneve_icmpi_version1()
+            break
+        elif server_type == '2':
+            geneve_icmpi_version2()
+            break
+        else:
+            print('Invalid choice.')
+
+def geneve_icmpi_version1():
+    ic_iran()
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
+    ufw("70.0.0.1")
+    ufw("70.0.0.2")
+    ufwr()
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "70.0.0.1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::1\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumigen\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genirm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "        80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
+    
+def geneve_icmpi_version2():
+    ic_iran()
+    ufw("70.0.0.1")
+    ufw("70.0.0.2")
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "70.0.0.1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::1\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genirm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mKharej IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 
+    
+def rmv_limit():
+    display_notification("\033[93mRestoring Limit ..\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    ulimit_setting = 'ulimit -n 65535'
+    bashrc_path = os.path.expanduser('~/.bashrc')
+
+    with open(bashrc_path, 'r') as f:
+        existing_bashrc = f.read()
+
+    if ulimit_setting in existing_bashrc:
+        existing_bashrc = existing_bashrc.replace(ulimit_setting, '')
+
+        with open(bashrc_path, 'w') as f:
+            f.write(existing_bashrc)
+
+    sysctl_conf_path = '/etc/sysctl.conf'
+    sysctl_params = [
+        'net.core.rmem_max=26214400',
+        'net.core.rmem_default=26214400',
+        'net.core.wmem_max=26214400',
+        'net.core.wmem_default=26214400',
+        'net.core.netdev_max_backlog=2048'
+    ]
+
+    with open(sysctl_conf_path, 'r') as f:
+        existing_sysctl_conf = f.read()
+
+    params_to_remove = []
+    for param in sysctl_params:
+        if param in existing_sysctl_conf:
+            params_to_remove.append(param)
+
+    if params_to_remove:
+        for param in params_to_remove:
+            existing_sysctl_conf = existing_sysctl_conf.replace(param, '')
+
+        with open(sysctl_conf_path, 'w') as f:
+            f.write(existing_sysctl_conf)
+
+        try:
+            subprocess.run(["sudo", "sysctl", "-p"], stderr=subprocess.DEVNULL, check=True)
+            display_checkmark("\033[92mLimit removal was Successful!\033[0m")
+        except subprocess.CalledProcessError:
+            print("\033[91mAn error occurred.\033[0m")
+    else:
+        display_checkmark("\033[92mNothin was found! moving on..\033[0m")
+        
+def remove_icmp():
+    
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving icmptunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    try:
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/icmp.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/icmp-iran.sh\" | crontab -", shell=True)
+        subprocess.run("ip link set dev tun0 down > /dev/null", shell=True)
+        subprocess.run("ip link set dev tun1 down > /dev/null", shell=True)
+        subprocess.run("systemctl daemon-reload", shell=True)
+
+        print("Progress: ", end="")
+
+        try:
+            lsof_process = subprocess.Popen(["lsof", "-t", "/root/icmptunnel/icmptunnel"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            lsof_output, lsof_error = lsof_process.communicate()
+
+            if lsof_output:
+                pids = lsof_output.decode().split('\n')[:-1]
+                for pid in pids:
+                    subprocess.run(["kill", pid])
+
+            subprocess.run(["rm", "-rf", "/root/icmptunnel"])
+        except FileNotFoundError:
+            print("Error: Directory '/root/icmptunnel' does not exist.")
+        except Exception as e:
+            print("Error:", e)
+
+        subprocess.run("crontab -l | grep -v \"/bin/bash /etc/icmp.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"/bin/bash /etc/icmp-iran.sh\" | crontab -", shell=True)
+        display_checkmark("\033[92mICMPtunnel Uninstallation completed!\033[0m")
+
+        if os.path.isfile("/etc/icmp.sh"):
+            os.remove("/etc/icmp.sh")
+        if os.path.isfile("/etc/icmp-iran.sh"):
+            os.remove("/etc/icmp-iran.sh")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+    except Exception as e:
+        print("Error:", e)
+        
+
+        
+            
 def remove_ipip6():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving \033[92mIPIP6\033[93m Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
         if subprocess.call("test -f /etc/ipip.sh", shell=True) == 0:
@@ -14354,6 +15422,7 @@ def gree6_tunnel(remote_ip, local_ip):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
     if answer.lower() in ['yes', 'y']:
         interface = ipv6_int()
@@ -14361,19 +15430,22 @@ def gree6_tunnel(remote_ip, local_ip):
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::1".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::1\n".format(interface)
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumig6 mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
         with open('/etc/gre6.sh', 'a') as f:
             f.write(mtu_command)
-            f.write(rt_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     sleep(1)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
 
 
 def gree6_kharej():
@@ -14432,6 +15504,7 @@ def kharej_gree6_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private.sh'
@@ -14517,6 +15590,7 @@ def gree6_iran_tunnel(remote_ip, local_ip):
 
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
     answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
     if answer.lower() in ['yes', 'y']:
         interface = ipv6_int()
@@ -14524,19 +15598,22 @@ def gree6_iran_tunnel(remote_ip, local_ip):
             print("\033[91mError: No network interface with IPv6 address\033[0m")
         else:
             print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2".format(interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2\n".format(interface)
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
     else:
         print("Skipping changing the default route.")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumig6 mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
         with open('/etc/gre6.sh', 'a') as f:
             f.write(mtu_command)
-            f.write(rt_command)
-        subprocess.run(command, shell=True, check=True)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     sleep(1)
-    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
 
 
     
@@ -14602,6 +15679,7 @@ def iran_gree6_menu():
         mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
         with open("/etc/private.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
     file_path = '/etc/private.sh'
@@ -14659,26 +15737,744 @@ def genf_ip():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
     print('\033[92m(\033[91mO,O\033[92m)\033[0m')
-    print('\033[92m(   ) \033[93mGeneve + Gre6 Menu\033[0m')
+    print('\033[92m(   ) \033[93mGR6 + Geneve Menu\033[0m')
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
-    print('1. \033[92mKharej\033[0m')
-    print('2. \033[93mIRAN\033[0m')
-    print('3. \033[94mback to the main menu\033[0m')
+    print('1. \033[92mGRE + Native Geneve\033[0m')
+    print('2. \033[96mIP6tnl + GRE + Native Geneve\033[0m')
+    print('3. \033[93mGRE + IPV4 Geneve\033[0m')
+    print('0. \033[91mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
     while True:
         server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
         if server_type == '1':
-            kharej1_gen_menu()
+            genf1_ip()
             break
         elif server_type == '2':
-            iran1_gen_menu()
+            genf3_ip()
+            break
+        elif server_type == '3':
+            genf5_ip()
+            break
+        elif server_type == '0':
+            clear()
+            main_menu()
+            break
+        else:
+            print('Invalid choice.') 
+# sit gre gen
+def kharej_gree61_menu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mGeneve + GRE Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print(' \033[93mConfiguring \033[92mKharej\033[93m server\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    if os.path.isfile("/etc/private.sh"):
+        os.remove("/etc/private.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address [\033[92mNative\033[93m or\033[96m Tunnelbroker\033[93m]: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address [\033[92mNative\033[93m or\033[96m Tunnelbroker\033[93m]: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m") 
+    ufw("2001:831b::2")
+    ufw("2001:831b::1")	
+
+    subprocess.run(["ip", "tunnel", "add", "azumi", "mode", "ip6ip6", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:831b::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private.sh", "w") as f:
+        f.write("/sbin/modprobe ipip\n")
+        f.write(f"ip -6 tunnel add azumi mode ip6ip6 remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip -6 link set dev azumi up\n")
+        f.write("ip -6 addr add 2001:831b::1/64 dev azumi\n")
+        f.write("ip -6 route add 2001::/16 dev azumi\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+        with open("/etc/private.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    add_cron_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_ping()
+    sleep(1)
+    
+
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:831b::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v6.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v6.sh', 0o755)
+    ping_v6_service()
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    gree61_kharej1()
+    sleep(1)	
+    
+def iran_gree61_menu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mGeneve + GRE Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[93mConfiguring \033[92mIran\033[93m server\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    if os.path.isfile("/etc/private.sh"):
+        os.remove("/etc/private.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address [\033[92mNative\033[93m or\033[96m Tunnelbroker\033[93m]: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address [\033[92mNative\033[93m or\033[96m Tunnelbroker\033[93m]: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")   
+    ufw("2001:831b::2")
+    ufw("2001:831b::1")
+
+    subprocess.run(["ip", "-6", "tunnel", "add", "azumi", "mode", "ip6ip6", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "-6", "link", "set", "dev", "azumi", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:831b::2/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private.sh", "w") as f:
+        f.write("/sbin/modprobe ipip\n")
+        f.write(f"ip -6 tunnel add azumi mode ipip6 remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip -6 link set dev azumi up\n")
+        f.write("ip -6 addr add 2001:831b::2/64 dev azumi\n")
+        f.write("ip -6 route add 2001::/16 dev azumi\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+        with open("/etc/private.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    sleep(1)
+    add_cron_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    iran_ping()
+    
+
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:831b::1"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v6.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v6.sh', 0o755)
+    ping_v6_service()
+
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    gree61_iran1()
+    sleep(1)	
+    
+def gree61_kharej1_tunnel():
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+		
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig6 mode ip6gre remote 2001:831b::2 local 2001:831b::1 ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::1/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+
+
+def gree61_kharej1():
+    gree61_kharej1_tunnel()
+    ip_address = "2002:831a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)   
+    ping_gre6_service()
+    gre6_cronjob()
+    
+def gree61_iran1_tunnel():
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+	
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig6 mode ip6gre remote 2001:831b::1 local 2001:831b::2 ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::2/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+
+
+    
+
+def gree61_iran1():
+    gree61_iran1_tunnel()
+    ip_address = "2002:831a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)    
+    iran_gre6_service()
+    gre6_cronjob()
+    
+def genf3_ip():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mGeneve +  \033[96mNative \033[93m+\033[92m Gre6 + SIT \033[93mMenu\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gen1_ipger()
+            break
+        elif server_type == '2':
+            gen1_ipgeri()
             break
         elif server_type == '3':
             clear()
-            main_menu()
+            genf_ip()
+            break
+        else:
+            print('Invalid choice.')    
+def gen1_ipger():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            geneve_gerk1_version1()
+            break
+        elif server_type == '2':
+            geneve_gerk1_version2()
+            break
+        else:
+            print('Invalid choice.')
+
+def geneve_gerk1_version1():
+    kharej_gree61_menu()
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+    ufwr()
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::2"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::2\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumigen\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genkhm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "        80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+    
+def geneve_gerk1_version2():
+    kharej_gree61_menu()
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::2"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::2\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genkhm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mIRAN IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+	
+def gen1_ipgeri():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            geneve_geri1_version1()
+            break
+        elif server_type == '2':
+            geneve_geri1_version2()
+            break
+        else:
+            print('Invalid choice.')
+
+def geneve_geri1_version1():
+    iran_gree61_menu()
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+    ufwr()
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::1\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumigen\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genirm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "        80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
+    
+def geneve_geri1_version2():
+    iran_gree61_menu()
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::1\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genirm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mKharej IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 
+    
+def genf1_ip():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mGeneve +  \033[96mNative \033[93m+\033[92m Gre6 \033[93mMenu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gen_ipger()
+            break
+        elif server_type == '2':
+            gen_ipgeri()
+            break
+        elif server_type == '3':
+            clear()
+            genf_ip()
+            break
+        else:
+            print('Invalid choice.')
+            
+def genf2_ip():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mGeneve + \033[96mIPV4 \033[93m+\033[92m Gre6 \033[93mMenu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            genf5_ip()
+            break
+        elif server_type == '2':
+            gen5_ipgeri()
+            break
+        elif server_type == '3':
+            clear()
+            genf_ip()
             break
         else:
             print('Invalid choice.')
@@ -14792,6 +16588,8 @@ def kharej1_gen_menu():
         mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
         with open("/etc/gen.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mConfiguration is done!\033[0m")
 
@@ -14883,6 +16681,8 @@ def iran1_gen_menu():
         mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
         with open("/etc/gen.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mConfiguration is done!\033[0m")
     
@@ -14943,6 +16743,1053 @@ done
     ping_kh_service()
     print("\033[92mIRAN Server Geneve Configuration Completed!\033[0m")
 	
+def genf5_ip():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mGeneve +  \033[96mIPV4 \033[93m+\033[92m Gre6 \033[93mMenu\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gen5_ipger()
+            break
+        elif server_type == '2':
+            gen5_ipgeri()
+            break
+        elif server_type == '3':
+            clear()
+            genf_ip()
+            break
+        else:
+            print('Invalid choice.')    
+def gen5_ipger():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            kharej1_gen_menu()
+            break
+        elif server_type == '2':
+            geneve_gerk6_version2()
+            break
+        else:
+            print('Invalid choice.')
+
+    
+def geneve_gerk6_version2():
+    kharej_gree6_menu()
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+    ufw("2001:831b::1")
+    ufw("2001:831b::2")
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::2"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::2\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genkhm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mIRAN IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+	
+def gen5_ipgeri():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            iran1_gen_menu()
+            break
+        elif server_type == '2':
+            geneve_geri5_version2()
+            break
+        else:
+            print('Invalid choice.')
+
+
+    
+def geneve_geri5_version2():
+    iran_gree6_menu()
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+    ufw("2001:831b::1")
+    ufw("2001:831b::2")
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::1\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genirm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mKharej IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 
+    
+## test n gre
+def gree6_kharej1_tunnel():
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+		
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address [\033[92mNative\033[93m or\033[96m Tunnelbroker\033[93m]: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address [\033[92mNative\033[93m or\033[96m Tunnelbroker\033[93m]: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m") 
+    ufw(remote_ip)	
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig6 mode ip6gre remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::1/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+ 
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+
+
+def gree6_kharej1():
+    gree6_kharej1_tunnel()
+    ip_address = "2002:831a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)   
+    ping_gre6_service()
+    gre6_cronjob()
+     
+
+
+def gree6_iran1_tunnel():
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address [\033[92mNative\033[93m or\033[96m Tunnelbroker\033[93m]: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address [\033[92mNative\033[93m or\033[96m Tunnelbroker\033[93m]: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")   
+    ufw(remote_ip)	
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig6 mode ip6gre remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::2/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+ 
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+ 
+    sleep(1)
+    
+
+
+    
+
+def gree6_iran1():
+    gree6_iran1_tunnel()
+    ip_address = "2002:831a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)    
+    iran_gre6_service()
+    gre6_cronjob()
+
+def gen_ipger():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            geneve_gerk_version1()
+            break
+        elif server_type == '2':
+            geneve_gerk_version2()
+            break
+        else:
+            print('Invalid choice.')
+
+def geneve_gerk_version1():
+    gree6_kharej1()
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+    ufwr()
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::2"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::2\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumigen\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genkhm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "        80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+    
+def geneve_gerk_version2():
+    gree6_kharej1()
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::2"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::2\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genkhm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mIRAN IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+	
+def gen_ipgeri():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            geneve_geri_version1()
+            break
+        elif server_type == '2':
+            geneve_geri_version2()
+            break
+        else:
+            print('Invalid choice.')
+
+def geneve_geri_version1():
+    gree6_iran1()
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+    ufwr()
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::1\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumigen\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genirm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "        80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
+    
+def geneve_geri_version2():
+    gree6_iran1()
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::1\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genirm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mKharej IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 
+
+##azumi native
+def gen2_ip():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mGeneve + Native  Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKHAREJ \033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the main menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gen_na_k()
+            break
+        elif server_type == '2':
+            gen_na_i()
+            break
+        elif server_type == '3':
+            clear()
+            main_menu()
+            break
+        else:
+            print('Invalid choice.') 
+
+def gen_na_k():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            geneve_nk_version1()
+            break
+        elif server_type == '2':
+            geneve_nk_version2()
+            break
+        else:
+            print('Invalid choice.')
+
+def geneve_nk_version1():
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address [\033[96mNative \033[93m| \033[92mTunnelbroker\033[93m]: \033[0m")
+    ufw(remote_ip)
+    ufw("80.200.1.1")
+    ufw("80.200.1.2")
+    ufwr()
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/30", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote {remote_ip}\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write("sudo ip addr add 80.200.1.1/30 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genkhm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "        80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.2"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+    
+def geneve_nk_version2():
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address [\033[96mNative \033[93m| \033[92mTunnelbroker\033[93m]: \033[0m")
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+    ufw(remote_ip)
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote {remote_ip}\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genkhm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mIRAN IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+    
+def gen_na_i():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            geneve_ni_version1()
+            break
+        elif server_type == '2':
+            geneve_ni_version2()
+            break
+        else:
+            print('Invalid choice.')
+
+def geneve_ni_version1():
+    remote_ip = input("\033[93mEnter \033[92mKHAREJ\033[93m IPV6 address [\033[96mNative \033[93m| \033[92mTunnelbroker\033[93m]: \033[0m")
+
+    ufw(remote_ip)
+    ufw("80.200.1.1")
+    ufw("80.200.1.2")
+    ufwr()
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.2/30", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote {remote_ip}\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write("sudo ip addr add 80.200.1.2/30 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genirm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "        80.200.1.2\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
+    
+def geneve_ni_version2():
+    remote_ip = input("\033[93mEnter \033[92mKHAREJ\033[93m IPV6 address [\033[96mNative \033[93m| \033[92mTunnelbroker\033[93m]: \033[0m")
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+    ufw(remote_ip)
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote {remote_ip}\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mKharej IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")    
    ##### saki no
    
 def gen_ip():
@@ -15059,7 +17906,8 @@ def genirm2_ping():
         print("\033[96mPlease Wait, Azumi is pinging...")
         subprocess.run(["ping", "-c", "2", "80.200.1.1"], check=True, stdout=subprocess.DEVNULL)
     except subprocess.CalledProcessError as e:
-        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)        
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)   
+        
 def ping_kh_service():
     service_content = '''[Unit]
 Description=keepalive
@@ -15112,7 +17960,176 @@ def delufw(ip_address):
     subprocess.run(["sudo", "ufw", "delete", "allow", "from", ip_address])
 def ipv4_address():
     result = subprocess.run(["curl", "-s", "https://ipinfo.io/ip"], capture_output=True, text=True)
-    return result.stdout.strip()            
+    return result.stdout.strip() 
+
+def gen_ipvers():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            geneve_ipk_version1()
+            break
+        elif server_type == '2':
+            geneve_ipk_version2()
+            break
+        else:
+            print('Invalid choice.')
+
+def geneve_ipk_version1():
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    ufw(remote_ip)
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
+    ufwr()
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote {remote_ip}\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumigen\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genkhm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "        80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+    
+def geneve_ipk_version2():
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+    ufw(remote_ip)
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote {remote_ip}\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genkhm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mIRAN IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+    
 def kharejm1_gen_menu():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -15124,61 +18141,77 @@ def kharejm1_gen_menu():
     if os.path.isfile("/etc/gen.sh"):
         os.remove("/etc/gen.sh")
 
-    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    gen_ipvers()
 
+## model 2
+def gen_ipvers2():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            geneve_ipk1_version1()
+            break
+        elif server_type == '2':
+            geneve_ipk1_version2()
+            break
+        else:
+            print('Invalid choice.')
+
+def geneve_ipk1_version1():
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
     ufw(remote_ip)
     ufw("80.200.1.1")
-    ufw("80.200.2.1")
-    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip,], stdout=subprocess.DEVNULL)
+    ufw("80.200.1.2")
+    ufwr()
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
- 
-    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
-    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/30", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mAdding commands...\033[0m")
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
     with open("/etc/gen.sh", "w") as f:
         f.write(f"sudo ip link add name azumigen type geneve id 1000 remote {remote_ip}\n")
         f.write("sudo ip link set azumigen up\n")
-        f.write("sudo ip addr add 80.200.1.1/32 dev azumigen\n")
-        f.write("sudo ip route add 80.200.2.1/32 dev azumigen\n")
-        
+        f.write("sudo ip addr add 80.200.1.1/30 dev azumigen\n")
+
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
         mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
         with open("/etc/gen.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mConfiguration is done!\033[0m")
 
     gen_job()
 
+    time.sleep(1)
     display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
     genkhm1_ping()
+    time.sleep(1)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print("\033[93mCreated IP Addresses (Kharej):\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
     print("\033[92m" + "        80.200.1.1\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
 
-
-    script_content1 = '''#!/bin/bash
-
-
-ip_address="80.200.2.1"
-
-
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.2"
 max_pings=3
-
-
 interval=20
-
-
 while true
 do
-   
     for ((i = 1; i <= max_pings; i++))
     do
         ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
@@ -15188,20 +18221,95 @@ do
             echo "Ping failed!"
         fi
     done
-
     echo "Waiting for $interval seconds..."
     sleep $interval
 done
 '''
 
     with open('/etc/ping_gen.sh', 'w') as script_file:
-       script_file.write(script_content1)
+        script_file.write(script_content)
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
-    print("\033[92mKharej Server Configuration Completed!\033[0m")
+def geneve_ipk1_version2():
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+    ufw(remote_ip)
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote {remote_ip}\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genkhm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mIRAN IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+    
 def kharejm2_gen_menu():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -15214,58 +18322,78 @@ def kharejm2_gen_menu():
         os.remove("/etc/gen.sh")
 
     print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    gen_ipvers2()
+    
+def gen_ipver():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
-    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            geneve_ip_version1()
+            break
+        elif server_type == '2':
+            geneve_ip_version2()
+            break
+        else:
+            print('Invalid choice.')
+
+def geneve_ip_version1():
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
     ufw(remote_ip)
     ufw("80.200.1.1")
-    ufw("80.200.1.2")
-    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip,], stdout=subprocess.DEVNULL)
+    ufw("80.200.2.1")
+    ufwr()
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
- 
-    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/30", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mAdding commands...\033[0m")
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
     with open("/etc/gen.sh", "w") as f:
         f.write(f"sudo ip link add name azumigen type geneve id 1000 remote {remote_ip}\n")
         f.write("sudo ip link set azumigen up\n")
-        f.write("sudo ip addr add 80.200.1.1/30 dev azumigen\n")
-        
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumigen\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumigen\n")
+
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
         mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
         with open("/etc/gen.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mConfiguration is done!\033[0m")
 
     gen_job()
 
+    time.sleep(1)
     display_checkmark("\033[92mkeepalive service Configured!\033[0m")
-    genkhm2_ping()
+
+    genirm1_ping()
+    time.sleep(1)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
-    print("\033[92m" + "        80.200.1.1\033[0m")
+    print("\033[92m" + "        80.200.2.1\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
 
-
-    script_content1 = '''#!/bin/bash
-
-
-ip_address="80.200.1.2"
-
-
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
 max_pings=3
-
-
 interval=20
-
-
 while true
 do
-   
     for ((i = 1; i <= max_pings; i++))
     do
         ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
@@ -15275,20 +18403,95 @@ do
             echo "Ping failed!"
         fi
     done
-
     echo "Waiting for $interval seconds..."
     sleep $interval
 done
 '''
 
     with open('/etc/ping_gen.sh', 'w') as script_file:
-       script_file.write(script_content1)
+        script_file.write(script_content)
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
-    print("\033[92mKharej Server Configuration Completed!\033[0m")
+def geneve_ip_version2():
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+    ufw(remote_ip)
+
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote {remote_ip}\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genirm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mKharej IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 
+    
 def iranm1_gen_menu():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -15300,69 +18503,77 @@ def iranm1_gen_menu():
     if os.path.isfile("/etc/gen.sh"):
         os.remove("/etc/gen.sh")
     
-    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    gen_ipver()
 
+def gen1_ipver():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            geneve_ipi_version1()
+            break
+        elif server_type == '2':
+            geneve_ipi_version2()
+            break
+        else:
+            print('Invalid choice.')
+
+def geneve_ipi_version1():
     remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
     ufw(remote_ip)
-    ufw("80.200.2.1")
     ufw("80.200.1.1")
-    
-    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip,], stdout=subprocess.DEVNULL)
+    ufw("80.200.1.2")
+    ufwr()
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
- 
-    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
-    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
-    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
-    
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.2/30", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mAdding commands...\033[0m")
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
     with open("/etc/gen.sh", "w") as f:
         f.write(f"sudo ip link add name azumigen type geneve id 1000 remote {remote_ip}\n")
         f.write("sudo ip link set azumigen up\n")
-        f.write("sudo ip addr add 80.200.2.1/32 dev azumigen\n")
-        f.write("sudo ip route add 80.200.1.1/32 dev azumigen\n")
+        f.write("sudo ip addr add 80.200.1.2/30 dev azumigen\n")
+
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
         mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
         with open("/etc/gen.sh", "a") as f:
             f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_checkmark("\033[92mConfiguration is done!\033[0m")
-    
-
 
     gen_job()
 
-    sleep(1)
+    time.sleep(1)
     display_checkmark("\033[92mkeepalive service Configured!\033[0m")
-   
+
     genirm1_ping()
-    sleep(1)
+    time.sleep(1)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print("\033[93mCreated IP Addresses (IRAN):\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
-    print("\033[92m" + "        80.200.2.1\033[0m")
+    print("\033[92m" + "        80.200.1.2\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
-    
-
 
     script_content = '''#!/bin/bash
-
-
 ip_address="80.200.1.1"
-
-
 max_pings=3
-
-
 interval=20
-
-
 while true
 do
-
     for ((i = 1; i <= max_pings; i++))
     do
         ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
@@ -15372,21 +18583,96 @@ do
             echo "Ping failed!"
         fi
     done
-
     echo "Waiting for $interval seconds..."
     sleep $interval
 done
 '''
 
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
+    
+def geneve_ipi_version2():
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+    ufw(remote_ip)
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote {remote_ip}\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mKharej IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
 
     with open('/etc/ping_gen.sh', 'w') as script_file:
         script_file.write(script_content)
 
-
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
     print("\033[92mIRAN Server Configuration Completed!\033[0m")
-
+    
 def iranm2_gen_menu():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -15399,89 +18685,7 @@ def iranm2_gen_menu():
         os.remove("/etc/gen.sh")
     
     print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
-
-    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
-    ufw(remote_ip)
-    ufw("80.200.1.2")
-    ufw("80.200.1.1")
-    
-    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip,], stdout=subprocess.DEVNULL)
-    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
- 
-    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.2/30", "dev", "azumigen"], stdout=subprocess.DEVNULL)
-    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
-    
-    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    display_notification("\033[93mAdding commands...\033[0m")
-    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    with open("/etc/gen.sh", "w") as f:
-        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote {remote_ip}\n")
-        f.write("sudo ip link set azumigen up\n")
-        f.write("sudo ip addr add 80.200.1.2/30 dev azumigen\n")
-    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
-    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
-        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
-        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
-        with open("/etc/gen.sh", "a") as f:
-            f.write(mtu_command)
-    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    display_checkmark("\033[92mConfiguration is done!\033[0m")
-    
-
-
-    gen_job()
-
-    sleep(1)
-    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
-   
-    genirm2_ping()
-    sleep(1)
-    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
-    print("\033[92m" + "+---------------------------+" + "\033[0m")
-    print("\033[92m" + "        80.200.1.2\033[0m")
-    print("\033[92m" + "+---------------------------+" + "\033[0m")
-    
-
-
-    script_content = '''#!/bin/bash
-
-
-ip_address="80.200.1.1"
-
-
-max_pings=3
-
-
-interval=20
-
-
-while true
-do
-
-    for ((i = 1; i <= max_pings; i++))
-    do
-        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
-        if [ -n "$ping_result" ]; then
-            echo "Ping successful! Response time: $ping_result ms"
-        else
-            echo "Ping failed!"
-        fi
-    done
-
-    echo "Waiting for $interval seconds..."
-    sleep $interval
-done
-'''
-
-
-    with open('/etc/ping_gen.sh', 'w') as script_file:
-        script_file.write(script_content)
-
-
-    os.chmod('/etc/ping_gen.sh', 0o755)
-    ping_kh_service()
-    print("\033[92mIRAN Server Configuration Completed!\033[0m")
+    gen1_ipver()
 	
 def i6to41_any_iran():
     clear_screen()
@@ -15632,8 +18836,9 @@ done
 	
 def remove_6to4():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving \033[92m6TO4\033[93m Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
         if subprocess.call("test -f /etc/6to4.sh", shell=True) == 0:
@@ -15672,10 +18877,12 @@ def remove_6to4():
         display_checkmark("\033[92mUninstall completed!\033[0m")
     except subprocess.CalledProcessError as e:
         print("Error:", e.output.decode().strip())
+        
 def remove_6to41():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving \033[92m6TO4\033[93m Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
         if subprocess.call("test -f /etc/6to4.sh", shell=True) == 0:
@@ -15728,11 +18935,13 @@ def remove_6to41():
 
         display_checkmark("\033[92mUninstall completed!\033[0m")
     except subprocess.CalledProcessError as e:
-        print("Error:", e.output.decode().strip())		
+        print("Error:", e.output.decode().strip())	
+        
 def remove_gre():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving \033[92mGRE\033[93m Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
         if subprocess.call("test -f /etc/gre.sh", shell=True) == 0:
@@ -15775,8 +18984,9 @@ def remove_gre():
 		
 def remove_gre6():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving \033[92mGRE6\033[93m Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
         if subprocess.call("test -f /etc/gre6.sh", shell=True) == 0:
@@ -15825,11 +19035,52 @@ def remove_gre6():
         display_checkmark("\033[92mUninstall completed!\033[0m")
     except subprocess.CalledProcessError as e:
         print("Error:", e.output.decode().strip())
+
+def remove_gre621():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mGRE6\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/gre6.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gre6.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre6.sh\" | crontab -", shell=True)
+        subprocess.run("sudo rm /etc/ping_ip.sh", shell=True)
+        subprocess.run("systemctl disable ping_ip.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("ip link set dev azumig6 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumig6 > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
 		
 def remove_private():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving private IP addresses...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
     
     try:
         if subprocess.call("test -f /etc/private.sh", shell=True) == 0:
@@ -15868,16 +19119,117 @@ def remove_private():
         display_checkmark("\033[92mUninstall completed!\033[0m")
     except subprocess.CalledProcessError as e:
         print("Error:", e.output.decode().strip())
+def prefix_ip_gen():
+    gen_path = "/etc/ping_gen.sh"
+
+    if not os.path.isfile(gen_path):
+        return None
+
+    with open(gen_path, "r") as ping_gen_sh:
+        for line in ping_gen_sh:
+            if "ip_address" in line:
+                ip_address = line.split("=")[-1].strip().strip('"')
+                return ip_address
+
+    return None
     
-def gen_uninstall():
+    return None        
+def remote_ip_gen():
+    gen_path = "/etc/gen.sh"
+    
+    if not os.path.isfile(gen_path):
+        return None
+    
+    with open(gen_path, "r") as gen_sh:
+        for line in gen_sh:
+            if "remote" in line:
+                remote_ip = line.split()[-1].strip('"')
+                return remote_ip
+    
+    return None
+def genz_uninstall():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving Geneve Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
-    remote_ip = input("\033[93mEnter \033[92mRemote\033[93m IPV4 address: \033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+    delufw(prefix)
+    remote_ip = remote_ip_gen()
+    
+    if remote_ip is None:
+        print("Unable to retrieve remote IP")
+        return
     delufw(remote_ip)
+    remote2_ip = prefix_ip_gen()
+    
+    if remote2_ip is None:
+        print("Unable to retrieve prefix")
+        return
+    delufw(remote2_ip)
     delufw("80.200.1.1")
     delufw("80.200.1.2")
     delufw("80.200.2.1")
+    ufwr()
+    try:
+        if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gen.sh", shell=True)
+            
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gen.sh\" | crontab -", shell=True)
+        
+        subprocess.run("sudo rm /etc/ping_gen.sh", shell=True)
+        
+        subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
+  
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
+        
+        print("Progress: ", end="")
+        
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1  
+        end_time = time.time() + duration
+        
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+        
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+        
+def gen_uninstall():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving Geneve Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+    delufw(prefix)
+    remote_ip = remote_ip_gen()
+    
+    if remote_ip is None:
+        print("Unable to retrieve remote IP")
+        return
+    delufw(remote_ip)
+    remote2_ip = prefix_ip_gen()
+    
+    if remote2_ip is None:
+        print("Unable to retrieve prefix")
+        return
+    delufw(remote2_ip)
+    delufw("80.200.1.1")
+    delufw("80.200.1.2")
+    delufw("80.200.2.1")
+    ufwr()
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
             subprocess.run("rm /etc/gen.sh", shell=True)
@@ -15913,17 +19265,35 @@ def gen_uninstall():
     except subprocess.CalledProcessError as e:
         print("Error:", e.output.decode().strip())
 
-def gen2_uninstall():
-    remove_gre6()
-    os.system("clear")
-    display_notification("\033[93mRemoving Geneve Tunnel...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+def gen4_uninstall():
+    remove_private()
+    remove_gre621()
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving Geneve + \033[92mGRE6 + IP6tnl \033[93m+ \033[96mTunnel\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+    delufw(prefix)
+    remote_ip = remote_ip_gen()
+    
+    if remote_ip is None:
+        print("Unable to retrieve remote IP")
+        return
+    delufw(remote_ip)
+    remote2_ip = prefix_ip_gen()
+    
+    if remote2_ip is None:
+        print("Unable to retrieve prefix")
+        return
+    delufw(remote2_ip)
     delufw("80.200.1.1")
     delufw("80.200.2.1")
     delufw("2002:831a::1")
     delufw("2002:831a::2")
-    delufw("2001:831b::1")
     delufw("2001:831b::2")
+    delufw("2001:831b::1")
+    ufwr()
+
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
             subprocess.run("rm /etc/gen.sh", shell=True)
@@ -15959,10 +19329,237 @@ def gen2_uninstall():
     except subprocess.CalledProcessError as e:
         print("Error:", e.output.decode().strip())
         
+def gen2_uninstall():
+    remove_gre621()
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving Geneve + \033[92mGRE6 \033[93m+ \033[96mNATIVE Tunnel\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+    delufw(prefix)
+    remote_ip = remote_ip_gen()
+    
+    if remote_ip is None:
+        print("Unable to retrieve remote IP")
+        return
+    delufw(remote_ip)
+    remote2_ip = prefix_ip_gen()
+    
+    if remote2_ip is None:
+        print("Unable to retrieve prefix")
+        return
+    delufw(remote2_ip)
+    delufw("80.200.1.1")
+    delufw("80.200.2.1")
+    delufw("2002:831a::1")
+    delufw("2002:831a::2")
+    ufwr()
+
+    try:
+        if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gen.sh", shell=True)
+            
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gen.sh\" | crontab -", shell=True)
+        
+        subprocess.run("sudo rm /etc/ping_gen.sh", shell=True)
+        
+        subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
+  
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
+        
+        print("Progress: ", end="")
+        
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1  
+        end_time = time.time() + duration
+        
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+        
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+
+def gen6_uninstall():
+    remove_private()
+    remove_gre6()
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving Geneve + \033[92mGRE6 \033[93m+ \033[96mIPV4\033[93m Tunnel\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    delufw("80.200.1.1")
+    delufw("80.200.2.1")
+    delufw("2002:831a::1")
+    delufw("2002:831a::2")
+    delufw("2001:831b::1")
+    delufw("2001:831b::2")
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+    delufw(prefix)
+    remote_ip = remote_ip_gen()
+    
+    if remote_ip is None:
+        print("Unable to retrieve remote IP")
+        return
+    delufw(remote_ip)
+    remote2_ip = prefix_ip_gen()
+    
+    if remote2_ip is None:
+        print("Unable to retrieve prefix")
+        return
+    delufw(remote2_ip)
+    ufwr()
+    try:
+        if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gen.sh", shell=True)
+
+            
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gen.sh\" | crontab -", shell=True)
+        
+        subprocess.run("sudo rm /etc/ping_gen.sh", shell=True)
+        
+        subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
+  
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
+        
+        print("Progress: ", end="")
+        
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1  
+        end_time = time.time() + duration
+        
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+        
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+        
+def gen3_uninstall():
+    remove_gre6()
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving Geneve + \033[92mGRE6 \033[93m+ \033[96mNative\033[93m Tunnel\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    delufw("80.200.1.1")
+    delufw("80.200.2.1")
+    delufw("2002:831a::1")
+    delufw("2002:831a::2")
+    ufwr()
+    try:
+        if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gen.sh", shell=True)
+
+            
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gen.sh\" | crontab -", shell=True)
+        
+        subprocess.run("sudo rm /etc/ping_gen.sh", shell=True)
+        
+        subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
+  
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
+        
+        print("Progress: ", end="")
+        
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1  
+        end_time = time.time() + duration
+        
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+        
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+        
+def gen_icmp():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving Geneve + ICMP Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    remove_icmp()
+
+
+    subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/icmp.sh\" | crontab -", shell=True)
+
+    remote2_ip = prefix_ip_gen()
+    
+    if remote2_ip is None:
+        print("Unable to retrieve prefix")
+        return
+    delufw(remote2_ip)
+    delufw("80.200.1.1")
+    delufw("80.200.2.1")
+    delufw("70.0.0.1")
+    delufw("70.0.0.2")
+    ufwr()
+    try:
+        if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gen.sh", shell=True)
+            
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gen.sh\" | crontab -", shell=True)
+        
+        subprocess.run("sudo rm /etc/ping_gen.sh", shell=True)
+        
+        subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
+  
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
+        
+        print("Progress: ", end="")
+        
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1  
+        end_time = time.time() + duration
+        
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+        
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())        
 def extra_uninstall():
     os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving Extra IP addresses...\033[0m")
-    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
         interface = subprocess.check_output("ip route | awk '/default/ {print $5; exit}'", shell=True).decode().strip()
