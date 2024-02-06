@@ -259,7 +259,7 @@ def gen_icmp_install():
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mKHAREJ\033[0m')
     print('2. \033[93mIRAN\033[0m')
-    print('0. \033[91mback to the main menu\033[0m')
+    print('0. \033[91mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
     while True:
@@ -272,7 +272,7 @@ def gen_icmp_install():
             break
         elif server_type == '0':
             clear()
-            main_menu()
+            genz_ip()
             break
         else:
             print('Invalid choice.')
@@ -15744,13 +15744,13 @@ def genf_ip():
     print('1. \033[92mGRE + Native Geneve\033[0m')
     print('2. \033[96mIP6tnl + GRE + Native Geneve\033[0m')
     print('3. \033[93mGRE + IPV4 Geneve\033[0m')
-    print('0. \033[91mback to the main menu\033[0m')
+    print('0. \033[91mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
     while True:
         server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
         if server_type == '1':
-            genf1_ip()
+            genfm_ip()
             break
         elif server_type == '2':
             genf3_ip()
@@ -15760,7 +15760,7 @@ def genf_ip():
             break
         elif server_type == '0':
             clear()
-            main_menu()
+            genz_ip()
             break
         else:
             print('Invalid choice.') 
@@ -16422,12 +16422,535 @@ done
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
     print("\033[92mIRAN Server Configuration Completed!\033[0m") 
+## method 1
+def genfm_ip():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mGR6 + Geneve Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mMethod 1 [no route]\033[0m')
+    print('2. \033[93mMethod 2 [/w route]\033[0m')
+    print('0. \033[91mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            genf1_ip()
+            break
+        elif server_type == '2':
+            genf12_ip()
+            break
+        elif server_type == '0':
+            clear()
+            genf_ip()
+            break
+        else:
+            print('Invalid choice.')  
+
+def genf12_ip():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mGeneve +  \033[96mNative \033[93m+\033[92m Gre6 \033[93mM[2]\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            genr_ipger()
+            break
+        elif server_type == '2':
+            genr_ipgeri()
+            break
+        elif server_type == '3':
+            clear()
+            genf_ip()
+            break
+        else:
+            print('Invalid choice.')
+def genr_ipger():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            geneve_gerkr_version1()
+            break
+        elif server_type == '2':
+            geneve_gerkr_version2()
+            break
+        else:
+            print('Invalid choice.')
+def gree6r_kharej1_tunnel():
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+		
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address [\033[92mNative\033[93m or\033[96m Tunnelbroker\033[93m]: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address [\033[92mNative\033[93m or\033[96m Tunnelbroker\033[93m]: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m") 
+    ufw(remote_ip)	
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig6 mode ip6gre remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::1/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::1\n".format(interface)
+            with open('/etc/gre6.sh', 'a') as f:
+                f.write(rt_command)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+
+    sleep(1)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+
+
+def gree6r_kharej1():
+    gree6r_kharej1_tunnel()
+    ip_address = "2002:831a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)   
+    ping_gre6_service()
+    gre6_cronjob()
+    
+def geneve_gerkr_version1():
+    gree6r_kharej1()
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+    ufwr()
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::2"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::2\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumigen\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genkhm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "        80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+    
+def geneve_gerkr_version2():
+    gree6r_kharej1()
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::2"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::2\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genkhm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mIRAN IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+	
+def genr_ipgeri():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Geneve IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            geneve_gerir_version1()
+            break
+        elif server_type == '2':
+            geneve_gerir_version2()
+            break
+        else:
+            print('Invalid choice.')
+
+def gree6r_iran1_tunnel():
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address [\033[92mNative\033[93m or\033[96m Tunnelbroker\033[93m]: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address [\033[92mNative\033[93m or\033[96m Tunnelbroker\033[93m]: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")   
+    ufw(remote_ip)	
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig6 mode ip6gre remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::2/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2\n".format(interface)
+            with open('/etc/gre6.sh', 'a') as f:
+                f.write(rt_command)
+    else:        
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+    sleep(1)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+
+
+    
+
+def gree6r_iran1():
+    gree6r_iran1_tunnel()
+    ip_address = "2002:831a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)    
+    iran_gre6_service()
+    gre6_cronjob()
+    
+def geneve_gerir_version1():
+    gree6r_iran1()
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+    ufwr()
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::1\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumigen\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genirm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "        80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
+    
+def geneve_gerir_version2():
+    gree6r_iran1()
+
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
+
+    ufw("2002:831a::1")
+    ufw("2002:831a::2")
+    
+    subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", prefix+"/16", "dev", "azumigen"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/gen.sh", "w") as f:
+        f.write(f"sudo ip link add name azumigen type geneve id 1000 remote 2002:831a::1\n")
+        f.write("sudo ip link set azumigen up\n")
+        f.write(f"sudo ip addr add {prefix}/16 dev azumigen\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Geneve]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumigen mtu {mtu_value}\n"
+        with open("/etc/gen.sh", "a") as f:
+            f.write(mtu_command)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    gen_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    genirm1_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "     {}\033[0m".format(prefix))
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    remote_ipv4 = input("\033[93mEnter \033[92mKharej IPv4\033[93m address [Ping Service]: \033[0m")
+
+    remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
+    ufw(remote_prefix)
+    ufwr()
+    script_content = '''#!/bin/bash
+ip_address="{remote_prefix}"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''.format(remote_prefix=remote_prefix)
+
+    with open('/etc/ping_gen.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_gen.sh', 0o755)
+    ping_kh_service()
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")             
+
     
 def genf1_ip():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
     print('\033[92m(\033[91mO,O\033[92m)\033[0m')
-    print('\033[92m(   ) \033[93mGeneve +  \033[96mNative \033[93m+\033[92m Gre6 \033[93mMenu\033[0m')
+    print('\033[92m(   ) \033[93mGeneve +  \033[96mNative \033[93m+\033[92m Gre6 \033[93mM[1]\033[0m')
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
@@ -17439,7 +17962,7 @@ def gen2_ip():
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mKHAREJ \033[0m')
     print('2. \033[93mIRAN\033[0m')
-    print('3. \033[94mback to the main menu\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
     while True:
@@ -17452,7 +17975,7 @@ def gen2_ip():
             break
         elif server_type == '3':
             clear()
-            main_menu()
+            genz_ip()
             break
         else:
             print('Invalid choice.') 
@@ -17802,7 +18325,7 @@ def gen_ip():
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mMethod 1 \033[0m')
     print('2. \033[93mMethod 2\033[0m')
-    print('3. \033[94mback to the main menu\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
     while True:
@@ -17815,7 +18338,7 @@ def gen_ip():
             break
         elif server_type == '3':
             clear()
-            main_menu()
+            genz_ip()
             break
         else:
             print('Invalid choice.')  
@@ -19156,55 +19679,60 @@ def genz_uninstall():
     prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
     delufw(prefix)
     remote_ip = remote_ip_gen()
-    
+
     if remote_ip is None:
         print("Unable to retrieve remote IP")
-        return
-    delufw(remote_ip)
+    else:
+        delufw(remote_ip)
+
     remote2_ip = prefix_ip_gen()
-    
+
     if remote2_ip is None:
         print("Unable to retrieve prefix")
-        return
-    delufw(remote2_ip)
+    else:
+        delufw(remote2_ip)
+
     delufw("80.200.1.1")
     delufw("80.200.1.2")
     delufw("80.200.2.1")
     ufwr()
+
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
             subprocess.run("rm /etc/gen.sh", shell=True)
-            
+
         display_notification("\033[93mRemoving cronjob...\033[0m")
         subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gen.sh\" | crontab -", shell=True)
-        
+
         subprocess.run("sudo rm /etc/ping_gen.sh", shell=True)
-        
+
         subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
-  
+
         subprocess.run("systemctl daemon-reload", shell=True)
-        
+
         subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
-        
+
         print("Progress: ", end="")
-        
+
         frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
         delay = 0.1
-        duration = 1  
+        duration = 1
         end_time = time.time() + duration
-        
+
         while time.time() < end_time:
             for frame in frames:
                 print("\r[%s] Loading...  " % frame, end="")
                 time.sleep(delay)
                 print("\r[%s]             " % frame, end="")
                 time.sleep(delay)
-        
+
         display_checkmark("\033[92mUninstall completed!\033[0m")
     except subprocess.CalledProcessError as e:
         print("Error:", e.output.decode().strip())
+    except Exception as e:
+        print("Error:", str(e))
         
 def gen_uninstall():
     os.system("clear")
@@ -19215,55 +19743,60 @@ def gen_uninstall():
     prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
     delufw(prefix)
     remote_ip = remote_ip_gen()
-    
+
     if remote_ip is None:
         print("Unable to retrieve remote IP")
-        return
-    delufw(remote_ip)
+    else:
+        delufw(remote_ip)
+
     remote2_ip = prefix_ip_gen()
-    
+
     if remote2_ip is None:
         print("Unable to retrieve prefix")
-        return
-    delufw(remote2_ip)
+    else:
+        delufw(remote2_ip)
+
     delufw("80.200.1.1")
     delufw("80.200.1.2")
     delufw("80.200.2.1")
     ufwr()
+
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
             subprocess.run("rm /etc/gen.sh", shell=True)
-            
+
         display_notification("\033[93mRemoving cronjob...\033[0m")
         subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gen.sh\" | crontab -", shell=True)
-        
+
         subprocess.run("sudo rm /etc/ping_gen.sh", shell=True)
-        
+
         subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
-  
+
         subprocess.run("systemctl daemon-reload", shell=True)
-        
+
         subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
-        
+
         print("Progress: ", end="")
-        
+
         frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
         delay = 0.1
-        duration = 1  
+        duration = 1
         end_time = time.time() + duration
-        
+
         while time.time() < end_time:
             for frame in frames:
                 print("\r[%s] Loading...  " % frame, end="")
                 time.sleep(delay)
                 print("\r[%s]             " % frame, end="")
                 time.sleep(delay)
-        
+
         display_checkmark("\033[92mUninstall completed!\033[0m")
     except subprocess.CalledProcessError as e:
         print("Error:", e.output.decode().strip())
+    except Exception as e:
+        print("Error:", str(e))
 
 def gen4_uninstall():
     remove_private()
@@ -19275,17 +19808,19 @@ def gen4_uninstall():
     prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
     delufw(prefix)
     remote_ip = remote_ip_gen()
-    
+
     if remote_ip is None:
         print("Unable to retrieve remote IP")
-        return
-    delufw(remote_ip)
+    else:
+        delufw(remote_ip)
+
     remote2_ip = prefix_ip_gen()
-    
+
     if remote2_ip is None:
         print("Unable to retrieve prefix")
-        return
-    delufw(remote2_ip)
+    else:
+        delufw(remote2_ip)
+
     delufw("80.200.1.1")
     delufw("80.200.2.1")
     delufw("2002:831a::1")
@@ -19297,37 +19832,39 @@ def gen4_uninstall():
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
             subprocess.run("rm /etc/gen.sh", shell=True)
-            
+
         display_notification("\033[93mRemoving cronjob...\033[0m")
         subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gen.sh\" | crontab -", shell=True)
-        
+
         subprocess.run("sudo rm /etc/ping_gen.sh", shell=True)
-        
+
         subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
-  
+
         subprocess.run("systemctl daemon-reload", shell=True)
-        
+
         subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
-        
+
         print("Progress: ", end="")
-        
+
         frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
         delay = 0.1
-        duration = 1  
+        duration = 1
         end_time = time.time() + duration
-        
+
         while time.time() < end_time:
             for frame in frames:
                 print("\r[%s] Loading...  " % frame, end="")
                 time.sleep(delay)
                 print("\r[%s]             " % frame, end="")
                 time.sleep(delay)
-        
+
         display_checkmark("\033[92mUninstall completed!\033[0m")
     except subprocess.CalledProcessError as e:
         print("Error:", e.output.decode().strip())
+    except Exception as e:
+        print("Error:", str(e))
         
 def gen2_uninstall():
     remove_gre621()
@@ -19341,20 +19878,20 @@ def gen2_uninstall():
     
     if remote_ip is None:
         print("Unable to retrieve remote IP")
-        return
-    delufw(remote_ip)
-    remote2_ip = prefix_ip_gen()
+    else:
+        delufw(remote_ip)
+        prefix = prefix_ip_gen()
+        
+        if prefix is None:
+            print("Unable to retrieve prefix")
+        else:
+            delufw(prefix)
+            delufw("80.200.1.1")
+            delufw("80.200.2.1")
+            delufw("2002:831a::1")
+            delufw("2002:831a::2")
+            ufwr()
     
-    if remote2_ip is None:
-        print("Unable to retrieve prefix")
-        return
-    delufw(remote2_ip)
-    delufw("80.200.1.1")
-    delufw("80.200.2.1")
-    delufw("2002:831a::1")
-    delufw("2002:831a::2")
-    ufwr()
-
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
             subprocess.run("rm /etc/gen.sh", shell=True)
@@ -19389,6 +19926,8 @@ def gen2_uninstall():
         display_checkmark("\033[92mUninstall completed!\033[0m")
     except subprocess.CalledProcessError as e:
         print("Error:", e.output.decode().strip())
+    except Exception as e:
+        print("Error:", str(e))
 
 def gen6_uninstall():
     remove_private()
@@ -19409,19 +19948,19 @@ def gen6_uninstall():
     
     if remote_ip is None:
         print("Unable to retrieve remote IP")
-        return
-    delufw(remote_ip)
-    remote2_ip = prefix_ip_gen()
+    else:
+        delufw(remote_ip)
+        prefix = prefix_ip_gen()
+        
+        if prefix is None:
+            print("Unable to retrieve prefix")
+        else:
+            delufw(prefix)
+            ufwr()
     
-    if remote2_ip is None:
-        print("Unable to retrieve prefix")
-        return
-    delufw(remote2_ip)
-    ufwr()
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
             subprocess.run("rm /etc/gen.sh", shell=True)
-
             
         display_notification("\033[93mRemoving cronjob...\033[0m")
         subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gen.sh\" | crontab -", shell=True)
@@ -19453,6 +19992,8 @@ def gen6_uninstall():
         display_checkmark("\033[92mUninstall completed!\033[0m")
     except subprocess.CalledProcessError as e:
         print("Error:", e.output.decode().strip())
+    except Exception as e:
+        print("Error:", str(e))
         
 def gen3_uninstall():
     remove_gre6()
