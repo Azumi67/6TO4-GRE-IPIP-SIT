@@ -14771,7 +14771,7 @@ def geneve_icmpk_version1():
     ufw("80.200.2.1")
     ufw("70.0.0.1")
     ufw("70.0.0.2")
-    ufwr()
+    
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "70.0.0.2"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
@@ -14837,6 +14837,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def geneve_icmpk_version2():
@@ -14890,7 +14891,7 @@ def geneve_icmpk_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -14916,6 +14917,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m") 
 	
 def gen_ipicmpi():
@@ -14942,7 +14944,7 @@ def geneve_icmpi_version1():
     ufw("80.200.2.1")
     ufw("70.0.0.1")
     ufw("70.0.0.2")
-    ufwr()
+    
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "70.0.0.1"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
@@ -15008,6 +15010,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
 def geneve_icmpi_version2():
@@ -15060,7 +15063,7 @@ def geneve_icmpi_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -15086,6 +15089,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m") 
     
 def rmv_limit():
@@ -16105,7 +16109,7 @@ def geneve_gerk1_version1():
     ufw("80.200.2.1")
     ufw("2002:831a::1")
     ufw("2002:831a::2")
-    ufwr()
+    
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::2"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
@@ -16171,6 +16175,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def geneve_gerk1_version2():
@@ -16225,7 +16230,7 @@ def geneve_gerk1_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -16251,6 +16256,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m") 
 	
 def gen1_ipgeri():
@@ -16277,7 +16283,7 @@ def geneve_geri1_version1():
     ufw("80.200.2.1")
     ufw("2002:831a::1")
     ufw("2002:831a::2")
-    ufwr()
+    
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::1"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
@@ -16343,6 +16349,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
 def geneve_geri1_version2():
@@ -16395,7 +16402,7 @@ def geneve_geri1_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -16421,6 +16428,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m") 
 ## method 1
 def genfm_ip():
@@ -16564,7 +16572,7 @@ def geneve_gerkr_version1():
     ufw("80.200.2.1")
     ufw("2002:831a::1")
     ufw("2002:831a::2")
-    ufwr()
+    
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::2"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
@@ -16629,6 +16637,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def geneve_gerkr_version2():
@@ -16682,7 +16691,7 @@ def geneve_gerkr_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -16708,6 +16717,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m") 
 	
 def genr_ipgeri():
@@ -16800,7 +16810,7 @@ def geneve_gerir_version1():
     ufw("80.200.2.1")
     ufw("2002:831a::1")
     ufw("2002:831a::2")
-    ufwr()
+    
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::1"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
@@ -16865,6 +16875,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
 def geneve_gerir_version2():
@@ -16917,7 +16928,7 @@ def geneve_gerir_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -16943,6 +16954,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m")             
 
     
@@ -17081,7 +17093,7 @@ def kharej1_gen_menu():
     ufw("2002:831a::2")
     ufw("2001:831b::1")
     ufw("2001:831b::2")
-    ufwr()
+    
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print('\033[92m Configuring Kharej server Geneve\033[0m')
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -17163,7 +17175,7 @@ done
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
 
-    
+    ufwr()
     print("\033[92mKharej Server Geneve Configuration Completed!\033[0m")
 
 def iran1_gen_menu():
@@ -17174,7 +17186,7 @@ def iran1_gen_menu():
     ufw("2002:831a::2")
     ufw("2001:831b::1")
     ufw("2001:831b::2")
-    ufwr()
+    
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     print('\033[92m Configuring Iran server Geneve\033[0m')
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -17264,6 +17276,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Geneve Configuration Completed!\033[0m")
 	
 def genf5_ip():
@@ -17366,7 +17379,7 @@ def geneve_gerk6_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -17392,6 +17405,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m") 
 	
 def gen5_ipgeri():
@@ -17466,7 +17480,7 @@ def geneve_geri5_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -17492,6 +17506,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m") 
     
 ## test n gre
@@ -17633,7 +17648,7 @@ def geneve_gerk_version1():
     ufw("80.200.2.1")
     ufw("2002:831a::1")
     ufw("2002:831a::2")
-    ufwr()
+    
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::2"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
@@ -17699,6 +17714,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def geneve_gerk_version2():
@@ -17753,7 +17769,7 @@ def geneve_gerk_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -17779,6 +17795,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m") 
 	
 def gen_ipgeri():
@@ -17805,7 +17822,7 @@ def geneve_geri_version1():
     ufw("80.200.2.1")
     ufw("2002:831a::1")
     ufw("2002:831a::2")
-    ufwr()
+    
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", "2002:831a::1"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
@@ -17871,6 +17888,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
 def geneve_geri_version2():
@@ -17923,7 +17941,7 @@ def geneve_geri_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -17949,6 +17967,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m") 
 
 ##azumi native
@@ -18003,7 +18022,7 @@ def geneve_nk_version1():
     ufw(remote_ip)
     ufw("80.200.1.1")
     ufw("80.200.1.2")
-    ufwr()
+    
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/30", "dev", "azumigen"], stdout=subprocess.DEVNULL)
@@ -18067,6 +18086,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def geneve_nk_version2():
@@ -18119,7 +18139,7 @@ def geneve_nk_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -18145,6 +18165,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m") 
     
 def gen_na_i():
@@ -18171,7 +18192,7 @@ def geneve_ni_version1():
     ufw(remote_ip)
     ufw("80.200.1.1")
     ufw("80.200.1.2")
-    ufwr()
+    
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.2/30", "dev", "azumigen"], stdout=subprocess.DEVNULL)
@@ -18235,6 +18256,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
 def geneve_ni_version2():
@@ -18286,7 +18308,7 @@ def geneve_ni_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -18312,6 +18334,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m")    
    ##### saki no
    
@@ -18508,7 +18531,7 @@ def geneve_ipk_version1():
     ufw(remote_ip)
     ufw("80.200.1.1")
     ufw("80.200.2.1")
-    ufwr()
+    
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
@@ -18573,6 +18596,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def geneve_ipk_version2():
@@ -18625,7 +18649,7 @@ def geneve_ipk_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -18651,6 +18675,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m") 
     
 def kharejm1_gen_menu():
@@ -18691,7 +18716,7 @@ def geneve_ipk1_version1():
     ufw(remote_ip)
     ufw("80.200.1.1")
     ufw("80.200.1.2")
-    ufwr()
+    
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/30", "dev", "azumigen"], stdout=subprocess.DEVNULL)
@@ -18754,6 +18779,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def geneve_ipk1_version2():
@@ -18805,7 +18831,7 @@ def geneve_ipk1_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -18831,6 +18857,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def kharejm2_gen_menu():
@@ -18870,7 +18897,7 @@ def geneve_ip_version1():
     ufw(remote_ip)
     ufw("80.200.1.1")
     ufw("80.200.2.1")
-    ufwr()
+    
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumigen"], stdout=subprocess.DEVNULL)
@@ -18936,6 +18963,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
 def geneve_ip_version2():
@@ -18987,7 +19015,7 @@ def geneve_ip_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -19013,6 +19041,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m") 
     
 def iranm1_gen_menu():
@@ -19052,7 +19081,7 @@ def geneve_ipi_version1():
     ufw(remote_ip)
     ufw("80.200.1.1")
     ufw("80.200.1.2")
-    ufwr()
+    
     subprocess.run(["sudo", "ip", "link", "add", "name", "azumigen", "type", "geneve", "id", "1000", "remote", remote_ip], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "link", "set", "azumigen", "up"], stdout=subprocess.DEVNULL)
     subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.2/30", "dev", "azumigen"], stdout=subprocess.DEVNULL)
@@ -19116,6 +19145,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
 def geneve_ipi_version2():
@@ -19168,7 +19198,7 @@ def geneve_ipi_version2():
 
     remote_prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, remote_ipv4.split('.')))
     ufw(remote_prefix)
-    ufwr()
+    
     script_content = '''#!/bin/bash
 ip_address="{remote_prefix}"
 max_pings=3
@@ -19194,6 +19224,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
+    ufwr()
     print("\033[92mIRAN Server Configuration Completed!\033[0m")
     
 def iranm2_gen_menu():
