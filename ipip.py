@@ -225,7 +225,6 @@ def genz_ip():
     print("1. \033[92mGeneve UDP \033[0m")
     print("2. \033[93mGeneve UDP \033[93m+ \033[92mNative \033[93m| \033[92mTunnelbroker \033[0m")
     print("3. \033[96mGeneve UDP + GRE6 \033[0m")
-    print("4. \033[92mGeneve + ICMP\033[0m")
     print('0. \033[91mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -239,9 +238,6 @@ def genz_ip():
             break
         elif server_type == '3':
             genf_ip()
-            break
-        elif server_type == '4':
-            gen_icmp_install()
             break
         elif server_type == '0':
             clear()
@@ -14548,7 +14544,6 @@ def genx_ip():
     print("3. \033[96mGeneve + Gre6 + Native \033[0m")
     print("4. \033[92mGeneve + Gre6 + IPV4 \033[0m")
     print("5. \033[97mGeneve + IP6tnl + Gre6 + Native \033[0m")
-    print("7. \033[93mGeneve + ICMP\033[0m")
     print('0. \033[91mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -14569,9 +14564,6 @@ def genx_ip():
         elif server_type == '4':
             gen6_uninstall()
             break    
-        elif server_type == '7':
-            gen_icmp()
-            break
         elif server_type == '0':
             clear()
             remove_menu()
@@ -14692,7 +14684,6 @@ def ic_kharej():
     print("\033[93m──────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mConfiguring Kharej ...\033[0m")
     print("\033[93m──────────────────────────────────────────────────\033[0m")
-    
 
     if os.path.exists("/etc/icmp.sh"):
         os.remove("/etc/icmp.sh")
@@ -14707,7 +14698,7 @@ def ic_kharej():
     os.system("/bin/bash /etc/icmp.sh")
 
     cron_job_command = "@reboot root /bin/bash /etc/icmp.sh\n"
-    with open("/etc/cron.d/icmp-kharej", "w") as f:
+    with open("/etc/cron.d/icmp-kharej", "a") as f:
         f.write(cron_job_command)
 
     subprocess.call("crontab -u root /etc/cron.d/icmp-kharej", shell=True)
@@ -14717,11 +14708,10 @@ def ic_kharej():
 def ic_iran():
     if not os.path.exists("/root/icmptunnel"):
         install_icmp()
-    up_up()    
+    up_up()
     print("\033[93m──────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mConfiguring IRAN ...\033[0m")
     print("\033[93m──────────────────────────────────────────────────\033[0m")
-    
 
     os.chdir("/root/icmptunnel")
 
@@ -14740,7 +14730,7 @@ def ic_iran():
     os.system("/bin/bash /etc/icmp-iran.sh")
 
     cron_job_command = "@reboot root /bin/bash /etc/icmp-iran.sh\n"
-    with open("/etc/cron.d/icmp-iran", "w") as f:
+    with open("/etc/cron.d/icmp-iran", "a") as f:
         f.write(cron_job_command)
 
     subprocess.call("crontab -u root /etc/cron.d/icmp-iran", shell=True)
@@ -14837,7 +14827,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def geneve_icmpk_version2():
@@ -14917,7 +14907,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m") 
 	
 def gen_ipicmpi():
@@ -15010,7 +15000,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
 def geneve_icmpi_version2():
@@ -15089,7 +15079,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m") 
     
 def rmv_limit():
@@ -16175,7 +16165,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def geneve_gerk1_version2():
@@ -16256,7 +16246,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m") 
 	
 def gen1_ipgeri():
@@ -16349,7 +16339,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
 def geneve_geri1_version2():
@@ -16428,7 +16418,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m") 
 ## method 1
 def genfm_ip():
@@ -16637,7 +16627,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def geneve_gerkr_version2():
@@ -16717,7 +16707,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m") 
 	
 def genr_ipgeri():
@@ -16875,7 +16865,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
 def geneve_gerir_version2():
@@ -16954,7 +16944,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m")             
 
     
@@ -17175,7 +17165,7 @@ done
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
 
-    ufwr()
+    
     print("\033[92mKharej Server Geneve Configuration Completed!\033[0m")
 
 def iran1_gen_menu():
@@ -17276,7 +17266,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Geneve Configuration Completed!\033[0m")
 	
 def genf5_ip():
@@ -17405,7 +17395,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m") 
 	
 def gen5_ipgeri():
@@ -17506,7 +17496,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m") 
     
 ## test n gre
@@ -17714,7 +17704,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def geneve_gerk_version2():
@@ -17795,7 +17785,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m") 
 	
 def gen_ipgeri():
@@ -17888,7 +17878,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
 def geneve_geri_version2():
@@ -17967,7 +17957,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m") 
 
 ##azumi native
@@ -18086,7 +18076,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def geneve_nk_version2():
@@ -18165,7 +18155,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m") 
     
 def gen_na_i():
@@ -18256,7 +18246,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
 def geneve_ni_version2():
@@ -18334,7 +18324,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m")    
    ##### saki no
    
@@ -18596,7 +18586,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def geneve_ipk_version2():
@@ -18675,7 +18665,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m") 
     
 def kharejm1_gen_menu():
@@ -18779,7 +18769,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def geneve_ipk1_version2():
@@ -18857,7 +18847,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mKharej Server Configuration Completed!\033[0m")   
     
 def kharejm2_gen_menu():
@@ -18963,7 +18953,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
 def geneve_ip_version2():
@@ -19041,7 +19031,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m") 
     
 def iranm1_gen_menu():
@@ -19145,7 +19135,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     
 def geneve_ipi_version2():
@@ -19224,7 +19214,7 @@ done
 
     os.chmod('/etc/ping_gen.sh', 0o755)
     ping_kh_service()
-    ufwr()
+    
     print("\033[92mIRAN Server Configuration Completed!\033[0m")
     
 def iranm2_gen_menu():
@@ -19726,7 +19716,7 @@ def genz_uninstall():
     delufw("80.200.1.1")
     delufw("80.200.1.2")
     delufw("80.200.2.1")
-    ufwr()
+    
 
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
@@ -19790,7 +19780,7 @@ def gen_uninstall():
     delufw("80.200.1.1")
     delufw("80.200.1.2")
     delufw("80.200.2.1")
-    ufwr()
+    
 
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
@@ -19858,7 +19848,7 @@ def gen4_uninstall():
     delufw("2002:831a::2")
     delufw("2001:831b::2")
     delufw("2001:831b::1")
-    ufwr()
+    
 
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
@@ -19921,7 +19911,7 @@ def gen2_uninstall():
             delufw("80.200.2.1")
             delufw("2002:831a::1")
             delufw("2002:831a::2")
-            ufwr()
+            
     
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
@@ -19987,7 +19977,7 @@ def gen6_uninstall():
             print("Unable to retrieve prefix")
         else:
             delufw(prefix)
-            ufwr()
+            
     
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
@@ -20035,7 +20025,7 @@ def gen3_uninstall():
     delufw("80.200.2.1")
     delufw("2002:831a::1")
     delufw("2002:831a::2")
-    ufwr()
+    
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
             subprocess.run("rm /etc/gen.sh", shell=True)
@@ -20092,7 +20082,7 @@ def gen_icmp():
     delufw("80.200.2.1")
     delufw("70.0.0.1")
     delufw("70.0.0.2")
-    ufwr()
+    
     try:
         if subprocess.call("test -f /etc/gen.sh", shell=True) == 0:
             subprocess.run("rm /etc/gen.sh", shell=True)
