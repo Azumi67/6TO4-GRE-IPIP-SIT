@@ -15736,7 +15736,7 @@ def genf_ip():
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mGRE + Native Geneve\033[0m')
-    print('2. \033[96mIP6tnl + GRE + Native Geneve\033[93m[It won't Work after Reboot]\033[0m')
+    print('2. \033[96mIP6tnl + GRE + Native Geneve\033[93m[It won\'t Work after Reboot]\033[0m')
     print('3. \033[93mGRE + IPV4 Geneve\033[0m')
     print('0. \033[91mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
