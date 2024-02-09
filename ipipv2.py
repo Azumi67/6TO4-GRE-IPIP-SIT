@@ -14543,7 +14543,7 @@ def genx_ip():
     print("2. \033[93mGeneve + Native \033[0m")
     print("3. \033[96mGeneve + Gre6 + Native \033[0m")
     print("4. \033[92mGeneve + Gre6 + IPV4 \033[0m")
-    print("5. \033[97mGeneve + IP6tnl + Gre6 + Native \033[0m")
+    print("5. \033[97mGeneve + IP6tnl + Gre6 + Native \033[93m[It won't Work after Reboot] \033[0m")
     print('0. \033[91mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
