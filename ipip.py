@@ -149,22 +149,24 @@ def main_menu():
             print("1. \033[36mExtra Native IPV6\033[0m")
             print("2. \033[93mEdit \033[92mMTU\033[0m")
             print("3. \033[92mGeneve UDP \033[0m")
-            print("4. \033[96mIP6IP6\033[0m")
-            print("5. \033[93mPrivate IP\033[0m")
-            print("6. \033[92mGRE\033[0m")
-            print("7. \033[96mGRE6\033[0m")
-            print("8. \033[93m6TO4 \033[0m")
-            print("9. \033[92m6TO4 \033[97m[Anycasnt] \033[0m")
-            print("10. \033[91mUninstall\033[0m")
+            print("4. \033[97mERSPAN \033[0m")
+            print("5. \033[96mIP6IP6\033[0m")
+            print("6. \033[93mPrivate IP\033[0m")
+            print("7. \033[92mGRE\033[0m")
+            print("8. \033[96mGRE6\033[0m")
+            print("9. \033[97mGRE6tap\033[0m")
+            print("10. \033[93m6TO4 \033[0m")
+            print("11. \033[92m6TO4 \033[97m[Anycasnt] \033[0m")
+            print("12. \033[91mUninstall\033[0m")
             print("\033[93m─────────────────────────────────────────────────────────────────────\033[0m")
             display_notification("\033[93m Multiple Servers\033[0m")
             print("\033[93m─────────────────────────────────────────────────────────────────────\033[0m")
-            print("11. \033[96mIP6IP6 Multiple Servers\033[0m")
-            print("12. \033[92mGRE6 Multiple Servers\033[0m")
-            print("13. \033[93m6tO4 Multiple Servers\033[0m")
-            print("14. \033[96mAnycast Multiple Servers\033[0m")
-            print("15. \033[93mEdit \033[92mMTU\033[0m")
-            print("16. \033[91mUninstall\033[0m")
+            print("13. \033[96mIP6IP6 Multiple Servers\033[0m")
+            print("14. \033[92mGRE6 Multiple Servers\033[0m")
+            print("15. \033[93m6tO4 Multiple Servers\033[0m")
+            print("16. \033[96mAnycast Multiple Servers\033[0m")
+            print("17. \033[93mEdit \033[92mMTU\033[0m")
+            print("18. \033[91mUninstall\033[0m")
             print("q. Exit")
             print("\033[93m╰─────────────────────────────────────────────────────────────────────╯\033[0m")
 
@@ -175,32 +177,36 @@ def main_menu():
             elif choice == '2':
                 mtu_menu() 
             elif choice == '3':
-                genz_ip()                 
+                genz_ip()  
             elif choice == '4':
-                ipip_menu()                
+                espn_menu()                 
             elif choice == '5':
-                private_ip()
+                ipip_menu()                
             elif choice == '6':
-                gre_menu()
+                private_ip()
             elif choice == '7':
-                gre6_menu()
+                gre_menu()
             elif choice == '8':
-                i6to4_no()
+                gre6_menu()
             elif choice == '9':
-                i6to4_any()
+                gre6tap_mnu()
             elif choice == '10':
-                remove_menu()
+                i6to4_no()
             elif choice == '11':
-                ip6_mnu_ip()
+                i6to4_any()
             elif choice == '12':
-                gre6_mnu_ip()
+                remove_menu()
             elif choice == '13':
-                priv_mnu_ip()
+                ip6_mnu_ip()
             elif choice == '14':
-                i6to41_any()
+                gre6_mnu_ip()
             elif choice == '15':
-                mtu2_menu()
+                priv_mnu_ip()
             elif choice == '16':
+                i6to41_any()
+            elif choice == '17':
+                mtu2_menu()
+            elif choice == '18':
                 remove2_menu()
             elif choice == 'q':
                 print("Exiting...")
@@ -213,7 +219,7004 @@ def main_menu():
     except KeyboardInterrupt:
         display_error("\033[91m\nProgram interrupted. Exiting...\033[0m")
         sys.exit()
+
+## gre6tap simple
+
+def gre6tap_mnu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mGRE6tap\033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print("1. \033[92mGRE6tap IPV4 \033[0m")
+    print("2. \033[93mGRE6tap Native \033[0m")
+    print('0. \033[91mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gretap4()
+            break
+        elif server_type == '2':
+            gretapn()
+            break
+        elif server_type == '0':
+            clear()
+            main_menu()
+            break
+        else:
+            print('Invalid choice.')    
+
+
+def gretapn():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[96mNative \033[93m+\033[92m Gretap6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gre6tap_k()
+            break
+        elif server_type == '2':
+            gre6tap_i()
+            break
+        elif server_type == '3':
+            clear()
+            gre6tap_mnu()
+            break
+        else:
+            print('Invalid choice.')
+
+            
+def gre6tapk_tunnel():
+    global local_ip, remote_ip
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+		
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip link add name azumig6 type ip6gretap local {local_ip} remote {remote_ip}' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::1/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::1\n".format(interface)
+            with open('/etc/gre6.sh', 'a') as f:
+                f.write(rt_command)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+
+    sleep(1)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+
+
+def kharej_gre6tap_tunnel():
+    global local_ip, remote_ip
+    gre6tapk_tunnel()
+    ip_address = "2002:831a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)   
+    ping_gre6_service()
+    gre6_cronjob()
+    
+
+def gre6tap_k():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+ 
+
+# iran  native 
+
+def gre6tapi_tunnel():
+    global local_ip, remote_ip
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+	
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip link add name azumig6 type ip6gretap local {local_ip} remote {remote_ip}' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::2/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2\n".format(interface)
+            with open('/etc/gre6.sh', 'a') as f:
+                f.write(rt_command)
+    else:        
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+    sleep(1)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+   
+
+def iran_gre6tap_tunnel():
+    global local_ip, remote_ip
+    gre6tapi_tunnel()
+    ip_address = "2002:831a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)    
+    iran_gre6_service()
+    gre6_cronjob()
+    
+            
+def gre6tap_i():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+## gre6tap ip4
+
+def gretap4():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[96mGRE6tap \033[93m+ \033[92mIPV4 \033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gre6tap6_kharej()
+            break
+        elif server_type == '2':
+            gre6tap6_iran()
+            break
+        elif server_type == '3':
+            clear()
+            gre6tap_mnu()
+            break
+        else:
+            print('Invalid choice.')
+            
+               
+def gre6tap6_kharej():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+            
+def gre6tap6_iran():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+
+
+def espn_menu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mERSPAN\033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print("1. \033[92mErspan \033[0m")
+    print("2. \033[93mErspan + \033[92mNative \033[0m")
+    print("3. \033[96mErspan + Gre6 \033[0m")
+    print("4. \033[93mErspan + Gretap6 \033[0m")
+    print("5. \033[92mErspan + IPsec Tunnels \033[0m")
+    print('0. \033[91mback to the main menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            ip4_spn()
+            break
+        elif server_type == '2':
+            ip6_spn()
+            break
+        elif server_type == '3':
+            spn_gre6()
+            break
+        elif server_type == '4':
+            spn_gre6tap()
+            break
+        elif server_type == '5':
+            ipsec_mnu()
+            break
+        elif server_type == '0':
+            clear()
+            main_menu()
+            break
+        else:
+            print('Invalid choice.')
+## simple ip4 & native gretap6
+def spn_gre6tap():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mGRE6tap \033[93m+ \033[96mErspan\033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print("1. \033[92mErspan + GRE6tap IPV4 \033[0m")
+    print("2. \033[93mErspan + GRE6tap Native \033[0m")
+    print('0. \033[91mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn_gretap4()
+            break
+        elif server_type == '2':
+            spn_gretapn()
+            break
+        elif server_type == '0':
+            clear()
+            espn_menu()
+            break
+        else:
+            print('Invalid choice.')    
+
+# native gre spn
+def spn_gretapn():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mERSPAN +  \033[96mNative \033[93m+\033[92m Gretap6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn_sim_gre6tapk()
+            break
+        elif server_type == '2':
+            spn_sim_gre6tapi()
+            break
+        elif server_type == '3':
+            clear()
+            spn_gre6tap()
+            break
+        else:
+            print('Invalid choice.')
+            
+def spn_sim_gre6tapk():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn_ip4_gretapk1()
+            break
+        elif server_type == '2':
+            spn_ip4_gretapk2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def tap6rn_kharej1_tunnel():
+    global local_ip, remote_ip
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+		
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip link add name azumig6 type ip6gretap local {local_ip} remote {remote_ip}' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::1/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::1\n".format(interface)
+            with open('/etc/gre6.sh', 'a') as f:
+                f.write(rt_command)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+
+    sleep(1)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+
+def tap6rn_kharej1():
+    tap6rn_kharej1_tunnel()
+    ip_address = "2002:831a::2" #iranip
+    max_pings = 3
+    interval = 20
+    create_ping_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', '2002:831a::2'], capture_output=True, text=True).stdout.strip()
+    print(ping_result)   
+    ping_gre6_service()
+    gre6_cronjob()
+    
+
+def spn_ip4_gretapk1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    tap6rn_kharej1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+
+def spn_ip4_gretapk2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    tap6rn_kharej1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+  
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::1/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::1/64 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan3_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "        2001:db8::1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::2"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+
+# iran    
+
+def tap6rn_iran1_tunnel():
+    global local_ip, remote_ip
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+	
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip link add name azumig6 type ip6gretap local {local_ip} remote {remote_ip}' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::2/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2\n".format(interface)
+            with open('/etc/gre6.sh', 'a') as f:
+                f.write(rt_command)
+    else:        
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+    sleep(1)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+   
+
+def tap6rn_iran1():
+    tap6rn_iran1_tunnel()
+    ip_address = "2002:831a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)    
+    iran_gre6_service()
+    gre6_cronjob()
+    
+def spn_sim_gre6tapi():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn_ip4_gretapi1()
+            break
+        elif server_type == '2':
+            spn_ip4_gretapi2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def spn_ip4_gretapi1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    tap6rn_iran1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan2_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
+
+def spn_ip4_gretapi2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    tap6rn_iran1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::2/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::2/64 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan4_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::2\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+  
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 	
+
+# ip4 gre6 erspan
+
+def spn_gretap4():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mErspan \033[93m+ \033[96mGRE6tap \033[93m+ \033[92mIPV4 \033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gretapk_spn()
+            break
+        elif server_type == '2':
+            gretapi_spn()
+            break
+        elif server_type == '3':
+            clear()
+            spn_gre6tap()
+            break
+        else:
+            print('Invalid choice.')
+            
+def gretapk_spn():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mKharej server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    spn_kh_tap()
+    
+def spn_kh_tap():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn_ipk_tap1()
+            break
+        elif server_type == '2':
+            spn_ipk_tap2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def spn_ipk_tap1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+
+def spn_ipk_tap2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::1/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::1/64 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan3_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::2"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+
+def gretapi_spn():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mIRAN server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring IRAN server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    spn2_tapir()
+    
+def spn2_tapir():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn_tapipi_1()
+            break
+        elif server_type == '2':
+            spn_tapipi_2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def spn_tapipi_1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan2_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
+
+def spn_tapipi_2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::2/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::2/64 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan4_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::2\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 
+    
+# simple ip4 & native gre6
+def spn_gre6():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mGRE6 \033[93m+ \033[96mErspan\033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print("1. \033[92mErspan + GRE6 IPV4 \033[0m")
+    print("2. \033[93mErspan + GRE6 Native \033[0m")
+    print('0. \033[91mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn_gre4()
+            break
+        elif server_type == '2':
+            spn_gren()
+            break
+        elif server_type == '0':
+            clear()
+            espn_menu()
+            break
+        else:
+            print('Invalid choice.')    
+
+# native gre spn
+def spn_gren():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mERSPAN +  \033[96mNative \033[93m+\033[92m Gre6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn_sim_gre6k()
+            break
+        elif server_type == '2':
+            spn_sim_gre6i()
+            break
+        elif server_type == '3':
+            clear()
+            spn_gre6()
+            break
+        else:
+            print('Invalid choice.')
+            
+def spn_sim_gre6k():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn_ip4_grek1()
+            break
+        elif server_type == '2':
+            spn_ip4_grek2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def gree6rn_kharej1_tunnel():
+    global local_ip, remote_ip
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+		
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig6 mode ip6gre remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::1/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::1\n".format(interface)
+            with open('/etc/gre6.sh', 'a') as f:
+                f.write(rt_command)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+
+    sleep(1)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+
+
+def gree6rn_kharej1():
+    gree6rn_kharej1_tunnel()
+    ip_address = "2002:831a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)   
+    ping_gre6_service()
+    gre6_cronjob()
+    
+
+def spn_ip4_grek1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    gree6rn_kharej1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+
+def spn_ip4_grek2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    gree6rn_kharej1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+  
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::1/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::1/64 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan3_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::2"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+
+# iran    
+
+def gree6rn_iran1_tunnel():
+    global local_ip, remote_ip
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+	
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig6 mode ip6gre remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::2/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2\n".format(interface)
+            with open('/etc/gre6.sh', 'a') as f:
+                f.write(rt_command)
+    else:        
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+    sleep(1)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+   
+
+def gree6rn_iran1():
+    gree6rn_iran1_tunnel()
+    ip_address = "2002:831a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)    
+    iran_gre6_service()
+    gre6_cronjob()
+    
+def spn_sim_gre6i():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn_ip4_grei1()
+            break
+        elif server_type == '2':
+            spn_ip4_grei2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def spn_ip4_grei1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    gree6rn_iran1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan2_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
+
+def spn_ip4_grei2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    gree6rn_iran1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::2/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::2/64 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan4_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::2\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+  
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 	
+
+# ip4 gre6 erspan
+
+def spn_gre4():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mErspan \033[93m+ \033[96mGRE6 \033[93m+ \033[92mIPV4 \033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            kharej_spn_mnu()
+            break
+        elif server_type == '2':
+            iran_spn_mnu()
+            break
+        elif server_type == '3':
+            clear()
+            spn_gre6()
+            break
+        else:
+            print('Invalid choice.')
+            
+def kharej_spn_mnu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mKharej server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    spn_kh()
+    
+def spn_kh():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn_ipk_1()
+            break
+        elif server_type == '2':
+            spn_ipk_2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def spn_ipk_1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej1_gre6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+
+def spn_ipk_2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej1_gre6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::1/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::1/64 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan3_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::2"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+
+def iran_spn_mnu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mIRAN server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring IRAN server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    spn2_ir()
+    
+def spn2_ir():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn_ipi_1()
+            break
+        elif server_type == '2':
+            spn_ipi_2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def spn_ipi_1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran1_gre6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan2_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
+
+def spn_ipi_2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran1_gre6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::2/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::2/64 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan4_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::2\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 
+
+# gre6tap ip4 & ip6    
+
+def ipsec_mnu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mErspan + IPsec\033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print("1. \033[92mErspan + IPsec \033[0m")
+    print("2. \033[96mGRE6 | Erspan + IPsec  \033[0m")
+    print("3. \033[93mGRE6tap | Erspan + IPsec  \033[0m")
+    print("4. \033[96mIPsec Reset Timer \033[92m[Optional] \033[0m")
+    print('0. \033[91mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            simple_ipsec_mn()
+            break
+        elif server_type == '2':
+            espn_sec()
+            break
+        elif server_type == '3':
+            espn_gretap()
+            break
+        elif server_type == '4':
+            choose_reset()
+            break
+        elif server_type == '0':
+            clear()
+            espn_menu()
+            break
+        else:
+            print('Invalid choice.')
+# reset 
+def ipsec_sh():
+    subprocess.run(['rm', '-f', '/etc/ipsec.sh'])
+
+    ipsec_script = """
+#!/bin/bash
+
+systemctl restart strongswan-starter
+systemctl restart strongswan
+
+
+"""
+
+    with open('/etc/ipsec.sh', 'w') as file:
+        file.write(ipsec_script)
+    subprocess.run(['chmod', '+x', '/etc/ipsec.sh'])
+def delete_cron1():
+    entries_to_delete = [
+        "0 * * * * /bin/bash /etc/ipsec.sh",
+        "0 */2 * * * /bin/bash /etc/ipsec.sh",
+        "0 */3 * * * /bin/bash /etc/ipsec.sh",
+        "0 */4 * * * /bin/bash /etc/ipsec.sh",
+        "0 */5 * * * /bin/bash /etc/ipsec.sh",
+        "0 */6 * * * /bin/bash /etc/ipsec.sh",
+        "0 */7 * * * /bin/bash /etc/ipsec.sh",
+        "0 */8 * * * /bin/bash /etc/ipsec.sh",
+        "0 */9 * * * /bin/bash /etc/ipsec.sh",
+        "0 */10 * * * /bin/bash /etc/ipsec.sh",
+        "0 */11 * * * /bin/bash /etc/ipsec.sh",
+        "0 */12 * * * /bin/bash /etc/ipsec.sh",
+        "0 */13 * * * /bin/bash /etc/ipsec.sh",
+        "0 */14 * * * /bin/bash /etc/ipsec.sh",
+        "0 */15 * * * /bin/bash /etc/ipsec.sh",
+        "0 */16 * * * /bin/bash /etc/ipsec.sh",
+        "0 */17 * * * /bin/bash /etc/ipsec.sh",
+        "0 */18 * * * /bin/bash /etc/ipsec.sh",
+        "0 */19 * * * /bin/bash /etc/ipsec.sh",
+        "0 */20 * * * /bin/bash /etc/ipsec.sh",
+        "0 */21 * * * /bin/bash /etc/ipsec.sh",
+        "0 */22 * * * /bin/bash /etc/ipsec.sh",
+        "0 */23 * * * /bin/bash /etc/ipsec.sh",
+    ]
+
+    existing_crontab = ""
+    try:
+        existing_crontab = subprocess.check_output("crontab -l", shell=True).decode()
+    except subprocess.CalledProcessError:
+
+        return
+
+    new_crontab = existing_crontab
+    for entry in entries_to_delete:
+        if entry in existing_crontab:
+            new_crontab = new_crontab.replace(entry, "")
+
+    if new_crontab != existing_crontab:
+        subprocess.call(f"echo '{new_crontab}' | crontab -", shell=True)
+        display_notification("\033[92mDeleting Previous Crons..\033[0m")
+
+
+def delete_cron2():
+    entries_to_delete = [
+        "*/1 * * * * /bin/bash /etc/ipsec.sh",  
+        "*/2 * * * * /bin/bash /etc/ipsec.sh",  
+        "*/3 * * * * /bin/bash /etc/ipsec.sh",  
+        "*/4 * * * * /bin/bash /etc/ipsec.sh",  
+        "*/5 * * * * /bin/bash /etc/ipsec.sh",  
+        "*/6 * * * * /bin/bash /etc/ipsec.sh",
+        "*/7 * * * * /bin/bash /etc/ipsec.sh",
+        "*/8 * * * * /bin/bash /etc/ipsec.sh",
+        "*/9 * * * * /bin/bash /etc/ipsec.sh",
+        "*/10 * * * * /bin/bash /etc/ipsec.sh",  
+        "*/11 * * * * /bin/bash /etc/ipsec.sh",  
+        "*/12 * * * * /bin/bash /etc/ipsec.sh", 
+        "*/13 * * * * /bin/bash /etc/ipsec.sh",
+        "*/14 * * * * /bin/bash /etc/ipsec.sh",
+        "*/15 * * * * /bin/bash /etc/ipsec.sh",
+        "*/16 * * * * /bin/bash /etc/ipsec.sh",
+        "*/17 * * * * /bin/bash /etc/ipsec.sh",
+        "*/18 * * * * /bin/bash /etc/ipsec.sh",
+        "*/19 * * * * /bin/bash /etc/ipsec.sh",
+        "*/20 * * * * /bin/bash /etc/ipsec.sh",
+        "*/21 * * * * /bin/bash /etc/ipsec.sh",
+        "*/22 * * * * /bin/bash /etc/ipsec.sh",
+        "*/23 * * * * /bin/bash /etc/ipsec.sh",
+        "*/24 * * * * /bin/bash /etc/ipsec.sh",
+        "*/25 * * * * /bin/bash /etc/ipsec.sh",
+        "*/26 * * * * /bin/bash /etc/ipsec.sh",
+        "*/27 * * * * /bin/bash /etc/ipsec.sh",
+        "*/28 * * * * /bin/bash /etc/ipsec.sh",
+        "*/29 * * * * /bin/bash /etc/ipsec.sh",
+        "*/30 * * * * /bin/bash /etc/ipsec.sh",
+        "*/31 * * * * /bin/bash /etc/ipsec.sh",
+        "*/32 * * * * /bin/bash /etc/ipsec.sh",
+        "*/33 * * * * /bin/bash /etc/ipsec.sh",
+        "*/34 * * * * /bin/bash /etc/ipsec.sh",
+        "*/35 * * * * /bin/bash /etc/ipsec.sh",
+        "*/36 * * * * /bin/bash /etc/ipsec.sh",
+        "*/37 * * * * /bin/bash /etc/ipsec.sh",
+        "*/38 * * * * /bin/bash /etc/ipsec.sh",
+        "*/39 * * * * /bin/bash /etc/ipsec.sh",
+        "*/40 * * * * /bin/bash /etc/ipsec.sh",
+        "*/41 * * * * /bin/bash /etc/ipsec.sh",
+        "*/42 * * * * /bin/bash /etc/ipsec.sh",
+        "*/43 * * * * /bin/bash /etc/ipsec.sh",
+        "*/44 * * * * /bin/bash /etc/ipsec.sh",
+        "*/45 * * * * /bin/bash /etc/ipsec.sh",
+        "*/46 * * * * /bin/bash /etc/ipsec.sh",
+        "*/47 * * * * /bin/bash /etc/ipsec.sh",
+        "*/48 * * * * /bin/bash /etc/ipsec.sh",
+        "*/49 * * * * /bin/bash /etc/ipsec.sh",
+        "*/50 * * * * /bin/bash /etc/ipsec.sh",
+        "*/51 * * * * /bin/bash /etc/ipsec.sh",
+        "*/52 * * * * /bin/bash /etc/ipsec.sh",
+        "*/53 * * * * /bin/bash /etc/ipsec.sh",
+        "*/54 * * * * /bin/bash /etc/ipsec.sh",
+        "*/55 * * * * /bin/bash /etc/ipsec.sh",
+        "*/56 * * * * /bin/bash /etc/ipsec.sh",
+        "*/57 * * * * /bin/bash /etc/ipsec.sh",
+        "*/58 * * * * /bin/bash /etc/ipsec.sh",
+        "*/59 * * * * /bin/bash /etc/ipsec.sh",
         
+        
+    ]
+
+    existing_crontab = ""
+    try:
+        existing_crontab = subprocess.check_output("crontab -l", shell=True).decode()
+    except subprocess.CalledProcessError:
+        
+        return
+
+    new_crontab = existing_crontab
+    for entry in entries_to_delete:
+        if entry in existing_crontab:
+            new_crontab = new_crontab.replace(entry, "")
+
+    if new_crontab != existing_crontab:
+        subprocess.call(f"echo '{new_crontab}' | crontab -", shell=True)
+        display_notification("\033[92mDeleting Previous Crons..\033[0m")
+     
+        
+def reset_hour():
+    hours = int(input("\033[93mEnter the \033[92mReset Timer\033[93m [in hours]:\033[0m "))
+    delete_cron1()
+    delete_cron2()
+
+    if hours == 1:
+        cron_entry = "0 * * * * /bin/bash /etc/ipsec.sh"
+    else:
+        cron_entry = f"0 */{hours} * * * /bin/bash /etc/ipsec.sh"
+
+    try:
+        process = subprocess.run('crontab -l', shell=True, capture_output=True, text=True)
+        existing_crontab = process.stdout
+
+        if existing_crontab.strip() != "":
+            new_crontab = f"{existing_crontab.rstrip()}\n{cron_entry}"
+        else:
+            new_crontab = cron_entry
+
+        new_crontab += '\n'
+
+        process = subprocess.run('crontab -', shell=True, input=new_crontab, text=True, capture_output=True)
+
+        if process.returncode == 0:
+            print("\033[92mCron entry added successfully!\033[0m")
+        else:
+            print(f"Failed to add cron entry. Error: {process.stderr}")
+    except Exception as e:
+        print(f"Error: {e}")
+
+def reset_minutes():
+    minutes = int(input("\033[93mEnter the \033[92mReset Timer\033[93m [in minutes]:\033[0m "))
+    delete_cron1()
+    delete_cron2()
+
+    cron_entry = f"*/{minutes} * * * * /bin/bash /etc/ipsec.sh"
+
+    try:
+        process = subprocess.run('crontab -l', shell=True, capture_output=True, text=True)
+        existing_crontab = process.stdout
+
+        if existing_crontab.strip() != "":
+            new_crontab = f"{existing_crontab.rstrip()}\n{cron_entry}"
+        else:
+            new_crontab = cron_entry
+
+        new_crontab += '\n'
+
+        process = subprocess.run('crontab -', shell=True, input=new_crontab, text=True, capture_output=True)
+
+        if process.returncode == 0:
+            print("\033[92mCron entry added successfully!\033[0m")
+        else:
+            print(f"Failed to add cron entry. Error: {process.stderr}")
+    except Exception as e:
+        print(f"Error: {e}")
+
+def choose_reset():
+    reset_unit = input("\033[93mChoose the reset timer unit:\n1. \033[92mHours\n\033[93m2.\033[96m Minutes\n\033[93mEnter your choice (\033[92m1\033[93m or\033[96m 2\033[93m): \033[0m")
+
+    if reset_unit == "1":
+        reset_hour()
+    elif reset_unit == "2":
+        reset_minutes()
+    else:
+        print("\033[91mInvalid choice. Plz enter 1 or 2.\033[0m")
+
+    ipsec_sh()
+
+## simpe ip4 
+def ip4_spn():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mErspan \033[93m+ IPV4 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            simple_spnkh()
+            break
+        elif server_type == '2':
+            simple_spnir()
+            break
+        elif server_type == '3':
+            clear()
+            espn_menu()
+            break
+        else:
+            print('Invalid choice.')
+            
+def simple_spnkh():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mKharej server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    spn_sim_kharej()
+    
+def spn_sim_kharej():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            ip4_simpk1()
+            break
+        elif server_type == '2':
+            ip4_simk2()
+            break
+        else:
+            print('Invalid choice.')
+
+    
+def ip4_simpk1():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")    
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+
+def ip4_simk2():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")    
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::1/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::1/64 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan3_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::2"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+
+def simple_spnir():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mIRAN server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring IRAN server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    spn_sim_iran()
+    
+def spn_sim_iran():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            ip4_simpi1()
+            break
+        elif server_type == '2':
+            ip4_simpi2()
+            break
+        else:
+            print('Invalid choice.')
+
+def ip4_simpi1():
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")    
+
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan2_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")  
+    
+def ip4_simpi2():
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")    
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::2/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 2001:db8::2/64 dev azumiespn\n")
+
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan4_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::2\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 
+
+## simple ip6
+def ip6_spn():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mErspan \033[93m+ Native  \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            simple_ip6_n()
+            break
+        elif server_type == '2':
+            simple_ip6i_n()
+            break
+        elif server_type == '3':
+            clear()
+            espn_menu()
+            break
+        else:
+            print('Invalid choice.')
+            
+def simple_ip6_n():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mKharej server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ip6_simple1_n()
+    
+def ip6_simple1_n():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            ip6_simk1_n()
+            break
+        elif server_type == '2':
+            ip6_simk2_n()
+            break
+        else:
+            print('Invalid choice.')
+    
+def ip6_simk1_n():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")    
+
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+
+def ip6_simk2_n():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")    
+
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::1/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::1/64 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan3_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::2"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+
+def simple_ip6i_n():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mIRAN server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring IRAN server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ip6_simple2_n()
+    
+def ip6_simple2_n():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            ip6_simpi1_n()
+            break
+        elif server_type == '2':
+            ip6_simpi2_n()
+            break
+        else:
+            print('Invalid choice.')
+
+def ip6_simpi1_n():
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")    
+
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumiespn\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan2_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")  
+    
+def ip6_simpi2_n():
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")    
+
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::2/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 2001:db8::2/64 dev azumiespn\n")
+
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan4_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::2\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 
+
+    
+## simple ipsec
+def simple_ipsec_mn():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mErspan \033[93m+ \033[92mIPsec Menu \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mNative + Erspan\033[0m')
+    print('2. \033[93mIPV4 + Erspan\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            simple_ipsec_n()
+            break
+        elif server_type == '2':
+            simple_ipsec()
+            break
+        elif server_type == '3':
+            clear()
+            ipsec_mnu()
+            break
+        else:
+            print('Invalid choice.')
+            
+def simple_ipsec():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mErspan \033[93m+ IPV4 + \033[92mIPsec \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            simple_ipseck()
+            break
+        elif server_type == '2':
+            simple_ipseci()
+            break
+        elif server_type == '3':
+            clear()
+            simple_ipsec_mn()
+            break
+        else:
+            print('Invalid choice.')
+            
+def simple_ipseck():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mKharej server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    espan_simple1()
+    
+def espan_simple1():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espan_simpk1()
+            break
+        elif server_type == '2':
+            espan_simpk2()
+            break
+        else:
+            print('Invalid choice.')
+
+def config_strongsw_simk1(local_ip, local_subnet, remote_ip, remote_subnet, psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+conn ipsecsit
+  left=%defaultroute
+  leftsubnet={local_subnet}
+  leftid={local_ip}
+  right={remote_ip}
+  rightsubnet={remote_subnet}
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'{remote_ip} {local_ip} : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+def config_strongsw_simk2(local_ip, local_subnet, remote_ip, remote_subnet, psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+conn ipsecsit
+  left=%defaultroute
+  leftsubnet={local_subnet}
+  leftid={local_ip}
+  right={remote_ip}
+  rightsubnet={remote_subnet}
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'{remote_ip} {local_ip} : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+def config_strongsw_simi1(local_ip, local_subnet, remote_ip, remote_subnet, psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+conn ipsecsit
+  left={local_ip}
+  right={remote_ip}
+  leftsubnet={local_subnet}
+  rightsubnet={remote_subnet}
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'{remote_ip} {local_ip} : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+def config_strongsw_simi2(local_ip, local_subnet, remote_ip, remote_subnet, psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+conn ipsecsit
+  left=%defaultroute
+  leftsubnet={local_subnet}
+  leftid={local_ip}
+  right={remote_ip}
+  rightsubnet={remote_subnet}
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'{remote_ip} {local_ip} : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def espan_simpk1():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    local_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m") 
+    config_strongsw_simk1(local_ip, local_subnet, remote_ip, remote_subnet, psk)
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+
+def espan_simpk2():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    local_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+
+    config_strongsw_simk2(local_ip, local_subnet, remote_ip, remote_subnet, psk)
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::1/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::1/64 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan3_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::2"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+
+def simple_ipseci():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mIRAN server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring IRAN server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    espan_simple2()
+    
+def espan_simple2():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espan_simpi1()
+            break
+        elif server_type == '2':
+            espan_simpi2()
+            break
+        else:
+            print('Invalid choice.')
+
+def espan_simpi1():
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    local_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m") 
+    remote_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+
+    config_strongsw_simi1(local_ip, local_subnet, remote_ip, remote_subnet, psk)
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan2_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")  
+    
+def espan_simpi2():
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    local_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m") 
+    remote_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+
+    config_strongsw_simi2(local_ip, local_subnet, remote_ip, remote_subnet, psk)
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::2/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 2001:db8::2/64 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan4_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::2\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")  
+    
+# native erspan
+def simple_ipsec_n():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mErspan \033[93m+ Native + \033[92mIPsec \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            simple_ipseck_n()
+            break
+        elif server_type == '2':
+            simple_ipseci_n()
+            break
+        elif server_type == '3':
+            clear()
+            simple_ipsec_mn()
+            break
+        else:
+            print('Invalid choice.')
+            
+def simple_ipseck_n():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mKharej server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    espan_simple1_n()
+    
+def espan_simple1_n():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espan_simk1_n()
+            break
+        elif server_type == '2':
+            espan_simk2_n()
+            break
+        else:
+            print('Invalid choice.')
+
+def config_strongsw_simk1(local_ip, local_subnet, remote_ip, remote_subnet, psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+conn ipsecsit
+  left=%defaultroute
+  leftsubnet={local_subnet}
+  leftid={local_ip}
+  right={remote_ip}
+  rightsubnet={remote_subnet}
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'{remote_ip} {local_ip} : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+def config_strongsw_simk2(local_ip, local_subnet, remote_ip, remote_subnet, psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+conn ipsecsit
+  left=%defaultroute
+  leftsubnet={local_subnet}
+  leftid={local_ip}
+  right={remote_ip}
+  rightsubnet={remote_subnet}
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'{remote_ip} {local_ip} : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+def config_strongsw_simi1(local_ip, local_subnet, remote_ip, remote_subnet, psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+conn ipsecsit
+  left=%defaultroute
+  leftsubnet={local_subnet}
+  leftid={local_ip}
+  right={remote_ip}
+  rightsubnet={remote_subnet}
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'{remote_ip} {local_ip} : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+def config_strongsw_simi2(local_ip, local_subnet, remote_ip, remote_subnet, psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.") 
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+conn ipsecsit
+  left=%defaultroute
+  leftsubnet={local_subnet}
+  leftid={local_ip}
+  right={remote_ip}
+  rightsubnet={remote_subnet}
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'{remote_ip} {local_ip} : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def espan_simk1_n():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    local_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+
+    config_strongsw_simk1(local_ip, local_subnet, remote_ip, remote_subnet, psk)
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+
+def espan_simk2_n():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    local_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+
+    config_strongsw_simk2(local_ip, local_subnet, remote_ip, remote_subnet, psk)
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::1/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::1/64 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan3_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::2"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+
+def simple_ipseci_n():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mIRAN server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring IRAN server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    espan_simple2_n()
+    
+def espan_simple2_n():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espan_simpi1_n()
+            break
+        elif server_type == '2':
+            espan_simpi2_n()
+            break
+        else:
+            print('Invalid choice.')
+
+def espan_simpi1_n():
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    local_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m") 
+    remote_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+
+    config_strongsw_simi1(local_ip, local_subnet, remote_ip, remote_subnet, psk)
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan2_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")  
+    
+def espan_simpi2_n():
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    local_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m") 
+    remote_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+
+    config_strongsw_simi2(local_ip, local_subnet, remote_ip, remote_subnet, psk)
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", local_ip, "remote", remote_ip, "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::2/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local {local_ip} remote {remote_ip} seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 2001:db8::2/64 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan4_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::2\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")
+## gre6tap erspan
+  
+def gre6tap_tunnel(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip link add name azumig6 type ip6gretap local {local_ip} remote {remote_ip}' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::1/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    created_ips = []
+    for i in range(2, num_additional_ips + 2):
+        ip_address = f"2002:83{i}a::1"
+        created_ips.append(ip_address)
+        command = f"echo 'ip -6 addr add {ip_address}/64 dev azumig6' >> {file_path}"
+        subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::1\n".format(interface)
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n" 
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IPv6 Addresses:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:831a::1               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")    
+    
+def gre6tap_kharej():
+    remote_ip = "fd1d:fc98:b73e:b481::2" #iran-ip
+    local_ip = "fd1d:fc98:b73e:b481::1"   #kharej ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6tap\033[97m tunnel: "))
+    gre6tap_tunnel(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:831a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    ping_gre6_service()
+
+    gre6_cronjob()
+    
+def kharej_gretap6_menu():
+    os.system("clear")
+    global local_ip, remote_ip
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GREtap6 \033[92mKharej\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private.sh"):
+        os.remove("/etc/private.sh")
+
+
+    subprocess.run(["ip", "tunnel", "add", "azumi", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "fd1d:fc98:b73e:b481::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi up\n")
+        f.write("ip addr add fd1d:fc98:b73e:b481::1/64 dev azumi\n")
+        f.write("ip -6 route add fd1d::/16 dev azumi\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+        with open("/etc/private.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    add_cron_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_ping()
+    sleep(1)
+    
+
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="fd1d:fc98:b73e:b481::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v6.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v6.sh', 0o755)
+    ping_v6_service()
+    display_notification("\033[93mConfiguring...\033[0m")
+    sleep(1)
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    display_checkmark("\033[92mGRE6tap Configuration Completed!\033[0m")
+    gre6tap_kharej()
+    sleep(1)	
+
+def gretap6_iran():
+    remote_ip = "fd1d:fc98:b73e:b481::1" #kharej ip
+    local_ip = "fd1d:fc98:b73e:b481::2"   #iran ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6tap\033[97m tunnel: "))
+    gretap6_iran_tunnel(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:831a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    iran_gre6_service()
+
+    gre6_cronjob()
+
+def gretap6_iran_tunnel(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip link add name azumig6 type ip6gretap local {local_ip} remote {remote_ip}' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::2/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    created_ips = []
+    for i in range(2, num_additional_ips + 2):
+        ip_address = f"2002:83{i}a::2"
+        created_ips.append(ip_address)
+        command = f"echo 'ip -6 addr add {ip_address}/64 dev azumig6' >> {file_path}"
+        subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2\n".format(interface)
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GREtap6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IPv6 Addresses:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:831a::2               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    
+def iran_gretap6_menu():
+    os.system("clear")
+    global local_ip, remote_ip
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE6tap \033[92mIran\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Iran server...\033[0m")
+
+    if os.path.isfile("/etc/private.sh"):
+        os.remove("/etc/private.sh")
+
+
+    subprocess.run(["ip", "tunnel", "add", "azumi", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "fd1d:fc98:b73e:b481::2/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi up\n")
+        f.write("ip addr add fd1d:fc98:b73e:b481::2/64 dev azumi\n")
+        f.write("ip -6 route add fd1d::/16 dev azumi\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+        with open("/etc/private.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    sleep(1)
+    add_cron_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    iran_ping()
+    
+
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="fd1d:fc98:b73e:b481::1"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v6.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v6.sh', 0o755)
+    ping_v6_service()
+    gretap6_iran()
+    display_notification("\033[93mConfiguring...\033[0m")
+    sleep(1)
+    sleep(1)	
+    display_checkmark("\033[92mGRE6tap Configuration Completed!\033[0m")
+	
+def espn_gretap():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mGRE6tap \033[93m+ \033[96mErspan\033[93m + \033[91mIPsec\033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print("1. \033[92mErspan + GRE6tap | IPsec + IPV4 \033[0m")
+    print("2. \033[93mErspan + GRE6tap | IPsec + Native \033[0m")
+    print('0. \033[91mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espn_gretap_ipsec()
+            break
+        elif server_type == '2':
+            espn_gretap_ipsec2()
+            break
+        elif server_type == '0':
+            clear()
+            ipsec_mnu()
+            break
+        else:
+            print('Invalid choice.')       
+    
+def espn_gretap_ipsec():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mErspan \033[93m+ \033[96mGre6tap \033[93m+ \033[92mIPV4 \033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            kharej_gretap_espn()
+            break
+        elif server_type == '2':
+            iran_gretap_espn()
+            break
+        elif server_type == '3':
+            clear()
+            espn_gretap()
+            break
+        else:
+            print('Invalid choice.')
+            
+def kharej_gretap_espn():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mKharej server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    espan_ipgre1()
+    
+def espan_ipgre1():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espan_ipk_gre1()
+            break
+        elif server_type == '2':
+            espan_ipk_gre2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def espan_ipk_gre1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+
+    kharej_gretap6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m") 
+    config_strongswank_gre62(psk)
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+
+def espan_ipk_gre2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+
+    kharej_gretap6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_strongswank_gre6(psk)
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::1/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::1/64 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan3_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::2"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+
+def iran_gretap_espn():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mIRAN server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring IRAN server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    espan_ipgre2()
+    
+def espan_ipgre2():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espan_ipi_gre1()
+            break
+        elif server_type == '2':
+            espan_ipi_gre2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def espan_ipi_gre1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+   
+    iran_gretap6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_strongswani_gre62(psk)
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan2_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
+
+def espan_ipi_gre2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m") 
+
+    iran_gretap6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_strongswani_gre6(psk)
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::2/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::2/64 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan4_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::2\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 
+## gre6tap native
+def espn_gretap_ipsec2():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mErspan \033[93m+ \033[96mGre6tap \033[93m+ \033[92mNative \033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            kharejna_gretap_espn()
+            break
+        elif server_type == '2':
+            iranna_gretap_espn()
+            break
+        elif server_type == '3':
+            clear()
+            espn_gretap()
+            break
+        else:
+            print('Invalid choice.')
+            
+def kharejna_gretap_espn():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mKharej server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    espan_ipgrena1()
+    
+def espan_ipgrena1():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espan_ipk_grena1()
+            break
+        elif server_type == '2':
+            espan_ipk_grena2()
+            break
+        else:
+            print('Invalid choice.')
+
+# kharej prequisite
+def gre6tapna_tunnel():
+    global local_ip, remote_ip
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip link add name azumig6 type ip6gretap local {local_ip} remote {remote_ip}' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::1/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::1\n".format(interface)
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n" 
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IPv6 Addresses:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:831a::1               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")    
+    
+def gre6tapna_kharej():
+    global local_ip, remote_ip
+    gre6tapna_tunnel()
+    ip_address = "2002:831a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    ping_gre6_service()
+
+    gre6_cronjob()            
+def espan_ipk_grena1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+
+    gre6tapna_kharej()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m") 
+    config_strongswank_gre62(psk)
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+
+def espan_ipk_grena2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+
+    gre6tapna_kharej()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_strongswank_gre6(psk)
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::1/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::1/64 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan3_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::2"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+## iran prequisite 
+def gretap6na_iran():
+    global local_ip, remote_ip
+    gretap6na_iran_tunnel()
+    ip_address = "2002:831a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    iran_gre6_service()
+
+    gre6_cronjob()
+
+def gretap6na_iran_tunnel():
+    global local_ip, remote_ip
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip link add name azumig6 type ip6gretap local {local_ip} remote {remote_ip}' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::2/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2\n".format(interface)
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(rt_command)
+        subprocess.run(rt_command, shell=True, check=True)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GREtap6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IPv6 Addresses:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:831a::2               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    
+def iranna_gretap_espn():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mIRAN server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring IRAN server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    espan_ipgrena2()
+    
+def espan_ipgrena2():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espan_ipi_grena1()
+            break
+        elif server_type == '2':
+            espan_ipi_grena2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def espan_ipi_grena1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+   
+    gretap6na_iran()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_strongswani_gre62(psk)
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan2_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
+
+def espan_ipi_grena2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m") 
+
+    gretap6na_iran()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_strongswani_gre6(psk)
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::2/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::2/64 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan4_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::2\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 
+
+## gre6 erspan            
+def espn_sec():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mGRE6 \033[93m+ \033[96mErspan\033[93m + \033[91mIPsec\033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print("1. \033[92mErspan + GRE6 | IPsec + IPV4 \033[0m")
+    print("2. \033[93mErspan + GRE6 | IPsec + Native \033[0m")
+    print('0. \033[91mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espn_ipsec()
+            break
+        elif server_type == '2':
+            spn_ip()
+            break
+        elif server_type == '0':
+            clear()
+            ipsec_mnu()
+            break
+        else:
+            print('Invalid choice.')    
+
+# native gre spn
+def spn_ip():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mERSPAN +  \033[96mNative \033[93m+\033[92m Gre6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn_ipger()
+            break
+        elif server_type == '2':
+            spn_ipgeri()
+            break
+        elif server_type == '3':
+            clear()
+            espn_sec()
+            break
+        else:
+            print('Invalid choice.')
+            
+def spn_ipger():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espan2_ipk_ngre1()
+            break
+        elif server_type == '2':
+            espan2_ipk_ngre2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def gree6rn_kharej1_tunnel():
+    global local_ip, remote_ip
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+		
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig6 mode ip6gre remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::1/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::1\n".format(interface)
+            with open('/etc/gre6.sh', 'a') as f:
+                f.write(rt_command)
+    else:
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+
+    sleep(1)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+
+
+def gree6rn_kharej1():
+    gree6rn_kharej1_tunnel()
+    ip_address = "2002:831a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)   
+    ping_gre6_service()
+    gre6_cronjob()
+    
+            
+def config_strongswank_gren(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+  
+conn erspan
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2001:db8::1
+  right=2001:db8::2
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'2001:db8::2 2001:db8::1 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+def config_strongswank_gren4(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+
+conn erspan
+  left=%defaultroute
+  leftsubnet=32
+  leftid=80.200.1.1
+  right=80.200.2.1
+  rightsubnet=32
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'80.200.2.1 80.200.1.1 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def config_strongswani_gren(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+
+conn erspan
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2001:db8::2
+  right=2001:db8::1
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'2001:db8::1 2001:db8::2 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) 
+
+
+def config_strongswani_gren4(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+
+conn erspan
+  left=%defaultroute
+  leftsubnet=32
+  leftid=80.200.2.1
+  right=80.200.1.1
+  rightsubnet=32
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'80.200.1.1 80.200.2.1 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)  
+    
+def espan2_ipk_ngre1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+
+    gree6rn_kharej1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_strongswank_gren4(psk)
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+
+def espan2_ipk_ngre2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+
+    gree6rn_kharej1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_strongswank_gren(psk)
+  
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::1/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::1/64 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan3_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::2"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+
+# iran    
+
+def gree6rn_iran1_tunnel():
+    global local_ip, remote_ip
+    file_path = '/etc/gre6.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+	
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig6 mode ip6gre remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:831a::2/64 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig6 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig6' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
+    if answer.lower() in ['yes', 'y']:
+        interface = ipv6_int()
+        if interface is None:
+            print("\033[91mError: No network interface with IPv6 address\033[0m")
+        else:
+            print("Interface:", interface)
+            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2\n".format(interface)
+            with open('/etc/gre6.sh', 'a') as f:
+                f.write(rt_command)
+    else:        
+        print("Skipping changing the default route.")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+        with open('/etc/gre6.sh', 'a') as f:
+            f.write(mtu_command)
+    sleep(1)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+   
+
+def gree6rn_iran1():
+    gree6rn_iran1_tunnel()
+    ip_address = "2002:831a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)    
+    iran_gre6_service()
+    gre6_cronjob()
+    
+def spn_ipgeri():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espan2_ipi_ngre1()
+            break
+        elif server_type == '2':
+            espan2_ipi_ngre2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def espan2_ipi_ngre1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m") 
+
+    gree6rn_iran1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_strongswani_gren4(psk)
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan2_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
+
+def espan2_ipi_ngre2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+   
+    gree6rn_iran1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_strongswani_gren(psk)
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::2/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::2/64 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan4_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::2\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+  
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 
+
+def espan4_ping():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    try:
+        print("\033[96mPlease Wait, Azumi is pinging...")
+        result = subprocess.run(["ping", "-c", "2", "2001:db8::1"], capture_output=True, text=True)
+        if result.returncode == 0:
+            print(result.stdout)
+        else:
+            print("\033[91mPinging failed:\033[0m", result.stderr)
+    except subprocess.CalledProcessError as e:
+        print("\033[91mPinging failed:\033[0m", e)
+        
+def espan3_ping():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    try:
+        print("\033[96mPlease Wait, Azumi is pinging...")
+        result = subprocess.run(["ping", "-c", "2", "2001:db8::2"], capture_output=True, text=True)
+        if result.returncode == 0:
+            print(result.stdout)
+        else:
+            print("\033[91mPinging failed:\033[0m", result.stderr)
+    except subprocess.CalledProcessError as e:
+        print("\033[91mPinging failed:\033[0m", e)
+
+def espan_ping():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    try:
+        print("\033[96mPlease Wait, Azumi is pinging...")
+        result = subprocess.run(["ping", "-c", "2", "80.200.2.1"], capture_output=True, text=True)
+        if result.returncode == 0:
+            print(result.stdout)
+        else:
+            print("\033[91mPinging failed:\033[0m", result.stderr)
+    except subprocess.CalledProcessError as e:
+        print("\033[91mPinging failed:\033[0m", e)
+       
+        
+def espan2_ping():
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    try:
+        print("\033[96mPlease Wait, Azumi is pinging...")
+        result = subprocess.run(["ping", "-c", "2", "80.200.1.1"], capture_output=True, text=True)
+        if result.returncode == 0:
+            print(result.stdout)
+        else:
+            print("\033[91mPinging failed:\033[0m", result.stderr)
+    except subprocess.CalledProcessError as e:
+        print("\033[91mPinging failed:\033[0m", e)
+        
+def ping_kh2_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_espan.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_espan.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_espan.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_espan.service'])
+    
+        
+def espan_job():
+    file_path = '/etc/spn.sh'
+
+    try:
+       
+        subprocess.run(
+            f"(crontab -l | grep -v '{file_path}') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+
+        
+        subprocess.run(
+            f"(crontab -l ; echo '@reboot /bin/bash {file_path}') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+
+        display_checkmark("\033[92mCronjob added successfully!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("\033[91mFailed to add cronjob:\033[0m", e)
+        
+def permissions():
+    print("Setting permissions for config files...")
+    subprocess.run(["sudo", "chmod", "600", "/etc/ipsec.secrets"])
+    subprocess.run(["sudo", "chmod", "600", "/etc/ipsec.conf"])
+    print("Setting permissions was successful.")
+    
+def install_strongswan():
+     
+    subprocess.run(["sudo", "apt", "install", "strongswan", "-y"])
+    print("IPSEC Installation complete.")
+ 
+
+
+def config_strongswan(local_ip, local_subnet, remote_ip, remote_subnet, psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+conn ipsecsit
+  left=%defaultroute
+  leftsubnet={local_subnet}
+  leftid={local_ip}
+  right={remote_ip}
+  rightsubnet={remote_subnet}
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'{remote_ip} {local_ip} : PSK "{psk}"')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def config_strongswank_gre62(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+
+ 
+conn erspan
+  left=%defaultroute
+  leftsubnet=32
+  leftid=80.200.1.1
+  right=80.200.2.1
+  rightsubnet=32
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'80.200.2.1 80.200.1.1 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def config_strongswank_gre6(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+
+conn erspan
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2001:db8::1
+  right=2001:db8::2
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'2001:db8::2 2001:db8::1 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+def config_strongswani_gre6(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+
+conn erspan
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2001:db8::2
+  right=2001:db8::1
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'2001:db8::1 2001:db8::2 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def config_strongswani_gre62(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+
+conn erspan
+  left=%defaultroute
+  leftsubnet=32
+  leftid=80.200.2.1
+  right=80.200.1.1
+  rightsubnet=32
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'80.200.1.1 80.200.2.1 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def espn_ipsec():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mErspan \033[93m+ \033[96mGRE6 \033[93m+ \033[92mIPV4 \033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej\033[0m')
+    print('2. \033[93mIRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            kharej_espn_menu()
+            break
+        elif server_type == '2':
+            iran_espn_menu()
+            break
+        elif server_type == '3':
+            clear()
+            ipsec_mnu()
+            break
+        else:
+            print('Invalid choice.')
+            
+def kharej_espn_menu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mKharej server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    espan_ipvers()
+    
+def espan_ipvers():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espan_ipk_version1()
+            break
+        elif server_type == '2':
+            espan_ipk_version2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def espan_ipk_version1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej1_gre6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_strongswank_gre62(psk)
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.1.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.2.1/32 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.2.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m")   
+
+def espan_ipk_version2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej1_gre6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_strongswank_gre6(psk)
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::1", "remote", "2002:831a::2", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::1/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::1 remote 2002:831a::2 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::1/64 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan3_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::2"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mKharej Server Configuration Completed!\033[0m") 
+
+def iran_espn_menu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mIRAN server \033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════\033[0m')
+    display_notification("\033[93mConfiguring IRAN server...\033[0m")
+
+    if os.path.isfile("/etc/spn.sh"):
+        os.remove("/etc/spn.sh")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    espan2_ipvers()
+    
+def espan2_ipvers():
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose Erspan IP Version:\033[0m')
+    print('1. \033[92mIPV4\033[0m')
+    print('2. \033[93mIPV6\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espan_ipi_version1()
+            break
+        elif server_type == '2':
+            espan_ipi_version2()
+            break
+        else:
+            print('Invalid choice.')
+            
+def espan_ipi_version1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m") 
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran1_gre6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_strongswani_gre62(psk)
+
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "80.200.2.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "route", "add", "80.200.1.1/32", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write("sudo ip addr add 80.200.2.1/32 dev azumiespn\n")
+        f.write("sudo ip route add 80.200.1.1/32 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan2_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.200.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    script_content = '''#!/bin/bash
+ip_address="80.200.1.1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m")   
+
+def espan_ipi_version2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran1_gre6_menu()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m") 
+    config_strongswani_gre6(psk)
+
+    
+    subprocess.run(["sudo", "ip", "link", "add", "dev", "azumiespn", "type", "ip6erspan", "local", "2002:831a::2", "remote", "2002:831a::1", "seq", "key", "100", "erspan_ver", "1", "erspan", "1"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "link", "set", "azumiespn", "up"], stdout=subprocess.DEVNULL)
+    subprocess.run(["sudo", "ip", "addr", "add", "2001:db8::2/64", "dev", "azumiespn"], stdout=subprocess.DEVNULL)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    with open("/etc/spn.sh", "w") as f:
+        f.write(f"sudo ip link add dev azumiespn type ip6erspan local 2002:831a::2 remote 2002:831a::1 seq key 100 erspan_ver 1 erspan 1\n")
+        f.write("sudo ip link set azumiespn up\n")
+        f.write(f"sudo ip addr add 2001:db8::2/64 dev azumiespn\n")
+        f.write("systemctl restart strongswan-starter\n")
+        f.write("systemctl restart strongswan\n")
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [Erspan]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+        with open("/etc/spn.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+    espan_job()
+
+    time.sleep(1)
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+
+    espan4_ping()
+    time.sleep(1)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       2001:db8::2\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+    
+    script_content = '''#!/bin/bash
+ip_address="2001:db8::1"
+max_pings=3
+interval=20
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_espan.sh', 'w') as script_file:
+        script_file.write(script_content)
+
+    os.chmod('/etc/ping_espan.sh', 0o755)
+    ping_kh2_service()
+    
+    print("\033[92mIRAN Server Configuration Completed!\033[0m") 
+    
 def genz_ip():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -281,7 +7284,7 @@ def remove2_menu():
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
-    print('1. \033[92mUninstall IPIP6\033[0m')
+    print('1. \033[92mUninstall IP6IP6\033[0m')
     print('2. \033[93mUninstall 6to4\033[0m')
     print('3. \033[93mUninstall anycast\033[0m')
     print('4. \033[92mUninstall Gre6\033[0m')
@@ -4181,7 +11184,7 @@ def ipip61_tunnel(remote_ip, local_ip, num_additional_ips):
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumip1 mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumip1 mtu {mtu_value}\n"
         with open('/etc/ipip1.sh', 'a') as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
@@ -4525,7 +11528,7 @@ def ipip62_tunnel(remote_ip, local_ip, num_additional_ips):
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumip2 mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumip2 mtu {mtu_value}\n"
         with open('/etc/ipip2.sh', 'a') as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
@@ -4870,7 +11873,7 @@ def ipip63_tunnel(remote_ip, local_ip, num_additional_ips):
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumip3 mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumip3 mtu {mtu_value}\n"
         with open('/etc/ipip3.sh', 'a') as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
@@ -5638,7 +12641,7 @@ def ipip62_iran_tunnel(remote_ip, local_ip, num_additional_ips):
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumip2 mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumip2 mtu {mtu_value}\n"
         with open('/etc/ipip2.sh', 'a') as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
@@ -6068,7 +13071,7 @@ def ipip63_iran_tunnel(remote_ip, local_ip, num_additional_ips):
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
-        mtu_command = f'ip link set dev azumip3 mtu {mtu_value}'
+        mtu_command = f"ip link set dev azumip3 mtu {mtu_value}\n"
         with open('/etc/ipip3.sh', 'a') as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
@@ -8524,8 +15527,8 @@ def iran1_private_menu():
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
-        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
-        with open("/etc/private.sh", "a") as f:
+        mtu_command = f"ip link set dev azumi1 mtu {mtu_value}\n"
+        with open("/etc/private1.sh", "a") as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -8651,7 +15654,7 @@ def iran1_private2_menu():
         else:
             print("Interface:", interface)
             rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:831b::2\n".format(interface)
-        with open('/etc/private.sh', 'a') as f:
+        with open('/etc/private1.sh', 'a') as f:
             f.write(rt_command)
         subprocess.run(rt_command, shell=True, check=True)
     else:
@@ -8659,8 +15662,8 @@ def iran1_private2_menu():
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
-        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
-        with open("/etc/private.sh", "a") as f:
+        mtu_command = f"ip link set dev azumi1 mtu {mtu_value}\n"
+        with open("/etc/private1.sh", "a") as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
 
@@ -8789,8 +15792,8 @@ def iran2_private_menu():
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
-        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
-        with open("/etc/private.sh", "a") as f:
+        mtu_command = f"ip link set dev azumi2 mtu {mtu_value}\n"
+        with open("/etc/private2.sh", "a") as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -8915,7 +15918,7 @@ def iran2_private2_menu():
         else:
             print("Interface:", interface)
             rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:841b::2\n".format(interface)
-        with open('/etc/private.sh', 'a') as f:
+        with open('/etc/private2.sh', 'a') as f:
             f.write(rt_command)
         subprocess.run(rt_command, shell=True, check=True)
     else:
@@ -8923,8 +15926,8 @@ def iran2_private2_menu():
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
-        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
-        with open("/etc/private.sh", "a") as f:
+        mtu_command = f"ip link set dev azumi2 mtu {mtu_value}\n"
+        with open("/etc/private2.sh", "a") as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
 
@@ -9052,8 +16055,8 @@ def iran3_private_menu():
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
-        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
-        with open("/etc/private.sh", "a") as f:
+        mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
+        with open("/etc/private3.sh", "a") as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -9177,7 +16180,7 @@ def iran3_private2_menu():
         else:
             print("Interface:", interface)
             rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:851b::2\n".format(interface)
-        with open('/etc/private.sh', 'a') as f:
+        with open('/etc/private3.sh', 'a') as f:
             f.write(rt_command)
         subprocess.run(rt_command, shell=True, check=True)
     else:
@@ -9185,8 +16188,8 @@ def iran3_private2_menu():
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
-        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
-        with open("/etc/private.sh", "a") as f:
+        mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
+        with open("/etc/private3.sh", "a") as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
 
@@ -9314,8 +16317,8 @@ def iran4_private_menu():
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
-        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
-        with open("/etc/private.sh", "a") as f:
+        mtu_command = f"ip link set dev azumi4 mtu {mtu_value}\n"
+        with open("/etc/private4.sh", "a") as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -9439,7 +16442,7 @@ def iran4_private2_menu():
         else:
             print("Interface:", interface)
             rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:861b::2\n".format(interface)
-        with open('/etc/private.sh', 'a') as f:
+        with open('/etc/private4.sh', 'a') as f:
             f.write(rt_command)
         subprocess.run(rt_command, shell=True, check=True)
     else:
@@ -9447,8 +16450,8 @@ def iran4_private2_menu():
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
-        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
-        with open("/etc/private.sh", "a") as f:
+        mtu_command = f"ip link set dev azumi4 mtu {mtu_value}\n"
+        with open("/etc/private4.sh", "a") as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
 
@@ -9576,8 +16579,8 @@ def iran5_private_menu():
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
-        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
-        with open("/etc/private.sh", "a") as f:
+        mtu_command = f"ip link set dev azumi5 mtu {mtu_value}\n"
+        with open("/etc/private5.sh", "a") as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -9702,7 +16705,7 @@ def iran5_private2_menu():
         else:
             print("Interface:", interface)
             rt_command = "ip -6 route replace default via fe80::1 dev {} src 2001:871b::2\n".format(interface)
-        with open('/etc/private.sh', 'a') as f:
+        with open('/etc/private5.sh', 'a') as f:
             f.write(rt_command)
         subprocess.run(rt_command, shell=True, check=True)
     else:
@@ -9710,8 +16713,8 @@ def iran5_private2_menu():
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
-        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
-        with open("/etc/private.sh", "a") as f:
+        mtu_command = f"ip link set dev azumi5 mtu {mtu_value}\n"
+        with open("/etc/private5.sh", "a") as f:
             f.write(mtu_command)
         subprocess.run(mtu_command, shell=True, check=True)
 
@@ -11004,9 +18007,11 @@ def mtu_menu():
     print('2. \033[93mIP6IP6 \033[0m')
     print('3. \033[96mGRE \033[0m')
     print('4. \033[92mGRE6 \033[0m')
-    print('5. \033[93m6to4 \033[0m')
-    print('6. \033[96m6to4 anycast \033[0m')
-    print('7. \033[92mGeneve \033[0m')
+    print('5. \033[92mGRE6tap \033[0m')
+    print('6. \033[93m6to4 \033[0m')
+    print('7. \033[96m6to4 anycast \033[0m')
+    print('8. \033[92mGeneve \033[0m')
+    print('9. \033[92mErspan \033[0m')
     print('0. \033[94mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -11025,13 +18030,19 @@ def mtu_menu():
             gre6_mtu()
             break
         elif server_type == '5':
+            gre6tap_mtu()
+            break
+        elif server_type == '6':
             i6to4_mtu()
             break        
-        elif server_type == '6':
+        elif server_type == '7':
             i6to4any_mtu()
             break
-        elif server_type == '7':
+        elif server_type == '8':
             gen_mtu()
+            break
+        elif server_type == '9':
+            erspan_mtu()
             break
         elif server_type == '0':
             clear()
@@ -11040,6 +18051,286 @@ def mtu_menu():
         else:
             print('Invalid choice.')
 
+def erspan_mtu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mErspan MTU Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mErspan\033[0m')
+    print('2. \033[97mErspan + Native\033[0m')
+    print('3. \033[93mGRE6 + IPV4 Erspan  \033[0m')
+    print('4. \033[96mGRE6 + Native Erspan \033[0m')
+    print('5. \033[93mGRE6tap + IPV4 Erspan  \033[0m')
+    print('6. \033[96mGRE6tap + Native Erspan \033[0m')
+    print('7. \033[92mIPsec Tunnels \033[0m')
+    print('0. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn1_mtu()
+            break
+        elif server_type == '2':
+            spn1_mtu()
+            break
+        elif server_type == '3':
+            spn3_mtu()
+            break
+        elif server_type == '4':
+            spn4_mtu()
+            break
+        elif server_type == '5':
+            spn5_mtu()
+            break
+        elif server_type == '6':
+            spn6_mtu()
+            break
+        elif server_type == '7':
+            spn7_mtu()
+            break
+        elif server_type == '0':
+            clear()
+            mtu_menu()
+            break
+        else:
+            print('Invalid choice.')
+
+def spn7_mtu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mErspan + IPsec MTU Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mErspan + IPsec\033[0m')
+    print('2. \033[97mErspan + GRE6 IPV4\033[0m')
+    print('3. \033[93mErspan + GRE6 Native  \033[0m')
+    print('4. \033[96mErspan + GRE6tap IPV4 \033[0m')
+    print('5. \033[92mErspan + GRE6tap Native \033[0m')
+    print('0. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            spn1_mtu()
+            break
+        elif server_type == '2':
+            spn3_mtu()
+            break
+        elif server_type == '3':
+            spn4_mtu()
+            break
+        elif server_type == '4':
+            spn5_mtu()
+            break
+        elif server_type == '5':
+            spn6_mtu()
+            break
+        elif server_type == '0':
+            clear()
+            erspan_mtu()
+            break
+        else:
+            print('Invalid choice.')
+
+def gre6tap21_mtu():
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6tap \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre6.sh"):
+        with open("/etc/gre6.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumig6 mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
+
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/gre6.sh", "w") as file:
+            file.writelines(sh_contents)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def gre6tap_mtu():
+    private_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6tap \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig6 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre6.sh"):
+        with open("/etc/gre6.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumig6 mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
+
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/gre6.sh", "w") as file:
+            file.writelines(sh_contents)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def spn1_mtu():
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mErspan \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/spn.sh"):
+        with open("/etc/spn.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumiespn mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
+
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/spn.sh", "w") as file:
+            file.writelines(sh_contents)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+        
+def spn3_mtu():
+    private_mtu()
+    gre621_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mErspan \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/spn.sh"):
+        with open("/etc/spn.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumiespn mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
+
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/spn.sh", "w") as file:
+            file.writelines(sh_contents)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def spn4_mtu():
+    gre621_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mErspan \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/spn.sh"):
+        with open("/etc/spn.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumiespn mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
+
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/spn.sh", "w") as file:
+            file.writelines(sh_contents)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def spn5_mtu():
+
+    gre6tap_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mErspan \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/spn.sh"):
+        with open("/etc/spn.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumiespn mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
+
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/spn.sh", "w") as file:
+            file.writelines(sh_contents)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+        
+def spn6_mtu():
+    private_mtu()
+    gre6tap21_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mErspan \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumiespn mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/spn.sh"):
+        with open("/etc/spn.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        mtu_exists = False
+        for i in range(len(sh_contents)):
+            if "link set dev azumiespn mtu" in sh_contents[i]:
+                sh_contents[i] = mtu_command
+                mtu_exists = True
+                break
+
+        if not mtu_exists:
+            sh_contents.append(mtu_command)
+
+        with open("/etc/spn.sh", "w") as file:
+            file.writelines(sh_contents)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+        
+
+            
 def gen_mtu():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -11053,7 +18344,6 @@ def gen_mtu():
     print('3. \033[93mGRE6 + IPV4 GENEVE  \033[0m')
     print('4. \033[96mGRE6 + Native GENEVE \033[0m')
     print('5. \033[92mGENEVE + IP6tnl + GRE6 \033[0m')
-    print('6. \033[96mGENEVE + ICMP \033[0m')
     print('0. \033[94mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -13014,6 +20304,7 @@ def gre6_tunnel(remote_ip, local_ip, num_additional_ips):
     print("\033[92m" + "+---------------------------+" + "\033[0m")
 
 
+
 def create_ping_script(ip_address, max_pings, interval):
     file_path = '/etc/ping_ip.sh'
 
@@ -13071,7 +20362,93 @@ def gre6_kharej():
 
     gre6_cronjob()
    
+#espn_gre
+def kharej1_gre6_menu():
+    global local_ip, remote_ip
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE6 \033[92mKharej\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private.sh"):
+        os.remove("/etc/private.sh")
+
+
+    subprocess.run(["ip", "tunnel", "add", "azumi", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "fd1d:fc98:b73e:b481::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi up\n")
+        f.write("ip addr add fd1d:fc98:b73e:b481::1/64 dev azumi\n")
+        f.write("ip -6 route add fd1d::/16 dev azumi\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+        with open("/etc/private.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    add_cron_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_ping()
+    sleep(1)
     
+
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="fd1d:fc98:b73e:b481::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v6.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v6.sh', 0o755)
+    ping_v6_service()
+    display_notification("\033[93mConfiguring...\033[0m")
+    sleep(1)
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    display_checkmark("\033[92mGRE6 Configuration Completed!\033[0m")
+    gre6_kharej()
+    sleep(1)    
 
    
 #sit kharej
@@ -13339,7 +20716,94 @@ def gre6_iran():
 
     gre6_cronjob()
    
-   
+## gre6 erspan iran
+def iran1_gre6_menu():
+    global local_ip, remote_ip
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE6 \033[92mIran\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+
+    if os.path.isfile("/etc/private.sh"):
+        os.remove("/etc/private.sh")
+
+
+    subprocess.run(["ip", "tunnel", "add", "azumi", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "fd1d:fc98:b73e:b481::2/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi up\n")
+        f.write("ip addr add fd1d:fc98:b73e:b481::2/64 dev azumi\n")
+        f.write("ip -6 route add fd1d::/16 dev azumi\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi mtu {mtu_value}\n"
+        with open("/etc/private.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    sleep(1)
+    add_cron_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    iran_ping()
+    
+
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="fd1d:fc98:b73e:b481::1"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v6.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v6.sh', 0o755)
+    ping_v6_service()
+
+    display_notification("\033[93mConfiguring...\033[0m")
+    sleep(1)
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    gre6_iran()
+    sleep(1)	
+    display_checkmark("\033[92mGRE6 Configuration Completed!\033[0m")   
 
    
 #sit iran
@@ -14492,9 +21956,12 @@ def remove_menu():
     print('3. \033[92mUninstall 6to4 \033[96manycast\033[0m')
     print('4. \033[96mUninstall Gre\033[0m')
     print('5. \033[92mUninstall Gre6\033[0m')
-    print('6. \033[93mUninstall Private IP\033[0m')
-    print('7. \033[96mUninstall Extra Native IP\033[0m')
-    print('8. \033[92mUninstall Geneve\033[0m')
+    print('6. \033[97mUninstall Gre6tap\033[0m')
+    print('7. \033[93mUninstall Private IP\033[0m')
+    print('8. \033[96mUninstall Extra Native IP\033[0m')
+    print('9. \033[92mUninstall Geneve\033[0m')
+    print('10. \033[93mUninstall Erspan\033[0m')
+    
     print('0. \033[91mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -14515,14 +21982,20 @@ def remove_menu():
         elif server_type == '5':
             remove_gre6()
             break
-        elif server_type == '6':
+        elif server_type == '7':
             remove_private()
             break
-        elif server_type == '7':
+        elif server_type == '8':
             extra_uninstall()
             break
-        elif server_type == '8':
+        elif server_type == '9':
             genx_ip()
+            break
+        elif server_type == '10':
+            erspan_remove()
+            break
+        elif server_type == '6':
+            gre6tap_remove()
             break
         elif server_type == '0':
             clear()
@@ -14530,7 +22003,249 @@ def remove_menu():
             break
         else:
             print('Invalid choice.')
+
+# erspan remove
+def erspan_remove():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mErspan\033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print("1. \033[92mErspan \033[0m")
+    print("2. \033[93mErspan + Native \033[0m")
+    print("3. \033[96mErspan + Gre6 \033[0m")
+    print("4. \033[92mErspan + Gre6tap \033[0m")
+    print("5. \033[97mErspan + IPsec Tunnels  \033[0m")
+    print('0. \033[91mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            espn_uninstall()
+            break
+        elif server_type == '2':
+            espn_uninstall()
+            break
+        elif server_type == '3':
+            gre6espn_uninstall()
+            break
+        elif server_type == '4':
+            gre6tapespn_uninstall()
+            break
+        elif server_type == '5':
+            ipsecs_uninstall()
+            break    
+        elif server_type == '0':
+            clear()
+            remove_menu()
+            break
+        else:
+            print('Invalid choice.')   
+##
+def ipsecs_uninstall():
+    delete_cron1()
+    delete_cron2()
+    remove_private()
+    remove_gre621()
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving Erspan + \033[92mIpsec \033[93m+ Tunnels\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    
+
+    try:
+        if subprocess.call("test -f /etc/spn.sh", shell=True) == 0:
+            subprocess.run("rm /etc/spn.sh", shell=True)
+
             
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/spn.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_espan.sh", shell=True)
+        subprocess.run("sudo rm /etc/ipsec.conf", shell=True)
+        subprocess.run("sudo rm /etc/ipsec.secrets", shell=True)
+        subprocess.run("systemctl disable strongswan-starter > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop strongswan-starter > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strongswan > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop strongswan > /dev/null 2>&1", shell=True)
+   
+        subprocess.run("apt purge strongswan -y", shell=True)
+        subprocess.run("systemctl disable ping_espan.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_espan.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_espan.service > /dev/null 2>&1", shell=True)
+
+        subprocess.run("systemctl daemon-reload", shell=True)
+
+        subprocess.run("sudo ip link delete azumiespn > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+    except Exception as e:
+        print("Error:", str(e))
+        
+def gre6tapespn_uninstall():
+    delete_cron1()
+    delete_cron2()
+    remove_private()
+    remove_gre6tap21()
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving Erspan + \033[92mGRE6tap Tunnel\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    
+
+    try:
+        if subprocess.call("test -f /etc/spn.sh", shell=True) == 0:
+            subprocess.run("rm /etc/spn.sh", shell=True)
+
+            
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/spn.sh\" | crontab -", shell=True)
+        subprocess.run("sudo rm /etc/ping_espan.sh", shell=True)
+   
+        subprocess.run("systemctl disable ping_espan.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_espan.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_espan.service > /dev/null 2>&1", shell=True)
+
+        subprocess.run("systemctl daemon-reload", shell=True)
+
+        subprocess.run("sudo ip link delete azumiespn > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+    except Exception as e:
+        print("Error:", str(e))
+
+
+def gre6espn_uninstall():
+    delete_cron1()
+    delete_cron2()
+    remove_private()
+    remove_gre621()
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving Erspan + \033[92mGRE6 Tunnel\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    
+
+    try:
+        if subprocess.call("test -f /etc/spn.sh", shell=True) == 0:
+            subprocess.run("rm /etc/spn.sh", shell=True)
+
+            
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/spn.sh\" | crontab -", shell=True)
+        subprocess.run("sudo rm /etc/ping_espan.sh", shell=True)
+   
+        subprocess.run("systemctl disable ping_espan.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_espan.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_espan.service > /dev/null 2>&1", shell=True)
+
+        subprocess.run("systemctl daemon-reload", shell=True)
+
+        subprocess.run("sudo ip link delete azumiespn > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+    except Exception as e:
+        print("Error:", str(e))
+        
+
+
+def espn_uninstall():
+    delete_cron1()
+    delete_cron2()
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving Erspan Tunnel\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    
+    try:
+        if subprocess.call("test -f /etc/spn.sh", shell=True) == 0:
+            subprocess.run("rm /etc/spn.sh", shell=True)
+            
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/spn.sh\" | crontab -", shell=True)
+        subprocess.run("sudo rm /etc/ping_espan.sh", shell=True)
+   
+        subprocess.run("systemctl disable ping_espan.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_espan.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_espan.service > /dev/null 2>&1", shell=True)
+
+        subprocess.run("systemctl daemon-reload", shell=True)
+
+        subprocess.run("sudo ip link delete azumiespn > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+    except Exception as e:
+        print("Error:", str(e))
+        
+## gre6tap remove
+
+def gre6tap_remove():
+    remove_private()
+    remove_gre6tap21()
+####            
 def genx_ip():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -14543,7 +22258,7 @@ def genx_ip():
     print("2. \033[93mGeneve + Native \033[0m")
     print("3. \033[96mGeneve + Gre6 + Native \033[0m")
     print("4. \033[92mGeneve + Gre6 + IPV4 \033[0m")
-    print("5. \033[97mGeneve + IP6tnl + Gre6 + Native \033[0m")
+    print("5. \033[97mGeneve + IP6tnl + Gre6 + Native  \033[0m")
     print('0. \033[91mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -15881,7 +23596,7 @@ def iran_gree61_menu():
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     with open("/etc/private.sh", "w") as f:
         f.write("/sbin/modprobe ipip\n")
-        f.write(f"ip -6 tunnel add azumi mode ipip6 remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write(f"ip -6 tunnel add azumi mode ip6ip6 remote {remote_ip} local {local_ip} ttl 255\n")
         f.write("ip -6 link set dev azumi up\n")
         f.write("ip -6 addr add 2001:831b::2/64 dev azumi\n")
         f.write("ip -6 route add 2001::/16 dev azumi\n")
@@ -19601,6 +27316,46 @@ def remove_gre621():
         
         subprocess.run("ip link set dev azumig6 down > /dev/null", shell=True)
         subprocess.run("ip tunnel del azumig6 > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+
+def remove_gre6tap21():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mGRE6\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/gre6.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gre6.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre6.sh\" | crontab -", shell=True)
+        subprocess.run("sudo rm /etc/ping_ip.sh", shell=True)
+        subprocess.run("systemctl disable ping_ip.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("ip link set dev azumig6 down > /dev/null", shell=True)
+        subprocess.run("ip link delete azumig6 > /dev/null", shell=True)
 
         print("Progress: ", end="")
 
