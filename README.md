@@ -3,13 +3,13 @@
 **تانل udp برای گیم همراه با ipsec هم کار خواهم کرد**
 
 ![R (2)](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/a064577c-9302-4f43-b3bf-3d4f84245a6f)
-نام پروژه :  Geneve | anycast | 6TO4 | GRE | GRE6 | IP6IP6 | SIT - چندین سرور ایران و خارج
+نام پروژه :  Geneve | anycast | 6TO4 | GRE | GRE6 | IP6IP6 | SIT | Erspan + IPsec- چندین سرور ایران و خارج
 ---------------------------------------------------------------
 ----------------------------------
 ![check](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/13de8d36-dcfe-498b-9d99-440049c0cf14)
 **امکانات و نکات**
 
-- امکان تانل های متفاوت که شامل IP6IP6 | 6TO4 | GRE6 | Geneve و غیره میشود
+- امکان تانل های متفاوت که شامل IP6IP6 | 6TO4 | GRE6 | Geneve | Erspan + IPsec و غیره میشود
 - امکان تانل 6TO4 و ANYCAST و IP6IP6 و GRE6 بین چندین سرور خارج و ایران
 - امکان پورت فوروارد و تانل اصلی پس از اجرای 6TO4 و سایر تانل ها
 - امکان تانل Geneve با چندین روش متفاوت
