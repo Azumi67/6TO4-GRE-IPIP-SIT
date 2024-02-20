@@ -5998,8 +5998,8 @@ def config_strongswank_gren(psk):
 conn erspan
   left=%defaultroute
   leftsubnet=64
-  leftid=2001:db8::1
-  right=2001:db8::2
+  leftid=2002:831a::1
+  right=2002:831a::2
   rightsubnet=64
   ike=aes256-sha256-modp3072!
   esp=aes128gcm16-modp3072!
@@ -6031,10 +6031,10 @@ def config_strongswank_gren4(psk):
 
 conn erspan
   left=%defaultroute
-  leftsubnet=32
-  leftid=80.200.1.1
-  right=80.200.2.1
-  rightsubnet=32
+  leftsubnet=64
+  leftid=2002:831a::1
+  right=2002:831a::2
+  rightsubnet=64
   ike=aes256-sha256-modp3072!
   esp=aes128gcm16-modp3072!
   keyexchange=ikev2
@@ -6066,8 +6066,8 @@ def config_strongswani_gren(psk):
 conn erspan
   left=%defaultroute
   leftsubnet=64
-  leftid=2001:db8::2
-  right=2001:db8::1
+  leftid=2002:831a::2
+  right=2002:831a::1
   rightsubnet=64
   ike=aes256-sha256-modp3072!
   esp=aes128gcm16-modp3072!
@@ -6100,10 +6100,10 @@ def config_strongswani_gren4(psk):
 
 conn erspan
   left=%defaultroute
-  leftsubnet=32
-  leftid=80.200.2.1
-  right=80.200.1.1
-  rightsubnet=32
+  leftsubnet=64
+  leftid=2002:831a::2
+  right=2002:831a::1
+  rightsubnet=64
   ike=aes256-sha256-modp3072!
   esp=aes128gcm16-modp3072!
   keyexchange=ikev2
@@ -6679,10 +6679,10 @@ def config_strongswank_gre62(psk):
  
 conn erspan
   left=%defaultroute
-  leftsubnet=32
-  leftid=80.200.1.1
-  right=80.200.2.1
-  rightsubnet=32
+  leftsubnet=64
+  leftid=2002:831a::1
+  right=2002:831a::2
+  rightsubnet=64
   ike=aes256-sha256-modp3072!
   esp=aes128gcm16-modp3072!
   keyexchange=ikev2
@@ -6714,8 +6714,8 @@ def config_strongswank_gre6(psk):
 conn erspan
   left=%defaultroute
   leftsubnet=64
-  leftid=2001:db8::1
-  right=2001:db8::2
+  leftid=2002:831a::1
+  right=2002:831a::2
   rightsubnet=64
   ike=aes256-sha256-modp3072!
   esp=aes128gcm16-modp3072!
@@ -6748,8 +6748,8 @@ def config_strongswani_gre6(psk):
 conn erspan
   left=%defaultroute
   leftsubnet=64
-  leftid=2001:db8::2
-  right=2001:db8::1
+  leftid=2002:831a::2
+  right=2002:831a::1
   rightsubnet=64
   ike=aes256-sha256-modp3072!
   esp=aes128gcm16-modp3072!
@@ -6781,10 +6781,10 @@ def config_strongswani_gre62(psk):
 
 conn erspan
   left=%defaultroute
-  leftsubnet=32
-  leftid=80.200.2.1
-  right=80.200.1.1
-  rightsubnet=32
+  leftsubnet=64
+  leftid=2002:831a::2
+  right=2002:831a::1
+  rightsubnet=64
   ike=aes256-sha256-modp3072!
   esp=aes128gcm16-modp3072!
   keyexchange=ikev2
@@ -21261,6 +21261,30 @@ def i6to4_menu():
         main_menu()
     else:
         print("Invalid choice.")
+
+def add_6to4_job():
+    file_path = '/etc/6to4.sh'
+
+    try:
+       
+        subprocess.run(
+            f"(crontab -l | grep -v '{file_path}') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+
+        
+        subprocess.run(
+            f"(crontab -l ; echo '@reboot /bin/bash {file_path}') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+
+        display_checkmark("\033[92mCronjob added successfully!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("\033[91mFailed to add cronjob:\033[0m", e)
         
 def i6to4_no():
     clear_screen()
@@ -21272,7 +21296,7 @@ def i6to4_no():
     print("\033[93mChoose what to do:\033[0m")
     print("1. \033[92mKharej\033[0m")
     print("2. \033[93mIRAN\033[0m")
-    print("3. \033[94mback to previous menu\033[0m")
+    print("3. \033[94mback to main menu\033[0m")
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
     while True:
@@ -21285,7 +21309,7 @@ def i6to4_no():
             break
         elif server_type == "3":
             clear_screen()
-            i6to4_menu()
+            main_menu()
             break
         else:
             print("Invalid choice.")
@@ -21384,14 +21408,7 @@ def i6to4_kharej():
 
     display_notification("\033[93mAdding cronjob!\033[0m")
       
-    config_file_path = '/etc/6to4.sh'
-
-
-    subprocess.run(f"(crontab -l | grep -v -F '{config_file_path}') | crontab -", shell=True, check=True)
-
-
-    cronjob_command = f"(crontab -l 2>/dev/null; echo '@reboot sh {config_file_path}') | crontab -"
-    subprocess.run(cronjob_command, shell=True, check=True)
+    add_6to4_job()
     
     display_notification("\033[93mStarting 6to4...\033[0m")
     subprocess.run(["/bin/bash", "/etc/6to4.sh"])
@@ -21552,13 +21569,7 @@ def i6to4_iran():
 
     display_notification("\033[93mAdding cronjob!\033[0m")
 
-    config_file_path = '/etc/6to4.sh'
-
-    subprocess.run(f"(crontab -l | grep -v -F '{config_file_path}') | crontab -", shell=True, check=True)
-
-
-    cronjob_command = f"(crontab -l 2>/dev/null; echo '@reboot sh {config_file_path}') | crontab -"
-    subprocess.run(cronjob_command, shell=True, check=True)
+    add_6to4_job()
     
     display_notification("\033[93mStarting 6to4...\033[0m")
     subprocess.run(["/bin/bash", "/etc/6to4.sh"])
@@ -21728,14 +21739,7 @@ def i6to4_any_kharej():
     
     display_notification("\033[93mAdding cronjob!\033[0m")
 
-    config_file_path = '/etc/6to4.sh'
-
-
-    subprocess.run(f"(crontab -l | grep -v -F '{config_file_path}') | crontab -", shell=True, check=True)
-
-
-    cronjob_command = f"(crontab -l 2>/dev/null; echo '@reboot sh {config_file_path}') | crontab -"
-    subprocess.run(cronjob_command, shell=True, check=True)
+    add_6to4_job()
     
     display_notification("\033[93mStarting 6to4...\033[0m")
     subprocess.run(['/bin/bash', '/etc/6to4.sh'])
@@ -21873,14 +21877,7 @@ def i6to4_any_iran():
 
     display_notification("\033[93mAdding cronjob!\033[0m")
 
-    config_file_path = '/etc/6to4.sh'
-
-
-    subprocess.run(f"(crontab -l | grep -v -F '{config_file_path}') | crontab -", shell=True, check=True)
-
-
-    cronjob_command = f"(crontab -l 2>/dev/null; echo '@reboot sh {config_file_path}') | crontab -"
-    subprocess.run(cronjob_command, shell=True, check=True)
+    add_6to4_job()
 
     display_notification("\033[93mStarting 6to4...\033[0m")
     subprocess.run(['/bin/bash', '/etc/6to4.sh'])
@@ -22075,7 +22072,7 @@ def ipsecs_uninstall():
         subprocess.run("systemctl disable ping_espan.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_espan.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_espan.service > /dev/null 2>&1", shell=True)
-
+        subprocess.run("sudo apt autoremove", shell=True)
         subprocess.run("systemctl daemon-reload", shell=True)
 
         subprocess.run("sudo ip link delete azumiespn > /dev/null", shell=True)
