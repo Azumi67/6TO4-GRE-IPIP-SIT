@@ -25647,6 +25647,11 @@ def start_ic_kharej():
 
     display_checkmark("\033[92mCronjob added successfully!\033[0m")
     icmp1_ping()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       70.0.1.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
 
 def icmp2_ping():
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -25698,7 +25703,11 @@ def start_ic_iran():
 
     display_checkmark("\033[92mCronjob added successfully!\033[0m")
     icmp2_ping()
-
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       70.0.1.2\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
     
 def hans_menu():
     os.system("clear")
@@ -25803,7 +25812,12 @@ def hns_icmp_kharej():
 
     display_checkmark("\033[92mCronjob added successfully!\033[0m")
     icmp3_ping()
-
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (Kharej):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.1.2.1\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    
 def icmp4_ping():
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     try:
@@ -25856,6 +25870,11 @@ def hns_icmp_iran():
 
     display_checkmark("\033[92mCronjob added successfully!\033[0m")
     icmp4_ping()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IP Addresses (IRAN):\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "       80.1.2.100\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
     
 def up_up():
     ulimit_setting = 'ulimit -n 65535'
