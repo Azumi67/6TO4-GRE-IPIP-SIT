@@ -150,8 +150,8 @@ def main_menu():
             print("2. \033[93mEdit \033[92mMTU\033[0m")
             print("3. \033[92mGeneve UDP \033[0m")
             print("4. \033[97mERSPAN [test]\033[0m")
-            print("41.\033[97mGeneve gre6 ipsec [Test-no ufw]\033[0m")
-            print("42.\033[97mGeneve + IPsec  [Test-no ufw]\033[0m")
+            print("41.\033[97mGeneve gre6 ipsec [Test-no ufw]\033[93m[updated]\033[0m")
+            print("42.\033[97mGeneve + IPsec  [Test-no ufw]\033[93m[updated]\033[0m")
             print("43.\033[97mICMP + IPsec  [Test- will add ipv6 later]\033[0m")
             print("5. \033[96mIP6IP6\033[0m")
             print("6. \033[93mPrivate IP\033[0m")
@@ -24902,9 +24902,10 @@ def config_strongsw_simi1(local_ip, local_subnet, remote_ip, remote_subnet, psk)
         f.write(f'''config setup
 ##azumiisinyouarea
 conn ipsecsit
-  left={local_ip}
-  right={remote_ip}
+  left=%defaultroute
   leftsubnet={local_subnet}
+  leftid={local_ip}
+  right={remote_ip}
   rightsubnet={remote_subnet}
   ike=aes256-sha256-modp3072!
   esp=aes128gcm16-modp3072!
