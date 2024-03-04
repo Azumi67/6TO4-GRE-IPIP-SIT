@@ -167,12 +167,13 @@ def main_menu():
             print("\033[93m─────────────────────────────────────────────────────────────────────\033[0m")
             display_notification("\033[93m Multiple Servers\033[0m")
             print("\033[93m─────────────────────────────────────────────────────────────────────\033[0m")
-            print("13. \033[96mIP6IP6 Multiple Servers\033[0m")
-            print("14. \033[92mGRE6 Multiple Servers\033[0m")
+            print("13. \033[96mIP6IP6 Multiple Servers\033[93m[NEW]\033[0m")
+            print("14. \033[92mGRE6 Multiple Servers\033[93m[NEW]\033[0m")
             print("15. \033[93m6tO4 Multiple Servers\033[0m")
-            print("16. \033[96mAnycast Multiple Servers\033[0m")
-            print("17. \033[93mEdit \033[92mMTU\033[0m")
-            print("18. \033[91mUninstall\033[0m")
+            print("16. \033[92mGre6tap Multiple Servers\033[93m[NEW]\033[0m")
+            print("17. \033[96mAnycast Multiple Servers\033[0m")
+            print("18. \033[93mEdit \033[92mMTU\033[0m")
+            print("19. \033[91mUninstall\033[0m")
             print("q. Exit")
             print("\033[93m╰─────────────────────────────────────────────────────────────────────╯\033[0m")
 
@@ -221,10 +222,12 @@ def main_menu():
             elif choice == '15':
                 priv_mnu_ip()
             elif choice == '16':
-                i6to41_any()
+                gre6tapmulti_mnu()
             elif choice == '17':
-                mtu2_menu()
+                i6to41_any()
             elif choice == '18':
+                mtu2_menu()
+            elif choice == '19':
                 remove2_menu()
             elif choice == 'q':
                 print("Exiting...")
@@ -1634,7 +1637,7 @@ def iran1_ip6ip64_menu():
     add_cron_job()
 
     display_checkmark("\033[92mkeepalive service Configured!\033[0m")
-    iran_ping()
+    iran_pingg()
     
 
     sleep(1)
@@ -2574,7 +2577,7 @@ def iran1_m2_ip6ip64_menu():
     add_cron_job()
 
     display_checkmark("\033[92mkeepalive service Configured!\033[0m")
-    iran_ping()
+
     
 
     sleep(1)
@@ -7210,7 +7213,7 @@ def iran_gretap6_menu():
     add_cron_job()
 
     display_checkmark("\033[92mkeepalive service Configured!\033[0m")
-    iran_ping()
+    iran_pingg()
     
 
     sleep(1)
@@ -9693,6 +9696,7 @@ def remove2_menu():
     print('2. \033[93mUninstall 6to4\033[0m')
     print('3. \033[93mUninstall anycast\033[0m')
     print('4. \033[92mUninstall Gre6\033[0m')
+    print('5. \033[93mUninstall Gre6tap\033[0m')
     print('0. \033[91mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -9710,6 +9714,9 @@ def remove2_menu():
         elif server_type == '4':
             rmv_gre6()
             break
+        elif server_type == '5':
+            rmv_gre6tap()
+            break
         elif server_type == '0':
             clear()
             main_menu()
@@ -9725,8 +9732,8 @@ def rmv_ipip6():
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
-    print('1. \033[92m[3]Kharej | [1]IRAN\033[0m')
-    print('2. \033[93m[1]Kharej | [3]IRAN\033[0m')
+    print('1. \033[92m[5]Kharej | [1]IRAN\033[0m')
+    print('2. \033[93m[1]Kharej | [5]IRAN\033[0m')
     print('0. \033[91mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -9749,15 +9756,17 @@ def kh_ipip6():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
     print('\033[92m(\033[91mO,O\033[92m)\033[0m')
-    print('\033[92m(   ) \033[91mUninstall\033[93m IP6IP6 [3]Kharej\033[0m')
+    print('\033[92m(   ) \033[91mUninstall\033[93m IP6IP6 [5]Kharej\033[0m')
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mKharej[1]\033[0m')
-    print('2. \033[93mKharej[2]\033[0m')
-    print('3. \033[92mKharej[3]\033[0m')
+    print('2. \033[92mKharej[2]\033[0m')
+    print('3. \033[93mKharej[3]\033[0m')
+    print('4. \033[92mKharej[4]\033[0m')
+    print('5. \033[92mKharej[5]\033[0m')
     print("\033[93m───────────────────────────────────────\033[0m")
-    print('4. \033[93mIRAN \033[0m')
+    print('6. \033[93mIRAN \033[0m')
     print('0. \033[91mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -9773,6 +9782,12 @@ def kh_ipip6():
             remove_ipip63()
             break
         elif server_type == '4':
+            remove_ipip64()
+            break
+        elif server_type == '5':
+            remove_ipip65()
+            break
+        elif server_type == '6':
             rmv1_q()
             break
         elif server_type == '0':
@@ -9794,15 +9809,17 @@ def ir_ipip6():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
     print('\033[92m(\033[91mO,O\033[92m)\033[0m')
-    print('\033[92m(   ) \033[91mUninstall\033[93m IP6IP6 [3]IRAN\033[0m')
+    print('\033[92m(   ) \033[91mUninstall\033[93m IP6IP6 [5]IRAN\033[0m')
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mIRAN[1]\033[0m')
-    print('2. \033[93mIRAN[2]\033[0m')
-    print('3. \033[92mIRAN[3]\033[0m')
+    print('2. \033[92mIRAN[2]\033[0m')
+    print('3. \033[93mIRAN[3]\033[0m')
+    print('4. \033[92mIRAN[4]\033[0m')
+    print('5. \033[92mIRAN[5]\033[0m')
     print("\033[93m───────────────────────────────────────\033[0m")
-    print('4. \033[93mKharej \033[0m')
+    print('6. \033[93mKharej \033[0m')
     print('0. \033[91mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -9818,6 +9835,12 @@ def ir_ipip6():
             remove_ipip63()
             break
         elif server_type == '4':
+            remove_ipip64()
+            break
+        elif server_type == '5':
+            remove_ipip65()
+            break
+        elif server_type == '6':
             rmv2_q()
             break
         elif server_type == '0':
@@ -9837,94 +9860,6 @@ def rmv2_q():
         menu_name = "remove_ipip6{}".format(i)
         globals()[menu_name]()  
         
-def remove_ipip64():
-    os.system("clear")
-    print("\033[93m───────────────────────────────────────\033[0m")
-    display_notification("\033[93mRemoving \033[92mIPIP6\033[93m Tunnel...\033[0m")
-    print("\033[93m───────────────────────────────────────\033[0m")
-
-    try:
-        if subprocess.call("test -f /etc/ipip1.sh", shell=True) == 0:
-            subprocess.run("rm /etc/ipip1.sh", shell=True)
-        if subprocess.call("test -f /etc/private1.sh", shell=True) == 0:
-            subprocess.run("rm /etc/private1.sh", shell=True)
-        if subprocess.call("test -f /etc/ipip2.sh", shell=True) == 0:
-            subprocess.run("rm /etc/ipip2.sh", shell=True)
-        if subprocess.call("test -f /etc/private2.sh", shell=True) == 0:
-            subprocess.run("rm /etc/private2.sh", shell=True)
-        if subprocess.call("test -f /etc/ipip3.sh", shell=True) == 0:
-            subprocess.run("rm /etc/ipip3.sh", shell=True)
-        if subprocess.call("test -f /etc/private3.sh", shell=True) == 0:
-            subprocess.run("rm /etc/private3.sh", shell=True)
-
-        display_notification("\033[93mRemoving cronjob...\033[0m")
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/ipip1.sh\" | crontab -", shell=True)
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private1.sh\" | crontab -", shell=True)
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/ipip2.sh\" | crontab -", shell=True)
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private2.sh\" | crontab -", shell=True)
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/ipip3.sh\" | crontab -", shell=True)
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private3.sh\" | crontab -", shell=True)
-
-        subprocess.run("sudo rm /etc/ping_v61.sh", shell=True)
-        subprocess.run("sudo rm /etc/ping_ip1.sh", shell=True)
-        subprocess.run("sudo rm /etc/ping_v62.sh", shell=True)
-        subprocess.run("sudo rm /etc/ping_ip2.sh", shell=True)
-        subprocess.run("sudo rm /etc/ping_v63.sh", shell=True)
-        subprocess.run("sudo rm /etc/ping_ip3.sh", shell=True)
-
-        subprocess.run("systemctl disable ping_v61.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_v61.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_v61.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl disable ping_v62.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_v62.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_v62.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl disable ping_v63.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_v63.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_v63.service > /dev/null 2>&1", shell=True)
-        sleep(1)
-        subprocess.run("systemctl disable ping_ip1.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_ip1.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_ip1.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl disable ping_ip2.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_ip2.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_ip2.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl disable ping_ip3.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_ip3.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_ip3.service > /dev/null 2>&1", shell=True)
-
-        subprocess.run("systemctl daemon-reload", shell=True)
-
-        subprocess.run("ip link set dev azumip1 down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumip1 > /dev/null", shell=True)
-        subprocess.run("ip link set dev azumip2 down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumip2 > /dev/null", shell=True)
-        subprocess.run("ip link set dev azumip3 down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumip3 > /dev/null", shell=True)
-        sleep(1)
-        subprocess.run("ip link set dev azumi1 down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumi1 > /dev/null", shell=True)
-        subprocess.run("ip link set dev azumi2 down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumi2 > /dev/null", shell=True)
-        subprocess.run("ip link set dev azumi3 down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumi3 > /dev/null", shell=True)
-
-        print("Progress: ", end="")
-
-        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
-        delay = 0.1
-        duration = 1
-        end_time = time.time() + duration
-
-        while time.time() < end_time:
-            for frame in frames:
-                print("\r[%s] Loading...  " % frame, end="")
-                time.sleep(delay)
-                print("\r[%s]             " % frame, end="")
-                time.sleep(delay)
-
-        display_checkmark("\033[92mUninstall completed!\033[0m")
-    except subprocess.CalledProcessError as e:
-        print("Error:", e.output.decode().strip())
         
 def remove_ipip61():
     os.system("clear")
@@ -10087,6 +10022,933 @@ def remove_ipip63():
         display_checkmark("\033[92mUninstall completed!\033[0m")
     except subprocess.CalledProcessError as e:
         print("Error:", e.output.decode().strip())	
+
+def remove_ipip64():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mIPIP6\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/ipip4.sh", shell=True) == 0:
+            subprocess.run("rm /etc/ipip4.sh", shell=True)
+        if subprocess.call("test -f /etc/private4.sh", shell=True) == 0:
+            subprocess.run("rm /etc/private4.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/ipip4.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private4.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_v64.sh", shell=True)
+        sleep(1)
+        subprocess.run("sudo rm /etc/ping_ip4.sh", shell=True)
+
+        subprocess.run("systemctl disable ping_v64.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_v64.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_v64.service > /dev/null 2>&1", shell=True)
+        sleep(1)
+        subprocess.run("systemctl disable ping_ip4.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip4.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip4.service > /dev/null 2>&1", shell=True)
+        sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+
+        subprocess.run("ip link set dev azumip4 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumip4 > /dev/null", shell=True)
+        sleep(1)
+        subprocess.run("ip link set dev azumi4 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumi4 > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())	
+        
+def remove_ipip65():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mIPIP6\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/ipip5.sh", shell=True) == 0:
+            subprocess.run("rm /etc/ipip5.sh", shell=True)
+        if subprocess.call("test -f /etc/private5.sh", shell=True) == 0:
+            subprocess.run("rm /etc/private5.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/ipip5.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private5.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_v65.sh", shell=True)
+        sleep(1)
+        subprocess.run("sudo rm /etc/ping_ip5.sh", shell=True)
+
+        subprocess.run("systemctl disable ping_v65.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_v65.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_v65.service > /dev/null 2>&1", shell=True)
+        sleep(1)
+        subprocess.run("systemctl disable ping_ip5.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip5.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip5.service > /dev/null 2>&1", shell=True)
+        sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+
+        subprocess.run("ip link set dev azumip5 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumip5 > /dev/null", shell=True)
+        sleep(1)
+        subprocess.run("ip link set dev azumi5 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumi5 > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())	        
+#gretap
+def rmv_gre6tap():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[91mUninstall\033[93m GRE6tap\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej[5] | IRAN[1]\033[0m')
+    print('2. \033[93mKharej[1] | IRAN[5]\033[0m')
+    print('3. \033[92mKharej[5] | IRAN[1] + \033[96mIPSEC\033[0m')
+    print('4. \033[93mKharej[1] | IRAN[5] + \033[96mIPSEC\033[0m')
+    print('0. \033[91mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            kh_gretap6()
+            break
+        elif server_type == '2':
+            ir_gretap6()
+            break
+        elif server_type == '3':
+            kh_gretap6_sec()
+            break
+        elif server_type == '4':
+            ir_gretap6_sec()
+            break
+        elif server_type == '0':
+            clear()
+            remove2_menu()
+            break
+        else:
+            print('Invalid choice.')     
+
+def kh_gretap6():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[91mUninstall\033[93m GRE6tap [5]Kharej\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej[1]\033[0m')
+    print('2. \033[93mKharej[2]\033[0m')
+    print('3. \033[92mKharej[3]\033[0m')
+    print('4. \033[93mKharej[4]\033[0m')
+    print('5. \033[92mKharej[5]\033[0m')
+    print("\033[93m───────────────────────────────────────\033[0m")
+    print('6. \033[93mIRAN \033[0m')
+    print('0. \033[91mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            remove_gretap61()
+            break
+        elif server_type == '2':
+            remove_gretap62()
+            break
+        elif server_type == '3':
+            remove_gretap63()
+            break
+        elif server_type == '4':
+            remove_gretap64()
+            break
+        elif server_type == '5':
+            remove_gretap65()
+            break
+        elif server_type == '6':
+            rmv3_qtap()
+            break
+        elif server_type == '0':
+            clear()
+            rmv_gre6tap()
+            break
+        else:
+            print('Invalid choice.')
+            
+def rmv3_qtap():
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mQuestion time !\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    num_servers = int(input("\033[93mHow many \033[92mKharej Servers\033[93m do you have?\033[0m "))
+    
+    for i in range(1, num_servers + 1):
+        menu_name = "remove_gretap6{}".format(i)
+        globals()[menu_name]()  
+        
+def ir_gretap6():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[91mUninstall\033[93m GRE6tap [5]IRAN\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mIRAN[1]\033[0m')
+    print('2. \033[93mIRAN[2]\033[0m')
+    print('3. \033[92mIRAN[3]\033[0m')
+    print('4. \033[93mIRAN[4]\033[0m')
+    print('5. \033[92mIRAN[5]\033[0m')
+    print("\033[93m───────────────────────────────────────\033[0m")
+    print('6. \033[93mKharej \033[0m')
+    print('0. \033[91mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            remove_gretap61()
+            break
+        elif server_type == '2':
+            remove_gretap62()
+            break
+        elif server_type == '3':
+            remove_gretap63()
+            break
+        elif server_type == '4':
+            remove_gretap64()
+            break
+        elif server_type == '5':
+            remove_gretap65()
+            break
+        elif server_type == '6':
+            rmv4_qtap()
+            break
+        elif server_type == '0':
+            clear()
+            rmv_gre6tap()
+            break
+        else:
+            print('Invalid choice.')
+
+def rmv4_qtap():
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mQuestion time !\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    num_servers = int(input("\033[93mHow many \033[92mIRAN Servers\033[93m do you have?\033[0m "))
+    
+    for i in range(1, num_servers + 1):
+        menu_name = "remove_gretap6{}".format(i)
+        globals()[menu_name]()  
+
+def kh_gretap6_sec():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[91mUninstall\033[93m GRE6tap + IPSec [5]Kharej\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej[1] + IPsec\033[0m')
+    print('2. \033[93mKharej[2] + IPsec\033[0m')
+    print('3. \033[92mKharej[3] + IPsec\033[0m')
+    print('4. \033[93mKharej[4] + IPsec\033[0m')
+    print('5. \033[92mKharej[5] + IPsec\033[0m')
+    print("\033[93m───────────────────────────────────────\033[0m")
+    print('6. \033[93mIRAN + IPsec \033[0m')
+    print('0. \033[91mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            remove_gretap61_sec()
+            break
+        elif server_type == '2':
+            remove_gretap62_sec()
+            break
+        elif server_type == '3':
+            remove_gretap63_sec()
+            break
+        elif server_type == '4':
+            remove_gretap64_sec()
+            break
+        elif server_type == '5':
+            remove_gretap65_sec()
+            break
+        elif server_type == '6':
+            rmv3_qtap_sec()
+            break
+        elif server_type == '0':
+            clear()
+            rmv_gre6tap()
+            break
+        else:
+            print('Invalid choice.')
+            
+def rmv3_qtap_sec():
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mQuestion time !\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    num_servers = int(input("\033[93mHow many \033[92mKharej Servers\033[93m do you have?\033[0m "))
+    
+    for i in range(1, num_servers + 1):
+        menu_name = "remove_gretap6{}_sec".format(i)
+        globals()[menu_name]()  
+        
+def ir_gretap6_sec():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[91mUninstall\033[93m GRE6tap + IPsec [5]IRAN\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mIRAN[1] + IPsec\033[0m')
+    print('2. \033[93mIRAN[2] + IPsec\033[0m')
+    print('3. \033[92mIRAN[3] + IPsec\033[0m')
+    print('4. \033[93mIRAN[4] + IPsec\033[0m')
+    print('5. \033[92mIRAN[5] + IPsec\033[0m')
+    print("\033[93m───────────────────────────────────────\033[0m")
+    print('6. \033[93mKharej + IPsec \033[0m')
+    print('0. \033[91mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            remove_gretap61_sec()
+            break
+        elif server_type == '2':
+            remove_gretap62_sec()
+            break
+        elif server_type == '3':
+            remove_gretap63_sec()
+            break
+        elif server_type == '4':
+            remove_gretap64_sec()
+            break
+        elif server_type == '5':
+            remove_gretap65_sec()
+            break
+        elif server_type == '6':
+            rmv4_qtap_sec()
+            break
+        elif server_type == '0':
+            clear()
+            rmv_gre6tap()
+            break
+        else:
+            print('Invalid choice.')
+
+def rmv4_qtap_sec():
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mQuestion time !\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    num_servers = int(input("\033[93mHow many \033[92mIRAN Servers\033[93m do you have?\033[0m "))
+    
+    for i in range(1, num_servers + 1):
+        menu_name = "remove_gretap6{}_sec".format(i)
+        globals()[menu_name]()  
+
+def remove_gretap61():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mGRE6tap\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/gre61.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gre61.sh", shell=True)
+        if subprocess.call("test -f /etc/private1.sh", shell=True) == 0:
+            subprocess.run("rm /etc/private1.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre61.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private1.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_v61.sh", shell=True)
+        time.sleep(1)
+        subprocess.run("sudo rm /etc/ping_ip1.sh", shell=True)
+
+        subprocess.run("systemctl disable ping_v61.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_v61.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_v61.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl disable ping_ip1.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip1.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip1.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("ip link set dev azumi1 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumi1 > /dev/null", shell=True)
+        sleep(1)
+        subprocess.run("ip link set dev azumig61 down > /dev/null", shell=True)
+        subprocess.run("ip link delete azumig61 > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+
+def remove_gretap62():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mGRE6tap\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/gre62.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gre62.sh", shell=True)
+        if subprocess.call("test -f /etc/private2.sh", shell=True) == 0:
+            subprocess.run("rm /etc/private2.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre62.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private2.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_v62.sh", shell=True)
+        time.sleep(1)
+        subprocess.run("sudo rm /etc/ping_ip2.sh", shell=True)
+
+        subprocess.run("systemctl disable ping_v62.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_v62.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_v62.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl disable ping_ip2.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip2.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip2.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("ip link set dev azumi2 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumi2 > /dev/null", shell=True)
+        sleep(1)
+        subprocess.run("ip link set dev azumig62 down > /dev/null", shell=True)
+        subprocess.run("ip link delete azumig62 > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+
+def remove_gretap63():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mGRE6tap\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/gre63.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gre63.sh", shell=True)
+        if subprocess.call("test -f /etc/private3.sh", shell=True) == 0:
+            subprocess.run("rm /etc/private3.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre63.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private3.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_v63.sh", shell=True)
+        time.sleep(1)
+        subprocess.run("sudo rm /etc/ping_ip3.sh", shell=True)
+
+        subprocess.run("systemctl disable ping_v63.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_v63.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_v63.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl disable ping_ip3.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip3.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip3.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("ip link set dev azumi3 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumi3 > /dev/null", shell=True)
+        sleep(1)
+        subprocess.run("ip link set dev azumig63 down > /dev/null", shell=True)
+        subprocess.run("ip link delete azumig63 > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+
+def remove_gretap64():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mGRE6tap\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/gre64.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gre64.sh", shell=True)
+        if subprocess.call("test -f /etc/private4.sh", shell=True) == 0:
+            subprocess.run("rm /etc/private4.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre64.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private4.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_v64.sh", shell=True)
+        time.sleep(1)
+        subprocess.run("sudo rm /etc/ping_ip4.sh", shell=True)
+
+        subprocess.run("systemctl disable ping_v64.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_v64.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_v64.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl disable ping_ip4.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip4.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip4.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("ip link set dev azumi4 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumi4 > /dev/null", shell=True)
+        sleep(1)
+        subprocess.run("ip link set dev azumig64 down > /dev/null", shell=True)
+        subprocess.run("ip link delete azumig64 > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+
+def remove_gretap65():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mGRE6tap\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/gre65.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gre65.sh", shell=True)
+        if subprocess.call("test -f /etc/private5.sh", shell=True) == 0:
+            subprocess.run("rm /etc/private5.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre65.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private5.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_v65.sh", shell=True)
+        time.sleep(1)
+        subprocess.run("sudo rm /etc/ping_ip5.sh", shell=True)
+
+        subprocess.run("systemctl disable ping_v65.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_v65.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_v65.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl disable ping_ip5.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip5.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip5.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("ip link set dev azumi5 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumi5 > /dev/null", shell=True)
+        sleep(1)
+        subprocess.run("ip link set dev azumig65 down > /dev/null", shell=True)
+        subprocess.run("ip link delete azumig65 > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())  
+
+def remove_gretap61_sec():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mGRE6tap | IPsec\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/gre61.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gre61.sh", shell=True)
+        if subprocess.call("test -f /etc/private1.sh", shell=True) == 0:
+            subprocess.run("rm /etc/private1.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre61.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private1.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_v61.sh", shell=True)
+        time.sleep(1)
+        subprocess.run("sudo rm /etc/ping_ip1.sh", shell=True)
+
+        subprocess.run("systemctl disable ping_v61.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_v61.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_v61.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl disable ping_ip1.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip1.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip1.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("ip link set dev azumi1 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumi1 > /dev/null", shell=True)
+        sleep(1)
+        subprocess.run("ip link set dev azumig61 down > /dev/null", shell=True)
+        subprocess.run("ip link delete azumig61 > /dev/null", shell=True)
+        subprocess.run("apt purge strongswan -y > /dev/null", shell=True)
+        subprocess.run("systemctl stop strongswan > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strongswan > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop strongswan-starter > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strongswan-starter > /dev/null 2>&1", shell=True)
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+
+def remove_gretap62_sec():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mGRE6tap | IPsec\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/gre62.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gre62.sh", shell=True)
+        if subprocess.call("test -f /etc/private2.sh", shell=True) == 0:
+            subprocess.run("rm /etc/private2.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre62.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private2.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_v62.sh", shell=True)
+        time.sleep(1)
+        subprocess.run("sudo rm /etc/ping_ip2.sh", shell=True)
+
+        subprocess.run("systemctl disable ping_v62.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_v62.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_v62.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl disable ping_ip2.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip2.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip2.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("ip link set dev azumi2 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumi2 > /dev/null", shell=True)
+        sleep(1)
+        subprocess.run("ip link set dev azumig62 down > /dev/null", shell=True)
+        subprocess.run("ip link delete azumig62 > /dev/null", shell=True)
+        subprocess.run("apt purge strongswan -y > /dev/null", shell=True)
+        subprocess.run("systemctl stop strongswan > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strongswan > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop strongswan-starter > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strongswan-starter > /dev/null 2>&1", shell=True)
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+
+def remove_gretap63_sec():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mGRE6tap | IPsec\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/gre63.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gre63.sh", shell=True)
+        if subprocess.call("test -f /etc/private3.sh", shell=True) == 0:
+            subprocess.run("rm /etc/private3.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre63.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private3.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_v63.sh", shell=True)
+        time.sleep(1)
+        subprocess.run("sudo rm /etc/ping_ip3.sh", shell=True)
+
+        subprocess.run("systemctl disable ping_v63.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_v63.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_v63.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl disable ping_ip3.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip3.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip3.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("ip link set dev azumi3 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumi3 > /dev/null", shell=True)
+        sleep(1)
+        subprocess.run("ip link set dev azumig63 down > /dev/null", shell=True)
+        subprocess.run("ip link delete azumig63 > /dev/null", shell=True)
+        subprocess.run("apt purge strongswan -y > /dev/null", shell=True)
+        subprocess.run("systemctl stop strongswan > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strongswan > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop strongswan-starter > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strongswan-starter > /dev/null 2>&1", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+
+def remove_gretap64_sec():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mGRE6tap | IPsec\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/gre64.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gre64.sh", shell=True)
+        if subprocess.call("test -f /etc/private4.sh", shell=True) == 0:
+            subprocess.run("rm /etc/private4.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre64.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private4.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_v64.sh", shell=True)
+        time.sleep(1)
+        subprocess.run("sudo rm /etc/ping_ip4.sh", shell=True)
+
+        subprocess.run("systemctl disable ping_v64.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_v64.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_v64.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl disable ping_ip4.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip4.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip4.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("ip link set dev azumi4 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumi4 > /dev/null", shell=True)
+        sleep(1)
+        subprocess.run("ip link set dev azumig64 down > /dev/null", shell=True)
+        subprocess.run("ip link delete azumig64 > /dev/null", shell=True)
+        subprocess.run("apt purge strongswan -y > /dev/null", shell=True)
+        subprocess.run("systemctl stop strongswan > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strongswan > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop strongswan-starter > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strongswan-starter > /dev/null 2>&1", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+
+def remove_gretap65_sec():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mGRE6tap | IPsec\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/gre65.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gre65.sh", shell=True)
+        if subprocess.call("test -f /etc/private5.sh", shell=True) == 0:
+            subprocess.run("rm /etc/private5.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre65.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private5.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_v65.sh", shell=True)
+        time.sleep(1)
+        subprocess.run("sudo rm /etc/ping_ip5.sh", shell=True)
+
+        subprocess.run("systemctl disable ping_v65.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_v65.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_v65.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl disable ping_ip5.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip5.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip5.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("ip link set dev azumi5 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumi5 > /dev/null", shell=True)
+        sleep(1)
+        subprocess.run("ip link set dev azumig65 down > /dev/null", shell=True)
+        subprocess.run("ip link delete azumig65 > /dev/null", shell=True)
+        subprocess.run("apt purge strongswan -y > /dev/null", shell=True)
+        subprocess.run("systemctl stop strongswan > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strongswan > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop strongswan-starter > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strongswan-starter > /dev/null 2>&1", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())  
         
 def rmv_gre6():
     os.system("clear")
@@ -10096,8 +10958,8 @@ def rmv_gre6():
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
-    print('1. \033[92mKharej[3] | IRAN[1]\033[0m')
-    print('2. \033[93mKharej[1] | IRAN[3]\033[0m')
+    print('1. \033[92mKharej[5] | IRAN[1]\033[0m')
+    print('2. \033[93mKharej[1] | IRAN[5]\033[0m')
     print('0. \033[91mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -10127,8 +10989,10 @@ def kh_gre6():
     print('1. \033[92mKharej[1]\033[0m')
     print('2. \033[93mKharej[2]\033[0m')
     print('3. \033[92mKharej[3]\033[0m')
+    print('4. \033[93mKharej[4]\033[0m')
+    print('5. \033[92mKharej[5]\033[0m')
     print("\033[93m───────────────────────────────────────\033[0m")
-    print('4. \033[93mIRAN \033[0m')
+    print('6. \033[93mIRAN \033[0m')
     print('0. \033[91mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -10144,6 +11008,12 @@ def kh_gre6():
             remove_gre63()
             break
         elif server_type == '4':
+            remove_gre64()
+            break
+        elif server_type == '5':
+            remove_gre65()
+            break
+        elif server_type == '6':
             rmv3_q()
             break
         elif server_type == '0':
@@ -10152,6 +11022,7 @@ def kh_gre6():
             break
         else:
             print('Invalid choice.')
+            
 def rmv3_q():
     print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mQuestion time !\033[0m")
@@ -10161,6 +11032,7 @@ def rmv3_q():
     for i in range(1, num_servers + 1):
         menu_name = "remove_gre6{}".format(i)
         globals()[menu_name]()  
+        
 def ir_gre6():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -10172,8 +11044,10 @@ def ir_gre6():
     print('1. \033[92mIRAN[1]\033[0m')
     print('2. \033[93mIRAN[2]\033[0m')
     print('3. \033[92mIRAN[3]\033[0m')
+    print('4. \033[93mIRAN[4]\033[0m')
+    print('5. \033[92mIRAN[5]\033[0m')
     print("\033[93m───────────────────────────────────────\033[0m")
-    print('4. \033[93mKharej \033[0m')
+    print('6. \033[93mKharej \033[0m')
     print('0. \033[91mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -10189,6 +11063,12 @@ def ir_gre6():
             remove_gre63()
             break
         elif server_type == '4':
+            remove_gre64()
+            break
+        elif server_type == '5':
+            remove_gre65()
+            break
+        elif server_type == '6':
             rmv4_q()
             break
         elif server_type == '0':
@@ -10208,93 +11088,6 @@ def rmv4_q():
         menu_name = "remove_gre6{}".format(i)
         globals()[menu_name]()  
         
-def remove_gre64():
-    os.system("clear")
-    print("\033[93m───────────────────────────────────────\033[0m")
-    display_notification("\033[93mRemoving \033[92mGRE6\033[93m Tunnel...\033[0m")
-    print("\033[93m───────────────────────────────────────\033[0m")
-
-    try:
-        if subprocess.call("test -f /etc/gre61.sh", shell=True) == 0:
-            subprocess.run("rm /etc/gre61.sh", shell=True)
-        if subprocess.call("test -f /etc/private1.sh", shell=True) == 0:
-            subprocess.run("rm /etc/private1.sh", shell=True)
-        if subprocess.call("test -f /etc/gre62.sh", shell=True) == 0:
-            subprocess.run("rm /etc/gre62.sh", shell=True)
-        if subprocess.call("test -f /etc/private2.sh", shell=True) == 0:
-            subprocess.run("rm /etc/private2.sh", shell=True)
-        if subprocess.call("test -f /etc/gre63.sh", shell=True) == 0:
-            subprocess.run("rm /etc/gre63.sh", shell=True)
-        if subprocess.call("test -f /etc/private3.sh", shell=True) == 0:
-            subprocess.run("rm /etc/private3.sh", shell=True)
-
-        display_notification("\033[93mRemoving cronjob...\033[0m")
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre61.sh\" | crontab -", shell=True)
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private1.sh\" | crontab -", shell=True)
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre62.sh\" | crontab -", shell=True)
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private2.sh\" | crontab -", shell=True)
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre63.sh\" | crontab -", shell=True)
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private3.sh\" | crontab -", shell=True)
-
-        subprocess.run("sudo rm /etc/ping_v61.sh", shell=True)
-        subprocess.run("sudo rm /etc/ping_ip1.sh", shell=True)
-        subprocess.run("sudo rm /etc/ping_v62.sh", shell=True)
-        subprocess.run("sudo rm /etc/ping_ip2.sh", shell=True)
-        subprocess.run("sudo rm /etc/ping_v63.sh", shell=True)
-        subprocess.run("sudo rm /etc/ping_ip3.sh", shell=True)
-
-        subprocess.run("systemctl disable ping_v61.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_v61.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_v61.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl disable ping_v62.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_v62.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_v62.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl disable ping_v63.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_v63.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_v63.service > /dev/null 2>&1", shell=True)
-        time.sleep(1)
-        subprocess.run("systemctl disable ping_ip1.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_ip1.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_ip1.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl disable ping_ip2.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_ip2.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_ip2.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl disable ping_ip3.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_ip3.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_ip3.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl daemon-reload", shell=True)
-        
-        subprocess.run("ip link set dev azumi1 down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumi1 > /dev/null", shell=True)
-        subprocess.run("ip link set dev azumi2 down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumi2 > /dev/null", shell=True)
-        subprocess.run("ip link set dev azumi3 down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumi3 > /dev/null", shell=True)
-        sleep(1)
-        subprocess.run("ip link set dev azumig61 down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumig61 > /dev/null", shell=True)
-        subprocess.run("ip link set dev azumig62 down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumig62 > /dev/null", shell=True)
-        subprocess.run("ip link set dev azumig63 down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumig63 > /dev/null", shell=True)
-
-        print("Progress: ", end="")
-
-        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
-        delay = 0.1
-        duration = 1
-        end_time = time.time() + duration
-
-        while time.time() < end_time:
-            for frame in frames:
-                print("\r[%s] Loading...  " % frame, end="")
-                time.sleep(delay)
-                print("\r[%s]             " % frame, end="")
-                time.sleep(delay)
-
-        display_checkmark("\033[92mUninstall completed!\033[0m")
-    except subprocess.CalledProcessError as e:
-        print("Error:", e.output.decode().strip())
 		
 def remove_gre61():
     os.system("clear")
@@ -10458,6 +11251,114 @@ def remove_gre63():
     except subprocess.CalledProcessError as e:
         print("Error:", e.output.decode().strip())
 
+def remove_gre64():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mGRE6\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/gre64.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gre64.sh", shell=True)
+        if subprocess.call("test -f /etc/private4.sh", shell=True) == 0:
+            subprocess.run("rm /etc/private4.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre64.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private4.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_v64.sh", shell=True)
+        time.sleep(1)
+        subprocess.run("sudo rm /etc/ping_ip4.sh", shell=True)
+
+        subprocess.run("systemctl disable ping_v64.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_v64.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_v64.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl disable ping_ip4.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip4.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip4.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("ip link set dev azumi4 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumi4 > /dev/null", shell=True)
+        sleep(1)
+        subprocess.run("ip link set dev azumig64 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumig64 > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())
+
+def remove_gre65():
+    os.system("clear")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mRemoving \033[92mGRE6\033[93m Tunnel...\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+
+    try:
+        if subprocess.call("test -f /etc/gre65.sh", shell=True) == 0:
+            subprocess.run("rm /etc/gre65.sh", shell=True)
+        if subprocess.call("test -f /etc/private5.sh", shell=True) == 0:
+            subprocess.run("rm /etc/private5.sh", shell=True)
+
+        display_notification("\033[93mRemoving cronjob...\033[0m")
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre65.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private5.sh\" | crontab -", shell=True)
+
+        subprocess.run("sudo rm /etc/ping_v65.sh", shell=True)
+        time.sleep(1)
+        subprocess.run("sudo rm /etc/ping_ip5.sh", shell=True)
+
+        subprocess.run("systemctl disable ping_v65.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_v65.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_v65.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl disable ping_ip5.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl stop ping_ip5.service > /dev/null 2>&1", shell=True)
+        subprocess.run("rm /etc/systemd/system/ping_ip5.service > /dev/null 2>&1", shell=True)
+        time.sleep(1)
+        subprocess.run("systemctl daemon-reload", shell=True)
+        
+        subprocess.run("ip link set dev azumi5 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumi5 > /dev/null", shell=True)
+        sleep(1)
+        subprocess.run("ip link set dev azumig65 down > /dev/null", shell=True)
+        subprocess.run("ip tunnel del azumig65 > /dev/null", shell=True)
+
+        print("Progress: ", end="")
+
+        frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        delay = 0.1
+        duration = 1
+        end_time = time.time() + duration
+
+        while time.time() < end_time:
+            for frame in frames:
+                print("\r[%s] Loading...  " % frame, end="")
+                time.sleep(delay)
+                print("\r[%s]             " % frame, end="")
+                time.sleep(delay)
+
+        display_checkmark("\033[92mUninstall completed!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("Error:", e.output.decode().strip())  
+        
 def rmv_private():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -10904,8 +11805,8 @@ def gre6_mnu_ip():
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
-    print('1. \033[96mKHAREJ\033[92m[3]  \033[93mIRAN\033[92m[1]\033[0m')
-    print('2. \033[96mKHAREJ\033[92m[1]  \033[93mIRAN\033[92m[3]\033[0m')
+    print('1. \033[96mKHAREJ\033[92m[5]  \033[93mIRAN\033[92m[1]\033[0m')
+    print('2. \033[96mKHAREJ\033[92m[1]  \033[93mIRAN\033[92m[5]\033[0m')
     print('0. \033[94mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -10933,10 +11834,12 @@ def gre6_kh_ip():
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mKharej[1]\033[0m')
-    print('2. \033[93mKharej[2]\033[0m')
-    print('3. \033[92mKharej[3]\033[0m')
+    print('2. \033[92mKharej[2]\033[0m')
+    print('3. \033[93mKharej[3]\033[0m')
+    print('4. \033[92mKharej[4]\033[0m')
+    print('5. \033[92mKharej[5]\033[0m')
     print("\033[93m───────────────────────────────────────\033[0m")
-    print('4. \033[93mIRAN\033[0m')
+    print('6. \033[93mIRAN\033[0m')
     print('0. \033[94mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -10952,6 +11855,12 @@ def gre6_kh_ip():
             kharej_gre63_menu()
             break
         elif server_type == '4':
+            kharej_gre64_menu()
+            break
+        elif server_type == '5':
+            kharej_gre65_menu()
+            break
+        elif server_type == '6':
             kharejgre_q()
             break
         elif server_type == '0':
@@ -10980,10 +11889,12 @@ def gre6_ir_ip():
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mIRAN[1]\033[0m')
-    print('2. \033[93mIRAN[2]\033[0m')
-    print('3. \033[92mIRAN[3]\033[0m')
+    print('2. \033[92mIRAN[2]\033[0m')
+    print('3. \033[93mIRAN[3]\033[0m')
+    print('4. \033[92mIRAN[4]\033[0m')
+    print('5. \033[92mIRAN[5]\033[0m')
     print("\033[93m───────────────────────────────────────\033[0m")
-    print('4. \033[93mKharej\033[0m')
+    print('6. \033[93mKharej\033[0m')
     print('0. \033[94mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -10999,6 +11910,12 @@ def gre6_ir_ip():
             iran2_gre63_menu()
             break
         elif server_type == '4':
+            iran2_gre64_menu()
+            break
+        elif server_type == '5':
+            iran2_gre65_menu()
+            break
+        elif server_type == '6':
             irangre_q()
             break
         elif server_type == '0':
@@ -12146,6 +13063,790 @@ done
     display_checkmark("\033[92mGRE6 Configuration Completed!\033[0m")
     gre63_kharej()
     sleep(1)    
+    
+#kharej 4
+      
+def run4_ping():
+    try:
+        subprocess.run(["ping", "-c", "2", "2001:861b::2"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+def ping_v64_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_v64.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_v64.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_v64.service'])
+    subprocess.run(['systemctl', 'start', 'ping_v64.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_v64.service'])
+    
+
+	
+def display_kharej4_ip():
+    print("\033[93mCreated Private IP Addresses (Kharej):\033[0m")
+    ip_addr = "2001:861b::1"
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| {ip_addr}    |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+		
+
+def add_cron4_job():
+    file_path = '/etc/private4.sh'
+
+    try:
+       
+        subprocess.run(
+            f"(crontab -l | grep -v '{file_path}') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+
+        
+        subprocess.run(
+            f"(crontab -l ; echo '@reboot /bin/bash {file_path}') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+
+        display_checkmark("\033[92mCronjob added successfully!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("\033[91mFailed to add cronjob:\033[0m", e)
+
+def gre64_cronjob():
+    try:
+        
+        subprocess.run(
+            "crontab -l | grep -v '/etc/gre64.sh' | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+     
+        subprocess.run(
+            "(crontab -l ; echo '@reboot /bin/bash /etc/gre64.sh') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+        display_checkmark("\033[92mCronjob added successfully!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("\033[91mFailed to add cronjob:\033[0m", e)
+		
+def ping_gre64_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_ip4.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_ip4.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_ip4.service'])
+    subprocess.run(['systemctl', 'start', 'ping_ip4.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_ip4.service'])
+
+def gre64_tunnel(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre64.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig64 mode ip6gre remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:861a::1/64 dev azumig64' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig64 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig64' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    created_ips = []
+    for i in range(2, num_additional_ips + 2):
+        ip_address = f"2002:86{i}a::1"
+        created_ips.append(ip_address)
+        command = f"echo 'ip -6 addr add {ip_address}/64 dev azumig64' >> {file_path}"
+        subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f'ip link set dev azumig64 mtu {mtu_value}'
+        with open('/etc/gre64.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    
+    print("\033[93mCreated IPv6 Addresses \033[92mServer 4:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:861a::1               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+
+def create_ping4_script(ip_address, max_pings, interval):
+    file_path = '/etc/ping_ip4.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+    script_content = f'''#!/bin/bash
+
+ip_address="{ip_address}"
+
+max_pings={max_pings}
+
+interval={interval}
+
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open(file_path, 'w') as file:
+        file.write(script_content)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+def gre64_kharej():
+    remote_ip = "2001:861b::2" #iran-ip
+    local_ip = "2001:861b::1"   #kharej ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6\033[97m tunnel: "))
+    gre64_tunnel(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:861a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping4_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    ping_gre64_service()
+
+    gre64_cronjob()
+   
+def kharej_gre64_menu():
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE6 \033[92mKharej[4]\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private4.sh"):
+        os.remove("/etc/private4.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mKharej \033[96m[4]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi4", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi4", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:861b::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi4"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private4.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi4 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi4 up\n")
+        f.write("ip addr add 2001:861b::1/64 dev azumi4\n")
+        f.write("ip -6 route add 2001::/16 dev azumi4\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi4 mtu {mtu_value}\n"
+        with open("/etc/private4.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private4.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    add_cron4_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_ping4()
+    sleep(1)
+    
+
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:861b::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v64.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v64.sh', 0o755)
+    ping_v64_service()
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    display_checkmark("\033[92mGRE6 Configuration Completed!\033[0m")
+    gre64_kharej()
+    sleep(1)
+
+## kharej 4 for iran 4
+def kharej2_gre64_menu():
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE6 \033[92mKharej[4]\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private4.sh"):
+        os.remove("/etc/private4.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN \033[96m[4]\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi4", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi4", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:861b::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi4"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private4.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi4 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi4 up\n")
+        f.write("ip addr add 2001:861b::1/64 dev azumi4\n")
+        f.write("ip -6 route add 2001::/16 dev azumi4\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi4 mtu {mtu_value}\n"
+        with open("/etc/private4.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private4.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    add_cron4_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_ping4()
+    sleep(1)
+    
+
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:861b::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v64.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v64.sh', 0o755)
+    ping_v64_service()
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    display_checkmark("\033[92mGRE6 Configuration Completed!\033[0m")
+    gre64_kharej()
+    sleep(1)
+    
+#kharej 5
+      
+def run5_ping():
+    try:
+        subprocess.run(["ping", "-c", "2", "2001:871b::2"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+def ping_v65_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_v65.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_v65.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_v65.service'])
+    subprocess.run(['systemctl', 'start', 'ping_v65.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_v65.service'])
+    
+
+	
+def display_kharej5_ip():
+    print("\033[93mCreated Private IP Addresses (Kharej):\033[0m")
+    ip_addr = "2001:871b::1"
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| {ip_addr}    |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+		
+
+def add_cron5_job():
+    file_path = '/etc/private5.sh'
+
+    try:
+       
+        subprocess.run(
+            f"(crontab -l | grep -v '{file_path}') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+
+        
+        subprocess.run(
+            f"(crontab -l ; echo '@reboot /bin/bash {file_path}') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+
+        display_checkmark("\033[92mCronjob added successfully!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("\033[91mFailed to add cronjob:\033[0m", e)
+
+def gre65_cronjob():
+    try:
+        
+        subprocess.run(
+            "crontab -l | grep -v '/etc/gre65.sh' | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+     
+        subprocess.run(
+            "(crontab -l ; echo '@reboot /bin/bash /etc/gre65.sh') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+        display_checkmark("\033[92mCronjob added successfully!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("\033[91mFailed to add cronjob:\033[0m", e)
+		
+def ping_gre65_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_ip5.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_ip5.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_ip5.service'])
+    subprocess.run(['systemctl', 'start', 'ping_ip5.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_ip5.service'])
+
+def gre65_tunnel(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre65.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig65 mode ip6gre remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:871a::1/64 dev azumig65' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig65 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig65' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    created_ips = []
+    for i in range(2, num_additional_ips + 2):
+        ip_address = f"2002:87{i}a::1"
+        created_ips.append(ip_address)
+        command = f"echo 'ip -6 addr add {ip_address}/64 dev azumig65' >> {file_path}"
+        subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f'ip link set dev azumig65 mtu {mtu_value}'
+        with open('/etc/gre65.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    
+    print("\033[93mCreated IPv6 Addresses \033[92mServer 5:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:871a::1               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+
+def create_ping5_script(ip_address, max_pings, interval):
+    file_path = '/etc/ping_ip5.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+    script_content = f'''#!/bin/bash
+
+ip_address="{ip_address}"
+
+max_pings={max_pings}
+
+interval={interval}
+
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open(file_path, 'w') as file:
+        file.write(script_content)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+def gre65_kharej():
+    remote_ip = "2001:871b::2" #iran-ip
+    local_ip = "2001:871b::1"   #kharej ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6\033[97m tunnel: "))
+    gre65_tunnel(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:871a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping5_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    ping_gre65_service()
+
+    gre65_cronjob()
+   
+def kharej_gre65_menu():
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE6 \033[92mKharej[5]\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private5.sh"):
+        os.remove("/etc/private5.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mKharej \033[96m[5]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi5", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi5", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:871b::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi5"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private5.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi5 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi5 up\n")
+        f.write("ip addr add 2001:871b::1/64 dev azumi5\n")
+        f.write("ip -6 route add 2001::/16 dev azumi5\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi5 mtu {mtu_value}\n"
+        with open("/etc/private5.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private5.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    add_cron5_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_ping5()
+    sleep(1)
+    
+
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:871b::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v65.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v65.sh', 0o755)
+    ping_v65_service()
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    display_checkmark("\033[92mGRE6 Configuration Completed!\033[0m")
+    gre65_kharej()
+    sleep(1)
+## kharej 5 for iran 5
+def kharej2_gre65_menu():
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE6 \033[92mKharej[5]\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private5.sh"):
+        os.remove("/etc/private5.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN \033[96m[5]\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi5", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi5", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:871b::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi5"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private5.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi5 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi5 up\n")
+        f.write("ip addr add 2001:871b::1/64 dev azumi5\n")
+        f.write("ip -6 route add 2001::/16 dev azumi5\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi5 mtu {mtu_value}\n"
+        with open("/etc/private5.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private5.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    add_cron5_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_ping5()
+    sleep(1)
+    
+
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:871b::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v65.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v65.sh', 0o755)
+    ping_v65_service()
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    display_checkmark("\033[92mGRE6 Configuration Completed!\033[0m")
+    gre65_kharej()
+    sleep(1) 
+ 
  ##### IRAN gre6 server 1
 def iran_ping1():
     try:
@@ -12270,19 +13971,6 @@ def gre61_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
     subprocess.run(f"bash {file_path}", shell=True, check=True)
-    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
-    if answer.lower() in ['yes', 'y']:
-        interface = ipv6_int()
-        if interface is None:
-            print("\033[91mError: No network interface with IPv6 address\033[0m")
-        else:
-            print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:831a::2\n".format(interface)
-        with open('/etc/gre61.sh', 'a') as f:
-            f.write(rt_command)
-        subprocess.run(rt_command, shell=True, check=True)
-    else:
-        print("Skipping changing the default route.")
     
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
@@ -12681,19 +14369,7 @@ def gre62_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
         command = f"echo 'ip -6 addr add {ip_address}/64 dev azumig62' >> {file_path}"
         subprocess.run(command, shell=True, check=True)
     subprocess.run(f"bash {file_path}", shell=True, check=True)
-    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
-    if answer.lower() in ['yes', 'y']:
-        interface = ipv6_int()
-        if interface is None:
-            print("\033[91mError: No network interface with IPv6 address\033[0m")
-        else:
-            print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:841a::2\n".format(interface)
-        with open('/etc/gre62.sh', 'a') as f:
-            f.write(rt_command)
-        subprocess.run(rt_command, shell=True, check=True)
-    else:
-        print("Skipping changing the default route.")
+
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
     
@@ -13100,19 +14776,7 @@ def gre63_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
     command = f"chmod +x {file_path}"
     subprocess.run(command, shell=True, check=True)
     subprocess.run(f"bash {file_path}", shell=True, check=True)
-    answer = input("\033[93mDo you want to change the \033[92mdefault route\033[93m? (\033[92my\033[93m/\033[91mn\033[93m)\033[0m ")
-    if answer.lower() in ['yes', 'y']:
-        interface = ipv6_int()
-        if interface is None:
-            print("\033[91mError: No network interface with IPv6 address\033[0m")
-        else:
-            print("Interface:", interface)
-            rt_command = "ip -6 route replace default via fe80::1 dev {} src 2002:851a::2\n".format(interface)
-        with open('/etc/gre63.sh', 'a') as f:
-            f.write(rt_command)
-        subprocess.run(rt_command, shell=True, check=True)
-    else:
-        print("Skipping changing the default route.")
+
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
         mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
@@ -13390,7 +15054,814 @@ done
     gre63_iran2()
     sleep(1)	
     display_checkmark("\033[92mGRE6 Configuration Completed!\033[0m")
+ #iran4gre
+ ##### IRAN gre6 server 4
+def iran_ping4():
+    try:
+        subprocess.run(["ping", "-c", "2", "2001:861b::1"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
     
+	
+def display_iran4_ip():
+    print("\033[93mCreated Private IP Addresses (IRAN):\033[0m")
+    ip_addr = "2001:861b::2"
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| {ip_addr}    |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+		
+
+
+def iran_gre64_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_ip4.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_ip4.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_ip4.service'])
+    subprocess.run(['systemctl', 'start', 'ping_ip4.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_ip4.service'])
+
+def gre64_iran_tunnel(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre64.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig64 mode ip6gre remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:861a::2/64 dev azumig64' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig64 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig64' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    created_ips = []
+    for i in range(2, num_additional_ips + 2):
+        ip_address = f"2002:86{i}a::2"
+        created_ips.append(ip_address)
+        command = f"echo 'ip -6 addr add {ip_address}/64 dev azumig64' >> {file_path}"
+        subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f'ip link set dev azumig64 mtu {mtu_value}'
+        with open('/etc/gre64.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+
+    print("\033[93mCreated IPv6 Addresses \033[92mServer 4:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:861a::2               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+## default route server iran 4
+
+def gre64_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre64.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig64 mode ip6gre remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:861a::2/64 dev azumig64' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig64 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig64' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    created_ips = []
+    for i in range(2, num_additional_ips + 2):
+        ip_address = f"2002:86{i}a::2"
+        created_ips.append(ip_address)
+        command = f"echo 'ip -6 addr add {ip_address}/64 dev azumig64' >> {file_path}"
+        subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = "ip link set dev azumig64 mtu {mtu_value}\n"
+        with open('/etc/gre64.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+
+    print("\033[93mCreated IPv6 Addresses \033[92mServer 4:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:861a::2               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+def iran_ping4_script(ip_address, max_pings, interval):
+    file_path = '/etc/ping_ip4.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+    script_content = f'''#!/bin/bash
+
+ip_address="{ip_address}"
+
+max_pings={max_pings}
+
+interval={interval}
+
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open(file_path, 'w') as file:
+        file.write(script_content)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+
+def gre64_iran():
+    remote_ip = "2001:861b::1" #kharej ip
+    local_ip = "2001:861b::2"   #iran ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6\033[97m tunnel: "))
+    gre64_iran_tunnel(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:861a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping4_script(ip_address, max_pings, interval)
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    iran_gre64_service()
+
+    gre64_cronjob()
+   
+## default route iran server 4
+def gre64_iran2():
+    remote_ip = "2001:861b::1" #kharej ip
+    local_ip = "2001:861b::2"   #iran ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6\033[97m tunnel: "))
+    gre64_iran2_tunnel(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:861a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping4_script(ip_address, max_pings, interval)
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    iran_gre64_service()
+
+    gre64_cronjob()
+    
+def iran_gre64_menu():
+
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE \033[96m Server\033[92m[4]\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Iran server...\033[0m")
+
+    if os.path.isfile("/etc/private4.sh"):
+        os.remove("/etc/private4.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej \033[96m[4]\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi4", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi4", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:861b::2/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi4"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private4.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi4 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi4 up\n")
+        f.write("ip addr add 2001:861b::2/64 dev azumi4\n")
+        f.write("ip -6 route add 2001::/16 dev azumi4\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi4 mtu {mtu_value}\n"
+        with open("/etc/private4.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private4.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    sleep(1)
+    add_cron4_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    iran_ping4()
+    
+
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:861b::1"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v64.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v64.sh', 0o755)
+    ping_v64_service()
+
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    gre64_iran()
+    sleep(1)	
+    display_checkmark("\033[92mGRE6 Configuration Completed!\033[0m")
+#default route
+def iran2_gre64_menu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE \033[96m Server\033[92m[4]\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Iran server...\033[0m")
+
+    if os.path.isfile("/etc/private4.sh"):
+        os.remove("/etc/private4.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN \033[96m[4]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi4", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi4", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:861b::2/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi4"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private4.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi4 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi4 up\n")
+        f.write("ip addr add 2001:861b::2/64 dev azumi4\n")
+        f.write("ip -6 route add 2001::/16 dev azumi4\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi4 mtu {mtu_value}\n"
+        with open("/etc/private4.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private4.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    sleep(1)
+    add_cron4_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    iran_ping4()
+    
+
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:861b::1"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v64.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v64.sh', 0o755)
+    ping_v64_service()
+
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    gre64_iran2()
+    sleep(1)	
+    display_checkmark("\033[92mGRE6 Configuration Completed!\033[0m")
+ #iran5gre
+ ##### IRAN gre6 server 5
+def iran_ping5():
+    try:
+        subprocess.run(["ping", "-c", "2", "2001:871b::1"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+    
+	
+def display_iran5_ip():
+    print("\033[93mCreated Private IP Addresses (IRAN):\033[0m")
+    ip_addr = "2001:871b::2"
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| {ip_addr}    |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+		
+
+
+def iran_gre65_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_ip5.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_ip5.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_ip5.service'])
+    subprocess.run(['systemctl', 'start', 'ping_ip5.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_ip5.service'])
+
+def gre65_iran_tunnel(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre65.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig65 mode ip6gre remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:871a::2/64 dev azumig65' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig65 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig65' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    created_ips = []
+    for i in range(2, num_additional_ips + 2):
+        ip_address = f"2002:87{i}a::2"
+        created_ips.append(ip_address)
+        command = f"echo 'ip -6 addr add {ip_address}/64 dev azumig65' >> {file_path}"
+        subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f'ip link set dev azumig65 mtu {mtu_value}'
+        with open('/etc/gre65.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+
+    print("\033[93mCreated IPv6 Addresses \033[92mServer 3:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:871a::2               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+## default route server iran 5
+
+def gre65_iran2_tunnel(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre65.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        
+    command = f"echo '/sbin/modprobe ip6_gre' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumig65 mode ip6gre remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:871a::2/64 dev azumig65' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumig65 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumig65' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    created_ips = []
+    for i in range(2, num_additional_ips + 2):
+        ip_address = f"2002:87{i}a::2"
+        created_ips.append(ip_address)
+        command = f"echo 'ip -6 addr add {ip_address}/64 dev azumig65' >> {file_path}"
+        subprocess.run(command, shell=True, check=True)
+
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = "ip link set dev azumig65 mtu {mtu_value}\n"
+        with open('/etc/gre65.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+
+    print("\033[93mCreated IPv6 Addresses \033[92mServer 5:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:871a::2               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+def iran_ping5_script(ip_address, max_pings, interval):
+    file_path = '/etc/ping_ip5.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+    script_content = f'''#!/bin/bash
+
+ip_address="{ip_address}"
+
+max_pings={max_pings}
+
+interval={interval}
+
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open(file_path, 'w') as file:
+        file.write(script_content)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+
+def gre65_iran():
+    remote_ip = "2001:871b::1" #kharej ip
+    local_ip = "2001:871b::2"   #iran ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6\033[97m tunnel: "))
+    gre65_iran_tunnel(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:871a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping5_script(ip_address, max_pings, interval)
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    iran_gre65_service()
+
+    gre65_cronjob()
+   
+## default route iran server 4
+def gre65_iran2():
+    remote_ip = "2001:871b::1" #kharej ip
+    local_ip = "2001:871b::2"   #iran ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6\033[97m tunnel: "))
+    gre65_iran2_tunnel(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:871a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping5_script(ip_address, max_pings, interval)
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    iran_gre65_service()
+
+    gre65_cronjob()
+    
+def iran_gre65_menu():
+
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE \033[96m Server\033[92m[5]\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Iran server...\033[0m")
+
+    if os.path.isfile("/etc/private5.sh"):
+        os.remove("/etc/private5.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej \033[96m[4]\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi5", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi5", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:871b::2/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi5"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private5.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi5 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi5 up\n")
+        f.write("ip addr add 2001:871b::2/64 dev azumi5\n")
+        f.write("ip -6 route add 2001::/16 dev azumi5\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi5 mtu {mtu_value}\n"
+        with open("/etc/private5.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private5.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    sleep(1)
+    add_cron5_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    iran_ping5()
+    
+
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:871b::1"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v65.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v65.sh', 0o755)
+    ping_v65_service()
+
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    gre65_iran()
+    sleep(1)	
+    display_checkmark("\033[92mGRE6 Configuration Completed!\033[0m")
+#default route
+def iran2_gre65_menu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE \033[96m Server\033[92m[5]\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Iran server...\033[0m")
+
+    if os.path.isfile("/etc/private5.sh"):
+        os.remove("/etc/private5.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN \033[96m[5]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi5", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi5", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:871b::2/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi5"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private5.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi5 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi5 up\n")
+        f.write("ip addr add 2001:871b::2/64 dev azumi5\n")
+        f.write("ip -6 route add 2001::/16 dev azumi5\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi5 mtu {mtu_value}\n"
+        with open("/etc/private5.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private5.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    sleep(1)
+    add_cron5_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    iran_ping5()
+    
+
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:871b::1"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v65.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v65.sh', 0o755)
+    ping_v65_service()
+
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    gre65_iran2()
+    sleep(1)	
+    display_checkmark("\033[92mGRE6 Configuration Completed!\033[0m")    
 ## 10
 def ip6_mnu_ip():
     os.system("clear")
@@ -13400,8 +15871,8 @@ def ip6_mnu_ip():
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
-    print('1. \033[96mKHAREJ\033[92m[3]  \033[93mIRAN\033[92m[1]\033[0m')
-    print('2. \033[96mKHAREJ\033[92m[1]  \033[93mIRAN\033[92m[3]\033[0m')
+    print('1. \033[96mKHAREJ\033[92m[5]  \033[93mIRAN\033[92m[1]\033[0m')
+    print('2. \033[96mKHAREJ\033[92m[1]  \033[93mIRAN\033[92m[5]\033[0m')
     print('0. \033[94mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -13429,10 +15900,12 @@ def ip6_kh_ip():
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mKharej[1]\033[0m')
-    print('2. \033[93mKharej[2]\033[0m')
-    print('3. \033[92mKharej[3]\033[0m')
+    print('2. \033[92mKharej[2]\033[0m')
+    print('3. \033[93mKharej[3]\033[0m')
+    print('4. \033[92mKharej[4]\033[0m')
+    print('5. \033[92mKharej[5]\033[0m')
     print("\033[93m───────────────────────────────────────\033[0m")
-    print('4. \033[93mIRAN\033[0m')
+    print('6. \033[93mIRAN\033[0m')
     print('0. \033[94mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -13448,6 +15921,12 @@ def ip6_kh_ip():
             kharej_ipip63_menu()
             break
         elif server_type == '4':
+            kharej_ipip64_menu()
+            break
+        elif server_type == '5':
+            kharej_ipip65_menu()
+            break
+        elif server_type == '6':
             kharejip_q()
             break
         elif server_type == '0':
@@ -13476,10 +15955,12 @@ def ip6_ir_ip():
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mIRAN[1]\033[0m')
-    print('2. \033[93mIRAN[2]\033[0m')
-    print('3. \033[92mIRAN[3]\033[0m')
+    print('2. \033[92mIRAN[2]\033[0m')
+    print('3. \033[93mIRAN[3]\033[0m')
+    print('4. \033[92mIRAN[4]\033[0m')
+    print('5. \033[92mIRAN[5]\033[0m')
     print("\033[93m───────────────────────────────────────\033[0m")
-    print('4. \033[93mKharej\033[0m')
+    print('6. \033[93mKharej\033[0m')
     print('0. \033[94mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -13495,6 +15976,12 @@ def ip6_ir_ip():
             iran2_ipip63_menu()
             break
         elif server_type == '4':
+            iran2_ipip64_menu()
+            break
+        elif server_type == '5':
+            iran2_ipip65_menu()
+            break
+        elif server_type == '6':
             iranip_q()
             break
         elif server_type == '0':
@@ -14546,6 +17033,1047 @@ done
     ipip3_kharej()
     sleep(1)	
     print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")   
+    
+##kharej3
+
+def run_ping3():
+    try:
+        subprocess.run(["ping", "-c", "2", "2001:851b::2"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+	
+def display_kharej3_ip():
+    print("\033[93mCreated Private IP Addresses (Kharej):\033[0m")
+    ip_addr = "2001:851b::1"
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| {ip_addr}    |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    
+
+
+##ipip6 kharej
+def ping_ipip3_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_ip3.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_ip3.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_ip3.service'])
+    subprocess.run(['systemctl', 'start', 'ping_ip3.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_ip3.service'])
+
+
+def ipip63_tunnel(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/ipip3.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        
+    command = f"echo '/sbin/modprobe ipip' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumip3 mode ip6ip6 remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:0db8:1234:a420::1/64 dev azumip3' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumip3 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumip3' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    created_ips = []
+    for i in range(2, num_additional_ips + 2):
+        ip_address = f"2002:0db8:1234:a42{i}::1"
+        created_ips.append(ip_address)
+        command = f"echo 'ip -6 addr add {ip_address}/64 dev azumip3' >> {file_path}"
+        subprocess.run(command, shell=True, check=True)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumip3 mtu {mtu_value}\n"
+        with open('/etc/ipip3.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    
+    
+
+    print("\033[93mCreated IPv6 Addresses \033[92mServer 3:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:0db8:1234:a420::1    |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}    |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+def ipip3_cronjob():
+    try:
+        
+        subprocess.run(
+            "crontab -l | grep -v '/etc/ipip3.sh' | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+     
+        subprocess.run(
+            "(crontab -l ; echo '@reboot /bin/bash /etc/ipip3.sh') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+        display_checkmark("\033[92mCronjob added successfully!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("\033[91mFailed to add cronjob:\033[0m", e)
+
+
+def create_ping3_script(ip_address, max_pings, interval):
+    file_path = '/etc/ping_ip3.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+    script_content = f'''#!/bin/bash
+
+ip_address="{ip_address}"
+
+max_pings={max_pings}
+
+interval={interval}
+
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open(file_path, 'w') as file:
+        file.write(script_content)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+def ipip3_kharej():
+    remote_ip = "2001:851b::2" #iran-ip
+    local_ip = "2001:851b::1"   #kharej ip
+    num_additional_ips = int(input("\033[93mHow many \033[92madditional ips\033[93m do you need? \033[0m"))
+    ipip63_tunnel(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:0db8:1234:a420::2" #iranip
+    max_pings = 3
+    interval = 20
+    create_ping3_script(ip_address, max_pings, interval)
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+    
+    ping_ipip3_service()
+
+    ipip3_cronjob()
+    display_checkmark("\033[92mIPIP6 Configuration Completed!\033[0m")
+    
+def kharej_ipip63_menu():
+
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring IP6IP6 \033[92mKharej\033[93m server\033[92m[3]\033[0m')
+    print('\033[92m "-"\033[93m═════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private3.sh"):
+        os.remove("/etc/private3.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mKharej \033[96m[3]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi3", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi3", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:851b::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi3"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private3.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi3 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi3 up\n")
+        f.write("ip addr add 2001:851b::1/64 dev azumi3\n")
+        f.write("ip -6 route add 2001::/16 dev azumi3\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
+        with open("/etc/private3.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private3.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    add_cron3_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_ping3()
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:851b::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v63.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v63.sh', 0o755)
+    ping_v63_service()
+    
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    ipip3_kharej()
+    sleep(1)	
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+# kharej 3 for iran 3
+
+def kharej2_ipip63_menu():
+
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring IP6IP6 \033[92mKharej\033[93m server\033[92m[3]\033[0m')
+    print('\033[92m "-"\033[93m═════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private3.sh"):
+        os.remove("/etc/private3.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mKharej \033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN \033[96m[3]\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi3", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi3", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:851b::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi3"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private3.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi3 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi3 up\n")
+        f.write("ip addr add 2001:851b::1/64 dev azumi3\n")
+        f.write("ip -6 route add 2001::/16 dev azumi3\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
+        with open("/etc/private3.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private3.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    add_cron3_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_ping3()
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:851b::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v63.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v63.sh', 0o755)
+    ping_v63_service()
+    
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    ipip3_kharej()
+    sleep(1)	
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")   
+
+#kharej 4
+
+
+def run_ping4():
+    try:
+        subprocess.run(["ping", "-c", "2", "2001:861b::2"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+	
+def display_kharej4_ip():
+    print("\033[93mCreated Private IP Addresses (Kharej):\033[0m")
+    ip_addr = "2001:861b::1"
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| {ip_addr}    |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    
+
+
+##ipip6 kharej
+def ping_ipip4_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_ip4.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_ip4.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_ip4.service'])
+    subprocess.run(['systemctl', 'start', 'ping_ip4.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_ip4.service'])
+
+
+def ipip64_tunnel(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/ipip4.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        
+    command = f"echo '/sbin/modprobe ipip' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumip4 mode ip6ip6 remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:0db8:1234:a520::1/64 dev azumip4' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumip4 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumip4' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    created_ips = []
+    for i in range(2, num_additional_ips + 2):
+        ip_address = f"2002:0db8:1234:a52{i}::1"
+        created_ips.append(ip_address)
+        command = f"echo 'ip -6 addr add {ip_address}/64 dev azumip4' >> {file_path}"
+        subprocess.run(command, shell=True, check=True)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumip4 mtu {mtu_value}\n"
+        with open('/etc/ipip4.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    
+    
+
+    print("\033[93mCreated IPv6 Addresses \033[92mServer 3:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:0db8:1234:a520::1    |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}    |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+def ipip4_cronjob():
+    try:
+        
+        subprocess.run(
+            "crontab -l | grep -v '/etc/ipip4.sh' | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+     
+        subprocess.run(
+            "(crontab -l ; echo '@reboot /bin/bash /etc/ipip4.sh') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+        display_checkmark("\033[92mCronjob added successfully!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("\033[91mFailed to add cronjob:\033[0m", e)
+
+
+def create_ping4_script(ip_address, max_pings, interval):
+    file_path = '/etc/ping_ip4.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+    script_content = f'''#!/bin/bash
+
+ip_address="{ip_address}"
+
+max_pings={max_pings}
+
+interval={interval}
+
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open(file_path, 'w') as file:
+        file.write(script_content)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+def ipip4_kharej():
+    remote_ip = "2001:861b::2" #iran-ip
+    local_ip = "2001:861b::1"   #kharej ip
+    num_additional_ips = int(input("\033[93mHow many \033[92madditional ips\033[93m do you need? \033[0m"))
+    ipip64_tunnel(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:0db8:1234:a520::2" #iranip
+    max_pings = 3
+    interval = 20
+    create_ping4_script(ip_address, max_pings, interval)
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+    
+    ping_ipip4_service()
+
+    ipip4_cronjob()
+    display_checkmark("\033[92mIPIP6 Configuration Completed!\033[0m")
+    
+def kharej_ipip64_menu():
+
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring IP6IP6 \033[92mKharej\033[93m server\033[92m[4]\033[0m')
+    print('\033[92m "-"\033[93m═════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private4.sh"):
+        os.remove("/etc/private4.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mKharej \033[96m[4]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi4", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi4", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:861b::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi4"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private4.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi4 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi4 up\n")
+        f.write("ip addr add 2001:861b::1/64 dev azumi4\n")
+        f.write("ip -6 route add 2001::/16 dev azumi4\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi4 mtu {mtu_value}\n"
+        with open("/etc/private4.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private4.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    add_cron4_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_ping4()
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:861b::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v64.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v64.sh', 0o755)
+    ping_v64_service()
+    
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    ipip4_kharej()
+    sleep(1)	
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+# kharej 4 for iran 4
+
+def kharej2_ipip64_menu():
+
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring IP6IP6 \033[92mKharej\033[93m server\033[92m[4]\033[0m')
+    print('\033[92m "-"\033[93m═════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private4.sh"):
+        os.remove("/etc/private4.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mKharej \033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN \033[96m[4]\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi4", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi4", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:861b::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi4"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private4.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi4 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi4 up\n")
+        f.write("ip addr add 2001:861b::1/64 dev azumi4\n")
+        f.write("ip -6 route add 2001::/16 dev azumi4\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi4 mtu {mtu_value}\n"
+        with open("/etc/private4.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private4.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    add_cron4_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_ping4()
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:861b::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v64.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v64.sh', 0o755)
+    ping_v64_service()
+    
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    ipip4_kharej()
+    sleep(1)	
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m") 
+
+#kharej 5
+
+
+def run_ping5():
+    try:
+        subprocess.run(["ping", "-c", "2", "2001:871b::2"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+	
+def display_kharej5_ip():
+    print("\033[93mCreated Private IP Addresses (Kharej):\033[0m")
+    ip_addr = "2001:871b::1"
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| {ip_addr}    |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    
+
+
+##ipip6 kharej
+def ping_ipip5_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_ip5.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_ip5.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_ip5.service'])
+    subprocess.run(['systemctl', 'start', 'ping_ip5.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_ip5.service'])
+
+
+def ipip65_tunnel(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/ipip5.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+        
+    command = f"echo '/sbin/modprobe ipip' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 tunnel add azumip5 mode ip6ip6 remote {remote_ip} local {local_ip} ttl 255' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    command = f"echo 'ip -6 addr add 2002:0db8:1234:a620::1/64 dev azumip5' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip link set azumip5 up' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    command = f"echo 'ip -6 route add 2002::/16 dev azumip5' >> {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    created_ips = []
+    for i in range(2, num_additional_ips + 2):
+        ip_address = f"2002:0db8:1234:a62{i}::1"
+        created_ips.append(ip_address)
+        command = f"echo 'ip -6 addr add {ip_address}/64 dev azumip5' >> {file_path}"
+        subprocess.run(command, shell=True, check=True)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(f"bash {file_path}", shell=True, check=True)
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [IP6IP6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumip5 mtu {mtu_value}\n"
+        with open('/etc/ipip5.sh', 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    
+    
+
+    print("\033[93mCreated IPv6 Addresses \033[92mServer 3:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:0db8:1234:a620::1    |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}    |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+def ipip5_cronjob():
+    try:
+        
+        subprocess.run(
+            "crontab -l | grep -v '/etc/ipip5.sh' | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+     
+        subprocess.run(
+            "(crontab -l ; echo '@reboot /bin/bash /etc/ipip5.sh') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+        display_checkmark("\033[92mCronjob added successfully!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("\033[91mFailed to add cronjob:\033[0m", e)
+
+
+def create_ping5_script(ip_address, max_pings, interval):
+    file_path = '/etc/ping_ip5.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+    script_content = f'''#!/bin/bash
+
+ip_address="{ip_address}"
+
+max_pings={max_pings}
+
+interval={interval}
+
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open(file_path, 'w') as file:
+        file.write(script_content)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+def ipip5_kharej():
+    remote_ip = "2001:871b::2" #iran-ip
+    local_ip = "2001:871b::1"   #kharej ip
+    num_additional_ips = int(input("\033[93mHow many \033[92madditional ips\033[93m do you need? \033[0m"))
+    ipip65_tunnel(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:0db8:1234:a620::2" #iranip
+    max_pings = 3
+    interval = 20
+    create_ping5_script(ip_address, max_pings, interval)
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+    
+    ping_ipip5_service()
+
+    ipip5_cronjob()
+    display_checkmark("\033[92mIPIP6 Configuration Completed!\033[0m")
+    
+def kharej_ipip65_menu():
+
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring IP6IP6 \033[92mKharej\033[93m server\033[92m[5]\033[0m')
+    print('\033[92m "-"\033[93m═════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private5.sh"):
+        os.remove("/etc/private5.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mKharej \033[96m[5]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi5", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi5", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:871b::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi5"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private5.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi5 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi5 up\n")
+        f.write("ip addr add 2001:871b::1/64 dev azumi5\n")
+        f.write("ip -6 route add 2001::/16 dev azumi5\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi5 mtu {mtu_value}\n"
+        with open("/etc/private5.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private5.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    add_cron5_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_ping5()
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:871b::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v65.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v65.sh', 0o755)
+    ping_v65_service()
+    
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    ipip5_kharej()
+    sleep(1)	
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+# kharej 5 for iran 5
+
+def kharej2_ipip65_menu():
+
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring IP6IP6 \033[92mKharej\033[93m server\033[92m[5]\033[0m')
+    print('\033[92m "-"\033[93m═════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private5.sh"):
+        os.remove("/etc/private5.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mKharej \033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN \033[96m[5]\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi5", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi5", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:871b::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi5"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private5.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi5 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi5 up\n")
+        f.write("ip addr add 2001:871b::1/64 dev azumi5\n")
+        f.write("ip -6 route add 2001::/16 dev azumi5\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi5 mtu {mtu_value}\n"
+        with open("/etc/private5.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private5.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+    add_cron5_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_ping5()
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:871b::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v65.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v65.sh', 0o755)
+    ping_v65_service()
+    
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    ipip5_kharej()
+    sleep(1)	
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m") 
+    
  ##### IRAN IPIP6 server 1
 def iran_ping1():
     try:
@@ -15835,7 +19363,7 @@ done
  ##### IRAN IPIP6 server 4
 def iran_ping4():
     try:
-        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b781::1"], check=True, stdout=subprocess.DEVNULL)
+        subprocess.run(["ping", "-c", "2", "2001:861b::1"], check=True, stdout=subprocess.DEVNULL)
     except subprocess.CalledProcessError as e:
         print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
         
@@ -15843,7 +19371,7 @@ def iran_ping4():
 	
 def display_iran4_ip():
     print("\033[93mCreated Private IP Addresses (Kharej):\033[0m")
-    ip_addr = "fd1d:fc98:b73e:b781::2"
+    ip_addr = "2001:861b::2/64"
     print("\033[92m" + "+---------------------------+" + "\033[0m")
     print("\033[92m" + f"| {ip_addr}    |" + "\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
@@ -15981,8 +19509,8 @@ done
     subprocess.run(command, shell=True, check=True)
 
 def ipip4_iran():
-    remote_ip = "fd1d:fc98:b73e:b781::1" #kharej-ip
-    local_ip = "fd1d:fc98:b73e:b781::2"   #iran ip
+    remote_ip = "2001:861b::1" #kharej-ip
+    local_ip = "2001:861b::2"   #iran ip
     num_additional_ips = int(input("\033[93mHow many \033[92madditional ips\033[93m do you need? \033[0m"))
     ipip64_iran_tunnel(remote_ip, local_ip, num_additional_ips)
 
@@ -16023,7 +19551,7 @@ def iran_ipip64_menu():
     subprocess.run(["ip", "tunnel", "add", "azumi4", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
     subprocess.run(["ip", "link", "set", "dev", "azumi4", "up"], stdout=subprocess.DEVNULL)
 
-    initial_ip = "fd1d:fc98:b73e:b781::2/64"
+    initial_ip = "2001:861b::2/64"
     subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi4"], stdout=subprocess.DEVNULL)
 
     display_notification("\033[93mAdding commands...\033[0m")
@@ -16031,8 +19559,8 @@ def iran_ipip64_menu():
         f.write("/sbin/modprobe sit\n")
         f.write(f"ip tunnel add azumi4 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
         f.write("ip link set dev azumi4 up\n")
-        f.write("ip addr add fd1d:fc98:b73e:b781::2/64 dev azumi4\n")
-        f.write("ip -6 route add fd1d::/16 dev azumi4\n")
+        f.write("ip addr add 2001:861b::2/64 dev azumi4\n")
+        f.write("ip -6 route add 2001::/16 dev azumi4\n")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
@@ -16057,7 +19585,7 @@ def iran_ipip64_menu():
     script_content1 = '''#!/bin/bash
 
 
-ip_address="fd1d:fc98:b73e:b681::1"
+ip_address="2001:861b::1"
 
 max_pings=3
 
@@ -16092,11 +19620,101 @@ done
     ipip4_iran()
     sleep(1)	
     print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+##default route iran server 4 menu
+def iran2_ipip64_menu():
+
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring IPIP6 \033[92mServer\033[93m\033[96m[4]\033[0m')
+    print('\033[92m "-"\033[93m═════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Iran server...\033[0m")
+
+    if os.path.isfile("/etc/private4.sh"):
+        os.remove("/etc/private4.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN \033[96m[4]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi4", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi4", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:861b::2/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi4"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private4.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi4 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi4 up\n")
+        f.write("ip addr add 2001:861b::2/64 dev azumi4\n")
+        f.write("ip -6 route add 2001::/16 dev azumi4\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi4 mtu {mtu_value}\n"
+        with open("/etc/private4.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)           
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private4.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
     
+
+
+    sleep(1)
+    add_cron4_job() 
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    iran_ping4()
+
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:861b::1"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v64.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v64.sh', 0o755)
+    ping_v64_service()
+
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    ipip4_iran()
+    sleep(1)	
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+        
  ##### IRAN IPIP6 server 5
 def iran_ping5():
     try:
-        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b881::1"], check=True, stdout=subprocess.DEVNULL)
+        subprocess.run(["ping", "-c", "2", "2001:871b::1"], check=True, stdout=subprocess.DEVNULL)
     except subprocess.CalledProcessError as e:
         print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
         
@@ -16104,14 +19722,14 @@ def iran_ping5():
 	
 def display_iran5_ip():
     print("\033[93mCreated Private IP Addresses (Kharej):\033[0m")
-    ip_addr = "fd1d:fc98:b73e:b881::2"
+    ip_addr = "2001:871b::2"
     print("\033[92m" + "+---------------------------+" + "\033[0m")
     print("\033[92m" + f"| {ip_addr}    |" + "\033[0m")
     print("\033[92m" + "+---------------------------+" + "\033[0m")
     
 		
 
-##ipip6 iran4
+##ipip6 iran5
 
 
 def iran_ipip5_service():
@@ -16240,8 +19858,8 @@ done
     subprocess.run(command, shell=True, check=True)
 
 def ipip5_iran():
-    remote_ip = "fd1d:fc98:b73e:b881::1" #kharej-ip
-    local_ip = "fd1d:fc98:b73e:b881::2"   #iran ip
+    remote_ip = "2001:871b::1" #kharej-ip
+    local_ip = "2001:871b::2"   #iran ip
     num_additional_ips = int(input("\033[93mHow many \033[92madditional ips\033[93m do you need? \033[0m"))
     ipip65_iran_tunnel(remote_ip, local_ip, num_additional_ips)
 
@@ -16282,7 +19900,7 @@ def iran_ipip65_menu():
     subprocess.run(["ip", "tunnel", "add", "azumi5", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
     subprocess.run(["ip", "link", "set", "dev", "azumi5", "up"], stdout=subprocess.DEVNULL)
 
-    initial_ip = "fd1d:fc98:b73e:b881::2/64"
+    initial_ip = "2001:871b::2/64"
     subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi5"], stdout=subprocess.DEVNULL)
 
     display_notification("\033[93mAdding commands...\033[0m")
@@ -16290,8 +19908,8 @@ def iran_ipip65_menu():
         f.write("/sbin/modprobe sit\n")
         f.write(f"ip tunnel add azumi5 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
         f.write("ip link set dev azumi5 up\n")
-        f.write("ip addr add fd1d:fc98:b73e:b881::2/64 dev azumi5\n")
-        f.write("ip -6 route add fd1d::/16 dev azumi5\n")
+        f.write("ip addr add 2001:871b::2/64 dev azumi5\n")
+        f.write("ip -6 route add 2001::/16 dev azumi5\n")
     set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
     if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
         mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
@@ -16316,7 +19934,97 @@ def iran_ipip65_menu():
     script_content1 = '''#!/bin/bash
 
 
-ip_address="fd1d:fc98:b73e:b681::1"
+ip_address="2001:871b::1"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v65.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v65.sh', 0o755)
+    ping_v65_service()
+
+    display_notification("\033[93mConfiguring...\033[0m")
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    ipip5_iran()
+    sleep(1)	
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+    
+##default route iran server 5 menu
+def iran2_ipip65_menu():
+
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring IPIP6 \033[92mServer\033[93m\033[96m[5]\033[0m')
+    print('\033[92m "-"\033[93m═════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Iran server...\033[0m")
+
+    if os.path.isfile("/etc/private5.sh"):
+        os.remove("/etc/private5.sh")
+
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN \033[96m[5]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m╰─────────────────────────────────────────────────────────╯\033[0m")
+
+    subprocess.run(["ip", "tunnel", "add", "azumi5", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi5", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "2001:871b::2/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi5"], stdout=subprocess.DEVNULL)
+
+    display_notification("\033[93mAdding commands...\033[0m")
+    with open("/etc/private5.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi5 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi5 up\n")
+        f.write("ip addr add 2001:871b::2/64 dev azumi5\n")
+        f.write("ip -6 route add 2001::/16 dev azumi5\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi5 mtu {mtu_value}\n"
+        with open("/etc/private5.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)           
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private5.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    
+
+
+    sleep(1)
+    add_cron5_job() 
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    iran_ping5()
+
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="2001:871b::1"
 
 max_pings=3
 
@@ -19181,6 +22889,4468 @@ done
 
     os.chmod('/etc/ping_v65.sh', 0o755)
     ping_v65_service()
+
+## gre6tap simple
+def gre6tapmulti_mnu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mGRE6tap Multi\033[93m Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print("1. \033[92mGRE6tap IPV4 Multi \033[0m")
+    print("2. \033[93mGRE6tap Native Multi \033[0m")
+    print("3. \033[92mGRE6tap IPV4 + \033[96mIPsec\033[92m Multi \033[0m")
+    print("4. \033[93mGRE6tap Native + \033[96mIPsec\033[92m Multi \033[0m")
+    print('0. \033[91mback to the main menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gretap4m()
+            break
+        elif server_type == '2':
+            gretapnm()
+            break
+        elif server_type == '3':
+            gretap4m1()
+            break
+        elif server_type == '4':
+            gretapnm1()
+            break
+        elif server_type == '0':
+            clear()
+            main_menu()
+            break
+        else:
+            print('Invalid choice.')  
+   
+def gretapnm():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[96mNative \033[93m+\033[92m Gretap6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92m[5] Kharej [1] IRAN\033[0m')
+    print('2. \033[93m[1] Kharej [5] IRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gre6tapmu_k()
+            break
+        elif server_type == '2':
+            gre6tapmu_i()
+            break
+        elif server_type == '3':
+            clear()
+            gre6tapmulti_mnu
+            break
+        else:
+            print('Invalid choice.')
+
+def gre6tapmu_k():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[96mNative \033[93m+\033[92m Gretap6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej [1]\033[0m')
+    print('2. \033[92mKharej [2]\033[0m')
+    print('3. \033[93mKharej [3]\033[0m')
+    print('4. \033[92mKharej [4]\033[0m')
+    print('5. \033[92mKharej [5]\033[0m')
+    print('6. \033[96mIRAN\033[0m')
+    print('0. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gre6tap_k1()
+            break
+        elif server_type == '2':
+            gre6tap_k2()
+            break
+        elif server_type == '3':
+            gre6tap_k3()
+            break
+        elif server_type == '4':
+            gre6tap_k4()
+            break
+        elif server_type == '5':
+            gre6tap_k5()
+            break
+        elif server_type == '6':
+            irangretap_q()
+            break
+        elif server_type == '0':
+            clear()
+            gretapnm()
+            break
+        else:
+            print('Invalid choice.')
+
+def irangretap_q():
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mQuestion time!\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    num_servers = int(input("\033[93mHow many \033[92mKharej Servers\033[93m do you have?\033[0m "))
+    
+    for i in range(1, num_servers + 1):
+        menu_name = "gre6tap2_i{}".format(i)
+        if menu_name in globals():
+            globals()[menu_name]()
+        else:
+            print("Function {} does not exist.".format(menu_name))
+
+def gre6tapmu_i():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[96mNative \033[93m+\033[92m Gretap6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mIRAN [1]\033[0m')
+    print('2. \033[92mIRAN [2]\033[0m')
+    print('3. \033[93mIRAN [3]\033[0m')
+    print('4. \033[92mIRAN [4]\033[0m')
+    print('5. \033[92mIRAN [5]\033[0m')
+    print('6. \033[96mKharej\033[0m')
+    print('0. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gre6tap_i1()
+            break
+        elif server_type == '2':
+            gre6tap_i2()
+            break
+        elif server_type == '3':
+            gre6tap_i3()
+            break
+        elif server_type == '4':
+            gre6tap_i4()
+            break
+        elif server_type == '5':
+            gre6tap_i5()
+            break
+        elif server_type == '6':
+            kharejgretap_q()
+            break
+        elif server_type == '0':
+            clear()
+            gretapnm()
+            break
+        else:
+            print('Invalid choice.')
+
+def kharejgretap_q():
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mQuestion time!\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    num_servers = int(input("\033[93mHow many \033[92mIRAN Servers\033[93m do you have?\033[0m "))
+    
+    for i in range(1, num_servers + 1):
+        menu_name = "gre6tap2_k{}".format(i)
+        if menu_name in globals():
+            globals()[menu_name]()
+        else:
+            print("Function {} does not exist.".format(menu_name))
+        
+def gre6tapk_tunnel1():
+    global local_ip, remote_ip
+    file_path = '/etc/gre61.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+		
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig61 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write("ip -6 addr add 2002:831a::1/64 dev azumig61\n")
+        f.write("ip link set azumig61 up\n")
+        f.write("ip -6 route add 2002::/16 dev azumig61\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig61 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+
+    sleep(1)
+    subprocess.run(["bash", file_path], check=True)
+
+
+def kharej_gre6tap_tunnel1():
+    global local_ip, remote_ip
+    gre6tapk_tunnel1()
+    ip_address = "2002:831a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping1_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)   
+    ping_gre61_service()
+    gre61_cronjob()
+    
+
+def gre6tap_k1():
+    global local_ip, remote_ip
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[1]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap2_k1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[1]\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m") 
+
+# iran  native 
+
+def gre6tapi_tunnel1():
+    global local_ip, remote_ip
+    file_path = '/etc/gre61.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+	
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig61 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write("ip -6 addr add 2002:831a::2/64 dev azumig61\n")
+        f.write("ip link set azumig61 up\n")
+        f.write("ip -6 route add 2002::/16 dev azumig61\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig61 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+
+    sleep(1)
+    subprocess.run(["bash", file_path], check=True)
+   
+
+def iran_gre6tap_tunnel1():
+    global local_ip, remote_ip
+    gre6tapi_tunnel1()
+    ip_address = "2002:831a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping1_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)    
+    iran_gre61_service()
+    gre61_cronjob()
+
+def gre6tap_i1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[1]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap2_i1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[1]\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+# 2native
+
+def gre6tapk_tunnel2():
+    global local_ip, remote_ip
+    file_path = '/etc/gre62.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+		
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig62 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write("ip -6 addr add 2002:841a::1/64 dev azumig62\n")
+        f.write("ip link set azumig62 up\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig62 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+
+    sleep(1)
+    subprocess.run(["bash", file_path], check=True)
+
+
+def kharej_gre6tap_tunnel2():
+    global local_ip, remote_ip
+    gre6tapk_tunnel2()
+    ip_address = "2002:841a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping2_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)   
+    ping_gre62_service()
+    gre62_cronjob()
+    
+
+def gre6tap_k2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[2]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+ 
+def gre6tap2_k2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[2]\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+# iran  native 
+
+def gre6tapi_tunnel2():
+    global local_ip, remote_ip
+    file_path = '/etc/gre62.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig62 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write(f"ip -6 addr add 2002:841a::2/64 dev azumig62\n")
+        f.write("ip link set azumig62 up\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig62 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+
+    subprocess.run(["bash", file_path], check=True)
+   
+
+def iran_gre6tap_tunnel2():
+    global local_ip, remote_ip
+    gre6tapi_tunnel2()
+    ip_address = "2002:841a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping2_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)    
+    iran_gre62_service()
+    gre62_cronjob() 
+    
+def gre6tap_i2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[2]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+def gre6tap2_i2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[2]\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")       
+##end
+
+# 3native
+
+def gre6tapk_tunnel3():
+    global local_ip, remote_ip
+    file_path = '/etc/gre63.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig63 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write(f"ip -6 addr add 2002:851a::1/64 dev azumig63\n")
+        f.write("ip link set azumig63 up\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig63 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+
+    subprocess.run(["bash", file_path], check=True)
+
+
+def kharej_gre6tap_tunnel3():
+    global local_ip, remote_ip
+    gre6tapk_tunnel3()
+    ip_address = "2002:851a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping3_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)   
+    ping_gre63_service()
+    gre63_cronjob()
+    
+
+def gre6tap_k3():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[3]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap2_k3():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[3]\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m") 
+
+# iran  native 
+
+def gre6tapi_tunnel3():
+    global local_ip, remote_ip
+    file_path = '/etc/gre63.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig63 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write(f"ip -6 addr add 2002:851a::2/64 dev azumig63\n")
+        f.write("ip link set azumig63 up\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig63 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+
+    subprocess.run(["bash", file_path], check=True)
+   
+
+def iran_gre6tap_tunnel3():
+    global local_ip, remote_ip
+    gre6tapi_tunnel3()
+    ip_address = "2002:851a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping3_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)    
+    iran_gre63_service()
+    gre63_cronjob() 
+
+def gre6tap_i3():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[3]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")  
+
+def gre6tap2_i3():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[3]\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")    
+##end
+def create_ping4_script(ip_address, max_pings, interval):
+    file_path = '/etc/ping_ip4.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+    script_content = f'''#!/bin/bash
+
+ip_address="{ip_address}"
+
+max_pings={max_pings}
+
+interval={interval}
+
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open(file_path, 'w') as file:
+        file.write(script_content)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+def create_ping5_script(ip_address, max_pings, interval):
+    file_path = '/etc/ping_ip5.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+    script_content = f'''#!/bin/bash
+
+ip_address="{ip_address}"
+
+max_pings={max_pings}
+
+interval={interval}
+
+while true
+do
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{{print $2}}" | awk -F " " "{{print $1}}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open(file_path, 'w') as file:
+        file.write(script_content)
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+def ping_gre64_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_ip4.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_ip4.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_ip4.service'])
+    subprocess.run(['systemctl', 'start', 'ping_ip4.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_ip4.service'])
+
+def ping_gre65_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_ip5.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_ip5.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_ip5.service'])
+    subprocess.run(['systemctl', 'start', 'ping_ip5.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_ip5.service'])
+
+def gre64_cronjob():
+    try:
+        
+        subprocess.run(
+            "crontab -l | grep -v '/etc/gre64.sh' | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+     
+        subprocess.run(
+            "(crontab -l ; echo '@reboot /bin/bash /etc/gre64.sh') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+        display_checkmark("\033[92mCronjob added successfully!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("\033[91mFailed to add cronjob:\033[0m", e)
+
+def gre65_cronjob():
+    try:
+        
+        subprocess.run(
+            "crontab -l | grep -v '/etc/gre65.sh' | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+     
+        subprocess.run(
+            "(crontab -l ; echo '@reboot /bin/bash /etc/gre65.sh') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+        display_checkmark("\033[92mCronjob added successfully!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("\033[91mFailed to add cronjob:\033[0m", e)
+# 4native
+
+def gre6tapk_tunnel4():
+    global local_ip, remote_ip
+    file_path = '/etc/gre64.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig64 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write(f"ip -6 addr add 2002:861a::1/64 dev azumig64\n")
+        f.write("ip link set azumig64 up\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig64 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+
+    subprocess.run(["bash", file_path], check=True)
+    
+        
+def kharej_gre6tap_tunnel4():
+    global local_ip, remote_ip
+    gre6tapk_tunnel4()
+    ip_address = "2002:861a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping4_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)   
+    ping_gre64_service()
+    gre64_cronjob()
+    
+
+def gre6tap_k4():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[4]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap2_k4():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[4]\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m") 
+
+# iran  native 
+
+def gre6tapi_tunnel4():
+    global local_ip, remote_ip
+    file_path = '/etc/gre64.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig64 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write(f"ip -6 addr add 2002:861a::2/64 dev azumig64\n")
+        f.write("ip link set azumig64 up\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig64 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+
+    subprocess.run(["bash", file_path], check=True)
+   
+
+def iran_gre6tap_tunnel4():
+    global local_ip, remote_ip
+    gre6tapi_tunnel4()
+    ip_address = "2002:861a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping4_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)    
+    iran_gre64_service()
+    gre64_cronjob()
+    
+def gre6tap_i4():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[4]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")  
+
+def gre6tap2_i4():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[4]\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")        
+##end  
+# 5native
+
+def gre6tapk_tunnel5():
+    global local_ip, remote_ip
+    file_path = '/etc/gre65.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig65 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write(f"ip -6 addr add 2002:871a::1/64 dev azumig65\n")
+        f.write("ip link set azumig65 up\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig65 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+
+    subprocess.run(["bash", file_path], check=True)
+    
+        
+def kharej_gre6tap_tunnel5():
+    global local_ip, remote_ip
+    gre6tapk_tunnel5()
+    ip_address = "2002:871a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping5_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)   
+    ping_gre65_service()
+    gre65_cronjob()
+    
+
+def gre6tap_k5():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[5]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+ 
+def gre6tap2_k5():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[5]\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+# iran  native 
+
+def gre6tapi_tunnel5():
+    global local_ip, remote_ip
+    file_path = '/etc/gre65.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig65 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write(f"ip -6 addr add 2002:871a::2/64 dev azumig65\n")
+        f.write("ip link set azumig65 up\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig65 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+
+    subprocess.run(["bash", file_path], check=True)
+   
+
+def iran_gre6tap_tunnel5():
+    global local_ip, remote_ip
+    gre6tapi_tunnel5()
+    ip_address = "2002:871a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping5_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)    
+    iran_gre65_service()
+    gre65_cronjob()
+
+def gre6tap_i5():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[5]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap2_i5():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[5]\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")     
+##end      
+ #ip4 start       
+def gretap4m():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[96mIPV4 \033[93m+\033[92m Gretap6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92m[5] Kharej [1] IRAN\033[0m')
+    print('2. \033[93m[1] Kharej [5] IRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gre6tap4mu_k()
+            break
+        elif server_type == '2':
+            gre6tap4mu_i()
+            break
+        elif server_type == '3':
+            clear()
+            gre6tapmulti_mnu
+            break
+        else:
+            print('Invalid choice.')
+
+def gre6tap4mu_k():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[96mIPV4 \033[93m+\033[92m Gretap6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej [1]\033[0m')
+    print('2. \033[92mKharej [2]\033[0m')
+    print('3. \033[93mKharej [3]\033[0m')
+    print('4. \033[92mKharej [4]\033[0m')
+    print('5. \033[92mKharej [5]\033[0m')
+    print('6. \033[96mIRAN\033[0m')
+    print('0. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gre6tap6_kharejz1()
+            break
+        elif server_type == '2':
+            gre6tap6_kharejz2()
+            break
+        elif server_type == '3':
+            gre6tap6_kharejz3()
+            break
+        elif server_type == '4':
+            gre6tap6_kharejz4()
+            break
+        elif server_type == '5':
+            gre6tap6_kharejz5()
+            break
+        elif server_type == '6':
+            irangretap4_q()
+            break
+        elif server_type == '0':
+            clear()
+            gretap4m()
+            break
+        else:
+            print('Invalid choice.')
+
+def irangretap4_q():
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mQuestion time!\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    num_servers = int(input("\033[93mHow many \033[92mIRAN Servers\033[93m do you have?\033[0m "))
+    
+    for i in range(1, num_servers + 1):
+        menu_name = "gre6tap62_iranz{}".format(i)
+        if menu_name in globals():
+            globals()[menu_name]()
+        else:
+            print("Function {} does not exist.".format(menu_name))
+        
+def gre6tap4mu_i():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[96mIPV4 \033[93m+\033[92m Gretap6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mIRAN [1]\033[0m')
+    print('2. \033[92mIRAN [2]\033[0m')
+    print('3. \033[93mIRAN [3]\033[0m')
+    print('4. \033[92mIRAN [4]\033[0m')
+    print('5. \033[92mIRAN [5]\033[0m')
+    print('6. \033[96mKharej\033[0m')
+    print('0. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gre6tap6_iranz1()
+            break
+        elif server_type == '2':
+            gre6tap6_iranz2()
+            break
+        elif server_type == '3':
+            gre6tap6_iranz3()
+            break
+        elif server_type == '4':
+            gre6tap6_iranz4()
+            break
+        elif server_type == '5':
+            gre6tap6_iranz5()
+            break
+        elif server_type == '6':
+            kharejgretap4_q()
+            break
+        elif server_type == '0':
+            clear()
+            gretap4m()
+            break
+        else:
+            print('Invalid choice.')
+
+def kharejgretap4_q():
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mQuestion time!\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    num_servers = int(input("\033[93mHow many \033[92mIRAN Servers\033[93m do you have?\033[0m "))
+    
+    for i in range(1, num_servers + 1):
+        menu_name = "gre6tap62_kharejz{}".format(i)
+        if menu_name in globals():
+            globals()[menu_name]()
+        else:
+            print("Function {} does not exist.".format(menu_name))
+
+def ping_v64_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_v64.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_v64.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_v64.service'])
+    subprocess.run(['systemctl', 'start', 'ping_v64.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_v64.service'])
+    
+def ping_v65_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_v65.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_v65.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_v65.service'])
+    subprocess.run(['systemctl', 'start', 'ping_v65.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_v65.service'])
+
+def add_cron4_job():
+    try:
+        
+        subprocess.run(
+            "crontab -l | grep -v '/etc/private4.sh' | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+     
+        subprocess.run(
+            "(crontab -l ; echo '@reboot /bin/bash /etc/private4.sh') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+        display_checkmark("\033[92mCronjob added successfully!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("\033[91mFailed to add cronjob:\033[0m", e)
+
+def add_cron5_job():
+    try:
+        
+        subprocess.run(
+            "crontab -l | grep -v '/etc/private5.sh' | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+     
+        subprocess.run(
+            "(crontab -l ; echo '@reboot /bin/bash /etc/private5.sh') | crontab -",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        
+        display_checkmark("\033[92mCronjob added successfully!\033[0m")
+    except subprocess.CalledProcessError as e:
+        print("\033[91mFailed to add cronjob:\033[0m", e)   
+
+def iran_gre64_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_ip4.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_ip4.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_ip4.service'])
+    subprocess.run(['systemctl', 'start', 'ping_ip4.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_ip4.service'])
+
+def iran_gre65_service():
+    service_content = '''[Unit]
+Description=keepalive
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /etc/ping_ip5.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+    service_file_path = '/etc/systemd/system/ping_ip5.service'
+    with open(service_file_path, 'w') as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(['systemctl', 'daemon-reload'])
+    subprocess.run(['systemctl', 'enable', 'ping_ip5.service'])
+    subprocess.run(['systemctl', 'start', 'ping_ip5.service'])
+    sleep(1)
+    subprocess.run(['systemctl', 'restart', 'ping_ip5.service'])    
+## gre6tap ip4 server 1
+
+def run_pingz1():
+    try:
+        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b481::2"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+def gre6tap_tunnel1(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre61.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig61 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write("ip -6 addr add 2002:831a::1/64 dev azumig61\n")
+        f.write("ip link set azumig61 up\n")
+        f.write("ip -6 route add 2002::/16 dev azumig61\n")
+
+        created_ips = []
+        for i in range(2, num_additional_ips + 2):
+            ip_address = f"2002:83{i}a::1"
+            created_ips.append(ip_address)
+            f.write(f"ip -6 addr add {ip_address}/64 dev azumig61\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(["bash", file_path], check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig61 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IPv6 Addresses:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "| 2002:831a::1               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m") 
+    
+def gre6tap_kharejz1():
+    remote_ip = "fd1d:fc98:b73e:b481::2" #iran-ip
+    local_ip = "fd1d:fc98:b73e:b481::1"   #kharej ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6tap\033[97m tunnel: "))
+    gre6tap_tunnel1(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:831a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping1_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    ping_gre61_service()
+
+    gre61_cronjob()
+    
+def kharej_gretap6_menu1():
+    os.system("clear")
+    global local_ip, remote_ip
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GREtap6 \033[92mKharej\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private1.sh"):
+        os.remove("/etc/private1.sh")
+
+
+    subprocess.run(["ip", "tunnel", "add", "azumi1", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi1", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "fd1d:fc98:b73e:b481::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi1"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private1.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi1 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi1 up\n")
+        f.write("ip addr add fd1d:fc98:b73e:b481::1/64 dev azumi1\n")
+        f.write("ip -6 route add fd1d::/16 dev azumi1\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi1 mtu {mtu_value}\n"
+        with open("/etc/private1.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private1.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    add_cron1_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_pingz1()
+    sleep(1)
+    
+
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="fd1d:fc98:b73e:b481::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v61.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v61.sh', 0o755)
+    ping_v61_service()
+    display_notification("\033[93mConfiguring...\033[0m")
+    sleep(1)
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    display_checkmark("\033[92mGRE6tap Configuration Completed!\033[0m")
+    gre6tap_kharejz1()
+    sleep(1)	
+
+def gretap6_iranz1():
+    remote_ip = "fd1d:fc98:b73e:b481::1" #kharej ip
+    local_ip = "fd1d:fc98:b73e:b481::2"   #iran ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6tap\033[97m tunnel: "))
+    gretap6_iran_tunnelz1(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:831a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping1_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    iran_gre61_service()
+
+    gre61_cronjob()
+
+def gretap6_iran_tunnelz1(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre61.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig61 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write("ip -6 addr add 2002:831a::2/64 dev azumig61\n")
+        f.write("ip link set azumig61 up\n")
+        f.write("ip -6 route add 2002::/16 dev azumig61\n")
+
+        created_ips = []
+        for i in range(2, num_additional_ips + 2):
+            ip_address = f"2002:83{i}a::2"
+            created_ips.append(ip_address)
+            f.write(f"ip -6 addr add {ip_address}/64 dev azumig61\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(["bash", file_path], check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GREtap6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig61 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IPv6 Addresses:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "| 2002:831a::2               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+def iran1_ping():
+    try:
+        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b481::1"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+def iran_gretap6_menu1():
+    os.system("clear")
+    global local_ip, remote_ip
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE6tap \033[92mIran\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Iran server...\033[0m")
+
+    if os.path.isfile("/etc/private1.sh"):
+        os.remove("/etc/private1.sh")
+
+
+    subprocess.run(["ip", "tunnel", "add", "azumi1", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi1", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "fd1d:fc98:b73e:b481::2/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi1"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private1.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi1 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi1 up\n")
+        f.write("ip addr add fd1d:fc98:b73e:b481::2/64 dev azumi1\n")
+        f.write("ip -6 route add fd1d::/16 dev azumi1\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi1 mtu {mtu_value}\n"
+        with open("/etc/private1.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private1.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    sleep(1)
+    add_cron1_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    iran1_ping()
+    
+
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="fd1d:fc98:b73e:b481::1"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v61.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v61.sh', 0o755)
+    ping_v61_service()
+    gretap6_iranz1()
+    display_notification("\033[93mConfiguring...\033[0m")
+    sleep(1)	
+    display_checkmark("\033[92mGRE6tap Configuration Completed!\033[0m")
+    
+                           
+def gre6tap6_kharejz1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[1]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_kharejz1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[1]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+            
+def gre6tap6_iranz1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[1]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_iranz1():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[1]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+#2
+def run_pingz2():
+    try:
+        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b581::2"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+def gre6tap_tunnel2(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre62.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig62 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write("ip -6 addr add 2002:841a::1/64 dev azumig62\n")
+        f.write("ip link set azumig62 up\n")
+        f.write("ip -6 route add 2002::/16 dev azumig62\n")
+
+        created_ips = []
+        for i in range(2, num_additional_ips + 2):
+            ip_address = f"2002:84{i}a::1"
+            created_ips.append(ip_address)
+            f.write(f"ip -6 addr add {ip_address}/64 dev azumig62\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(["bash", file_path], check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig62 mtu {mtu_value}\n" 
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IPv6 Addresses:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + "| 2002:841a::1               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")   
+    
+def gre6tap_kharejz2():
+    remote_ip = "fd1d:fc98:b73e:b581::2" #iran-ip
+    local_ip = "fd1d:fc98:b73e:b581::1"   #kharej ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6tap\033[97m tunnel: "))
+    gre6tap_tunnel2(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:841a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping2_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    ping_gre62_service()
+
+    gre62_cronjob()
+    
+def kharej_gretap6_menu2():
+    os.system("clear")
+    global local_ip, remote_ip
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GREtap6 \033[92mKharej\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private2.sh"):
+        os.remove("/etc/private2.sh")
+
+
+    subprocess.run(["ip", "tunnel", "add", "azumi2", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi2", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "fd1d:fc98:b73e:b581::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi2"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private2.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi2 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi2 up\n")
+        f.write("ip addr add fd1d:fc98:b73e:b581::1/64 dev azumi2\n")
+        f.write("ip -6 route add fd1d::/16 dev azumi2\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi2 mtu {mtu_value}\n"
+        with open("/etc/private2.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private2.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    add_cron2_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_pingz2()
+    sleep(1)
+    
+
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="fd1d:fc98:b73e:b581::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v62.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v62.sh', 0o755)
+    ping_v62_service()
+    display_notification("\033[93mConfiguring...\033[0m")
+    sleep(1)
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    display_checkmark("\033[92mGRE6tap Configuration Completed!\033[0m")
+    gre6tap_kharejz2()
+    sleep(1)	
+
+def gretap6_iranz2():
+    remote_ip = "fd1d:fc98:b73e:b581::1" #kharej ip
+    local_ip = "fd1d:fc98:b73e:b581::2"   #iran ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6tap\033[97m tunnel: "))
+    gretap6_iran_tunnelz2(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:841a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping2_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    iran_gre62_service()
+
+    gre62_cronjob()
+
+def gretap6_iran_tunnelz2(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre62.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig62 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write("ip -6 addr add 2002:841a::2/64 dev azumig62\n")
+        f.write("ip link set azumig62 up\n")
+        f.write("ip -6 route add 2002::/16 dev azumig62\n")
+
+        created_ips = []
+        for i in range(2, num_additional_ips + 2):
+            ip_address = f"2002:84{i}a::2"
+            created_ips.append(ip_address)
+            f.write(f"ip -6 addr add {ip_address}/64 dev azumig62\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(["bash", file_path], check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GREtap6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig62 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IPv6 Addresses:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:841a::2               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+def iran2_ping():
+    try:
+        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b581::1"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+def iran_gretap6_menu2():
+    os.system("clear")
+    global local_ip, remote_ip
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE6tap \033[92mIran\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Iran server...\033[0m")
+
+    if os.path.isfile("/etc/private2.sh"):
+        os.remove("/etc/private2.sh")
+
+
+    subprocess.run(["ip", "tunnel", "add", "azumi2", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi2", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "fd1d:fc98:b73e:b581::2/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi2"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private2.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi2 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi2 up\n")
+        f.write("ip addr add fd1d:fc98:b73e:b581::2/64 dev azumi2\n")
+        f.write("ip -6 route add fd1d::/16 dev azumi2\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi2 mtu {mtu_value}\n"
+        with open("/etc/private2.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private2.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    sleep(1)
+    add_cron2_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    iran2_ping()
+    
+
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="fd1d:fc98:b73e:b581::1"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v62.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v62.sh', 0o755)
+    ping_v62_service()
+    gretap6_iranz2()
+    display_notification("\033[93mConfiguring...\033[0m")
+    sleep(1)	
+    display_checkmark("\033[92mGRE6tap Configuration Completed!\033[0m")
+    
+                           
+def gre6tap6_kharejz2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[2]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_kharejz2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[2]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+            
+def gre6tap6_iranz2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[2]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+def gre6tap62_iranz2():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[2]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")    
+#3
+def run_pingz3():
+    try:
+        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b681::2"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+def gre6tap_tunnel3(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre63.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig63 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write("ip -6 addr add 2002:851a::1/64 dev azumig63\n")
+        f.write("ip link set azumig63 up\n")
+        f.write("ip -6 route add 2002::/16 dev azumig63\n")
+
+        created_ips = []
+        for i in range(2, num_additional_ips + 2):
+            ip_address = f"2002:85{i}a::1"
+            created_ips.append(ip_address)
+            f.write(f"ip -6 addr add {ip_address}/64 dev azumig63\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(["bash", file_path], check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig63 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IPv6 Addresses:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:851a::1               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    
+def gre6tap_kharejz3():
+    remote_ip = "fd1d:fc98:b73e:b681::2" #iran-ip
+    local_ip = "fd1d:fc98:b73e:b681::1"   #kharej ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6tap\033[97m tunnel: "))
+    gre6tap_tunnel3(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:851a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping3_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    ping_gre63_service()
+
+    gre63_cronjob()
+    
+def kharej_gretap6_menu3():
+    os.system("clear")
+    global local_ip, remote_ip
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GREtap6 \033[92mKharej\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private3.sh"):
+        os.remove("/etc/private3.sh")
+
+
+    subprocess.run(["ip", "tunnel", "add", "azumi3", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi3", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "fd1d:fc98:b73e:b681::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi3"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private3.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi3 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi3 up\n")
+        f.write("ip addr add fd1d:fc98:b73e:b681::1/64 dev azumi3\n")
+        f.write("ip -6 route add fd1d::/16 dev azumi3\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
+        with open("/etc/private3.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private3.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    add_cron3_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_pingz3()
+    sleep(1)
+    
+
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="fd1d:fc98:b73e:b681::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v63.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v63.sh', 0o755)
+    ping_v63_service()
+    display_notification("\033[93mConfiguring...\033[0m")
+    sleep(1)
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    display_checkmark("\033[92mGRE6tap Configuration Completed!\033[0m")
+    gre6tap_kharejz3()
+    sleep(1)	
+
+def gretap6_iranz3():
+    remote_ip = "fd1d:fc98:b73e:b681::1" #kharej ip
+    local_ip = "fd1d:fc98:b73e:b681::2"   #iran ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6tap\033[97m tunnel: "))
+    gretap6_iran_tunnelz3(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:851a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping3_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    iran_gre63_service()
+
+    gre63_cronjob()
+
+def gretap6_iran_tunnelz3(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre63.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig63 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write("ip -6 addr add 2002:851a::2/64 dev azumig63\n")
+        f.write("ip link set azumig63 up\n")
+        f.write("ip -6 route add 2002::/16 dev azumig63\n")
+
+        created_ips = []
+        for i in range(2, num_additional_ips + 2):
+            ip_address = f"2002:85{i}a::2"
+            created_ips.append(ip_address)
+            f.write(f"ip -6 addr add {ip_address}/64 dev azumig63\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(["bash", file_path], check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GREtap6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig63 mtu {mtu_value}\n"
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IPv6 Addresses:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:851a::2               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+def iran3_ping():
+    try:
+        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b681::1"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+def iran_gretap6_menu3():
+    os.system("clear")
+    global local_ip, remote_ip
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE6tap \033[92mIran\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Iran server...\033[0m")
+
+    if os.path.isfile("/etc/private3.sh"):
+        os.remove("/etc/private3.sh")
+
+
+    subprocess.run(["ip", "tunnel", "add", "azumi3", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi3", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "fd1d:fc98:b73e:b681::2/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi3"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private3.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi3 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi3 up\n")
+        f.write("ip addr add fd1d:fc98:b73e:b681::2/64 dev azumi3\n")
+        f.write("ip -6 route add fd1d::/16 dev azumi3\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi3 mtu {mtu_value}\n"
+        with open("/etc/private3.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private3.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    sleep(1)
+    add_cron3_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    iran3_ping()
+    
+
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="fd1d:fc98:b73e:b681::1"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v63.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v63.sh', 0o755)
+    ping_v63_service()
+    gretap6_iranz3()
+    display_notification("\033[93mConfiguring...\033[0m")
+    sleep(1)	
+    display_checkmark("\033[92mGRE6tap Configuration Completed!\033[0m")
+    
+                           
+def gre6tap6_kharejz3():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96[3]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_kharejz3():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96[3]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")            
+def gre6tap6_iranz3():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96[3]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_iranz3():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96[3]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")    
+#4
+
+def run_pingz4():
+    try:
+        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b781::2"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+def gre6tap_tunnel4(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre64.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig64 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write("ip -6 addr add 2002:861a::1/64 dev azumig64\n")
+        f.write("ip link set azumig64 up\n")
+        f.write("ip -6 route add 2002::/16 dev azumig64\n")
+
+        created_ips = []
+        for i in range(2, num_additional_ips + 2):
+            ip_address = f"2002:86{i}a::1"
+            created_ips.append(ip_address)
+            f.write(f"ip -6 addr add {ip_address}/64 dev azumig64\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(["bash", file_path], check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig64 mtu {mtu_value}\n" 
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IPv6 Addresses:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:861a::1               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m") 
+    
+def gre6tap_kharejz4():
+    remote_ip = "fd1d:fc98:b73e:b781::2" #iran-ip
+    local_ip = "fd1d:fc98:b73e:b781::1"   #kharej ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6tap\033[97m tunnel: "))
+    gre6tap_tunnel4(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:861a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping4_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    ping_gre64_service()
+
+    gre64_cronjob()
+    
+def kharej_gretap6_menu4():
+    os.system("clear")
+    global local_ip, remote_ip
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GREtap6 \033[92mKharej\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private4.sh"):
+        os.remove("/etc/private4.sh")
+
+
+    subprocess.run(["ip", "tunnel", "add", "azumi4", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi4", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "fd1d:fc98:b73e:b781::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi4"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private4.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi4 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi4 up\n")
+        f.write("ip addr add fd1d:fc98:b73e:b781::1/64 dev azumi4\n")
+        f.write("ip -6 route add fd1d::/16 dev azumi4\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi4 mtu {mtu_value}\n"
+        with open("/etc/private4.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private4.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    add_cron4_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_pingz4()
+    sleep(1)
+    
+
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="fd1d:fc98:b73e:b781::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v64.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v64.sh', 0o755)
+    ping_v64_service()
+    display_notification("\033[93mConfiguring...\033[0m")
+    sleep(1)
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    display_checkmark("\033[92mGRE6tap Configuration Completed!\033[0m")
+    gre6tap_kharejz4()
+    sleep(1)	
+
+def gretap6_iranz4():
+    remote_ip = "fd1d:fc98:b73e:b781::1" #kharej ip
+    local_ip = "fd1d:fc98:b73e:b781::2"   #iran ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6tap\033[97m tunnel: "))
+    gretap6_iran_tunnelz4(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:861a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping4_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    iran_gre64_service()
+
+    gre64_cronjob()
+
+def gretap6_iran_tunnelz4(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre64.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig64 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write("ip -6 addr add 2002:861a::2/64 dev azumig64\n")
+        f.write("ip link set azumig64 up\n")
+        f.write("ip -6 route add 2002::/16 dev azumig64\n")
+
+        created_ips = []
+        for i in range(2, num_additional_ips + 2):
+            ip_address = f"2002:86{i}a::2"
+            created_ips.append(ip_address)
+            f.write(f"ip -6 addr add {ip_address}/64 dev azumig64\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(["bash", file_path], check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GREtap6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig64 mtu {mtu_value}\n" 
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IPv6 Addresses:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:861a::2               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+def iran4_ping():
+    try:
+        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b781::1"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+def iran_gretap6_menu4():
+    os.system("clear")
+    global local_ip, remote_ip
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE6tap \033[92mIran\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Iran server...\033[0m")
+
+    if os.path.isfile("/etc/private4.sh"):
+        os.remove("/etc/private4.sh")
+
+
+    subprocess.run(["ip", "tunnel", "add", "azumi4", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi4", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "fd1d:fc98:b73e:b781::2/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi4"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private4.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi4 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi4 up\n")
+        f.write("ip addr add fd1d:fc98:b73e:b781::2/64 dev azumi4\n")
+        f.write("ip -6 route add fd1d::/16 dev azumi4\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi4 mtu {mtu_value}\n"
+        with open("/etc/private4.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private4.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    sleep(1)
+    add_cron4_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    iran4_ping()
+    
+
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="fd1d:fc98:b73e:b781::1"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v64.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v64.sh', 0o755)
+    ping_v64_service()
+    gretap6_iranz4()
+    display_notification("\033[93mConfiguring...\033[0m")
+    sleep(1)	
+    display_checkmark("\033[92mGRE6tap Configuration Completed!\033[0m")
+    
+                           
+def gre6tap6_kharejz4():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[4]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_kharejz4():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[4]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")            
+def gre6tap6_iranz4():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[4]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+def gre6tap62_iranz4():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[4]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")    
+#5
+def run_pingz5():
+    try:
+        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b881::2"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+def gre6tap_tunnel5(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre65.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig65 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write("ip -6 addr add 2002:871a::1/64 dev azumig65\n")
+        f.write("ip link set azumig65 up\n")
+        f.write("ip -6 route add 2002::/16 dev azumig65\n")
+
+        created_ips = []
+        for i in range(2, num_additional_ips + 2):
+            ip_address = f"2002:87{i}a::1"
+            created_ips.append(ip_address)
+            f.write(f"ip -6 addr add {ip_address}/64 dev azumig65\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(["bash", file_path], check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GRE6tap]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig65 mtu {mtu_value}\n" 
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IPv6 Addresses:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:871a::1               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    
+def gre6tap_kharejz5():
+    remote_ip = "fd1d:fc98:b73e:b881::2" #iran-ip
+    local_ip = "fd1d:fc98:b73e:b881::1"   #kharej ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6tap\033[97m tunnel: "))
+    gre6tap_tunnel5(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:871a::2" #iranip
+    max_pings = 3
+    interval = 20
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    create_ping5_script(ip_address, max_pings, interval)
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    ping_gre65_service()
+
+    gre65_cronjob()
+    
+def kharej_gretap6_menu5():
+    os.system("clear")
+    global local_ip, remote_ip
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GREtap6 \033[92mKharej\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Kharej server...\033[0m")
+
+    if os.path.isfile("/etc/private5.sh"):
+        os.remove("/etc/private5.sh")
+
+
+    subprocess.run(["ip", "tunnel", "add", "azumi5", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi5", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "fd1d:fc98:b73e:b881::1/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi5"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private5.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi5 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi5 up\n")
+        f.write("ip addr add fd1d:fc98:b73e:b881::1/64 dev azumi5\n")
+        f.write("ip -6 route add fd1d::/16 dev azumi5\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi5 mtu {mtu_value}\n"
+        with open("/etc/private5.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private5.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    add_cron5_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    run_pingz5()
+    sleep(1)
+    
+
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="fd1d:fc98:b73e:b881::2"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v65.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v65.sh', 0o755)
+    ping_v65_service()
+    display_notification("\033[93mConfiguring...\033[0m")
+    sleep(1)
+    print("\033[93m╭─────────────────────────────────────────────────────────╮\033[0m")
+    display_checkmark("\033[92mGRE6tap Configuration Completed!\033[0m")
+    gre6tap_kharejz5()
+    sleep(1)	
+
+def gretap6_iranz5():
+    remote_ip = "fd1d:fc98:b73e:b881::1" #kharej ip
+    local_ip = "fd1d:fc98:b73e:b881::2"   #iran ip
+    num_additional_ips = int(input("\033[97mEnter the number of \033[92madditional IPs\033[97m for the \033[92mGRE6tap\033[97m tunnel: "))
+    gretap6_iran_tunnelz5(remote_ip, local_ip, num_additional_ips)
+
+
+    ip_address = "2002:871a::1" #kharejip
+    max_pings = 3
+    interval = 20
+    iran_ping5_script(ip_address, max_pings, interval)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging...\033[0m')
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+
+    
+    iran_gre65_service()
+
+    gre65_cronjob()
+
+def gretap6_iran_tunnelz5(remote_ip, local_ip, num_additional_ips):
+    file_path = '/etc/gre65.sh'
+
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    
+    with open(file_path, 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("/sbin/modprobe ip6_gre\n")
+        f.write(f"ip link add name azumig65 type ip6gretap local {local_ip} remote {remote_ip}\n")
+        f.write("ip -6 addr add 2002:871a::2/64 dev azumig65\n")
+        f.write("ip link set azumig65 up\n")
+        f.write("ip -6 route add 2002::/16 dev azumig65\n")
+
+        created_ips = []
+        for i in range(2, num_additional_ips + 2):
+            ip_address = f"2002:87{i}a::2"
+            created_ips.append(ip_address)
+            f.write(f"ip -6 addr add {ip_address}/64 dev azumig65\n")
+
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+    subprocess.run(["bash", file_path], check=True)
+
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [GREtap6]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == 'yes' or set_mtu.lower() == 'y':
+        mtu_value = input('\033[93mEnter the desired \033[92mMTU value\033[93m: \033[0m')
+        mtu_command = f"ip link set dev azumig65 mtu {mtu_value}\n" 
+        with open(file_path, 'a') as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+
+    sleep(1)
+    
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    print("\033[93mCreated IPv6 Addresses:\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+    print("\033[92m" + f"| 2002:871a::2               |" + "\033[0m")
+    for ip_address in created_ips:
+        print("\033[92m" + f"| {ip_address}               |" + "\033[0m")
+    print("\033[92m" + "+---------------------------+" + "\033[0m")
+
+def iran5_ping():
+    try:
+        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b881::1"], check=True, stdout=subprocess.DEVNULL)
+    except subprocess.CalledProcessError as e:
+        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+        
+def iran_gretap6_menu5():
+    os.system("clear")
+    global local_ip, remote_ip
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mConfiguring GRE6tap \033[92mIran\033[93m server\033[0m')
+    print('\033[92m "-"\033[93m═══════════════════════════════\033[0m')
+    display_notification("\033[93mAdding private IP addresses for Iran server...\033[0m")
+
+    if os.path.isfile("/etc/private5.sh"):
+        os.remove("/etc/private5.sh")
+
+
+    subprocess.run(["ip", "tunnel", "add", "azumi5", "mode", "sit", "remote", remote_ip, "local", local_ip, "ttl", "255"], stdout=subprocess.DEVNULL)
+    subprocess.run(["ip", "link", "set", "dev", "azumi5", "up"], stdout=subprocess.DEVNULL)
+
+    initial_ip = "fd1d:fc98:b73e:b881::2/64"
+    subprocess.run(["ip", "addr", "add", initial_ip, "dev", "azumi5"], stdout=subprocess.DEVNULL)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mAdding commands...\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    with open("/etc/private5.sh", "w") as f:
+        f.write("/sbin/modprobe sit\n")
+        f.write(f"ip tunnel add azumi5 mode sit remote {remote_ip} local {local_ip} ttl 255\n")
+        f.write("ip link set dev azumi5 up\n")
+        f.write("ip addr add fd1d:fc98:b73e:b881::2/64 dev azumi5\n")
+        f.write("ip -6 route add fd1d::/16 dev azumi5\n")
+    set_mtu = input("\033[93mDo you want to set the \033[92mMTU\033[96m [6to4]\033[93m? (\033[92myes\033[93m/\033[91mno\033[93m): \033[0m")
+    if set_mtu.lower() == "yes" or set_mtu.lower() == "y":
+        mtu_value = input("\033[93mEnter the desired\033[92m MTU value\033[93m: \033[0m")
+        mtu_command = f"ip link set dev azumi5 mtu {mtu_value}\n"
+        with open("/etc/private5.sh", "a") as f:
+            f.write(mtu_command)
+        subprocess.run(mtu_command, shell=True, check=True)
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mPrivate ip added successfully!\033[0m")
+    file_path = '/etc/private5.sh'
+    command = f"chmod +x {file_path}"
+    subprocess.run(command, shell=True, check=True)
+
+    sleep(1)
+    add_cron5_job()
+
+    display_checkmark("\033[92mkeepalive service Configured!\033[0m")
+    iran5_ping()
+    
+
+    sleep(1)
+
+    script_content1 = '''#!/bin/bash
+
+
+ip_address="fd1d:fc98:b73e:b881::1"
+
+max_pings=3
+
+interval=20
+
+while true
+do
+    
+    for ((i = 1; i <= max_pings; i++))
+    do
+        ping_result=$(ping -c 1 $ip_address | grep "time=" | awk -F "time=" "{print $2}" | awk -F " " "{print $1}" | cut -d "." -f1)
+        if [ -n "$ping_result" ]; then
+            echo "Ping successful! Response time: $ping_result ms"
+        else
+            echo "Ping failed!"
+        fi
+    done
+
+    echo "Waiting for $interval seconds..."
+    sleep $interval
+done
+'''
+
+    with open('/etc/ping_v65.sh', 'w') as script_file:
+       script_file.write(script_content1)
+
+    os.chmod('/etc/ping_v65.sh', 0o755)
+    ping_v65_service()
+    gretap6_iranz5()
+    display_notification("\033[93mConfiguring...\033[0m")
+    sleep(1)	
+    display_checkmark("\033[92mGRE6tap Configuration Completed!\033[0m")
+    
+                           
+def gre6tap6_kharejz5():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[5]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_kharejz5():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[5]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_checkmark("\033[92mConfiguration is done!\033[0m")            
+def gre6tap6_iranz5():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[5]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+def gre6tap62_iranz5():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[5]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+
+    display_checkmark("\033[92mConfiguration is done!\033[0m")    
+## native ipsec
+def config_ipsecn1(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+  
+conn erspan1
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2002:831a::1
+  right=2002:831a::2
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever\n''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'2002:831a::2 2002:831a::1 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def config_ipsecn12(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+
+    with open("/etc/ipsec.conf", "a") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+  
+conn erspan2
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2002:841a::1
+  right=2002:841a::2
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever\n''')
+
+    with open("/etc/ipsec.secrets", "a") as f:
+        f.write(f'2002:841a::2 2002:841a::1 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def config_ipsecn13(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+
+    with open("/etc/ipsec.conf", "a") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+  
+conn erspan3
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2002:851a::1
+  right=2002:851a::2
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever\n''')
+
+    with open("/etc/ipsec.secrets", "a") as f:
+        f.write(f'2002:851a::2 2002:851a::1 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def config_ipsecn14(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+
+    with open("/etc/ipsec.conf", "a") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+  
+conn erspan4
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2002:861a::1
+  right=2002:861a::2
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever\n''')
+
+    with open("/etc/ipsec.secrets", "a") as f:
+        f.write(f'2002:861a::2 2002:861a::1 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def config_ipsecn15(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+
+    with open("/etc/ipsec.conf", "a") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+  
+conn erspan5
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2002:871a::1
+  right=2002:871a::2
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever\n''')
+
+    with open("/etc/ipsec.secrets", "a") as f:
+        f.write(f'2002:871a::2 2002:871a::1 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+
+def config_ipsecn2(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+
+    with open("/etc/ipsec.conf", "a") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+  
+conn erspan1
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2002:831a::2
+  right=2002:831a::1
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever\n''')
+
+    with open("/etc/ipsec.secrets", "a") as f:
+        f.write(f'2002:831a::1 2002:831a::2 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+
+def config_ipsecn22(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+
+    with open("/etc/ipsec.conf", "a") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+  
+conn erspan2
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2002:841a::2
+  right=2002:841a::1
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever\n''')
+
+    with open("/etc/ipsec.secrets", "a") as f:
+        f.write(f'2002:841a::1 2002:841a::2 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def config_ipsecn23(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+  
+conn erspan3
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2002:851a::2
+  right=2002:851a::1
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever\n''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'2002:851a::1 2002:851a::2 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def config_ipsecn24(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+  
+conn erspan4
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2002:861a::2
+  right=2002:861a::1
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever\n''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'2002:861a::1 2002:861a::2 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def config_ipsecn25(psk):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+
+    with open("/etc/ipsec.conf", "w") as f:
+        f.write(f'''config setup
+##azumiisinyouarea
+  
+conn erspan5
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2002:871a::2
+  right=2002:871a::1
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever\n''')
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        f.write(f'2002:871a::1 2002:871a::2 : PSK "{psk}"\n')
+    permissions()
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+#start  
+
+
+def gretapnm1():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[96mNative + IPsec \033[93m+\033[92m Gretap6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92m[5] Kharej [1] IRAN\033[0m')
+    print('2. \033[93m[1] Kharej [5] IRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gre6tapmu_k1()
+            break
+        elif server_type == '2':
+            gre6tapmu_i1()
+            break
+        elif server_type == '3':
+            clear()
+            gre6tapmulti_mnu
+            break
+        else:
+            print('Invalid choice.')
+
+def gre6tapmu_k1():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[96mNative +IPsec \033[93m+\033[92m Gretap6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej [1]\033[0m')
+    print('2. \033[92mKharej [2]\033[0m')
+    print('3. \033[93mKharej [3]\033[0m')
+    print('4. \033[92mKharej [4]\033[0m')
+    print('5. \033[92mKharej [5]\033[0m')
+    print('6. \033[96mIRAN\033[0m')
+    print('0. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            remove_config()
+            gre6tap_k11()
+            break
+        elif server_type == '2':
+            remove_config()
+            gre6tap_k21()
+            break
+        elif server_type == '3':
+            remove_config()
+            gre6tap_k31()
+            break
+        elif server_type == '4':
+            remove_config()
+            gre6tap_k41()
+            break
+        elif server_type == '5':
+            remove_config()
+            gre6tap_k51()
+            break
+        elif server_type == '6':
+            irangretap_q1()
+            break
+        elif server_type == '0':
+            clear()
+            gretapnm1()
+            break
+        else:
+            print('Invalid choice.')
+
+def irangretap_q1():
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mQuestion time !\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    remove_config()
+    num_servers = int(input("\033[93mHow many \033[92mKharej Servers\033[93m do you have?\033[0m "))
+    
+    for i in range(1, num_servers + 1):
+        menu_name = "gre6tap2_i{}1".format(i)
+        globals()[menu_name]()
+
+def gre6tapmu_i1():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[96mNative +IPsec \033[93m+\033[92m Gretap6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mIRAN [1]\033[0m')
+    print('2. \033[92mIRAN [2]\033[0m')
+    print('3. \033[93mIRAN [3]\033[0m')
+    print('4. \033[92mIRAN [4]\033[0m')
+    print('5. \033[92mIRAN [5]\033[0m')
+    print('6. \033[96mKharej\033[0m')
+    print('0. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            remove_config()
+            gre6tap_i11()
+            break
+        elif server_type == '2':
+            remove_config()
+            gre6tap_i21()
+            break
+        elif server_type == '3':
+            remove_config()
+            gre6tap_i31()
+            break
+        elif server_type == '4':
+            remove_config()
+            gre6tap_i41()
+            break
+        elif server_type == '5':
+            remove_config()
+            gre6tap_i51()
+            break
+        elif server_type == '6':
+            kharejgretap_q1()
+            break
+        elif server_type == '0':
+            clear()
+            gretapnm1()
+            break
+        else:
+            print('Invalid choice.')
+
+def kharejgretap_q1():
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mQuestion time !\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    remove_config()
+    num_servers = int(input("\033[93mHow many \033[92mIRAN Servers\033[93m do you have?\033[0m "))
+    
+    for i in range(1, num_servers + 1):
+        menu_name = "gre6tap2_k{}1".format(i)
+        globals()[menu_name]() 
+        
+    
+
+def gre6tap_k11():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[1]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn1(psk)
+    ip_address = "2002:831a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+ 
+def gre6tap2_k11():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[1]\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn1(psk)
+    ip_address = "2002:831a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+# iran  native 
+
+
+def gre6tap_i11():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[1]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn2(psk)
+    ip_address = "2002:831a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+    
+def gre6tap2_i11():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[1]\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn2(psk)
+    ip_address = "2002:831a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+# 2native
+    
+
+def gre6tap_k21():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[2]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn12(psk)
+    ip_address = "2002:841a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+ 
+def gre6tap2_k21():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[2]\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn12(psk)
+    ip_address = "2002:841a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+# iran  native 
+
+    
+def gre6tap_i21():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[2]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn22(psk)
+    ip_address = "2002:841a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap2_i21():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[2]\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn22(psk)
+    ip_address = "2002:841a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")        
+##end
+
+# 3native
+    
+
+def gre6tap_k31():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[3]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn13(psk)
+    ip_address = "2002:851a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap2_k31():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[3]\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn13(psk)
+    ip_address = "2002:851a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m") 
+
+# iran  native 
+
+
+def gre6tap_i31():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[3]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn23(psk)
+    ip_address = "2002:851a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")   
+
+def gre6tap2_i31():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[3]\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn23(psk)
+    ip_address = "2002:851a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")        
+##end
+
+# 4native
+
+
+def gre6tap_k41():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[4]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn14(psk)
+    ip_address = "2002:861a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+ 
+def gre6tap2_k41():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[4]\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn14(psk)
+    ip_address = "2002:861a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+# iran  native 
+
+    
+def gre6tap_i41():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[4]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn24(psk)
+    ip_address = "2002:861a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")  
+
+def gre6tap2_i41():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[4]\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn24(psk)
+    ip_address = "2002:861a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")        
+##end  
+# 5native
+    
+
+def gre6tap_k51():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[5]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn15(psk)
+    ip_address = "2002:871a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+ 
+def gre6tap2_k51():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[5]\033[93m IPV6 address: \033[0m")
+    kharej_gre6tap_tunnel5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn15(psk)
+    ip_address = "2002:871a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+# iran  native 
+
+def gre6tap_i51():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[5]\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn25(psk)
+    ip_address = "2002:871a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+    
+def gre6tap2_i51():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV6 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[5]\033[93m IPV6 address: \033[0m")
+    iran_gre6tap_tunnel5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn25(psk)
+    ip_address = "2002:871a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")        
+##end     
+
+##IPsec IPv4 
+ #ip4 start       
+def gretap4m1():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[96mIPV4 + IPsec \033[93m+\033[92m Gretap6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92m[5] Kharej [1] IRAN\033[0m')
+    print('2. \033[93m[1] Kharej [5] IRAN\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gre6tap4mu_k1()
+            break
+        elif server_type == '2':
+            gre6tap4mu_i1()
+            break
+        elif server_type == '3':
+            clear()
+            gre6tapmulti_mnu()
+            break
+        else:
+            print('Invalid choice.')
+
+def gre6tap4mu_k1():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[96mIPV4 + IPsec \033[93m+\033[92m Gretap6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej [1]\033[0m')
+    print('2. \033[92mKharej [2]\033[0m')
+    print('3. \033[93mKharej [3]\033[0m')
+    print('4. \033[92mKharej [4]\033[0m')
+    print('5. \033[92mKharej [5]\033[0m')
+    print('6. \033[96mIRAN\033[0m')
+    print('0. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            remove_config()
+            gre6tap6_kharejz11()            
+            break
+        elif server_type == '2':
+            remove_config()
+            gre6tap6_kharejz21()
+            break
+        elif server_type == '3':
+            remove_config()
+            gre6tap6_kharejz31()
+            break
+        elif server_type == '4':
+            remove_config()
+            gre6tap6_kharejz41()
+            break
+        elif server_type == '5':
+            remove_config()
+            gre6tap6_kharejz51()
+            break
+        elif server_type == '6':
+            irangretap4_q1()
+            break
+        elif server_type == '0':
+            clear()
+            gretap4m1()
+            break
+        else:
+            print('Invalid choice.')
+
+def irangretap4_q1():
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mQuestion time!\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    remove_config()
+    num_servers = int(input("\033[93mHow many \033[92mKharej Servers\033[93m do you have?\033[0m "))
+    
+    for i in range(1, num_servers + 1):
+        menu_name = "gre6tap62_iranz{}1".format(i)
+        if menu_name in globals():
+            globals()[menu_name]()
+        else:
+            print("Function {} does not exist.".format(menu_name))
+        
+def gre6tap4mu_i1():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[96mIPV4 \033[93m+\033[92m Gretap6 \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mIRAN [1]\033[0m')
+    print('2. \033[92mIRAN [2]\033[0m')
+    print('3. \033[93mIRAN [3]\033[0m')
+    print('4. \033[92mIRAN [4]\033[0m')
+    print('5. \033[92mIRAN [5]\033[0m')
+    print('6. \033[96mKharej\033[0m')
+    print('0. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            remove_config()
+            gre6tap6_iranz11()
+            break
+        elif server_type == '2':
+            remove_config()
+            gre6tap6_iranz21()
+            break
+        elif server_type == '3':
+            remove_config()
+            gre6tap6_iranz31()
+            break
+        elif server_type == '4':
+            remove_config()
+            gre6tap6_iranz41()
+            break
+        elif server_type == '5':
+            remove_config()
+            gre6tap6_iranz51()
+            break
+        elif server_type == '6':
+            kharejgretap4_q1()
+            break
+        elif server_type == '0':
+            clear()
+            gretap4m1()
+            break
+        else:
+            print('Invalid choice.')
+
+def kharejgretap4_q1():
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mQuestion time !\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    remove_config()
+    num_servers = int(input("\033[93mHow many \033[92mIRAN Servers\033[93m do you have?\033[0m "))
+    
+    for i in range(1, num_servers + 1):
+        menu_name = "gre6tap62_kharejz{}1".format(i)
+        globals()[menu_name]() 
+def remove_config():
+    subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)  
+                           
+def gre6tap6_kharejz11():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[1]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn1(psk)
+    ip_address = "2002:831a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_kharejz11():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[1]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn1(psk)
+    ip_address = "2002:831a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m") 
+    
+def gre6tap6_iranz11():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[1]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn2(psk)
+    ip_address = "2002:831a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_iranz11():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 1\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[1]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu1()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn2(psk)
+    ip_address = "2002:831a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+    
+
+#2
+                           
+def gre6tap6_kharejz21():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[2]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn12(psk)
+    ip_address = "2002:841a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_kharejz21():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[2]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn12(psk)
+    ip_address = "2002:841a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+    display_checkmark("\033[92mConfiguration is done!\033[0m")  
+    
+def gre6tap6_iranz21():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[2]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn22(psk)
+    ip_address = "2002:841a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_iranz21():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 2\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[2]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu2()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn22(psk)
+    ip_address = "2002:841a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)
+    display_checkmark("\033[92mConfiguration is done!\033[0m")    
+#3
+
+def gre6tap6_kharejz31():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[3]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn13(psk)
+    ip_address = "2002:851a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)    
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_kharejz31():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[3]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn13(psk)
+    ip_address = "2002:851a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)     
+    display_checkmark("\033[92mConfiguration is done!\033[0m") 
+    
+def gre6tap6_iranz31():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[3]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn23(psk)
+    ip_address = "2002:851a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_iranz31():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 3\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[3]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu3()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn23(psk)
+    ip_address = "2002:851a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")    
+#4
+
+                  
+def gre6tap6_kharejz41():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[4]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn14(psk) 
+    ip_address = "2002:861a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)     
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_kharejz41():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[4]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn14(psk)
+    ip_address = "2002:861a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)     
+    display_checkmark("\033[92mConfiguration is done!\033[0m")    
+    
+def gre6tap6_iranz41():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[4]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn24(psk)
+    ip_address = "2002:861a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_iranz41():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 4\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[4]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu4()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn24(psk)
+    ip_address = "2002:861a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")    
+#5
+                           
+def gre6tap6_kharejz51():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[96m[5]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn15(psk) 
+    ip_address = "2002:871a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)     
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_kharejz51():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[5]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    kharej_gretap6_menu5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn15(psk)
+    ip_address = "2002:871a::2" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result)     
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+            
+def gre6tap6_iranz51():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[96m[5]\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn25(psk)
+    ip_address = "2002:871a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")
+
+def gre6tap62_iranz51():
+    global local_ip, remote_ip
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[92mSERVER 5\033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[5]\033[93m IPV4 address: \033[0m")
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    iran_gretap6_menu5()
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn25(psk)
+    ip_address = "2002:871a::1" #iranip
+    print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
+    ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
+    print(ping_result) 
+    display_checkmark("\033[92mConfiguration is done!\033[0m")    
     
 def mtu2_menu():
     os.system("clear")
@@ -19193,7 +27363,8 @@ def mtu2_menu():
     print('1. \033[92m6TO4\033[0m')
     print('2. \033[93mIP6IP6 \033[0m')
     print('3. \033[92mGRE6 \033[0m')
-    print('4. \033[96manycast \033[0m')
+    print('4. \033[93mGRE6tap \033[0m')
+    print('5. \033[96manycast \033[0m')
     print('0. \033[94mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -19207,8 +27378,11 @@ def mtu2_menu():
             break
         elif server_type == '3':
             gre6_mnu()
-            break      
+            break
         elif server_type == '4':
+            gre6tap_mnu()
+            break              
+        elif server_type == '5':
             i6to4any2_mtu()
             break
         elif server_type == '0':
@@ -19445,8 +27619,291 @@ def mtu1_q2():
         menu_name = "priv_kh{}_mtu".format(i)
         globals()[menu_name]()   
         
-## gre6 menu 
+## gre6 & gre6tap menu 
 
+def gre6tap_mnu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mGRE6 Edit Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mNative GREtap\033[0m')
+    print('2. \033[93mIPV4 GREtap \033[0m')
+    print('0. \033[94mback to the MTU menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            nativegretap_mnu()
+            break
+        elif server_type == '2':
+            gre6t_mnu()
+            break
+        elif server_type == '0':
+            clear()
+            mtu2_menu()
+            break
+        else:
+            print('Invalid choice.')
+
+# native
+def nativegretap_mnu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mGRE6tap Edit Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92m[5]Kharej [1]IRAN\033[0m')
+    print('2. \033[93m[1]Kharej [5]IRAN \033[0m')
+    print('0. \033[94mback to the MTU menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            khgre6tap_mnu()
+            break
+        elif server_type == '2':
+            irgre6tap_mnu()
+            break
+        elif server_type == '0':
+            clear()
+            gre6tap_mnu()
+            break
+        else:
+            print('Invalid choice.')
+            
+## gre6 kharej menu            
+def khgre6tap_mnu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93m[5]Kharej Edit Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mKharej [1]\033[0m')
+    print('2. \033[92mKharej [2]\033[0m')
+    print('3. \033[93mKharej [3]\033[0m')
+    print('4. \033[92mKharej [4]\033[0m')
+    print('5. \033[92mKharej [5]\033[0m')
+    print("\033[93m──────────────────────────────────────\033[0m")
+    print('6. \033[93mIRAN \033[0m')
+    print('0. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gre6_kh1tap_mtu()
+            break
+        elif server_type == '2':
+            gre6_kh2tap_mtu()
+            break
+        elif server_type == '3':
+            gre6_kh3tap_mtu()
+            break
+        elif server_type == '4':
+            gre6_kh4tap_mtu()
+            break
+        elif server_type == '5':
+            gre6_kh5tap_mtu()
+            break
+        elif server_type == '6':
+            mtu3_qtap()
+            break
+        elif server_type == '0':
+            clear()
+            gre6tap_mnu()
+            break
+        else:
+            print('Invalid choice.')  
+            
+def mtu3_qtap():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mIRAN Edit Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mTunnel [1]\033[0m')
+    print('2. \033[92mTunnel [2]\033[0m')
+    print('3. \033[93mTunnel [3]\033[0m')
+    print('4. \033[92mTunnel [4]\033[0m')
+    print('5. \033[92mTunnel [5]\033[0m')
+    print('6. \033[96mAll Of Them\033[0m')
+    print('0. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gre6_ir1tap_mtu()
+            break
+        elif server_type == '2':
+            gre6_ir2tap_mtu()
+            break
+        elif server_type == '3':
+            gre6_ir3tap_mtu()
+            break
+        elif server_type == '4':
+            gre6_ir4tap_mtu()
+            break
+        elif server_type == '5':
+            gre6_ir5tap_mtu()
+            break
+        elif server_type == '6':
+            m3_qtap()
+            break
+        elif server_type == '0':
+            clear()
+            khgre6tap_mnu()
+            break
+        else:
+            print('Invalid choice.')
+        
+def m3_qtap():
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mQuestion time !\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    num_servers = int(input("\033[93mHow many \033[92mKharej Servers\033[93m do you have?\033[0m "))
+    
+    for i in range(1, num_servers + 1):
+        menu_name = "gre6_ir{}tap_mtu".format(i)
+        globals()[menu_name]()  
+        
+def irgre6tap_mnu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93m[5]IRAN Edit Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mIRAN [1]\033[0m')
+    print('2. \033[92mIRAN [2]\033[0m')
+    print('3. \033[93mIRAN [3]\033[0m')
+    print('4. \033[92mIRAN [4]\033[0m')
+    print('5. \033[92mIRAN [5]\033[0m')
+    print("\033[93m──────────────────────────────────────\033[0m")
+    print('6. \033[93mKharej \033[0m')
+    print('0. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gre6_ir1tap_mtu()
+            break
+        elif server_type == '2':
+            gre6_ir2tap_mtu()
+            break
+        elif server_type == '3':
+            gre6_ir3tap_mtu()
+            break
+        elif server_type == '4':
+            gre6_ir4tap_mtu()
+            break
+        elif server_type == '5':
+            gre6_ir5tap_mtu()
+            break
+        elif server_type == '6':
+            mtu4_qtap()
+            break
+        elif server_type == '0':
+            clear()
+            gre6tap_mnu()
+            break
+        else:
+            print('Invalid choice.') 
+            
+def mtu4_qtap():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mKHAREJ Edit Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mTunnel [1]\033[0m')
+    print('2. \033[92mTunnel [2]\033[0m')
+    print('3. \033[93mTunnel [3]\033[0m')
+    print('4. \033[92mTunnel [4]\033[0m')
+    print('5. \033[92mTunnel [5]\033[0m')
+    print('6. \033[96mAll Of Them\033[0m')
+    print('0. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gre6_kh1tap_mtu()
+            break
+        elif server_type == '2':
+            gre6_kh2tap_mtu()
+            break
+        elif server_type == '3':
+            gre6_kh3tap_mtu()
+            break
+        elif server_type == '4':
+            gre6_kh4tap_mtu()
+            break
+        elif server_type == '5':
+            gre6_kh5tap_mtu()
+            break
+        elif server_type == '6':
+            m4_qtap()
+            break
+        elif server_type == '0':
+            clear()
+            irgre6tap_mnu()
+            break
+        else:
+            print('Invalid choice.')
+        
+def m4_qtap():
+    print("\033[93m───────────────────────────────────────\033[0m")
+    display_notification("\033[93mQuestion time !\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    num_servers = int(input("\033[93mHow many \033[92mIRAN Servers\033[93m do you have?\033[0m "))
+    
+    for i in range(1, num_servers + 1):
+        menu_name = "gre6_kh{}tap_mtu".format(i)
+        globals()[menu_name]()  
+##    
+def gre6t_mnu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mGRE6tap Edit Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92m[5]Kharej [1]IRAN\033[0m')
+    print('2. \033[93m[1]Kharej [5]IRAN \033[0m')
+    print('0. \033[94mback to the MTU menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            khgre6_mnu()
+            break
+        elif server_type == '2':
+            irgre6_mnu()
+            break
+        elif server_type == '0':
+            clear()
+            gre6tap_mnu()
+            break
+        else:
+            print('Invalid choice.')    
 def gre6_mnu():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -19455,8 +27912,8 @@ def gre6_mnu():
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
-    print('1. \033[92m[3]Kharej [1]IRAN\033[0m')
-    print('2. \033[93m[1]Kharej [3]IRAN \033[0m')
+    print('1. \033[92m[5]Kharej [1]IRAN\033[0m')
+    print('2. \033[93m[1]Kharej [5]IRAN \033[0m')
     print('0. \033[94mback to the MTU menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -19480,15 +27937,17 @@ def khgre6_mnu():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
     print('\033[92m(\033[91mO,O\033[92m)\033[0m')
-    print('\033[92m(   ) \033[93m[3]Kharej Edit Menu\033[0m')
+    print('\033[92m(   ) \033[93m[5]Kharej Edit Menu\033[0m')
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mKharej [1]\033[0m')
-    print('2. \033[93mKharej [2]\033[0m')
-    print('3. \033[92mKharej [3]\033[0m')
+    print('2. \033[92mKharej [2]\033[0m')
+    print('3. \033[93mKharej [3]\033[0m')
+    print('4. \033[92mKharej [4]\033[0m')
+    print('5. \033[92mKharej [5]\033[0m')
     print("\033[93m──────────────────────────────────────\033[0m")
-    print('4. \033[93mIRAN \033[0m')
+    print('6. \033[93mIRAN \033[0m')
     print('0. \033[94mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -19504,6 +27963,12 @@ def khgre6_mnu():
             gre6_kh3_mtu()
             break
         elif server_type == '4':
+            gre6_kh4_mtu()
+            break
+        elif server_type == '5':
+            gre6_kh5_mtu()
+            break
+        elif server_type == '6':
             mtu3_q()
             break
         elif server_type == '0':
@@ -19512,6 +27977,7 @@ def khgre6_mnu():
             break
         else:
             print('Invalid choice.')  
+            
 def mtu3_q():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -19521,9 +27987,11 @@ def mtu3_q():
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mTunnel [1]\033[0m')
-    print('2. \033[93mTunnel [2]\033[0m')
-    print('3. \033[92mTunnel [3]\033[0m')
-    print('4. \033[92mAll Of Them\033[0m')
+    print('2. \033[92mTunnel [2]\033[0m')
+    print('3. \033[93mTunnel [3]\033[0m')
+    print('4. \033[92mTunnel [4]\033[0m')
+    print('5. \033[92mTunnel [5]\033[0m')
+    print('6. \033[96mAll Of Them\033[0m')
     print('0. \033[94mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -19539,6 +28007,12 @@ def mtu3_q():
             gre6_ir3_mtu()
             break
         elif server_type == '4':
+            gre6_ir4_mtu()
+            break
+        elif server_type == '5':
+            gre6_ir5_mtu()
+            break
+        elif server_type == '6':
             m3_q()
             break
         elif server_type == '0':
@@ -19562,15 +28036,17 @@ def irgre6_mnu():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
     print('\033[92m(\033[91mO,O\033[92m)\033[0m')
-    print('\033[92m(   ) \033[93m[3]IRAN Edit Menu\033[0m')
+    print('\033[92m(   ) \033[93m[5]IRAN Edit Menu\033[0m')
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mIRAN [1]\033[0m')
-    print('2. \033[93mIRAN [2]\033[0m')
-    print('3. \033[92mIRAN [3]\033[0m')
+    print('2. \033[92mIRAN [2]\033[0m')
+    print('3. \033[93mIRAN [3]\033[0m')
+    print('4. \033[92mIRAN [4]\033[0m')
+    print('5. \033[92mIRAN [5]\033[0m')
     print("\033[93m──────────────────────────────────────\033[0m")
-    print('4. \033[93mKharej \033[0m')
+    print('6. \033[93mKharej \033[0m')
     print('0. \033[94mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -19586,6 +28062,12 @@ def irgre6_mnu():
             gre6_ir3_mtu()
             break
         elif server_type == '4':
+            gre6_ir4_mtu()
+            break
+        elif server_type == '5':
+            gre6_ir5_mtu()
+            break
+        elif server_type == '6':
             mtu4_q()
             break
         elif server_type == '0':
@@ -19604,9 +28086,11 @@ def mtu4_q():
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mTunnel [1]\033[0m')
-    print('2. \033[93mTunnel [2]\033[0m')
-    print('3. \033[92mTunnel [3]\033[0m')
-    print('4. \033[92mAll Of Them\033[0m')
+    print('2. \033[92mTunnel [2]\033[0m')
+    print('3. \033[93mTunnel [3]\033[0m')
+    print('4. \033[92mTunnel [4]\033[0m')
+    print('5. \033[92mTunnel [5]\033[0m')
+    print('6. \033[96mAll Of Them\033[0m')
     print('0. \033[94mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -19622,6 +28106,12 @@ def mtu4_q():
             gre6_kh3_mtu()
             break
         elif server_type == '4':
+            gre6_kh4_mtu()
+            break
+        elif server_type == '5':
+            gre6_kh5_mtu()
+            break
+        elif server_type == '6':
             m4_q()
             break
         elif server_type == '0':
@@ -19651,8 +28141,8 @@ def ip6_mnu():
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
-    print('1. \033[92m[3]Kharej [1]IRAN\033[0m')
-    print('2. \033[93m[1]Kharej [3]IRAN \033[0m')
+    print('1. \033[92m[5]Kharej [1]IRAN\033[0m')
+    print('2. \033[93m[1]Kharej [5]IRAN \033[0m')
     print('0. \033[94mback to the MTU menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -19676,15 +28166,17 @@ def khip6_mnu():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
     print('\033[92m(\033[91mO,O\033[92m)\033[0m')
-    print('\033[92m(   ) \033[93m[3]Kharej Edit Menu\033[0m')
+    print('\033[92m(   ) \033[93m[5]Kharej Edit Menu\033[0m')
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mKharej [1]\033[0m')
-    print('2. \033[93mKharej [2]\033[0m')
-    print('3. \033[92mKharej [3]\033[0m')
+    print('2. \033[92mKharej [2]\033[0m')
+    print('3. \033[93mKharej [3]\033[0m')
+    print('4. \033[92mKharej [4]\033[0m')
+    print('5. \033[92mKharej [5]\033[0m')
     print("\033[93m──────────────────────────────────────\033[0m")
-    print('4. \033[93mIRAN \033[0m')
+    print('6. \033[93mIRAN \033[0m')
     print('0. \033[94mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -19698,6 +28190,12 @@ def khip6_mnu():
             break
         elif server_type == '3':
             ipip_kh3_mtu()
+            break
+        elif server_type == '4':
+            ipip_kh4_mtu()
+            break
+        elif server_type == '5':
+            ipip_kh5_mtu()
             break
         elif server_type == '4':
             mtu5_q()
@@ -19718,9 +28216,11 @@ def mtu5_q():
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mTunnel [1]\033[0m')
-    print('2. \033[93mTunnel [2]\033[0m')
-    print('3. \033[92mTunnel [3]\033[0m')
-    print('4. \033[92mAll Of Them\033[0m')
+    print('2. \033[92mTunnel [2]\033[0m')
+    print('3. \033[93mTunnel [3]\033[0m')
+    print('4. \033[92mTunnel [4]\033[0m')
+    print('5. \033[92mTunnel [5]\033[0m')
+    print('6. \033[96mAll Of Them\033[0m')
     print('0. \033[94mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -19736,6 +28236,12 @@ def mtu5_q():
             ipip_ir3_mtu()
             break
         elif server_type == '4':
+            ipip_ir3_mtu()
+            break
+        elif server_type == '5':
+            ipip_ir3_mtu()
+            break
+        elif server_type == '6':
             m5_q()
             break
         elif server_type == '0':
@@ -19760,15 +28266,17 @@ def irip6_mnu():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
     print('\033[92m(\033[91mO,O\033[92m)\033[0m')
-    print('\033[92m(   ) \033[93m[3]IRAN Edit Menu\033[0m')
+    print('\033[92m(   ) \033[93m[5]IRAN Edit Menu\033[0m')
     print('\033[92m "-"\033[93m══════════════════════════\033[0m')
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mIRAN [1]\033[0m')
-    print('2. \033[93mIRAN [2]\033[0m')
-    print('3. \033[92mIRAN [3]\033[0m')
+    print('2. \033[92mIRAN [2]\033[0m')
+    print('3. \033[93mIRAN [3]\033[0m')
+    print('4. \033[92mIRAN [4]\033[0m')
+    print('5. \033[92mIRAN [5]\033[0m')
     print("\033[93m──────────────────────────────────────\033[0m")
-    print('4. \033[93mKharej \033[0m')
+    print('6. \033[93mKharej \033[0m')
     print('0. \033[94mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -19784,6 +28292,12 @@ def irip6_mnu():
             ipip_ir3_mtu()
             break
         elif server_type == '4':
+            ipip_ir4_mtu()
+            break
+        elif server_type == '5':
+            ipip_ir5_mtu()
+            break
+        elif server_type == '6':
             mtu6_q()
             break
         elif server_type == '0':
@@ -19801,9 +28315,11 @@ def mtu6_q():
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print('\033[93mChoose what to do:\033[0m')
     print('1. \033[92mTunnel [1]\033[0m')
-    print('2. \033[93mTunnel [2]\033[0m')
-    print('3. \033[92mTunnel [3]\033[0m')
-    print('4. \033[92mAll Of Them\033[0m')
+    print('2. \033[92mTunnel [2]\033[0m')
+    print('3. \033[93mTunnel [3]\033[0m')
+    print('4. \033[92mTunnel [4]\033[0m')
+    print('5. \033[92mTunnel [5]\033[0m')
+    print('6. \033[92mAll Of Them\033[0m')
     print('0. \033[94mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -19819,6 +28335,12 @@ def mtu6_q():
             ipip_kh3_mtu()
             break
         elif server_type == '4':
+            ipip_kh4_mtu()
+            break
+        elif server_type == '5':
+            ipip_kh5_mtu()
+            break
+        elif server_type == '6':
             m6_q()
             break
         elif server_type == '0':
@@ -19911,6 +28433,54 @@ def ipip_kh3_mtu():
     else:
         print("\033[91mCommand file doesn't exist\033[0m")
 
+def ipip_kh4_mtu():
+    
+    priv_kh3_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mIP6IP6 \033[93m]:\033[0m ")
+    mtu_command = f"/sbin/ip -6 link set dev azumip4 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/ipip4.sh"):
+        with open("/etc/ipip4.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumip4 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumip4 mtu" not in line]
+
+            with open("/etc/ipip4.sh", "w") as file:
+                file.writelines(sh_contents)
+
+        with open("/etc/ipip4.sh", "a") as file:
+            file.write(mtu_command)
+
+        display_checkmark("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def ipip_kh5_mtu():
+    
+    priv_kh3_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mIP6IP6 \033[93m]:\033[0m ")
+    mtu_command = f"/sbin/ip -6 link set dev azumip5 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/ipip5.sh"):
+        with open("/etc/ipip5.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumip5 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumip5 mtu" not in line]
+
+            with open("/etc/ipip5.sh", "w") as file:
+                file.writelines(sh_contents)
+
+        with open("/etc/ipip5.sh", "a") as file:
+            file.write(mtu_command)
+
+        display_checkmark("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+        
 def ipip_ir1_mtu():
     
     priv_ir1_mtu()
@@ -19976,6 +28546,54 @@ def ipip_ir3_mtu():
                 file.writelines(sh_contents)
 
         with open("/etc/ipip3.sh", "a") as file:
+            file.write(mtu_command)
+
+        display_checkmark("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def ipip_ir4_mtu():
+    
+    priv_ir3_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mIP6IP6 \033[93m]:\033[0m ")
+    mtu_command = f"/sbin/ip -6 link set dev azumip4 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/ipip4.sh"):
+        with open("/etc/ipip4.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumip4 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumip4 mtu" not in line]
+
+            with open("/etc/ipip4.sh", "w") as file:
+                file.writelines(sh_contents)
+
+        with open("/etc/ipip4.sh", "a") as file:
+            file.write(mtu_command)
+
+        display_checkmark("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def ipip_ir5_mtu():
+    
+    priv_ir3_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mIP6IP6 \033[93m]:\033[0m ")
+    mtu_command = f"/sbin/ip -6 link set dev azumip5 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/ipip5.sh"):
+        with open("/etc/ipip5.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumip5 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumip5 mtu" not in line]
+
+            with open("/etc/ipip5.sh", "w") as file:
+                file.writelines(sh_contents)
+
+        with open("/etc/ipip5.sh", "a") as file:
             file.write(mtu_command)
 
         display_checkmark("\033[92mMTU command edited successfully\033[0m")
@@ -20304,6 +28922,52 @@ def gre6_kh3_mtu():
     else:
         print("\033[91mCommand file doesn't exist\033[0m")
 
+def gre6_kh4_mtu():
+    priv_kh4_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig64 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre64.sh"):
+        with open("/etc/gre64.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig64 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig64 mtu" not in line]
+
+            with open("/etc/gre64.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre64.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def gre6_kh5_mtu():
+    priv_kh5_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig65 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre65.sh"):
+        with open("/etc/gre65.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig65 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig65 mtu" not in line]
+
+            with open("/etc/gre65.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre65.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+        
 ##gre6 mtu iran
 def gre6_ir1_mtu():
     priv_ir1_mtu()
@@ -20374,8 +29038,286 @@ def gre6_ir3_mtu():
     else:
         print("\033[91mCommand file doesn't exist\033[0m")
        
-        
+def gre6_ir4_mtu():
+    priv_ir4_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig64 mtu {mtu_value}\n"
 
+    if os.path.exists("/etc/gre64.sh"):
+        with open("/etc/gre64.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig64 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig64 mtu" not in line]
+
+            with open("/etc/gre64.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre64.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")        
+
+def gre6_ir5_mtu():
+    priv_ir5_mtu()
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig65 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre65.sh"):
+        with open("/etc/gre65.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig65 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig65 mtu" not in line]
+
+            with open("/etc/gre65.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre65.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")     
+
+#gretapnative
+    
+def gre6_kh1tap_mtu():
+
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig61 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre61.sh"):
+        with open("/etc/gre61.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig61 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig61 mtu" not in line]
+
+            with open("/etc/gre61.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre61.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def gre6_kh2tap_mtu():
+
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig62 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre62.sh"):
+        with open("/etc/gre62.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig62 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig62 mtu" not in line]
+
+            with open("/etc/gre62.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre62.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def gre6_kh3tap_mtu():
+
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig63 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre63.sh"):
+        with open("/etc/gre63.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig63 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig63 mtu" not in line]
+
+            with open("/etc/gre63.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre63.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def gre6_kh4tap_mtu():
+
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig64 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre64.sh"):
+        with open("/etc/gre64.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig64 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig64 mtu" not in line]
+
+            with open("/etc/gre64.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre64.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def gre6_kh5tap_mtu():
+
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig65 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre65.sh"):
+        with open("/etc/gre65.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig65 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig65 mtu" not in line]
+
+            with open("/etc/gre65.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre65.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+        
+##gre6 mtu iran
+def gre6_ir1tap_mtu():
+
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig61 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre61.sh"):
+        with open("/etc/gre61.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig61 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig61 mtu" not in line]
+
+            with open("/etc/gre61.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre61.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def gre6_ir2tap_mtu():
+
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig62 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre62.sh"):
+        with open("/etc/gre62.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig62 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig62 mtu" not in line]
+
+            with open("/etc/gre62.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre62.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+
+def gre6_ir3tap_mtu():
+
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig63 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre63.sh"):
+        with open("/etc/gre63.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig63 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig63 mtu" not in line]
+
+            with open("/etc/gre63.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre63.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")
+       
+def gre6_ir4tap_mtu():
+
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig64 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre64.sh"):
+        with open("/etc/gre64.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig64 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig64 mtu" not in line]
+
+            with open("/etc/gre64.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre64.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m")        
+
+def gre6_ir5tap_mtu():
+
+    mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96mGRE6 \033[93m]:\033[0m ")
+    mtu_command = f"ip link set dev azumig65 mtu {mtu_value}\n"
+
+    if os.path.exists("/etc/gre65.sh"):
+        with open("/etc/gre65.sh", "r") as file:
+            sh_contents = file.readlines()
+
+        if any("link set dev azumig65 mtu" in line for line in sh_contents):
+            sh_contents = [line for line in sh_contents if "link set dev azumig65 mtu" not in line]
+
+            with open("/etc/gre65.sh", "w") as file:
+                file.writelines(sh_contents)
+            
+        with open("/etc/gre65.sh", "a") as file:
+            file.write(mtu_command)
+
+        print("\033[92mMTU command edited successfully\033[0m")
+        subprocess.run(mtu_command, shell=True)
+    else:
+        print("\033[91mCommand file doesn't exist\033[0m") 
+
+##        
 def i6to4any2_mtu():
     mtu_value = input("\033[93mEnter the \033[92mMTU value \033[93m[ \033[96m6to4 anycast \033[93m]:\033[0m ")
     mtu_command = f"/sbin/ip -6 link set dev azumi6 mtu {mtu_value}\n"
@@ -21748,7 +30690,7 @@ done
 
     
  ##### IRAN IPIP6
-def iran_ping():
+def iran_pingg():
     try:
         subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b481::1"], check=True, stdout=subprocess.DEVNULL)
     except subprocess.CalledProcessError as e:
@@ -21993,7 +30935,7 @@ def iran_ipip6_menu():
     add_cron_job()
 
     display_checkmark("\033[92mkeepalive service Configured!\033[0m")
-    iran_ping()
+    iran_pingg()
 
 
     script_content1 = '''#!/bin/bash
@@ -22955,11 +31897,7 @@ done
     
     
  ##### IRAN gre6
-def iran_ping():
-    try:
-        subprocess.run(["ping", "-c", "2", "fd1d:fc98:b73e:b481::1"], check=True, stdout=subprocess.DEVNULL)
-    except subprocess.CalledProcessError as e:
-        print(Fore.LIGHTRED_EX + "Pinging failed:", e, Style.RESET_ALL)
+
         
     
 	
@@ -23165,7 +32103,7 @@ def iran1_gre6_menu():
     add_cron_job()
 
     display_checkmark("\033[92mkeepalive service Configured!\033[0m")
-    iran_ping()
+    iran_pingg()
     
 
     sleep(1)
@@ -23265,7 +32203,7 @@ def iran_gre6_menu():
     add_cron_job()
 
     display_checkmark("\033[92mkeepalive service Configured!\033[0m")
-    iran_ping()
+    iran_pingg()
     
 
     sleep(1)
