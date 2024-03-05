@@ -149,9 +149,8 @@ def main_menu():
             print("1. \033[36mExtra Native IPV6\033[0m")
             print("2. \033[93mEdit \033[92mMTU\033[0m")
             print("3. \033[92mGeneve UDP \033[0m")
-            print("4. \033[97mERSPAN [test][Some of them will be removed]\033[0m")
-            print("41.\033[97mGeneve \033[93mgre6\033[97m ipsec [Test-no ufw]\033[93m[NEW]\033[0m")
-            print("42.\033[97mGeneve + IPsec [Test-no ufw]\033[93m[NEW]\033[0m")
+            print("4. \033[96mGeneve + IPsec \033[93m[NEW]\033[0m")
+            print("42. \033[97mERSPAN [test][Some of them will be removed]\033[0m")
             print("43.\033[97mICMP + IPsec [Test]\033[93m[NEW]\033[0m")
             print("44.\033[97mICMPV4 + Erspan + IPsec [Test- last shot]\033[0m")
             print("45.\033[97mHans + Erspan + IPsec [Test]\033[0m")
@@ -185,12 +184,10 @@ def main_menu():
                 mtu_menu() 
             elif choice == '3':
                 genz_ip()  
-            elif choice == '4':
-                espn_menu()
-            elif choice == '41':
-                gengre_ipsec()
             elif choice == '42':
-                gen4_ipsec()    
+                espn_menu()
+            elif choice == '4':
+                gen4_ipsec_mnu()    
             elif choice == '43':
                 icmp_ipsec()   
             elif choice == '44':
@@ -4824,6 +4821,22 @@ systemctl restart strongswan
     with open('/etc/ipsec.sh', 'w') as file:
         file.write(ipsec_script)
     subprocess.run(['chmod', '+x', '/etc/ipsec.sh'])
+    
+def ipsec2_sh():
+    subprocess.run(['rm', '-f', '/etc/ipsec.sh'])
+
+    ipsec_script = """
+#!/bin/bash
+systemctl daemon-reload
+systemctl restart strong-azumi1
+
+
+"""
+
+    with open('/etc/ipsec2.sh', 'w') as file:
+        file.write(ipsec_script)
+    subprocess.run(['chmod', '+x', '/etc/ipsec2.sh'])
+    
 def delete_cron1():
     entries_to_delete = [
         "0 * * * * /bin/bash /etc/ipsec.sh",
@@ -4867,6 +4880,48 @@ def delete_cron1():
         subprocess.call(f"echo '{new_crontab}' | crontab -", shell=True)
         display_notification("\033[92mDeleting Previous Crons..\033[0m")
 
+def delete_cron3():
+    entries_to_delete = [
+        "0 * * * * /bin/bash /etc/ipsec2.sh",
+        "0 */2 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */3 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */4 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */5 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */6 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */7 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */8 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */9 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */10 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */11 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */12 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */13 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */14 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */15 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */16 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */17 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */18 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */19 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */20 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */21 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */22 * * * /bin/bash /etc/ipsec2.sh",
+        "0 */23 * * * /bin/bash /etc/ipsec2.sh",
+    ]
+
+    existing_crontab = ""
+    try:
+        existing_crontab = subprocess.check_output("crontab -l", shell=True).decode()
+    except subprocess.CalledProcessError:
+
+        return
+
+    new_crontab = existing_crontab
+    for entry in entries_to_delete:
+        if entry in existing_crontab:
+            new_crontab = new_crontab.replace(entry, "")
+
+    if new_crontab != existing_crontab:
+        subprocess.call(f"echo '{new_crontab}' | crontab -", shell=True)
+        display_notification("\033[92mDeleting Previous Crons..\033[0m")
 
 def delete_cron2():
     entries_to_delete = [
@@ -4949,7 +5004,86 @@ def delete_cron2():
         subprocess.call(f"echo '{new_crontab}' | crontab -", shell=True)
         display_notification("\033[92mDeleting Previous Crons..\033[0m")
      
+def delete_cron4():
+    entries_to_delete = [
+        "*/1 * * * * /bin/bash /etc/ipsec2.sh",  
+        "*/2 * * * * /bin/bash /etc/ipsec2.sh",  
+        "*/3 * * * * /bin/bash /etc/ipsec2.sh",  
+        "*/4 * * * * /bin/bash /etc/ipsec2.sh",  
+        "*/5 * * * * /bin/bash /etc/ipsec2.sh",  
+        "*/6 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/7 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/8 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/9 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/10 * * * * /bin/bash /etc/ipsec2.sh",  
+        "*/11 * * * * /bin/bash /etc/ipsec2.sh",  
+        "*/12 * * * * /bin/bash /etc/ipsec2.sh", 
+        "*/13 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/14 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/15 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/16 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/17 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/18 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/19 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/20 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/21 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/22 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/23 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/24 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/25 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/26 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/27 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/28 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/29 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/30 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/31 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/32 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/33 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/34 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/35 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/36 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/37 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/38 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/39 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/40 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/41 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/42 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/43 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/44 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/45 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/46 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/47 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/48 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/49 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/50 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/51 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/52 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/53 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/54 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/55 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/56 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/57 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/58 * * * * /bin/bash /etc/ipsec2.sh",
+        "*/59 * * * * /bin/bash /etc/ipsec2.sh",
         
+        
+    ]
+
+    existing_crontab = ""
+    try:
+        existing_crontab = subprocess.check_output("crontab -l", shell=True).decode()
+    except subprocess.CalledProcessError:
+        
+        return
+
+    new_crontab = existing_crontab
+    for entry in entries_to_delete:
+        if entry in existing_crontab:
+            new_crontab = new_crontab.replace(entry, "")
+
+    if new_crontab != existing_crontab:
+        subprocess.call(f"echo '{new_crontab}' | crontab -", shell=True)
+        display_notification("\033[92mDeleting Previous Crons..\033[0m")        
 def reset_hour():
     hours = int(input("\033[93mEnter the \033[92mReset Timer\033[93m [in hours]:\033[0m "))
     delete_cron1()
@@ -4980,6 +5114,36 @@ def reset_hour():
     except Exception as e:
         print(f"Error: {e}")
 
+def reset2_hour():
+    hours = int(input("\033[93mEnter the \033[92mReset Timer\033[93m [in hours]:\033[0m "))
+    delete_cron3()
+    delete_cron4()
+
+    if hours == 1:
+        cron_entry = "0 * * * * /bin/bash /etc/ipsec2.sh"
+    else:
+        cron_entry = f"0 */{hours} * * * /bin/bash /etc/ipsec2.sh"
+
+    try:
+        process = subprocess.run('crontab -l', shell=True, capture_output=True, text=True)
+        existing_crontab = process.stdout
+
+        if existing_crontab.strip() != "":
+            new_crontab = f"{existing_crontab.rstrip()}\n{cron_entry}"
+        else:
+            new_crontab = cron_entry
+
+        new_crontab += '\n'
+
+        process = subprocess.run('crontab -', shell=True, input=new_crontab, text=True, capture_output=True)
+
+        if process.returncode == 0:
+            print("\033[92mCron entry added successfully!\033[0m")
+        else:
+            print(f"Failed to add cron entry. Error: {process.stderr}")
+    except Exception as e:
+        print(f"Error: {e}")
+        
 def reset_minutes():
     minutes = int(input("\033[93mEnter the \033[92mReset Timer\033[93m [in minutes]:\033[0m "))
     delete_cron1()
@@ -5007,6 +5171,33 @@ def reset_minutes():
     except Exception as e:
         print(f"Error: {e}")
 
+def reset2_minutes():
+    minutes = int(input("\033[93mEnter the \033[92mReset Timer\033[93m [in minutes]:\033[0m "))
+    delete_cron3()
+    delete_cron4()
+
+    cron_entry = f"*/{minutes} * * * * /bin/bash /etc/ipsec2.sh"
+
+    try:
+        process = subprocess.run('crontab -l', shell=True, capture_output=True, text=True)
+        existing_crontab = process.stdout
+
+        if existing_crontab.strip() != "":
+            new_crontab = f"{existing_crontab.rstrip()}\n{cron_entry}"
+        else:
+            new_crontab = cron_entry
+
+        new_crontab += '\n'
+
+        process = subprocess.run('crontab -', shell=True, input=new_crontab, text=True, capture_output=True)
+
+        if process.returncode == 0:
+            print("\033[92mCron entry added successfully!\033[0m")
+        else:
+            print(f"Failed to add cron entry. Error: {process.stderr}")
+    except Exception as e:
+        print(f"Error: {e}")
+        
 def choose_reset():
     reset_unit = input("\033[93mChoose the reset timer unit:\n1. \033[92mHours\n\033[93m2.\033[96m Minutes\n\033[93mEnter your choice (\033[92m1\033[93m or\033[96m 2\033[93m): \033[0m")
 
@@ -5019,6 +5210,18 @@ def choose_reset():
 
     ipsec_sh()
 
+def choose_reset2():
+    reset_unit = input("\033[93mChoose the reset timer unit:\n1. \033[92mHours\n\033[93m2.\033[96m Minutes\n\033[93mEnter your choice (\033[92m1\033[93m or\033[96m 2\033[93m): \033[0m")
+
+    if reset_unit == "1":
+        reset2_hour()
+    elif reset_unit == "2":
+        reset2_minutes()
+    else:
+        print("\033[91mInvalid choice. Plz enter 1 or 2.\033[0m")
+
+    ipsec2_sh()
+    
 ## simpe ip4 
 def ip4_spn():
     os.system("clear")
@@ -9027,9 +9230,21 @@ def espan_job():
         
 def permissions():
     print("Setting permissions for config files...")
-    subprocess.run(["sudo", "chmod", "600", "/etc/ipsec.secrets"])
-    subprocess.run(["sudo", "chmod", "600", "/etc/ipsec.conf"])
+    subprocess.run(["sudo", "chmod", "600", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "chmod", "600", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     print("Setting permissions was successful.")
+
+def permissions1():
+    print("Setting permissions for config files...")
+    subprocess.run(["sudo", "chmod", "600", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "chmod", "600", "/etc/ipsec1.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "chmod", "600", "/etc/ipsec2.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "chmod", "600", "/etc/ipsec3.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "chmod", "600", "/etc/ipsec4.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "chmod", "600", "/etc/ipsec5.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+
+    print("Setting permissions was successful.")  
     
 def install_strongswan():
      
@@ -10676,7 +10891,10 @@ def remove_gretap61_sec():
         subprocess.run("sudo rm /etc/ping_v61.sh", shell=True)
         time.sleep(1)
         subprocess.run("sudo rm /etc/ping_ip1.sh", shell=True)
-
+        subprocess.run("sudo rm /etc/ipsec1.conf", shell=True)
+        subprocess.run("systemctl stop strong-azumi1 > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strong-azumi1 > /dev/null 2>&1", shell=True)
+        
         subprocess.run("systemctl disable ping_v61.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_v61.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_v61.service > /dev/null 2>&1", shell=True)
@@ -10732,13 +10950,15 @@ def remove_gretap62_sec():
         subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private2.sh\" | crontab -", shell=True)
 
         subprocess.run("sudo rm /etc/ping_v62.sh", shell=True)
-        time.sleep(1)
-        subprocess.run("sudo rm /etc/ping_ip2.sh", shell=True)
 
+        subprocess.run("sudo rm /etc/ping_ip2.sh", shell=True)
+        subprocess.run("sudo rm /etc/ipsec2.conf", shell=True)
+        subprocess.run("systemctl stop strong-azumi2 > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strong-azumi2 > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl disable ping_v62.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_v62.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_v62.service > /dev/null 2>&1", shell=True)
-        time.sleep(1)
+
         subprocess.run("systemctl disable ping_ip2.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_ip2.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_ip2.service > /dev/null 2>&1", shell=True)
@@ -10792,7 +11012,9 @@ def remove_gretap63_sec():
         subprocess.run("sudo rm /etc/ping_v63.sh", shell=True)
         time.sleep(1)
         subprocess.run("sudo rm /etc/ping_ip3.sh", shell=True)
-
+        subprocess.run("sudo rm /etc/ipsec3.conf", shell=True)
+        subprocess.run("systemctl stop strong-azumi3 > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strong-azumi3 > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl disable ping_v63.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_v63.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_v63.service > /dev/null 2>&1", shell=True)
@@ -10849,9 +11071,11 @@ def remove_gretap64_sec():
         subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private4.sh\" | crontab -", shell=True)
 
         subprocess.run("sudo rm /etc/ping_v64.sh", shell=True)
-        time.sleep(1)
-        subprocess.run("sudo rm /etc/ping_ip4.sh", shell=True)
 
+        subprocess.run("sudo rm /etc/ping_ip4.sh", shell=True)
+        subprocess.run("sudo rm /etc/ipsec4.conf", shell=True)
+        subprocess.run("systemctl stop strong-azumi4 > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strong-azumi4 > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl disable ping_v64.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_v64.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_v64.service > /dev/null 2>&1", shell=True)
@@ -10908,13 +11132,15 @@ def remove_gretap65_sec():
         subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private5.sh\" | crontab -", shell=True)
 
         subprocess.run("sudo rm /etc/ping_v65.sh", shell=True)
-        time.sleep(1)
-        subprocess.run("sudo rm /etc/ping_ip5.sh", shell=True)
 
+        subprocess.run("sudo rm /etc/ping_ip5.sh", shell=True)
+        subprocess.run("sudo rm /etc/ipsec5.conf", shell=True)
+        subprocess.run("systemctl stop strong-azumi5 > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable strong-azumi5 > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl disable ping_v65.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_v65.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_v65.service > /dev/null 2>&1", shell=True)
-        time.sleep(1)
+        
         subprocess.run("systemctl disable ping_ip5.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_ip5.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_ip5.service > /dev/null 2>&1", shell=True)
@@ -22901,8 +23127,9 @@ def gre6tapmulti_mnu():
     print('\033[93mChoose what to do:\033[0m')
     print("1. \033[92mGRE6tap IPV4 Multi \033[0m")
     print("2. \033[93mGRE6tap Native Multi \033[0m")
-    print("3. \033[92mGRE6tap IPV4 + \033[96mIPsec\033[92m Multi\033[93m[Work in progress- don't test it] \033[0m")
-    print("4. \033[93mGRE6tap Native + \033[96mIPsec\033[92m Multi\033[93m[Work in progress- don't test it] \033[0m")
+    print("3. \033[92mGRE6tap IPV4 + \033[96mIPsec\033[92m Multi\033[93m[Test] \033[0m")
+    print("4. \033[93mGRE6tap Native + \033[96mIPsec\033[92m Multi\033[93m[Test] \033[0m")
+    print("5. \033[93mIPsec Reset Timer\033[93m[Test] \033[0m")
     print('0. \033[91mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -22919,6 +23146,9 @@ def gre6tapmulti_mnu():
             break
         elif server_type == '4':
             gretapnm1()
+            break
+        elif server_type == '5':
+            choose_reset2()
             break
         elif server_type == '0':
             clear()
@@ -25996,8 +26226,13 @@ def config_ipsecn1(psk):
     install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
     install_process.wait()
     print("IPSEC Installation complete.")
-
-    with open("/etc/ipsec.conf", "w") as f:
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec1.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    with open("/etc/ipsec1.conf", "w") as f:
         f.write(f'''config setup
 ##azumiisinyouarea
   
@@ -26016,20 +26251,37 @@ conn erspan1
 
     with open("/etc/ipsec.secrets", "w") as f:
         f.write(f'2002:831a::2 2002:831a::1 : PSK "{psk}"\n')
-    permissions()
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    
+    with open("/etc/systemd/system/strong-azumi1.service", "w") as f:
+        f.write('''[Unit]
+Description=strongazumi IPsec IKEv1/IKEv2 daemon using ipsec.conf
+After=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec1.conf
+ExecReload=/usr/sbin/ipsec reload
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target\n''')
+
+    permissions1()
+    subprocess.run(["sudo", "systemctl", "daemon-reload"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
 def config_ipsecn12(psk):
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mInstalling IPSEC..\033[0m")
     install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
     install_process.wait()
     print("IPSEC Installation complete.")
-
-    with open("/etc/ipsec.conf", "a") as f:
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec2.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    with open("/etc/ipsec2.conf", "a") as f:
         f.write(f'''config setup
 ##azumiisinyouarea
   
@@ -26048,20 +26300,37 @@ conn erspan2
 
     with open("/etc/ipsec.secrets", "a") as f:
         f.write(f'2002:841a::2 2002:841a::1 : PSK "{psk}"\n')
-    permissions()
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    
+    with open("/etc/systemd/system/strong-azumi1.service", "w") as f:
+        f.write('''[Unit]
+Description=strongazumi IPsec IKEv1/IKEv2 daemon using ipsec.conf
+After=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec2.conf
+ExecReload=/usr/sbin/ipsec reload
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target\n''')
+
+    permissions1()
+    subprocess.run(["sudo", "systemctl", "daemon-reload"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
 def config_ipsecn13(psk):
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mInstalling IPSEC..\033[0m")
     install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
     install_process.wait()
     print("IPSEC Installation complete.")
-
-    with open("/etc/ipsec.conf", "a") as f:
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec3.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    with open("/etc/ipsec3.conf", "a") as f:
         f.write(f'''config setup
 ##azumiisinyouarea
   
@@ -26080,20 +26349,37 @@ conn erspan3
 
     with open("/etc/ipsec.secrets", "a") as f:
         f.write(f'2002:851a::2 2002:851a::1 : PSK "{psk}"\n')
-    permissions()
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    
+    with open("/etc/systemd/system/strong-azumi1.service", "w") as f:
+        f.write('''[Unit]
+Description=strongazumi IPsec IKEv1/IKEv2 daemon using ipsec.conf
+After=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec3.conf
+ExecReload=/usr/sbin/ipsec reload
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target\n''')
+
+    permissions1()
+    subprocess.run(["sudo", "systemctl", "daemon-reload"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
 def config_ipsecn14(psk):
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mInstalling IPSEC..\033[0m")
     install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
     install_process.wait()
     print("IPSEC Installation complete.")
-
-    with open("/etc/ipsec.conf", "a") as f:
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec4.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    with open("/etc/ipsec4.conf", "a") as f:
         f.write(f'''config setup
 ##azumiisinyouarea
   
@@ -26112,20 +26398,37 @@ conn erspan4
 
     with open("/etc/ipsec.secrets", "a") as f:
         f.write(f'2002:861a::2 2002:861a::1 : PSK "{psk}"\n')
-    permissions()
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    
+    with open("/etc/systemd/system/strong-azumi1.service", "w") as f:
+        f.write('''[Unit]
+Description=strongazumi IPsec IKEv1/IKEv2 daemon using ipsec.conf
+After=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec4.conf
+ExecReload=/usr/sbin/ipsec reload
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target\n''')
+
+    permissions1()
+    subprocess.run(["sudo", "systemctl", "daemon-reload"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
 def config_ipsecn15(psk):
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mInstalling IPSEC..\033[0m")
     install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
     install_process.wait()
     print("IPSEC Installation complete.")
-
-    with open("/etc/ipsec.conf", "a") as f:
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec5.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    with open("/etc/ipsec5.conf", "a") as f:
         f.write(f'''config setup
 ##azumiisinyouarea
   
@@ -26144,12 +26447,23 @@ conn erspan5
 
     with open("/etc/ipsec.secrets", "a") as f:
         f.write(f'2002:871a::2 2002:871a::1 : PSK "{psk}"\n')
-    permissions()
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    
+    with open("/etc/systemd/system/strong-azumi1.service", "w") as f:
+        f.write('''[Unit]
+Description=strongazumi IPsec IKEv1/IKEv2 daemon using ipsec.conf
+After=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec5.conf
+ExecReload=/usr/sbin/ipsec reload
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target\n''')
+
+    permissions1()
+    subprocess.run(["sudo", "systemctl", "daemon-reload"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 def config_ipsecn2(psk):
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -26157,8 +26471,13 @@ def config_ipsecn2(psk):
     install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
     install_process.wait()
     print("IPSEC Installation complete.")
-
-    with open("/etc/ipsec.conf", "a") as f:
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec1.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    with open("/etc/ipsec1.conf", "a") as f:
         f.write(f'''config setup
 ##azumiisinyouarea
   
@@ -26177,12 +26496,23 @@ conn erspan1
 
     with open("/etc/ipsec.secrets", "a") as f:
         f.write(f'2002:831a::1 2002:831a::2 : PSK "{psk}"\n')
-    permissions()
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    with open("/etc/systemd/system/strong-azumi1.service", "w") as f:
+        f.write('''[Unit]
+Description=strongazumi IPsec IKEv1/IKEv2 daemon using ipsec.conf
+After=network-online.target
 
+[Service]
+ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec1.conf
+ExecReload=/usr/sbin/ipsec reload
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target\n''')
+
+    permissions1()
+    subprocess.run(["sudo", "systemctl", "daemon-reload"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 def config_ipsecn22(psk):
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -26190,8 +26520,13 @@ def config_ipsecn22(psk):
     install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
     install_process.wait()
     print("IPSEC Installation complete.")
-
-    with open("/etc/ipsec.conf", "a") as f:
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec2.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    with open("/etc/ipsec2.conf", "a") as f:
         f.write(f'''config setup
 ##azumiisinyouarea
   
@@ -26210,20 +26545,37 @@ conn erspan2
 
     with open("/etc/ipsec.secrets", "a") as f:
         f.write(f'2002:841a::1 2002:841a::2 : PSK "{psk}"\n')
-    permissions()
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    
+    with open("/etc/systemd/system/strong-azumi1.service", "w") as f:
+        f.write('''[Unit]
+Description=strongazumi IPsec IKEv1/IKEv2 daemon using ipsec.conf
+After=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec2.conf
+ExecReload=/usr/sbin/ipsec reload
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target\n''')
+
+    permissions1()
+    subprocess.run(["sudo", "systemctl", "daemon-reload"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
 def config_ipsecn23(psk):
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mInstalling IPSEC..\033[0m")
     install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
     install_process.wait()
     print("IPSEC Installation complete.")
-
-    with open("/etc/ipsec.conf", "w") as f:
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec3.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    with open("/etc/ipsec3.conf", "w") as f:
         f.write(f'''config setup
 ##azumiisinyouarea
   
@@ -26242,20 +26594,37 @@ conn erspan3
 
     with open("/etc/ipsec.secrets", "w") as f:
         f.write(f'2002:851a::1 2002:851a::2 : PSK "{psk}"\n')
-    permissions()
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    
+    with open("/etc/systemd/system/strong-azumi1.service", "w") as f:
+        f.write('''[Unit]
+Description=strongazumi IPsec IKEv1/IKEv2 daemon using ipsec.conf
+After=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec3.conf
+ExecReload=/usr/sbin/ipsec reload
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target\n''')
+
+    permissions1()
+    subprocess.run(["sudo", "systemctl", "daemon-reload"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
 def config_ipsecn24(psk):
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mInstalling IPSEC..\033[0m")
     install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
     install_process.wait()
     print("IPSEC Installation complete.")
-
-    with open("/etc/ipsec.conf", "w") as f:
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec4.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    with open("/etc/ipsec4.conf", "w") as f:
         f.write(f'''config setup
 ##azumiisinyouarea
   
@@ -26274,20 +26643,38 @@ conn erspan4
 
     with open("/etc/ipsec.secrets", "w") as f:
         f.write(f'2002:861a::1 2002:861a::2 : PSK "{psk}"\n')
-    permissions()
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    
+    with open("/etc/systemd/system/strong-azumi1.service", "w") as f:
+        f.write('''[Unit]
+Description=strongazumi IPsec IKEv1/IKEv2 daemon using ipsec.conf
+After=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec4.conf
+ExecReload=/usr/sbin/ipsec reload
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target\n''')
+
+    permissions1()
+    subprocess.run(["sudo", "systemctl", "daemon-reload"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+
 def config_ipsecn25(psk):
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     display_notification("\033[93mInstalling IPSEC..\033[0m")
     install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
     install_process.wait()
     print("IPSEC Installation complete.")
-
-    with open("/etc/ipsec.conf", "w") as f:
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec5.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    with open("/etc/ipsec5.conf", "w") as f:
         f.write(f'''config setup
 ##azumiisinyouarea
   
@@ -26306,12 +26693,25 @@ conn erspan5
 
     with open("/etc/ipsec.secrets", "w") as f:
         f.write(f'2002:871a::1 2002:871a::2 : PSK "{psk}"\n')
-    permissions()
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    
+
+    with open("/etc/systemd/system/strong-azumi1.service", "w") as f:
+        f.write('''[Unit]
+Description=strongazumi IPsec IKEv1/IKEv2 daemon using ipsec.conf
+After=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec5.conf
+ExecReload=/usr/sbin/ipsec reload
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target\n''')
+
+    permissions1()
+    subprocess.run(["sudo", "systemctl", "daemon-reload"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
 #start  
 
 
@@ -26391,14 +26791,147 @@ def gre6tapmu_k1():
             break
         else:
             print('Invalid choice.')
+            
+def config_ipsecn1k(psk, num_servers):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
 
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec1.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec2.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec3.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec4.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec5.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    for i in range(num_servers):
+        with open(f"/etc/ipsec{i+1}.conf", "w") as f:
+            f.write(f'''config setup
+##azumiisinyouarea
+  
+conn erspan1
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2002:8{i+3}1a::1
+  right=2002:8{i+3}1a::2
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever\n''')
+
+        
+        subprocess.run(["sudo", "chmod", "+x", f"/etc/ipsec{i+1}.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        for i in range(num_servers):
+            f.write(f'2002:8{i+3}1a::2 2002:8{i+3}1a::1 : PSK "{psk}"\n')
+
+        
+        subprocess.run(["sudo", "chmod", "+x", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/systemd/system/strong-azumi1.service", "w") as f:
+        f.write('''[Unit]
+Description=strongazumi IPsec IKEv1/IKEv2 daemon using ipsec.conf
+After=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/ipsec start --nofork''')
+
+        for i in range(num_servers):
+            f.write(f' --conf /etc/ipsec{i+1}.conf')
+
+        f.write('''
+ExecReload=/usr/sbin/ipsec reload
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target\n''')
+
+    permissions()
+    subprocess.run(["sudo", "systemctl", "daemon-reload"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+def config_ipsecn1i(psk, num_servers):
+    print("\033[93m─────────────────────────────────────────────────────────\033[0m")
+    display_notification("\033[93mInstalling IPSEC..\033[0m")
+    install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
+    install_process.wait()
+    print("IPSEC Installation complete.")
+
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    for i in range(num_servers):
+        with open(f"/etc/ipsec{i+1}.conf", "w") as f:
+            f.write(f'''config setup
+##azumiisinyouarea
+  
+conn erspan1
+  left=%defaultroute
+  leftsubnet=64
+  leftid=2002:8{i+3}1a::2
+  right=2002:8{i+3}1a::1
+  rightsubnet=64
+  ike=aes256-sha256-modp3072!
+  esp=aes128gcm16-modp3072!
+  keyexchange=ikev2
+  auto=start
+  authby=secret
+  keyingtries=%forever\n''')
+
+        
+        subprocess.run(["sudo", "chmod", "+x", f"/etc/ipsec{i+1}.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/ipsec.secrets", "w") as f:
+        for i in range(num_servers):
+            f.write(f'2002:8{i+3}1a::1 2002:8{i+3}1a::2 : PSK "{psk}"\n')
+
+       
+        subprocess.run(["sudo", "chmod", "+x", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    with open("/etc/systemd/system/strong-azumi1.service", "w") as f:
+        f.write('''[Unit]
+Description=strongazumi IPsec IKEv1/IKEv2 daemon using ipsec.conf
+After=network-online.target
+
+[Service]
+ExecStart=/usr/sbin/ipsec start --nofork''')
+
+        for i in range(num_servers):
+            f.write(f' --conf /etc/ipsec{i+1}.conf')
+
+        f.write('''
+ExecReload=/usr/sbin/ipsec reload
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target\n''')
+
+    permissions()
+    subprocess.run(["sudo", "systemctl", "daemon-reload"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "enable", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "systemctl", "restart", "strong-azumi1"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
 def irangretap_q1():
     print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mQuestion time !\033[0m")
     print("\033[93m───────────────────────────────────────\033[0m")
     remove_config()
     num_servers = int(input("\033[93mHow many \033[92mKharej Servers\033[93m do you have?\033[0m "))
-    
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn1i(psk, num_servers)
     for i in range(1, num_servers + 1):
         menu_name = "gre6tap2_i{}1".format(i)
         globals()[menu_name]()
@@ -26458,7 +26991,8 @@ def kharejgretap_q1():
     print("\033[93m───────────────────────────────────────\033[0m")
     remove_config()
     num_servers = int(input("\033[93mHow many \033[92mIRAN Servers\033[93m do you have?\033[0m "))
-    
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn1k(psk, num_servers)
     for i in range(1, num_servers + 1):
         menu_name = "gre6tap2_k{}1".format(i)
         globals()[menu_name]() 
@@ -26491,8 +27025,7 @@ def gre6tap2_k11():
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[1]\033[93m IPV6 address: \033[0m")
     kharej_gre6tap_tunnel1()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
-    config_ipsecn1(psk)
+
     ip_address = "2002:831a::2" #iranip
     print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
     ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
@@ -26527,8 +27060,7 @@ def gre6tap2_i11():
     remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[1]\033[93m IPV6 address: \033[0m")
     iran_gre6tap_tunnel1()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
-    config_ipsecn2(psk)
+
     ip_address = "2002:831a::1" #iranip
     print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
     ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
@@ -26563,8 +27095,7 @@ def gre6tap2_k21():
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[2]\033[93m IPV6 address: \033[0m")
     kharej_gre6tap_tunnel2()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
-    config_ipsecn12(psk)
+
     ip_address = "2002:841a::2" #iranip
     print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
     ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
@@ -26599,8 +27130,7 @@ def gre6tap2_i21():
     remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[2]\033[93m IPV6 address: \033[0m")
     iran_gre6tap_tunnel2()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
-    config_ipsecn22(psk)
+
     ip_address = "2002:841a::1" #iranip
     print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
     ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
@@ -26637,8 +27167,7 @@ def gre6tap2_k31():
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[3]\033[93m IPV6 address: \033[0m")
     kharej_gre6tap_tunnel3()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
-    config_ipsecn13(psk)
+
     ip_address = "2002:851a::2" #iranip
     print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
     ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
@@ -26674,8 +27203,7 @@ def gre6tap2_i31():
     remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[3]\033[93m IPV6 address: \033[0m")
     iran_gre6tap_tunnel3()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
-    config_ipsecn23(psk)
+
     ip_address = "2002:851a::1" #iranip
     print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
     ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
@@ -26712,8 +27240,7 @@ def gre6tap2_k41():
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[4]\033[93m IPV6 address: \033[0m")
     kharej_gre6tap_tunnel4()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
-    config_ipsecn14(psk)
+
     ip_address = "2002:861a::2" #iranip
     print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
     ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
@@ -26748,8 +27275,7 @@ def gre6tap2_i41():
     remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[4]\033[93m IPV6 address: \033[0m")
     iran_gre6tap_tunnel4()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
-    config_ipsecn24(psk)
+
     ip_address = "2002:861a::1" #iranip
     print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
     ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
@@ -26785,8 +27311,7 @@ def gre6tap2_k51():
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[96m[5]\033[93m IPV6 address: \033[0m")
     kharej_gre6tap_tunnel5()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
-    config_ipsecn15(psk)
+
     ip_address = "2002:871a::2" #iranip
     print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
     ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
@@ -26820,8 +27345,7 @@ def gre6tap2_i51():
     remote_ip = input("\033[93mEnter \033[92mKharej\033[96m[5]\033[93m IPV6 address: \033[0m")
     iran_gre6tap_tunnel5()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
-    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
-    config_ipsecn25(psk)
+
     ip_address = "2002:871a::1" #iranip
     print('\033[92m(\033[96mPlease wait,Azumi is pinging again...\033[0m')
     ping_result = subprocess.run(['ping6', '-c', '2', ip_address], capture_output=True, text=True).stdout.strip()
@@ -26914,7 +27438,8 @@ def irangretap4_q1():
     print("\033[93m───────────────────────────────────────\033[0m")
     remove_config()
     num_servers = int(input("\033[93mHow many \033[92mKharej Servers\033[93m do you have?\033[0m "))
-    
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn1i(psk, num_servers)  
     for i in range(1, num_servers + 1):
         menu_name = "gre6tap62_iranz{}1".format(i)
         if menu_name in globals():
@@ -26977,10 +27502,12 @@ def kharejgretap4_q1():
     print("\033[93m───────────────────────────────────────\033[0m")
     remove_config()
     num_servers = int(input("\033[93mHow many \033[92mIRAN Servers\033[93m do you have?\033[0m "))
-    
+    psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
+    config_ipsecn1k(psk, num_servers)
     for i in range(1, num_servers + 1):
         menu_name = "gre6tap62_kharejz{}1".format(i)
         globals()[menu_name]() 
+        
 def remove_config():
     subprocess.run(["sudo", "rm", "/etc/ipsec.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)  
@@ -33383,7 +33910,11 @@ def ipgen_ipk_version1():
     local_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
     remote_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
-
+    ufw(remote_ip)
+    ufw("2002:831::1")
+    ufw("2002:831::2")
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
     
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     kharej1_gre6_menu()
@@ -33467,7 +33998,11 @@ def ipgen_ipk_version2():
     local_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
     remote_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
-
+    ufw(remote_ip)
+    ufw("2002:831::1")
+    ufw("2002:831::2")
+    ufw("2001:db8::1")
+    ufw("2001:db8::2")
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     kharej1_gre6_menu()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -33582,7 +34117,11 @@ def ipgen_ipi_version1():
     local_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
     remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m") 
     remote_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
-
+    ufw(remote_ip)
+    ufw("2002:831::1")
+    ufw("2002:831::2")
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     iran1_gre6_menu()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -33665,7 +34204,11 @@ def ipgen_ipi_version2():
     local_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
     remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m") 
     remote_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
-
+    ufw(remote_ip)
+    ufw("2002:831::1")
+    ufw("2002:831::2")
+    ufw("2001:db8::1")
+    ufw("2001:db8::2")
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     iran1_gre6_menu()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -33840,7 +34383,11 @@ def ipgenm2_ipk_version1():
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
-
+    ufw(remote_ip)
+    ufw("2002:831::1")
+    ufw("2002:831::2")
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
     
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     kharej1_gre6_menu()
@@ -33922,7 +34469,11 @@ def ipgenm2_ipk_version2():
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     local_ip = input("\033[93mEnter \033[92mkharej\033[93m IPV4 address: \033[0m")
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
-
+    ufw(remote_ip)
+    ufw("2002:831::1")
+    ufw("2002:831::2")
+    ufw("2001:db8::1")
+    ufw("2001:db8::2")
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     kharej1_gre6_menu()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -34068,7 +34619,11 @@ def ipgenm2_ipi_version1():
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
     remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m") 
-
+    ufw(remote_ip)
+    ufw("2002:831::1")
+    ufw("2002:831::2")
+    ufw("80.200.2.1")
+    ufw("80.200.1.1")
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     iran1_gre6_menu()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -34149,7 +34704,11 @@ def ipgenm2_ipi_version2():
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     local_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
     remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m") 
-
+    ufw(remote_ip)
+    ufw("2002:831::1")
+    ufw("2002:831::2")
+    ufw("2001:db8::2")
+    ufw("2001:db8::1")
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     iran1_gre6_menu()
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
@@ -37229,7 +37788,34 @@ done
     print("\033[92mIRAN Server Configuration Completed!\033[0m")   
     ##
 #test gen ipsec
+def gen4_ipsec_mnu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[92mGeneve \033[93m+ IPV4 + \033[92mIPsec \033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mGeneve + IPsec\033[0m')
+    print('2. \033[93mGeneve + GRE6 + IPsec\033[0m')
+    print('3. \033[94mback to the main menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            gen4_ipsec()
+            break
+        elif server_type == '2':
+            gengre_ipsec()
+            break
+        elif server_type == '3':
+            clear()
+            main_menu()
+            break
+        else:
+            print('Invalid choice.')
+            
 def gen4_ipsec():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -37253,7 +37839,7 @@ def gen4_ipsec():
             break
         elif server_type == '3':
             clear()
-            main_menu()
+            gen4_ipsec_mnu()
             break
         else:
             print('Invalid choice.')
@@ -37455,6 +38041,10 @@ def gen_simpk1():
     local_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
     remote_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
+    ufw(local_ip)
+    ufw(remote_ip)
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
     psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m") 
     config_strongsw_simk1(local_ip, local_subnet, remote_ip, remote_subnet, psk)
 
@@ -37534,6 +38124,10 @@ def gen_simpk2():
     local_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
     remote_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
+    ufw(local_ip)
+    ufw(remote_ip)
+    ufw("2001:db8::1")
+    ufw("2001:db8::2")
     psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
 
     config_strongsw_simk2(local_ip, local_subnet, remote_ip, remote_subnet, psk)
@@ -37647,6 +38241,10 @@ def gen_simpi1():
     local_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
     remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m") 
     remote_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
+    ufw(local_ip)
+    ufw(remote_ip)
+    ufw("80.200.2.1")
+    ufw("80.200.1.1")
     psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
 
     config_strongsw_simi1(local_ip, local_subnet, remote_ip, remote_subnet, psk)
@@ -37727,6 +38325,10 @@ def gen_simpi2():
     local_subnet = input("\033[93mEnter \033[92mIRAN\033[93m Subnet: \033[0m")
     remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m") 
     remote_subnet = input("\033[93mEnter \033[92mkharej\033[93m Subnet: \033[0m")
+    ufw(local_ip)
+    ufw(remote_ip)
+    ufw("2001:db8::1")
+    ufw("2001:db8::2")
     psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
 
     config_strongsw_simi2(local_ip, local_subnet, remote_ip, remote_subnet, psk)
@@ -38074,6 +38676,9 @@ def genm2_simpk2():
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
 
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    ufw(remote_ip)
+    ufw("2001:db8::1")
+    ufw("2001:db8::2")
     psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
 
     configm2_strongsw_simk2(psk)
@@ -38184,6 +38789,9 @@ def genm2_simpi1():
     
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m") 
+    ufw(remote_ip)
+    ufw("80.200.2.1")
+    ufw("80.200.1.1")
     psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
 
     configm2_strongsw_simi1(psk)
@@ -38261,6 +38869,9 @@ def genm2_simpi2():
     
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
     remote_ip = input("\033[93mEnter \033[92mKharej\033[93m IPV4 address: \033[0m") 
+    ufw(remote_ip)
+    ufw("2001:db8::2")
+    ufw("2001:db8::1")
     psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m")
 
     configm2_strongsw_simi2(psk)
@@ -38352,7 +38963,7 @@ def remove_menu():
     print('6. \033[97mUninstall Gre6tap\033[0m')
     print('7. \033[93mUninstall Private IP\033[0m')
     print('8. \033[96mUninstall Extra Native IP\033[0m')
-    print('9. \033[92mUninstall Geneve\033[0m')
+    print('9. \033[92mUninstall Geneve | IPsec\033[0m')
     print('10. \033[93mUninstall Erspan\033[0m')
     
     print('0. \033[91mback to the main menu\033[0m')
@@ -44894,8 +45505,8 @@ def genz_uninstall():
     delufw("80.200.1.1")
     delufw("80.200.1.2")
     delufw("80.200.2.1")
-    
-
+    delufw("2001:db8::1")
+    delufw("2001:db8::2")
     try:
         if subprocess.call("test -f /etc/sys.sh", shell=True) == 0:
             subprocess.run("rm /etc/sys.sh", shell=True)
@@ -44967,7 +45578,8 @@ def gen4_uninstall():
     delufw("2002:831a::2")
     delufw("2001:831b::2")
     delufw("2001:831b::1")
-    
+    delufw("2001:db8::1")
+    delufw("2001:db8::2") 
 
     try:
         if subprocess.call("test -f /etc/sys.sh", shell=True) == 0:
@@ -45081,6 +45693,8 @@ def gen6_uninstall():
     delufw("2002:831a::2")
     delufw("2001:831b::1")
     delufw("2001:831b::2")
+    delufw("2001:db8::1")
+    delufw("2001:db8::2")
     ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
     prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
     delufw(prefix)
