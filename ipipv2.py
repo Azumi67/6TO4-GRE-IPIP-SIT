@@ -38599,6 +38599,9 @@ def genm2_simpk1():
     print("\033[93m─────────────────────────────────────────────────────────\033[0m")
 
     remote_ip = input("\033[93mEnter \033[92mIRAN\033[93m IPV4 address: \033[0m")
+    ufw(remote_ip)
+    ufw("80.200.1.1")
+    ufw("80.200.2.1")
     psk = input("\033[93mEnter the \033[92mSecret key\033[93m: \033[0m") 
     configm2_strongsw_simk1(psk)
 
@@ -38956,7 +38959,6 @@ def remove_menu():
     print('2. \033[93mUninstall 6to4\033[0m')
     print('3. \033[92mUninstall 6to4 \033[96manycast\033[0m')
     print('4. \033[96mUninstall Gre\033[0m')
-    print('41.\033[97mUninstall Geneve +icmp [test]\033[0m')
     print('42.\033[97mUninstall erspan ip6ip6 [test]\033[0m')
     print('43.\033[97mUninstall icmp + ipsec & erspan & hans [test]\033[0m')
     print('5. \033[92mUninstall Gre6\033[0m')
@@ -38982,9 +38984,6 @@ def remove_menu():
             break
         elif server_type == '4':
             remove_gre()
-        elif server_type == '41':
-            remove_test()
-            break 
         elif server_type == '42':
             gre6test_uninstall()
             break  
@@ -40292,7 +40291,8 @@ def genx_ip():
     print("2. \033[93mGeneve + Native \033[0m")
     print("3. \033[96mGeneve + Gre6 + Native \033[0m")
     print("4. \033[92mGeneve + Gre6 + IPV4 \033[0m")
-    print("5. \033[97mGeneve + IP6tnl + Gre6 + Native  \033[0m")
+    print("5. \033[93mGeneve + IP6tnl + Gre6 + Native  \033[0m")
+    print("6. \033[92mGeneve + IPsec  \033[0m")
     print('0. \033[91mback to the previous menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -40309,6 +40309,9 @@ def genx_ip():
             break
         elif server_type == '5':
             gen4_uninstall()
+            break
+        elif server_type == '6':
+            remove_test()
             break
         elif server_type == '4':
             gen6_uninstall()
@@ -45282,34 +45285,35 @@ def remove_gre6():
     print("\033[93m───────────────────────────────────────\033[0m")
 
     try:
-        if subprocess.call("test -f /etc/gre6.sh", shell=True) == 0:
-            subprocess.run("rm /etc/gre6.sh", shell=True)
-        if subprocess.call("test -f /etc/private.sh", shell=True) == 0:
-            subprocess.run("rm /etc/private.sh", shell=True)
+        if subprocess.call("test -f /etc/gre6.sh", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) == 0:
+            subprocess.run("rm /etc/gre6.sh", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+        if subprocess.call("test -f /etc/private.sh", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) == 0:
+            subprocess.run("rm /etc/private.sh", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
         display_notification("\033[93mRemoving cronjob...\033[0m")
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre6.sh\" | crontab -", shell=True)
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/gre6.sh\" | crontab -", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private.sh\" | crontab -", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-        subprocess.run("sudo rm /etc/ping_v6.sh", shell=True)
+        subprocess.run("sudo rm /etc/ping_v6.sh", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         time.sleep(1)
-        subprocess.run("sudo rm /etc/ping_ip.sh", shell=True)
+        subprocess.run("sudo rm /etc/ping_ip.sh", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-        subprocess.run("systemctl disable ping_v6.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_v6.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_v6.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable ping_v6.service > /dev/null 2>&1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("systemctl stop ping_v6.service > /dev/null 2>&1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("rm /etc/systemd/system/ping_v6.service > /dev/null 2>&1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         time.sleep(1)
-        subprocess.run("systemctl disable ping_ip.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_ip.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_ip.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable ping_ip.service > /dev/null 2>&1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("systemctl stop ping_ip.service > /dev/null 2>&1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("rm /etc/systemd/system/ping_ip.service > /dev/null 2>&1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         time.sleep(1)
-        subprocess.run("systemctl daemon-reload", shell=True)
-        
-        subprocess.run("ip link set dev azumi down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumi > /dev/null", shell=True)
-        sleep(1)
-        subprocess.run("ip link set dev azumig6 down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumig6 > /dev/null", shell=True)
+        subprocess.run("systemctl daemon-reload", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+        subprocess.run("ip link set dev azumi down > /dev/null", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("ip tunnel del azumi > /dev/null", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        time.sleep(1)
+        subprocess.run("ip link set dev azumig6 down > /dev/null", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("ip tunnel del azumig6 > /dev/null", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
         print("Progress: ", end="")
 
@@ -45414,44 +45418,45 @@ def remove_private():
     print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving private IP addresses...\033[0m")
     print("\033[93m───────────────────────────────────────\033[0m")
-    
+
     try:
-        if subprocess.call("test -f /etc/private.sh", shell=True) == 0:
-            subprocess.run("rm /etc/private.sh", shell=True)
-            
+        if subprocess.call("test -f /etc/private.sh", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) == 0:
+            subprocess.run("rm /etc/private.sh", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
         display_notification("\033[93mRemoving cronjob...\033[0m")
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private.sh\" | crontab -", shell=True)
-        
-        subprocess.run("sudo rm /etc/ping_v6.sh", shell=True)
-        
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/private.sh\" | crontab -", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+        subprocess.run("sudo rm /etc/ping_v6.sh", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
         time.sleep(1)
-        subprocess.run("systemctl disable ping_v6.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_v6.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_v6.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable ping_v6.service > /dev/null 2>&1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("systemctl stop ping_v6.service > /dev/null 2>&1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("rm /etc/systemd/system/ping_v6.service > /dev/null 2>&1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         time.sleep(1)
-        
-        subprocess.run("systemctl daemon-reload", shell=True)
-        
-        subprocess.run("ip link set dev azumi down > /dev/null", shell=True)
-        subprocess.run("ip tunnel del azumi > /dev/null", shell=True)
-        
+
+        subprocess.run("systemctl daemon-reload", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+        subprocess.run("ip link set dev azumi down > /dev/null", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("ip tunnel del azumi > /dev/null", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
         print("Progress: ", end="")
-        
+
         frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
         delay = 0.1
-        duration = 1  
+        duration = 1
         end_time = time.time() + duration
-        
+
         while time.time() < end_time:
             for frame in frames:
                 print("\r[%s] Loading...  " % frame, end="")
                 time.sleep(delay)
                 print("\r[%s]             " % frame, end="")
                 time.sleep(delay)
-        
+
         display_checkmark("\033[92mUninstall completed!\033[0m")
     except subprocess.CalledProcessError as e:
         print("Error:", e.output.decode().strip())
+        
 def prefix_ip_gen():
     gen_path = "/etc/ping_sys.sh"
 
@@ -45485,7 +45490,7 @@ def genz_uninstall():
     print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving Geneve Tunnel...\033[0m")
     print("\033[93m───────────────────────────────────────\033[0m")
-    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], capture_output=True, text=True).stdout.strip()
+    ipv4 = subprocess.run(['curl', '-s', 'https://api.ipify.org'], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True).stdout.strip()
     prefix = "2002:{:02x}{:02x}:{:02x}{:02x}::1".format(*map(int, ipv4.split('.')))
     delufw(prefix)
     remote_ip = remote_ip_gen()
@@ -45508,21 +45513,21 @@ def genz_uninstall():
     delufw("2001:db8::1")
     delufw("2001:db8::2")
     try:
-        if subprocess.call("test -f /etc/sys.sh", shell=True) == 0:
-            subprocess.run("rm /etc/sys.sh", shell=True)
+        if subprocess.call("test -f /etc/sys.sh", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) == 0:
+            subprocess.run("rm /etc/sys.sh", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
         display_notification("\033[93mRemoving cronjob...\033[0m")
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/sys.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/sys.sh\" | crontab -", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-        subprocess.run("sudo rm /etc/ping_sys.sh", shell=True)
+        subprocess.run("sudo rm /etc/ping_sys.sh", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-        subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
-        subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
-        subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
+        subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-        subprocess.run("systemctl daemon-reload", shell=True)
+        subprocess.run("systemctl daemon-reload", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-        subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
+        subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
         print("Progress: ", end="")
 
@@ -45543,12 +45548,44 @@ def genz_uninstall():
         print("Error:", e.output.decode().strip())
     except Exception as e:
         print("Error:", str(e))
-        
+
 def remove_test():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mGeneve \033[92mIPsec\033[93m Uninstall Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mGeneve + IPsec\033[0m')
+    print('2. \033[93mGeneve + GRE6 + IPsec\033[0m')
+    print('3. \033[94mback to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            remove_testz1()
+            break
+        elif server_type == '2':
+            remove_testz2()
+            break
+        elif server_type == '3':
+            clear()
+            genx_ip()
+            break
+        else:
+            print('Invalid choice.')
+            
+def remove_testz1():
+    genz_uninstall()
+    ipsecs_uninstall()
+
+def remove_testz2():
     genz_uninstall()
     gen6_uninstall()
     ipsecs_uninstall()
-
+    
 def gen4_uninstall():
     remove_private()
     remove_gre621()
