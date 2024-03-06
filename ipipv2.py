@@ -150,29 +150,26 @@ def main_menu():
             print("2. \033[93mEdit \033[92mMTU\033[0m")
             print("3. \033[92mGeneve UDP \033[0m")
             print("4. \033[96mGeneve + IPsec \033[93m[NEW]\033[0m")
-            print("42. \033[97mERSPAN [test][Some of them will be removed]\033[0m")
-            print("43.\033[97mICMP + IPsec [Test]\033[93m[NEW]\033[0m")
-            print("44.\033[97mICMPV4 + Erspan + IPsec [Test- last shot]\033[0m")
-            print("45.\033[97mHans + Erspan + IPsec [Test]\033[0m")
-            print("46.\033[97mIPsec Reset Timer \033[92m[test] \033[0m")
-            print("5. \033[96mIP6IP6\033[0m")
-            print("6. \033[93mPrivate IP\033[0m")
-            print("7. \033[92mGRE\033[0m")
+            print("5. \033[93mICMP + IPsec\033[93m[NEW]\033[0m")
+            print("42.\033[97mERSPAN [test][Some of them will be removed]\033[0m")            
+            print("6. \033[96mIP6IP6\033[0m")
+            print("7. \033[93mPrivate IP\033[0m")
+            print("9. \033[92mGRE\033[0m")
             print("8. \033[96mGRE6\033[0m")
-            print("9. \033[97mGRE6tap\033[0m")
-            print("10. \033[93m6TO4 \033[0m")
-            print("11. \033[92m6TO4 \033[97m[Anycasnt] \033[0m")
-            print("12. \033[91mUninstall\033[0m")
+            print("10. \033[97mGRE6tap\033[0m")
+            print("11. \033[93m6TO4 \033[0m")
+            print("12. \033[92m6TO4 \033[97m[Anycasnt] \033[0m")
+            print("13. \033[91mUninstall\033[0m")
             print("\033[93m─────────────────────────────────────────────────────────────────────\033[0m")
             display_notification("\033[93m Multiple Servers\033[0m")
             print("\033[93m─────────────────────────────────────────────────────────────────────\033[0m")
-            print("13. \033[96mIP6IP6 Multiple Servers\033[93m[NEW]\033[0m")
-            print("14. \033[92mGRE6 Multiple Servers\033[93m[NEW]\033[0m")
-            print("15. \033[93m6tO4 Multiple Servers\033[0m")
-            print("16. \033[92mGre6tap Multiple Servers\033[93m[NEW]\033[0m")
-            print("17. \033[96mAnycast Multiple Servers\033[0m")
-            print("18. \033[93mEdit \033[92mMTU\033[0m")
-            print("19. \033[91mUninstall\033[0m")
+            print("14. \033[96mIP6IP6 Multiple Servers\033[93m[NEW]\033[0m")
+            print("15. \033[92mGRE6 Multiple Servers\033[93m[NEW]\033[0m")
+            print("16. \033[93m6tO4 Multiple Servers\033[0m")
+            print("17. \033[92mGre6tap Multiple Servers\033[93m[NEW]\033[0m")
+            print("18. \033[96mAnycast Multiple Servers\033[0m")
+            print("19. \033[93mEdit \033[92mMTU\033[0m")
+            print("20. \033[91mUninstall\033[0m")
             print("q. Exit")
             print("\033[93m╰─────────────────────────────────────────────────────────────────────╯\033[0m")
 
@@ -188,43 +185,37 @@ def main_menu():
                 espn_menu()
             elif choice == '4':
                 gen4_ipsec_mnu()    
-            elif choice == '43':
-                icmp_ipsec()   
-            elif choice == '44':
-                icmp_erspan4()
-            elif choice == '45':
-                icmp_erspan5()  
-            elif choice == '46':
-                choose_reset()
             elif choice == '5':
-                ipip_menu()                
+                icmp_ip_mnu()   
             elif choice == '6':
-                private_ip()
+                ipip_menu()                
             elif choice == '7':
-                gre_menu()
+                private_ip()
             elif choice == '8':
-                gre6_menu()
+                gre_menu()
             elif choice == '9':
-                gre6tap_mnu()
+                gre6_menu()
             elif choice == '10':
-                i6to4_no()
+                gre6tap_mnu()
             elif choice == '11':
-                i6to4_any()
+                i6to4_no()
             elif choice == '12':
-                remove_menu()
+                i6to4_any()
             elif choice == '13':
-                ip6_mnu_ip()
+                remove_menu()
             elif choice == '14':
-                gre6_mnu_ip()
+                ip6_mnu_ip()
             elif choice == '15':
-                priv_mnu_ip()
+                gre6_mnu_ip()
             elif choice == '16':
-                gre6tapmulti_mnu()
+                priv_mnu_ip()
             elif choice == '17':
-                i6to41_any()
+                gre6tapmulti_mnu()
             elif choice == '18':
-                mtu2_menu()
+                i6to41_any()
             elif choice == '19':
+                mtu2_menu()
+            elif choice == '20':
                 remove2_menu()
             elif choice == 'q':
                 print("Exiting...")
@@ -4812,8 +4803,11 @@ def ipsec_sh():
     ipsec_script = """
 #!/bin/bash
 
-systemctl restart strongswan-starter
-systemctl restart strongswan
+sudo systemctl daemon-reload
+sudo systemctl restart strongswan-starter
+sudo systemctl restart strongswan
+sudo journalctl --vacuum-size=1M --unit=strongswan-starter.service
+sudo journalctl --vacuum-size=1M --unit=strongswan.service
 
 
 """
@@ -4827,9 +4821,9 @@ def ipsec2_sh():
 
     ipsec_script = """
 #!/bin/bash
-systemctl daemon-reload
-systemctl restart strong-azumi1
-
+sudo systemctl daemon-reload
+sudo systemctl restart strong-azumi1
+sudo journalctl --vacuum-size=1M --unit=strong-azumi1.service
 
 """
 
@@ -5177,6 +5171,32 @@ def reset2_minutes():
     delete_cron4()
 
     cron_entry = f"*/{minutes} * * * * /bin/bash /etc/ipsec2.sh"
+
+    try:
+        process = subprocess.run('crontab -l', shell=True, capture_output=True, text=True)
+        existing_crontab = process.stdout
+
+        if existing_crontab.strip() != "":
+            new_crontab = f"{existing_crontab.rstrip()}\n{cron_entry}"
+        else:
+            new_crontab = cron_entry
+
+        new_crontab += '\n'
+
+        process = subprocess.run('crontab -', shell=True, input=new_crontab, text=True, capture_output=True)
+
+        if process.returncode == 0:
+            print("\033[92mCron entry added successfully!\033[0m")
+        else:
+            print(f"Failed to add cron entry. Error: {process.stderr}")
+    except Exception as e:
+        print(f"Error: {e}")
+
+def reset2_minutes_forced():
+    delete_cron3()
+    delete_cron4()
+
+    cron_entry = f"*/30 * * * * /bin/bash /etc/ipsec2.sh"
 
     try:
         process = subprocess.run('crontab -l', shell=True, capture_output=True, text=True)
@@ -26226,10 +26246,13 @@ def config_ipsecn1(psk):
     install_process = subprocess.Popen(["sudo", "apt", "install", "strongswan", "-y"])
     install_process.wait()
     print("IPSEC Installation complete.")
+
     subprocess.run(["sudo", "systemctl", "disable", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan-starter.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec1.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     with open("/etc/ipsec1.conf", "w") as f:
@@ -26259,7 +26282,9 @@ After=network-online.target
 [Service]
 ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec1.conf
 ExecReload=/usr/sbin/ipsec reload
-Restart=on-abnormal
+Restart=always
+RestartSec=5
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target\n''')
@@ -26279,6 +26304,8 @@ def config_ipsecn12(psk):
     subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan-starter.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)  
     subprocess.run(["sudo", "rm", "/etc/ipsec2.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     with open("/etc/ipsec2.conf", "a") as f:
@@ -26308,7 +26335,9 @@ After=network-online.target
 [Service]
 ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec2.conf
 ExecReload=/usr/sbin/ipsec reload
-Restart=on-abnormal
+Restart=always
+RestartSec=5
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target\n''')
@@ -26328,6 +26357,8 @@ def config_ipsecn13(psk):
     subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan-starter.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec3.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     with open("/etc/ipsec3.conf", "a") as f:
@@ -26357,7 +26388,9 @@ After=network-online.target
 [Service]
 ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec3.conf
 ExecReload=/usr/sbin/ipsec reload
-Restart=on-abnormal
+Restart=always
+RestartSec=5
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target\n''')
@@ -26377,6 +26410,8 @@ def config_ipsecn14(psk):
     subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan-starter.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec4.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     with open("/etc/ipsec4.conf", "a") as f:
@@ -26406,7 +26441,9 @@ After=network-online.target
 [Service]
 ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec4.conf
 ExecReload=/usr/sbin/ipsec reload
-Restart=on-abnormal
+Restart=always
+RestartSec=5
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target\n''')
@@ -26426,6 +26463,8 @@ def config_ipsecn15(psk):
     subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan-starter.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec5.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     with open("/etc/ipsec5.conf", "a") as f:
@@ -26455,7 +26494,9 @@ After=network-online.target
 [Service]
 ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec5.conf
 ExecReload=/usr/sbin/ipsec reload
-Restart=on-abnormal
+Restart=always
+RestartSec=5
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target\n''')
@@ -26475,6 +26516,8 @@ def config_ipsecn2(psk):
     subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan-starter.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec1.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     with open("/etc/ipsec1.conf", "a") as f:
@@ -26504,7 +26547,9 @@ After=network-online.target
 [Service]
 ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec1.conf
 ExecReload=/usr/sbin/ipsec reload
-Restart=on-abnormal
+Restart=always
+RestartSec=5
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target\n''')
@@ -26524,6 +26569,8 @@ def config_ipsecn22(psk):
     subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan-starter.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec2.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     with open("/etc/ipsec2.conf", "a") as f:
@@ -26553,7 +26600,9 @@ After=network-online.target
 [Service]
 ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec2.conf
 ExecReload=/usr/sbin/ipsec reload
-Restart=on-abnormal
+Restart=always
+RestartSec=5
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target\n''')
@@ -26573,6 +26622,8 @@ def config_ipsecn23(psk):
     subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan-starter.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec3.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     with open("/etc/ipsec3.conf", "w") as f:
@@ -26602,7 +26653,9 @@ After=network-online.target
 [Service]
 ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec3.conf
 ExecReload=/usr/sbin/ipsec reload
-Restart=on-abnormal
+Restart=always
+RestartSec=5
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target\n''')
@@ -26622,6 +26675,8 @@ def config_ipsecn24(psk):
     subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan-starter.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec4.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     with open("/etc/ipsec4.conf", "w") as f:
@@ -26651,7 +26706,9 @@ After=network-online.target
 [Service]
 ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec4.conf
 ExecReload=/usr/sbin/ipsec reload
-Restart=on-abnormal
+Restart=always
+RestartSec=5
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target\n''')
@@ -26672,6 +26729,8 @@ def config_ipsecn25(psk):
     subprocess.run(["sudo", "systemctl", "stop", "strongswan-starter"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "disable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "stop", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan-starter.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(["sudo", "rm", "/lib/systemd/system/strongswan.service"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec5.conf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "rm", "/etc/ipsec.secrets"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     with open("/etc/ipsec5.conf", "w") as f:
@@ -26702,7 +26761,9 @@ After=network-online.target
 [Service]
 ExecStart=/usr/sbin/ipsec start --nofork --conf /etc/ipsec5.conf
 ExecReload=/usr/sbin/ipsec reload
-Restart=on-abnormal
+Restart=always
+RestartSec=5
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target\n''')
@@ -26764,25 +26825,31 @@ def gre6tapmu_k1():
         server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
         if server_type == '1':
             remove_config()
+            reset2_minutes_forced()
             gre6tap_k11()
             break
         elif server_type == '2':
             remove_config()
+            reset2_minutes_forced()
             gre6tap_k21()
             break
         elif server_type == '3':
             remove_config()
+            reset2_minutes_forced()
             gre6tap_k31()
             break
         elif server_type == '4':
             remove_config()
+            reset2_minutes_forced()
             gre6tap_k41()
             break
         elif server_type == '5':
             remove_config()
+            reset2_minutes_forced()
             gre6tap_k51()
             break
         elif server_type == '6':
+            reset2_minutes_forced()
             irangretap_q1()
             break
         elif server_type == '0':
@@ -26851,7 +26918,9 @@ ExecStart=/usr/sbin/ipsec start --nofork''')
 
         f.write('''
 ExecReload=/usr/sbin/ipsec reload
-Restart=on-abnormal
+Restart=always
+RestartSec=5
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target\n''')
@@ -26914,7 +26983,9 @@ ExecStart=/usr/sbin/ipsec start --nofork''')
 
         f.write('''
 ExecReload=/usr/sbin/ipsec reload
-Restart=on-abnormal
+Restart=always
+RestartSec=5
+LimitNOFILE=1048576
 
 [Install]
 WantedBy=multi-user.target\n''')
@@ -26957,25 +27028,31 @@ def gre6tapmu_i1():
         server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
         if server_type == '1':
             remove_config()
+            reset2_minutes_forced()
             gre6tap_i11()
             break
         elif server_type == '2':
             remove_config()
+            reset2_minutes_forced()
             gre6tap_i21()
             break
         elif server_type == '3':
             remove_config()
+            reset2_minutes_forced()
             gre6tap_i31()
             break
         elif server_type == '4':
             remove_config()
+            reset2_minutes_forced()
             gre6tap_i41()
             break
         elif server_type == '5':
             remove_config()
+            reset2_minutes_forced()
             gre6tap_i51()
             break
         elif server_type == '6':
+            reset2_minutes_forced()
             kharejgretap_q1()
             break
         elif server_type == '0':
@@ -27404,25 +27481,31 @@ def gre6tap4mu_k1():
         server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
         if server_type == '1':
             remove_config()
+            reset2_minutes_forced()
             gre6tap6_kharejz11()            
             break
         elif server_type == '2':
             remove_config()
+            reset2_minutes_forced()
             gre6tap6_kharejz21()
             break
         elif server_type == '3':
             remove_config()
+            reset2_minutes_forced()
             gre6tap6_kharejz31()
             break
         elif server_type == '4':
             remove_config()
+            reset2_minutes_forced()
             gre6tap6_kharejz41()
             break
         elif server_type == '5':
             remove_config()
+            reset2_minutes_forced()
             gre6tap6_kharejz51()
             break
         elif server_type == '6':
+            reset2_minutes_forced()
             irangretap4_q1()
             break
         elif server_type == '0':
@@ -27468,25 +27551,31 @@ def gre6tap4mu_i1():
         server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
         if server_type == '1':
             remove_config()
+            reset2_minutes_forced()
             gre6tap6_iranz11()
             break
         elif server_type == '2':
             remove_config()
+            reset2_minutes_forced()
             gre6tap6_iranz21()
             break
         elif server_type == '3':
             remove_config()
+            reset2_minutes_forced()
             gre6tap6_iranz31()
             break
         elif server_type == '4':
             remove_config()
+            reset2_minutes_forced()
             gre6tap6_iranz41()
             break
         elif server_type == '5':
             remove_config()
+            reset2_minutes_forced()
             gre6tap6_iranz51()
             break
         elif server_type == '6':
+            reset2_minutes_forced()
             kharejgretap4_q1()
             break
         elif server_type == '0':
@@ -38960,14 +39049,13 @@ def remove_menu():
     print('3. \033[92mUninstall 6to4 \033[96manycast\033[0m')
     print('4. \033[96mUninstall Gre\033[0m')
     print('42.\033[97mUninstall erspan ip6ip6 [test]\033[0m')
-    print('43.\033[97mUninstall icmp + ipsec & erspan & hans [test]\033[0m')
     print('5. \033[92mUninstall Gre6\033[0m')
     print('6. \033[97mUninstall Gre6tap\033[0m')
     print('7. \033[93mUninstall Private IP\033[0m')
     print('8. \033[96mUninstall Extra Native IP\033[0m')
     print('9. \033[92mUninstall Geneve | IPsec\033[0m')
     print('10. \033[93mUninstall Erspan\033[0m')
-    
+    print('11.\033[96mUninstall icmp + ipsec & erspan & hans\033[0m')
     print('0. \033[91mback to the main menu\033[0m')
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -38987,7 +39075,7 @@ def remove_menu():
         elif server_type == '42':
             gre6test_uninstall()
             break  
-        elif server_type == '43':
+        elif server_type == '11':
             icmp_uninstall()
             break             
         elif server_type == '5':
@@ -39212,6 +39300,70 @@ conn ipsecsit
     subprocess.run(["sudo", "systemctl", "enable", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     subprocess.run(["sudo", "systemctl", "restart", "strongswan"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
+
+def icmp_ip_mnu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mIcmp + IPsec Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mIcmp V4 \033[0m')
+    print('2. \033[96mIcmp V6[Not yet added] \033[0m')
+    print('3. \033[94mBack to the main menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            icmp_ipgov4_menu()
+            break
+        elif server_type == '2':
+            icmp_ipgov6_menu()
+            break
+        elif server_type == '3':
+            os.system("clear")
+            main_menu()
+            break
+        else:
+            print('Invalid choice.')
+
+def icmp_ipgov4_menu():
+    os.system("clear")
+    print('\033[92m ^ ^\033[0m')
+    print('\033[92m(\033[91mO,O\033[92m)\033[0m')
+    print('\033[92m(   ) \033[93mIcmpV4 + IPsec Menu\033[0m')
+    print('\033[92m "-"\033[93m══════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print('\033[93mChoose what to do:\033[0m')
+    print('1. \033[92mIcmp + IPsec\033[0m')#inja
+    print("2. \033[96mHans + Erspan + IPsec \033[0m")
+    print("3. \033[93mICMP + Erspan + IPsec \033[0m")
+    print("4. \033[97mIPsec Reset Timer \033[92m[test] \033[0m")
+    print('0. \033[94mBack to the previous menu\033[0m')
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        server_type = input('\033[38;5;205mEnter your choice Please: \033[0m')
+        if server_type == '1':
+            icmp_ipsec()
+            break
+        elif server_type == '2':
+            icmp_erspan4()
+            break
+        elif server_type == '3':
+            icmp_erspan5()
+            break
+        elif server_type == '4':
+            choose_reset()
+            break
+        elif server_type == '0':
+            os.system("clear")
+            icmp_ip_mnu()
+            break
+        else:
+            print('Invalid choice.')
 def icmp_ipsec():
     os.system("clear")
     print('\033[92m ^ ^\033[0m')
@@ -40094,7 +40246,7 @@ def remove2_hans():
     except subprocess.CalledProcessError as e:
         print("Error:", e.output.decode().strip())
         
-def remove2_icmp():
+def remove2_icmp():#inja
     os.system("clear")
     display_notification("\033[93mRemoving icmp...\033[0m")
     print("\033[93m───────────────────────────────────────\033[0m")
@@ -40239,19 +40391,19 @@ def espn_uninstall():
     
     try:
         if subprocess.call("test -f /etc/spn.sh", shell=True) == 0:
-            subprocess.run("rm /etc/spn.sh", shell=True)
+            subprocess.run("rm /etc/spn.sh > /dev/null 2>&1", shell=True)
             
         display_notification("\033[93mRemoving cronjob...\033[0m")
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/spn.sh\" | crontab -", shell=True)
-        subprocess.run("sudo rm /etc/ping_espan.sh", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/spn.sh\" | crontab - > /dev/null 2>&1", shell=True)
+        subprocess.run("sudo rm /etc/ping_espan.sh > /dev/null 2>&1", shell=True)
    
         subprocess.run("systemctl disable ping_espan.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_espan.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_espan.service > /dev/null 2>&1", shell=True)
 
-        subprocess.run("systemctl daemon-reload", shell=True)
+        subprocess.run("systemctl daemon-reload > /dev/null 2>&1", shell=True)
 
-        subprocess.run("sudo ip link delete azumiespn > /dev/null", shell=True)
+        subprocess.run("sudo ip link delete azumiespn > /dev/null 2>&1", shell=True)
 
         print("Progress: ", end="")
 
@@ -45620,20 +45772,20 @@ def gen4_uninstall():
 
     try:
         if subprocess.call("test -f /etc/sys.sh", shell=True) == 0:
-            subprocess.run("rm /etc/sys.sh", shell=True)
+            subprocess.run("rm /etc/sys.sh > /dev/null 2>&1", shell=True)
 
         display_notification("\033[93mRemoving cronjob...\033[0m")
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/sys.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/sys.sh\" | crontab - > /dev/null 2>&1", shell=True)
 
-        subprocess.run("sudo rm /etc/ping_sys.sh", shell=True)
+        subprocess.run("sudo rm /etc/ping_sys.sh > /dev/null 2>&1", shell=True)
 
         subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
 
-        subprocess.run("systemctl daemon-reload", shell=True)
+        subprocess.run("systemctl daemon-reload > /dev/null 2>&1", shell=True)
 
-        subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
+        subprocess.run("sudo ip link delete azumigen > /dev/null 2>&1", shell=True)
 
         print("Progress: ", end="")
 
@@ -45683,20 +45835,20 @@ def gen2_uninstall():
     
     try:
         if subprocess.call("test -f /etc/sys.sh", shell=True) == 0:
-            subprocess.run("rm /etc/sys.sh", shell=True)
+            subprocess.run("rm /etc/sys.sh > /dev/null 2>&1", shell=True)
             
         display_notification("\033[93mRemoving cronjob...\033[0m")
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/sys.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/sys.sh\" | crontab - > /dev/null 2>&1", shell=True)
         
-        subprocess.run("sudo rm /etc/ping_sys.sh", shell=True)
+        subprocess.run("sudo rm /etc/ping_sys.sh > /dev/null 2>&1", shell=True)
         
         subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
   
-        subprocess.run("systemctl daemon-reload", shell=True)
+        subprocess.run("systemctl daemon-reload > /dev/null 2>&1", shell=True)
         
-        subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
+        subprocess.run("sudo ip link delete azumigen > /dev/null 2>&1", shell=True)
         
         print("Progress: ", end="")
         
@@ -45751,20 +45903,20 @@ def gen6_uninstall():
     
     try:
         if subprocess.call("test -f /etc/sys.sh", shell=True) == 0:
-            subprocess.run("rm /etc/sys.sh", shell=True)
+            subprocess.run("rm /etc/sys.sh > /dev/null 2>&1", shell=True)
             
         display_notification("\033[93mRemoving cronjob...\033[0m")
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/sys.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/sys.sh\" | crontab - > /dev/null 2>&1", shell=True)
         
-        subprocess.run("sudo rm /etc/ping_sys.sh", shell=True)
+        subprocess.run("sudo rm /etc/ping_sys.sh > /dev/null 2>&1", shell=True)
         
         subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
   
-        subprocess.run("systemctl daemon-reload", shell=True)
+        subprocess.run("systemctl daemon-reload > /dev/null 2>&1", shell=True)
         
-        subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
+        subprocess.run("sudo ip link delete azumigen > /dev/null 2>&1", shell=True)
         
         print("Progress: ", end="")
         
@@ -45798,21 +45950,21 @@ def gen3_uninstall():
     
     try:
         if subprocess.call("test -f /etc/sys.sh", shell=True) == 0:
-            subprocess.run("rm /etc/sys.sh", shell=True)
+            subprocess.run("rm /etc/sys.sh > /dev/null 2>&1", shell=True)
 
             
         display_notification("\033[93mRemoving cronjob...\033[0m")
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/sys.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/sys.sh\" | crontab - > /dev/null 2>&1", shell=True)
         
-        subprocess.run("sudo rm /etc/ping_sys.sh", shell=True)
+        subprocess.run("sudo rm /etc/ping_sys.sh > /dev/null 2>&1", shell=True)
         
         subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
   
-        subprocess.run("systemctl daemon-reload", shell=True)
+        subprocess.run("systemctl daemon-reload > /dev/null 2>&1", shell=True)
         
-        subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
+        subprocess.run("sudo ip link delete azumigen > /dev/null 2>&1", shell=True)
         
         print("Progress: ", end="")
         
@@ -45833,14 +45985,13 @@ def gen3_uninstall():
         print("Error:", e.output.decode().strip())
         
 def gen_icmp():
-    os.system("clear")
+    os.system("clear > /dev/null 2>&1")
     print("\033[93m───────────────────────────────────────\033[0m")
     display_notification("\033[93mRemoving Geneve + ICMP Tunnel...\033[0m")
     print("\033[93m───────────────────────────────────────\033[0m")
     remove_icmp()
 
-
-    subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/icmp.sh\" | crontab -", shell=True)
+    subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/icmp.sh\" | crontab - > /dev/null 2>&1", shell=True)
 
     remote2_ip = prefix_ip_gen()
     
@@ -45855,20 +46006,20 @@ def gen_icmp():
     
     try:
         if subprocess.call("test -f /etc/sys.sh", shell=True) == 0:
-            subprocess.run("rm /etc/sys.sh", shell=True)
+            subprocess.run("rm /etc/sys.sh > /dev/null 2>&1", shell=True)
             
         display_notification("\033[93mRemoving cronjob...\033[0m")
-        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/sys.sh\" | crontab -", shell=True)
+        subprocess.run("crontab -l | grep -v \"@reboot /bin/bash /etc/sys.sh\" | crontab - > /dev/null 2>&1", shell=True)
         
-        subprocess.run("sudo rm /etc/ping_sys.sh", shell=True)
+        subprocess.run("sudo rm /etc/ping_sys.sh > /dev/null 2>&1", shell=True)
         
         subprocess.run("systemctl disable ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("systemctl stop ping_gen.service > /dev/null 2>&1", shell=True)
         subprocess.run("rm /etc/systemd/system/ping_gen.service > /dev/null 2>&1", shell=True)
   
-        subprocess.run("systemctl daemon-reload", shell=True)
+        subprocess.run("systemctl daemon-reload > /dev/null 2>&1", shell=True)
         
-        subprocess.run("sudo ip link delete azumigen > /dev/null", shell=True)
+        subprocess.run("sudo ip link delete azumigen > /dev/null 2>&1", shell=True)
         
         print("Progress: ", end="")
         
@@ -45886,7 +46037,8 @@ def gen_icmp():
         
         display_checkmark("\033[92mUninstall completed!\033[0m")
     except subprocess.CalledProcessError as e:
-        print("Error:", e.output.decode().strip())        
+        print("Error:", e.output.decode().strip())
+        
 def extra_uninstall():
     os.system("clear")
     print("\033[93m───────────────────────────────────────\033[0m")
