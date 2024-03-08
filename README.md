@@ -1297,13 +1297,13 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
  
  Opiran Script
 ```
-apt install curl -y && bash <(curl -s https://raw.githubusercontent.com/opiran-club/VPS-Optimizer/main/optimizer.sh --ipv4)
+sudo apt update && sudo apt install curl -y && bash <(curl -s https://raw.githubusercontent.com/opiran-club/VPS-Optimizer/main/optimizer.sh --ipv4)
 ```
 
 Hawshemi script
 
 ```
-wget "https://raw.githubusercontent.com/hawshemi/Linux-Optimizer/main/linux-optimizer.sh" -O linux-optimizer.sh && chmod +x linux-optimizer.sh && bash linux-optimizer.sh
+sudo apt update && sudo apt install wget -y && wget "https://raw.githubusercontent.com/hawshemi/Linux-Optimizer/main/linux-optimizer.sh" -O linux-optimizer.sh && chmod +x linux-optimizer.sh && bash linux-optimizer.sh
 ```
 
 -----------------------------------------------------
@@ -1312,7 +1312,7 @@ wget "https://raw.githubusercontent.com/hawshemi/Linux-Optimizer/main/linux-opti
 ----------------
 
 ```
-apt install python3 -y && sudo apt install python3-pip &&  pip install colorama && pip install netifaces && apt install curl -y && python3 <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ipipv2.py --ipv4)
+sudo apt update && sudo apt install python3 python3-pip curl -y && sudo pip install colorama netifaces && sudo python3 <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ipipv2.py --ipv4)
 ```
 
 
@@ -1320,7 +1320,7 @@ apt install python3 -y && sudo apt install python3-pip &&  pip install colorama 
 - اگر باز هم colorama نصب نشد، دستور روبرو هم اجرا کنید .  pip3 install colorama
 
 ```
-sudo apt-get install python-pip -y  &&  apt-get install python3 -y && alias python=python3 && python -m pip install colorama && python -m pip install netifaces
+sudo apt update && sudo apt install python3 python3-pip -y && pip3 install colorama netifaces
 ```
 --------------------------------------
  <div dir="rtl">&bull;  دستور زیر برای کسانی هست که پیش نیاز ها را در سرور، نصب شده دارند</div>
