@@ -172,6 +172,7 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
 
   ![6348248](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/398f8b07-65be-472e-9821-631f7b70f783)
 **آموزش تک سرور**
+
  <div align="right">
   <details>
     <summary><strong><img src="https://github.com/Azumi67/Rathole_reverseTunnel/assets/119934376/fcbbdc62-2de5-48aa-bbdd-e323e96a62b5" alt="Image"> </strong>روش Geneve + GRE6 | ایپی پرایوت 4</summary>
@@ -881,6 +882,34 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
 - این اسکریپت بارها توسط من تست شده است. اگر اموزش کمی سخت بود بر روی سرور تست، آزمون و خطا کنید
 - نمیتونستم اسکریپت رو ساده تر از این بکنم و با این حال احساس میکنم ممکن است کمی در نگاه اول، سخت باشد.
 ----------------
+
+  </details>
+</div>  
+ <div align="right">
+  <details>
+    <summary><strong><img src="https://github.com/Azumi67/Rathole_reverseTunnel/assets/119934376/fcbbdc62-2de5-48aa-bbdd-e323e96a62b5" alt="Image"> </strong>روش IP6IP6 IPSEC  | ایپی پرایوت 6</summary>
+    
+  
+------------------------------------ 
+
+
+![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/902a2efa-f48f-4048-bc2a-5be12143bef3) **سرور خارج و ایران** 
+
+
+
+- **من دو سرور خارج دارم و یک سرور ایران و میخواهم بوسیله IP6IP6 و IPSEC تانل را برقرار کنم**
+- وارد گزینه IP6IP6 + IPSEc میشوم و گزینه 5 خارج و یک ایران را انتخاب میکنم.
+- سرور اول و دوم خارج را کانفیگ میکنم و عدد MTU مناسب را وارد میکنم
+- در سرور ایران تعداد سرور خارج را 2 انتخاب میکنم و هر دو سرور را کانفیگ میکنم و عدد MTU مناسب را وارد میکنم
+- دقت کنید که اسکریپت های دیگر باعث از بین رفتن کامند های من در کرون نشود که باعث از بین رفتن تانل پس از ریبوت و از کار افتادن ریست تایمر IPSEC میشود.
+- ریست تایمر IPSEC بهتر است بین 2 تا 5 دقیقه باشد و میتوانید از طریق گزینه ویرایش در خود IP6IP6 + IPSEC ، این مقدار را وارد نمایید
+- دقت نمایید از ایپی اضافه (ایپی پرایوت دوم) برای پورت فوروارد یا تانل استفاده ننمایید و تنها از ایپی نخستین خود در تانل یا پورت فوروارد استفاده نمایید( بعدا قابلیت ایپی اضافه برای ipsec حذف خواهد شد)
+- با این دستور سرویس موردنظر systemctl restart strong-azumi1 ریست میشود.
+
+------------------
+
+  </details>
+</div>  
 
  <div align="right">
   <details>
