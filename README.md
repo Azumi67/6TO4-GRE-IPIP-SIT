@@ -1,5 +1,10 @@
 **این پروژه صرفا برای آموزش و بالا بردن دانش بوده است و هدف دیگری در ان نمیباشد**
 
+**برای ubuntu24 از این کامند استفاده نمایید** 
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ubuntu24.sh)"
+```
+
 **اگر اسکریپت دیگری استفاده میکنید، لطفا بررسی کنید که دستورات من در crontab -e توسط اسکریپت دیگری حذف نشده باشد**
 
 **تغییراتی در ipsec انجام شد و همچنین سرویس ریست تایمر اضافه شد. میتوانید هم چنین به صورت دلخواه ویرایش نمایید ( آموزشش را برای مولتی بخوانید)**
@@ -1579,6 +1584,10 @@ wget "https://raw.githubusercontent.com/hawshemi/Linux-Optimizer/main/linux-opti
 ![R (a2)](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/716fd45e-635c-4796-b8cf-856024e5b2b2)
 **اسکریپت من**
 ----------------
+- برای ubuntu24 از این دستور استفاده نمایید
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ubuntu24.sh)"
+```
 
 ```
 apt install python3 -y && sudo apt install python3-pip &&  pip install colorama && pip install netifaces && apt install curl -y && python3 <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ipipv2.py --ipv4)
