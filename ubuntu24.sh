@@ -6,5 +6,5 @@ chmod +x /etc/logo.sh
 if [ -f "ubuntu24p2.py" ]; then
     rm ubuntu24p2.py
 fi
-wget https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/test/ubuntu24p2.py
+wget https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/ubuntu24p2.py
 python3 ubuntu24p2.py
