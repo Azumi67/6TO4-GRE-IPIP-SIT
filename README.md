@@ -79,11 +79,11 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SI
 </div>
 
 --------------------------------
+
  <div align="right">
   <details> 
     <summary><strong><img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/aa529e70-6eec-46bd-bec0-50fb1d9a4aa5" alt="Image"> نکات و خطا ها (مهم)</strong></summary>
 
-    
 - اگر خطای buffer size گرفتید، اطمینان پیدا کنید که هر دو طرف سرور قبلا تانل 6to4 ای فعال ندارند.
 - اگر مشکلی در پینگ گرفتن داشتید، اطمینان پیدا کنید که ایپی ها را به درستی وارد کردید
 - لطفا دقت کنید در زمان حذف پرایوت ایپی به اشتباه گزینه اشتباه را انتخاب نکنید. این اسکریپت بارها تست شده است و به درستی باید کار کند.
@@ -93,7 +93,6 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SI
 - از edit mtu برای کاهش پکت لاس خود استفاده کنید. در هر دیتاسنتر میتواند متفاوت باشد.
 - گزینه y به معنی تنظیم دستی mtu و گزینه n به معنی تنظیم اتوماتیک میباشد.
 - مطمئن شوید که اسکریپت های دیگر، دستورات کرون من را پاک نمیکند وکرنه تانل از کار میوفتد.
-
   </details>
 </div>
 
@@ -1569,8 +1568,10 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
 **اسکریپت های کارآمد :**
 - برای بهبود عملکرد سرور میتوانید از optimizer استفاده نمایید.
 
-
- 
+Kalilovers Script [for ipsec]
+```
+python3 <(curl -Ls https://raw.githubusercontent.com/kalilovers/LightKnightBBR/main/bbr.py --ipv4)
+```
  Opiran Script
 ```
 apt install curl -y && bash <(curl -s https://raw.githubusercontent.com/opiran-club/VPS-Optimizer/main/optimizer.sh --ipv4)
