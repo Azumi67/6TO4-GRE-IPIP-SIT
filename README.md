@@ -7,6 +7,8 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SI
 
 **آموزش Vxlan قرار داده شد و اسکریپت اپدیت شد. بعدا روش های دیگرش اضافه میشود**
 
+**گزینه status برای تک سرور اضافه شد. بعدا برای مولتی هم اضافه میکنم**
+
 **اگر اسکریپت دیگری استفاده میکنید، لطفا بررسی کنید که دستورات من در crontab -e توسط اسکریپت دیگری حذف نشده باشد**
 
 **تغییراتی در ipsec انجام شد و همچنین سرویس ریست تایمر اضافه شد. میتوانید هم چنین به صورت دلخواه ویرایش نمایید ( آموزشش را برای مولتی بخوانید)**
@@ -52,6 +54,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SI
   
 ------------------------------------ 
 
+- گزینه status برای تک سرور اضافه شد. از این بعد تانل فعالتان را در single server میتوانید مشاهده کنید.
 - آموزش Vxlan برای تک سرور قرار داده شد.
 - تغییراتی در روت gre6, gre6tap و تمام Ipsec ها و تک سرور ها و پنج سرور ایران و 10 خارج انجام شد.
 - ایپی اضافه برای Ipsec حذف شد از انجا که در داخل ecryption loop نبود.
@@ -181,6 +184,24 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
 
   ![6348248](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/398f8b07-65be-472e-9821-631f7b70f783)
 **آموزش تک سرور**
+<div align="right">
+  <details>
+    <summary><strong><img src="https://github.com/Azumi67/Rathole_reverseTunnel/assets/119934376/fcbbdc62-2de5-48aa-bbdd-e323e96a62b5" alt="Image"> </strong>مشاهده tunnel status </summary>
+  
+![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/902a2efa-f48f-4048-bc2a-5be12143bef3) **تک سرور** 
+
+ <p align="right">
+  <img src="https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/0444ddb8-bcc2-48bb-82d9-3db4f6797cd9" alt="Image" />
+</p>
+
+- از این به بعد میتوانید secret key در صورت نصب ipsec هم مشاهده کنید و نام اینترفیس و نام تانل در اسکریپت که بتوانید به سادگی حذفش نمایید
+- در این اسکرین من Private + IPsec را کانفیگ کردم و مشاهده میکنید که کاملا مشخص هست که کدام تانل کانفیگ شده است
+
+------------------
+
+  </details>
+</div>
+
  <div align="right">
   <details>
     <summary><strong><img src="https://github.com/Azumi67/Rathole_reverseTunnel/assets/119934376/fcbbdc62-2de5-48aa-bbdd-e323e96a62b5" alt="Image"> </strong>روش Vxlan با IPsec به صورت P2P</summary>
