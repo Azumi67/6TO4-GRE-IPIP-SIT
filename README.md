@@ -7,7 +7,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SI
 
 **آموزش Vxlan قرار داده شد و اسکریپت اپدیت شد. بعدا روش های دیگرش اضافه میشود**
 
-**گزینه status برای تک سرور اضافه شد. بعدا برای مولتی هم اضافه میکنم**
+**گزینه status اضافه شد**
 
 **اگر اسکریپت دیگری استفاده میکنید، لطفا بررسی کنید که دستورات من در crontab -e توسط اسکریپت دیگری حذف نشده باشد**
 
@@ -25,6 +25,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SI
 ![check](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/13de8d36-dcfe-498b-9d99-440049c0cf14)
 **امکانات و نکات**
 
+- گزینه Status اضافه شد و نوع تانل شما و تعداد سرور آنلاین در هر سرور و ایپی ریموت سرور شما را نشان میدهد.
 - امکان تانل های متفاوت که شامل IP6IP6 | 6TO4 | GRE6 | Geneve | Erspan + IPsec و غیره میشود
 - امکان تانل 6TO4 و ANYCAST و IP6IP6 و GRE6 بین چندین سرور خارج و ایران
 - امکان پورت فوروارد و تانل اصلی پس از اجرای 6TO4 و سایر تانل ها
