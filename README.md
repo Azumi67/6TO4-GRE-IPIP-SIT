@@ -9,7 +9,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SI
 
 **اگر اسکریپت دیگری استفاده میکنید، لطفا بررسی کنید که دستورات من در crontab -e توسط اسکریپت دیگری حذف نشده باشد**
 
-**اپدیتی برای ipsec در راه است**
+**تغییراتی در IPSEC انجام شد و encryption cryptographies تغییر کرد**
 
 
 ![R (2)](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/a064577c-9302-4f43-b3bf-3d4f84245a6f)
