@@ -1759,7 +1759,7 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
 ------------------------------------------
 ![scri](https://github.com/Azumi67/FRP-V2ray-Loadbalance/assets/119934376/cbfb72ac-eff1-46df-b5e5-a3930a4a6651)
 **اسکریپت های کارآمد :**
-- برای بهبود عملکرد سرور میتوانید از optimizer استفاده نمایید.
+- برای بهبود عملکرد سرور میتوانید از optimizer استفاده نمایید یا bbr ساده نصب کنید
 
 Kalilovers Script [for ipsec]
 ```
@@ -1780,7 +1780,7 @@ wget "https://raw.githubusercontent.com/hawshemi/Linux-Optimizer/main/linux-opti
 ![R (a2)](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/716fd45e-635c-4796-b8cf-856024e5b2b2)
 **اسکریپت من**
 ----------------
-- برای ubuntu24 از این دستور استفاده نمایید
+- برای ubuntu24 و حتی سایر سیستم عامل ها میتوانید از این دستور استفاده نمایید ( پیش نیاز ها نصب شده باشد)
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ubuntu24.sh)"
 ```
