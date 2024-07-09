@@ -1808,7 +1808,10 @@ python3 <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/m
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/managed2.sh)"
 ```
-
+- یا برای همین خطا در ubuntu24 از دستور زیر استفاده نمایید
+ ```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/managed3.sh)"
+ ```
 ---------------------------------------------
 
 
