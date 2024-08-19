@@ -1147,7 +1147,7 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
 ----------------
 <div align="right">
   <details>
-    <summary><strong><img src="https://github.com/Azumi67/Rathole_reverseTunnel/assets/119934376/fcbbdc62-2de5-48aa-bbdd-e323e96a62b5" alt="Image"> </strong>روش وایرگارد udp دو کانفیگ خارج و دو کلاینت ایران</summary>
+    <summary><strong><img src="https://github.com/Azumi67/Rathole_reverseTunnel/assets/119934376/fcbbdc62-2de5-48aa-bbdd-e323e96a62b5" alt="Image"> </strong>روش وایرگارد udp - دو کانفیگ خارج و دو کلاینت ایران</summary>
   
   
 ------------------------------------ 
@@ -1278,7 +1278,7 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
 </div>
 <div align="right">
   <details>
-    <summary><strong><img src="https://github.com/Azumi67/Rathole_reverseTunnel/assets/119934376/fcbbdc62-2de5-48aa-bbdd-e323e96a62b5" alt="Image"> </strong>روش native gre6tap و وایرگارد - دو کانفیگ سرور ایران و دو کلاینت خارج</summary>
+    <summary><strong><img src="https://github.com/Azumi67/Rathole_reverseTunnel/assets/119934376/fcbbdc62-2de5-48aa-bbdd-e323e96a62b5" alt="Image"> </strong>روش native gre6tap و وایرگارد - یک کانفیگ سرور ایران و یک کلاینت خارج</summary>
   
   
 ------------------------------------ 
