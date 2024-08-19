@@ -1377,7 +1377,16 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
 - از تنظیم mtu برای وایرگارد هم گذر میکنم
 - سپس وایرگارد up میشود
 - اگر در سرور ایران ipsec را کانفیگ کردید در کلاینت ها هم باید کانفیک نمایید . در صورت کانفیگ باید secret key سرور ایران را در کلاینت هم وارد نمایید.
+  
+ <p align="right">
+  <img src="https://github.com/user-attachments/assets/a9ddf952-5b2c-459f-98f4-679883be0a9d" alt="Image" />
+</p>
 
+- در این اسکرین ادرس همان پرایوت ایپی وایرگارد است و ایپی مقابل ان ALLOWED IP است. این ایپی ها برای LOCAL & REMOTE در GRE6TAP هم استفاده میشود
+- پورت که برای هر کانفیگ متفاوت میباشد
+- مقدار Endpoint هم همان پابلیک ایپی کلاینت میباشد
+- پرایوت ایپی gre6tap هم به صورت جداکانه میتوان تغییر داد.
+- گس از تغییر save n exit را انتخاب نمایید
 
 -------------------
   </details>
