@@ -27,6 +27,7 @@
 - امکان تانل وایرگارد و چند روش ترکیبی آن
 - امکان تانل ISATAP به صورت سرور و کلاینت
 - امکان ویرایش لوکال ایپی و سایر موارد
+- دارای ربات ریکانفیگ
 - امکان پورت فوروارد و تانل اصلی پس از اجرای 6TO4 و سایر تانل ها
 - امکان تانل بین 5 سرور ایران و ده سرور خارج
 - امکان تانل vxlan به صورت تک سرور به صورت three methods
@@ -55,6 +56,7 @@
   
 ------------------------------------ 
 
+- ربات ریکانفیگ اضافه شد
 - اضافه شدن وایرگارد و چند روش آن
 - اضافه شدن ویرایش لوکال ایپی و سایر موارد
 - اضافه شدن ریست تایمر اجباری بر اساس پینگ و کاهش keepalive به پنج ثانیه
@@ -198,6 +200,32 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
 </div>  
 
 -----------------------
+![6348248](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/398f8b07-65be-472e-9821-631f7b70f783)
+**آموزش ربات ریکانفیگ**
+ <div align="right">
+  <details>
+    <summary><strong><img src="https://github.com/Azumi67/Rathole_reverseTunnel/assets/119934376/fcbbdc62-2de5-48aa-bbdd-e323e96a62b5" alt="Image"> </strong>نمونه برای مثال </summary>
+    
+  
+------------------------------------ 
+
+
+![green-dot-clipart-3](https://github.com/Azumi67/6TO4-PrivateIP/assets/119934376/902a2efa-f48f-4048-bc2a-5be12143bef3) **سرور خارج و ایران** 
+
+ <p align="right">
+  <img src="https://github.com/user-attachments/assets/98f87493-77a9-4ed6-ac05-7f9a6c55559c" alt="Image" />
+</p>
+
+
+- پس از کانفیگ سرور هایتان این گزینه را انتخاب نمایید و همان input ها را در اینجا بدهید . تعداد پینگ و زمان ping interval هم مشخص کنید
+- تمام mtu و default route ها no انتخاب شده است
+- سپس ریکانفیگ بدون دخالت شما انجام میشود. اول بین دو ایپی پرایوت به طور مثال به تعداد 5 پینگ میگیرد و اگر پاسخی دریافت نکند نخست کانفیگ را پاک و سپس ریکانفیگ میکند.
+
+------------------
+
+  </details>
+</div>  
+------------------------
  ![6348248](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/398f8b07-65be-472e-9821-631f7b70f783)
 **آموزش ویرایش سرور**
  <div align="right">
