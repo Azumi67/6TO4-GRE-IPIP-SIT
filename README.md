@@ -226,6 +226,7 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
   </details>
 </div>  
 ------------------------
+
  ![6348248](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/398f8b07-65be-472e-9821-631f7b70f783)
 **آموزش ویرایش سرور**
  <div align="right">
