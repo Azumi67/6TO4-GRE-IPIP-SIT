@@ -5,7 +5,7 @@
 
 **این پروژه صرفا برای آموزش و بالا بردن دانش بوده است و هدف دیگری در ان نمیباشد**
 
-**در حال حاضر اجرای این اسکریپت به رم قابل توجهی نیازمند است . بعدا بعضی از قسمت های کد را جدا خواهم کرد که سبک تر شود**
+**در حال حاضر اجرای این اسکریپت به رم قابل توجهی نیازمند است . نسخه ای جدا برای سرور های دارای رم کمتر منتشر شد ( به قسمت اسکریپت من مراجعه کنید)**
 
 **ربات ریکانفیگ برای تک سرور ها اضافه شد(مولتی ها به ارامی اضافه میشوند)**
 
@@ -2319,11 +2319,36 @@ wget "https://raw.githubusercontent.com/hawshemi/Linux-Optimizer/main/linux-opti
 ![R (a2)](https://github.com/Azumi67/PrivateIP-Tunnel/assets/119934376/716fd45e-635c-4796-b8cf-856024e5b2b2)
 **اسکریپت من**
 ----------------
-- برای ubuntu24 و حتی سایر سیستم عامل ها میتوانید از این دستور استفاده نمایید ( پیش نیاز ها نصب شده باشد)
+
+- نصب یش نیاز ها
+```
+apt install python3 -y && sudo apt install python3-pip &&  pip install colorama && pip install netifaces && apt install curl -y
+pip3 install colorama
+sudo apt-get install python-pip -y  &&  apt-get install python3 -y && alias python=python3 && python -m pip install colorama && python -m pip install netifaces
+```
+- نسخه پایین برای سرور های دارای رم کمتر میباشد
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/lightweight.sh)"
+```
+- نسخه پایین برای سرور های دارای رم کمتر و externally managed
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/managed4.sh)"
+```
+
+- برای ubuntu24 و حتی سایر سیستم عامل ها میتوانید از این دستور استفاده نمایید ( پیش نیاز ها نصب شده باشد)- این نسخه برای سرور های با رم بالا است
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ubuntu24.sh)"
 ```
 
+
+- برای ubuntu24 و سیستم عامل های دیگر با خطای externally managed - این نسخه برای سرور های با رم بالا است
+
+- یا برای همین خطا در ubuntu24 از دستور زیر استفاده نمایید
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/managed3.sh)"
+```
+
+- نسخه های پایین ممکن است برای همه قابل اجرا نباشد و برای سرور های با رم بالا است
 ```
 apt install python3 -y && sudo apt install python3-pip &&  pip install colorama && pip install netifaces && apt install curl -y && python3 <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/ipipv2.py --ipv4)
 ```
@@ -2347,10 +2372,6 @@ python3 <(curl -Ls https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/m
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/managed2.sh)"
 ```
-- یا برای همین خطا در ubuntu24 از دستور زیر استفاده نمایید
- ```
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Azumi67/6TO4-GRE-IPIP-SIT/main/managed3.sh)"
- ```
 ---------------------------------------------
 
 
