@@ -29596,3 +29596,5 @@ def parse_wireguard_config(file_path):
         "mtu": mtu.group(1) if mtu else None,
         "port": port.group(1) if port else None,
     }
+
+wireguard_edit_server()
