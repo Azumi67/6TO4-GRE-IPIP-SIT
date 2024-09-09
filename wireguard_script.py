@@ -1311,17 +1311,32 @@ def extract_ufwrules(config_file):
     listen_port = None
     addresses = []
 
+    listen_port_pattern = re.compile(r'listen\s+(\d+)')
+    ipv4_address_pattern = re.compile(r'inet\s+(\d+\.\d+\.\d+\.\d+)')
+    ipv6_address_pattern = re.compile(r'inet6\s+([a-fA-F0-9:]+)')
+    ipv4_allowed_ips_pattern = re.compile(r'allowed_ips_v4\s+(\d+\.\d+\.\d+\.\d+)')
+    ipv6_allowed_ips_pattern = re.compile(r'allowed_ips_v6\s+([a-fA-F0-9:]+)')
+
     with open(config_file, "r") as file:
         for line in file:
-            if listen_port_match := listen_port_pattern.search(line):
+            listen_port_match = listen_port_pattern.search(line)
+            if listen_port_match:
                 listen_port = listen_port_match.group(1)
-            elif ipv4_address_match := ipv4_address_pattern.search(line):
+            
+            ipv4_address_match = ipv4_address_pattern.search(line)
+            if ipv4_address_match:
                 addresses.append(ipv4_address_match.group(1))
-            elif ipv6_address_match := ipv6_address_pattern.search(line):
+
+            ipv6_address_match = ipv6_address_pattern.search(line)
+            if ipv6_address_match:
                 addresses.append(ipv6_address_match.group(1).split("/")[0])
-            elif ipv4_allowed_ips_match := ipv4_allowed_ips_pattern.search(line):
+            
+            ipv4_allowed_ips_match = ipv4_allowed_ips_pattern.search(line)
+            if ipv4_allowed_ips_match:
                 addresses.append(ipv4_allowed_ips_match.group(1))
-            elif ipv6_allowed_ips_match := ipv6_allowed_ips_pattern.search(line):
+
+            ipv6_allowed_ips_match = ipv6_allowed_ips_pattern.search(line)
+            if ipv6_allowed_ips_match:
                 addresses.append(ipv6_allowed_ips_match.group(1).split("/")[0])
 
     return listen_port, addresses
