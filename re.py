@@ -35,6 +35,7 @@ def clear():
 
 def robot_menu():
     os.system("clear")
+    logo()
     print("\033[92m ^ ^\033[0m")
     print("\033[92m(\033[91mO,O\033[92m)\033[0m")
     print("\033[92m(   ) \033[92mReconfig Robot\033[93m Menu\033[0m")
