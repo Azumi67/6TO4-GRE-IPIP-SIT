@@ -35,7 +35,6 @@ def clear():
 
 def robot_menu():
     os.system("clear")
-    logo()
     print("\033[92m ^ ^\033[0m")
     print("\033[92m(\033[91mO,O\033[92m)\033[0m")
     print("\033[92m(   ) \033[92mReconfig Robot\033[93m Menu\033[0m")
@@ -7030,7 +7029,9 @@ def robot_multi_mnu():
     print("\033[93mWhich one to edit:\033[0m")
     print("1.  \033[92m IP6IP6\033[0m")
     print("2.  \033[93m IP6IP6 + IPSEC\033[0m")
-    print("3.  \033[91m Remove\033[0m")
+    print("3.  \033[92m GRE6\033[0m")
+    print("4.  \033[93m GRE6 + IPSEC\033[0m")
+    print("5.  \033[91m Remove\033[0m")
     print("0.  \033[94mback to the previous menu\033[0m")
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -7043,6 +7044,12 @@ def robot_multi_mnu():
             robotreconfig_multi_ip6ip6sec()
             break
         elif choice == "3":
+            robotreconfig_multi_gre6()
+            break
+        elif choice == "4":
+            robotreconfig_multi_gre6sec()
+            break
+        elif choice == "5":
             remove_multi_robot()
             break
         elif choice == "0":
@@ -7062,6 +7069,8 @@ def remove_multi_robot():
     print("\033[93mChoose what to do:\033[0m")
     print("1  \033[93mIP6IP6\033[0m")
     print("2  \033[92mIP6IP6 + IPSEC\033[0m")
+    print("3  \033[93mGRE6\033[0m")
+    print("4  \033[92mGRE6 + IPSEC\033[0m")
     print("0. \033[94mback to the previous menu\033[0m")
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
@@ -7073,12 +7082,408 @@ def remove_multi_robot():
         elif choice == "2":
             remove_multi_ip6ip6sec_robot()
             break
+        elif choice == "3":
+            remove_multi_gre6_robot()
+            break
+        elif choice == "4":
+            remove_multi_gre6sec_robot()
+            break
         elif choice == "0":
             clear()
             robot_multi_mnu()
             break
         else:
             print("Invalid choice.")
+
+def remove_multi_gre6_robot():
+    os.system("clear")
+    print("\033[92m ^ ^\033[0m")
+    print("\033[92m(\033[91mO,O\033[92m)\033[0m")
+    print("\033[92m(   ) \033[92mRemove Robot \033[92mGRE6 multi \033[93mMenu\033[0m")
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93mChoose what to do:\033[0m")
+    print("1  \033[93mKharej [10] IRAN [1]\033[0m")
+    print("2  \033[92mKharej [1] IRAN [5]\033[0m")
+    print("0. \033[94mback to the previous menu\033[0m")
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        choice = input("\033[38;5;205mEnter your choice Please: \033[0m")
+        if choice == "1":
+            remove_gre6_multi_iran1kharej10()
+            break
+        elif choice == "2":
+            remove_services_gre6_multi_iran5kharej1()
+            break
+        elif choice == "0":
+            clear()
+            remove_multi_robot()
+            break
+        else:
+            print("Invalid choice.")
+
+def remove_gre6_multi_iran1kharej10():
+    services = [
+        ("robot_gre6_kharej1", [
+            "/usr/local/bin/robot_gre6_kharej1.py",
+            "/usr/local/bin/robot_gre6_kharej1.sh",
+            "/etc/systemd/system/robot_gre6_kharej1.service",
+            "/usr/local/bin/multi_gre6_kharej1_inputs.txt"
+        ]),
+        ("robot_gre6_kharej2", [
+            "/usr/local/bin/robot_gre6_kharej2.py",
+            "/usr/local/bin/robot_gre6_kharej2.sh",
+            "/etc/systemd/system/robot_gre6_kharej2.service",
+            "/usr/local/bin/multi_gre6_kharej2_inputs.txt"
+        ]),
+        ("robot_gre6_kharej3", [
+            "/usr/local/bin/robot_gre6_kharej3.py",
+            "/usr/local/bin/robot_gre6_kharej3.sh",
+            "/etc/systemd/system/robot_gre6_kharej3.service",
+            "/usr/local/bin/multi_gre6_kharej3_inputs.txt"
+        ]),
+        ("robot_gre6_kharej4", [
+            "/usr/local/bin/robot_gre6_kharej4.py",
+            "/usr/local/bin/robot_gre6_kharej4.sh",
+            "/etc/systemd/system/robot_gre6_kharej4.service",
+            "/usr/local/bin/multi_gre6_kharej4_inputs.txt"
+        ]),
+        ("robot_gre6_kharej5", [
+            "/usr/local/bin/robot_gre6_kharej5.py",
+            "/usr/local/bin/robot_gre6_kharej5.sh",
+            "/etc/systemd/system/robot_gre6_kharej5.service",
+            "/usr/local/bin/multi_gre6_kharej5_inputs.txt"
+        ]),
+        ("robot_gre6_kharej6", [
+            "/usr/local/bin/robot_gre6_kharej6.py",
+            "/usr/local/bin/robot_gre6_kharej6.sh",
+            "/etc/systemd/system/robot_gre6_kharej6.service",
+            "/usr/local/bin/multi_gre6_kharej6_inputs.txt"
+        ]),
+        ("robot_gre6_kharej7", [
+            "/usr/local/bin/robot_gre6_kharej7.py",
+            "/usr/local/bin/robot_gre6_kharej7.sh",
+            "/etc/systemd/system/robot_gre6_kharej7.service",
+            "/usr/local/bin/multi_gre6_kharej7_inputs.txt"
+        ]),
+        ("robot_gre6_kharej8", [
+            "/usr/local/bin/robot_gre6_kharej8.py",
+            "/usr/local/bin/robot_gre6_kharej8.sh",
+            "/etc/systemd/system/robot_gre6_kharej8.service",
+            "/usr/local/bin/multi_gre6_kharej8_inputs.txt"
+        ]),
+        ("robot_gre6_kharej9", [
+            "/usr/local/bin/robot_gre6_kharej9.py",
+            "/usr/local/bin/robot_gre6_kharej9.sh",
+            "/etc/systemd/system/robot_gre6_kharej9.service",
+            "/usr/local/bin/multi_gre6_kharej9_inputs.txt"
+        ]),
+        ("robot_gre6_kharej10", [
+            "/usr/local/bin/robot_gre6_kharej10.py",
+            "/usr/local/bin/robot_gre6_kharej10.sh",
+            "/etc/systemd/system/robot_gre6_kharej10.service",
+            "/usr/local/bin/multi_gre6_kharej10_inputs.txt"
+        ]),
+        ("robot_gre6_iran1", [
+            "/usr/local/bin/robot_gre6_iran1.py",
+            "/usr/local/bin/robot_gre6_iran1.sh",
+            "/etc/systemd/system/robot_gre6_iran1.service",
+            "/usr/local/bin/multi_gre6_iran1_inputs.txt"
+        ]),
+        ("robot_gre6_iran2", [
+            "/usr/local/bin/robot_gre6_iran2.py",
+            "/usr/local/bin/robot_gre6_iran2.sh",
+            "/etc/systemd/system/robot_gre6_iran2.service",
+            "/usr/local/bin/multi_gre6_iran2_inputs.txt"
+        ]),
+        ("robot_gre6_iran3", [
+            "/usr/local/bin/robot_gre6_iran3.py",
+            "/usr/local/bin/robot_gre6_iran3.sh",
+            "/etc/systemd/system/robot_gre6_iran3.service",
+            "/usr/local/bin/multi_gre6_iran3_inputs.txt"
+        ]),
+        ("robot_gre6_iran4", [
+            "/usr/local/bin/robot_gre6_iran4.py",
+            "/usr/local/bin/robot_gre6_iran4.sh",
+            "/etc/systemd/system/robot_gre6_iran4.service",
+            "/usr/local/bin/multi_gre6_iran4_inputs.txt"
+        ]),
+        ("robot_gre6_iran5", [
+            "/usr/local/bin/robot_gre6_iran5.py",
+            "/usr/local/bin/robot_gre6_iran5.sh",
+            "/etc/systemd/system/robot_gre6_iran5.service",
+            "/usr/local/bin/multi_gre6_iran5_inputs.txt"
+        ]),
+        ("robot_gre6_iran6", [
+            "/usr/local/bin/robot_gre6_iran6.py",
+            "/usr/local/bin/robot_gre6_iran6.sh",
+            "/etc/systemd/system/robot_gre6_iran6.service",
+            "/usr/local/bin/multi_gre6_iran6_inputs.txt"
+        ]),
+        ("robot_gre6_iran7", [
+            "/usr/local/bin/robot_gre6_iran7.py",
+            "/usr/local/bin/robot_gre6_iran7.sh",
+            "/etc/systemd/system/robot_gre6_iran7.service",
+            "/usr/local/bin/multi_gre6_iran7_inputs.txt"
+        ]),
+        ("robot_gre6_iran8", [
+            "/usr/local/bin/robot_gre6_iran8.py",
+            "/usr/local/bin/robot_gre6_iran8.sh",
+            "/etc/systemd/system/robot_gre6_iran8.service",
+            "/usr/local/bin/multi_gre6_iran8_inputs.txt"
+        ]),
+        ("robot_gre6_iran9", [
+            "/usr/local/bin/robot_gre6_iran9.py",
+            "/usr/local/bin/robot_gre6_iran9.sh",
+            "/etc/systemd/system/robot_gre6_iran9.service",
+            "/usr/local/bin/multi_gre6_iran9_inputs.txt"
+        ]),
+        ("robot_gre6_iran10", [
+            "/usr/local/bin/robot_gre6_iran10.py",
+            "/usr/local/bin/robot_gre6_iran10.sh",
+            "/etc/systemd/system/robot_gre6_iran10.service",
+            "/usr/local/bin/multi_gre6_iran10_inputs.txt"
+        ]),
+    ]
+
+    for service_name, files in services:
+        uninstall_service(service_name, files)
+
+    print("\033[92mUninstallation is done.\033[0m")
+
+def remove_services_gre6_multi_iran5kharej1():
+    services = [
+        ("robot_gre6_kharej1", [
+            "/usr/local/bin/robot_gre6_kharej1.py",
+            "/usr/local/bin/robot_gre6_kharej1.sh",
+            "/etc/systemd/system/robot_gre6_kharej1.service",
+            "/usr/local/bin/multi_gre6_kharej1_inputs.txt"
+        ]),
+        ("robot_gre6_kharej2", [
+            "/usr/local/bin/robot_gre6_kharej2.py",
+            "/usr/local/bin/robot_gre6_kharej2.sh",
+            "/etc/systemd/system/robot_gre6_kharej2.service",
+            "/usr/local/bin/multi_gre6_kharej2_inputs.txt"
+        ]),
+        ("robot_gre6_kharej3", [
+            "/usr/local/bin/robot_gre6_kharej3.py",
+            "/usr/local/bin/robot_gre6_kharej3.sh",
+            "/etc/systemd/system/robot_gre6_kharej3.service",
+            "/usr/local/bin/multi_gre6_kharej3_inputs.txt"
+        ]),
+        ("robot_gre6_kharej4", [
+            "/usr/local/bin/robot_gre6_kharej4.py",
+            "/usr/local/bin/robot_gre6_kharej4.sh",
+            "/etc/systemd/system/robot_gre6_kharej4.service",
+            "/usr/local/bin/multi_gre6_kharej4_inputs.txt"
+        ]),
+        ("robot_gre6_kharej5", [
+            "/usr/local/bin/robot_gre6_kharej5.py",
+            "/usr/local/bin/robot_gre6_kharej5.sh",
+            "/etc/systemd/system/robot_gre6_kharej5.service",
+            "/usr/local/bin/multi_gre6_kharej5_inputs.txt"
+        ]),
+        ("robot_gre6_iran1", [
+            "/usr/local/bin/robot_gre6_iran1.py",
+            "/usr/local/bin/robot_gre6_iran1.sh",
+            "/etc/systemd/system/robot_gre6_iran1.service",
+            "/usr/local/bin/multi_gre6_iran1_inputs.txt"
+        ]),
+        ("robot_gre6_iran2", [
+            "/usr/local/bin/robot_gre6_iran2.py",
+            "/usr/local/bin/robot_gre6_iran2.sh",
+            "/etc/systemd/system/robot_gre6_iran2.service",
+            "/usr/local/bin/multi_gre6_iran2_inputs.txt"
+        ]),
+        ("robot_gre6_iran3", [
+            "/usr/local/bin/robot_gre6_iran3.py",
+            "/usr/local/bin/robot_gre6_iran3.sh",
+            "/etc/systemd/system/robot_gre6_iran3.service",
+            "/usr/local/bin/multi_gre6_iran3_inputs.txt"
+        ]),
+        ("robot_gre6_iran4", [
+            "/usr/local/bin/robot_gre6_iran4.py",
+            "/usr/local/bin/robot_gre6_iran4.sh",
+            "/etc/systemd/system/robot_gre6_iran4.service",
+            "/usr/local/bin/multi_gre6_iran4_inputs.txt"
+        ]),
+        ("robot_gre6_iran5", [
+            "/usr/local/bin/robot_gre6_iran5.py",
+            "/usr/local/bin/robot_gre6_iran5.sh",
+            "/etc/systemd/system/robot_gre6_iran5.service",
+            "/usr/local/bin/multi_gre6_iran5_inputs.txt"
+        ]),
+    ]
+
+    for service_name, files in services:
+        uninstall_service(service_name, files)
+
+    print("\033[92mUninstallation is done.\033[0m")
+
+def remove_multi_gre6sec_robot():
+    os.system("clear")
+    print("\033[92m ^ ^\033[0m")
+    print("\033[92m(\033[91mO,O\033[92m)\033[0m")
+    print("\033[92m(   ) \033[92mRemove Robot \033[92mGRE6 IPSEC multi \033[93mMenu\033[0m")
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93mChoose what to do:\033[0m")
+    print("1  \033[93mKharej [5] IRAN [1]\033[0m")
+    print("2  \033[92mKharej [1] IRAN [5]\033[0m")
+    print("0. \033[94mback to the previous menu\033[0m")
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        choice = input("\033[38;5;205mEnter your choice Please: \033[0m")
+        if choice == "1":
+            remove_gre6sec_multi_iran1kharej5()
+            break
+        elif choice == "2":
+            remove_services_gre6sec_multi_iran5kharej1()
+            break
+        elif choice == "0":
+            clear()
+            remove_multi_robot()
+            break
+        else:
+            print("Invalid choice.")
+
+def remove_gre6sec_multi_iran1kharej5():
+    services = [
+        ("robot_gre6sec_kharej1", [
+            "/usr/local/bin/robot_gre6sec_kharej1.py",
+            "/usr/local/bin/robot_gre6sec_kharej1.sh",
+            "/etc/systemd/system/robot_gre6sec_kharej1.service",
+            "/usr/local/bin/multi_gre6sec_kharej1_inputs.txt"
+        ]),
+        ("robot_gre6sec_kharej2", [
+            "/usr/local/bin/robot_gre6sec_kharej2.py",
+            "/usr/local/bin/robot_gre6sec_kharej2.sh",
+            "/etc/systemd/system/robot_gre6sec_kharej2.service",
+            "/usr/local/bin/multi_gre6sec_kharej2_inputs.txt"
+        ]),
+        ("robot_gre6sec_kharej3", [
+            "/usr/local/bin/robot_gre6sec_kharej3.py",
+            "/usr/local/bin/robot_gre6sec_kharej3.sh",
+            "/etc/systemd/system/robot_gre6sec_kharej3.service",
+            "/usr/local/bin/multi_gre6sec_kharej3_inputs.txt"
+        ]),
+        ("robot_gre6sec_kharej4", [
+            "/usr/local/bin/robot_gre6sec_kharej4.py",
+            "/usr/local/bin/robot_gre6sec_kharej4.sh",
+            "/etc/systemd/system/robot_gre6sec_kharej4.service",
+            "/usr/local/bin/multi_gre6sec_kharej4_inputs.txt"
+        ]),
+        ("robot_gre6sec_kharej5", [
+            "/usr/local/bin/robot_gre6sec_kharej5.py",
+            "/usr/local/bin/robot_gre6sec_kharej5.sh",
+            "/etc/systemd/system/robot_gre6sec_kharej5.service",
+            "/usr/local/bin/multi_gre6sec_kharej5_inputs.txt"
+        ]),
+        ("robot_gre6sec_iran1", [
+            "/usr/local/bin/robot_gre6sec_iran1.py",
+            "/usr/local/bin/robot_gre6sec_iran1.sh",
+            "/etc/systemd/system/robot_gre6sec_iran1.service",
+            "/usr/local/bin/multi_gre6sec_iran1_inputs.txt"
+        ]),
+        ("robot_gre6sec_iran2", [
+            "/usr/local/bin/robot_gre6sec_iran2.py",
+            "/usr/local/bin/robot_gre6sec_iran2.sh",
+            "/etc/systemd/system/robot_gre6sec_iran2.service",
+            "/usr/local/bin/multi_gre6sec_iran2_inputs.txt"
+        ]),
+        ("robot_gre6sec_iran3", [
+            "/usr/local/bin/robot_gre6sec_iran3.py",
+            "/usr/local/bin/robot_gre6sec_iran3.sh",
+            "/etc/systemd/system/robot_gre6sec_iran3.service",
+            "/usr/local/bin/multi_gre6sec_iran3_inputs.txt"
+        ]),
+        ("robot_gre6sec_iran4", [
+            "/usr/local/bin/robot_gre6sec_iran4.py",
+            "/usr/local/bin/robot_gre6sec_iran4.sh",
+            "/etc/systemd/system/robot_gre6sec_iran4.service",
+            "/usr/local/bin/multi_gre6sec_iran4_inputs.txt"
+        ]),
+        ("robot_gre6sec_iran5", [
+            "/usr/local/bin/robot_gre6sec_iran5.py",
+            "/usr/local/bin/robot_gre6sec_iran5.sh",
+            "/etc/systemd/system/robot_gre6sec_iran5.service",
+            "/usr/local/bin/multi_gre6sec_iran5_inputs.txt"
+        ]),
+    ]
+
+    for service_name, files in services:
+        uninstall_service(service_name, files)
+
+    print("\033[92mUninstallation is done.\033[0m")
+
+def remove_services_gre6sec_multi_iran5kharej1():
+    services = [
+        ("robot_gre6sec_kharej1", [
+            "/usr/local/bin/robot_gre6sec_kharej1.py",
+            "/usr/local/bin/robot_gre6sec_kharej1.sh",
+            "/etc/systemd/system/robot_gre6sec_kharej1.service",
+            "/usr/local/bin/multi_gre6sec_kharej1_inputs.txt"
+        ]),
+        ("robot_gre6sec_kharej2", [
+            "/usr/local/bin/robot_gre6sec_kharej2.py",
+            "/usr/local/bin/robot_gre6sec_kharej2.sh",
+            "/etc/systemd/system/robot_gre6sec_kharej2.service",
+            "/usr/local/bin/multi_gre6sec_kharej2_inputs.txt"
+        ]),
+        ("robot_gre6sec_kharej3", [
+            "/usr/local/bin/robot_gre6sec_kharej3.py",
+            "/usr/local/bin/robot_gre6sec_kharej3.sh",
+            "/etc/systemd/system/robot_gre6sec_kharej3.service",
+            "/usr/local/bin/multi_gre6sec_kharej3_inputs.txt"
+        ]),
+        ("robot_gre6sec_kharej4", [
+            "/usr/local/bin/robot_gre6sec_kharej4.py",
+            "/usr/local/bin/robot_gre6sec_kharej4.sh",
+            "/etc/systemd/system/robot_gre6sec_kharej4.service",
+            "/usr/local/bin/multi_gre6sec_kharej4_inputs.txt"
+        ]),
+        ("robot_gre6sec_kharej5", [
+            "/usr/local/bin/robot_gre6sec_kharej5.py",
+            "/usr/local/bin/robot_gre6sec_kharej5.sh",
+            "/etc/systemd/system/robot_gre6sec_kharej5.service",
+            "/usr/local/bin/multi_gre6sec_kharej5_inputs.txt"
+        ]),
+        ("robot_gre6sec_iran1", [
+            "/usr/local/bin/robot_gre6sec_iran1.py",
+            "/usr/local/bin/robot_gre6sec_iran1.sh",
+            "/etc/systemd/system/robot_gre6sec_iran1.service",
+            "/usr/local/bin/multi_gre6sec_iran1_inputs.txt"
+        ]),
+        ("robot_gre6sec_iran2", [
+            "/usr/local/bin/robot_gre6sec_iran2.py",
+            "/usr/local/bin/robot_gre6sec_iran2.sh",
+            "/etc/systemd/system/robot_gre6sec_iran2.service",
+            "/usr/local/bin/multi_gre6sec_iran2_inputs.txt"
+        ]),
+        ("robot_gre6sec_iran3", [
+            "/usr/local/bin/robot_gre6sec_iran3.py",
+            "/usr/local/bin/robot_gre6sec_iran3.sh",
+            "/etc/systemd/system/robot_gre6sec_iran3.service",
+            "/usr/local/bin/multi_gre6sec_iran3_inputs.txt"
+        ]),
+        ("robot_gre6sec_iran4", [
+            "/usr/local/bin/robot_gre6sec_iran4.py",
+            "/usr/local/bin/robot_gre6sec_iran4.sh",
+            "/etc/systemd/system/robot_gre6sec_iran4.service",
+            "/usr/local/bin/multi_gre6sec_iran4_inputs.txt"
+        ]),
+        ("robot_gre6sec_iran5", [
+            "/usr/local/bin/robot_gre6sec_iran5.py",
+            "/usr/local/bin/robot_gre6sec_iran5.sh",
+            "/etc/systemd/system/robot_gre6sec_iran5.service",
+            "/usr/local/bin/multi_gre6sec_iran5_inputs.txt"
+        ]),
+    ]
+
+    for service_name, files in services:
+        uninstall_service(service_name, files)
 
 def remove_multi_ip6ip6_robot():
     os.system("clear")
@@ -7103,7 +7508,7 @@ def remove_multi_ip6ip6_robot():
             break
         elif choice == "0":
             clear()
-            robot_multi_mnu()
+            remove_multi_robot()
             break
         else:
             print("Invalid choice.")
@@ -20579,5 +20984,11352 @@ def remove_services_ip6ip6sec_multi_iran5kharej1():
         uninstall_service(service_name, files)
 
     print("\033[92mUninstallation is done.\033[0m")
+
+def robotreconfig_multi_gre6():
+    os.system("clear")
+    print("\033[92m ^ ^\033[0m")
+    print("\033[92m(\033[91mO,O\033[92m)\033[0m")
+    print("\033[92m(   ) \033[92mReconfig Robot \033[92mGRE6 \033[93mMenu\033[0m")
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93mChoose what to do:\033[0m")
+    print("1  \033[93mKharej [10] IRAN [1]\033[0m")
+    print("2  \033[92mKharej [1] IRAN [5]\033[0m")
+    print("0. \033[94mback to the previous menu\033[0m")
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        choice = input("\033[38;5;205mEnter your choice Please: \033[0m")
+        if choice == "1":
+            robot_multimenu_gre6_kharej()
+            break
+        elif choice == "2":
+            robot_multimenu_gre6_iran()
+            break
+        elif choice == "0":
+            clear()
+            robot_multi_mnu()
+            break
+        else:
+            print("Invalid choice.")
+
+
+def robot_multimenu_gre6_kharej():
+    os.system("clear")
+    print("\033[92m ^ ^\033[0m")
+    print("\033[92m(\033[91mO,O\033[92m)\033[0m")
+    print(
+        "\033[92m(   ) \033[92mReconfig Robot \033[92mGRE6 \033[93m Kharej Menu\033[0m")
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93mChoose what to do:\033[0m")
+    print("1  \033[93mKharej Inputs [1]\033[0m")
+    print("2  \033[93mKharej Inputs [2]\033[0m")
+    print("3  \033[93mKharej Inputs [3]\033[0m")
+    print("4  \033[93mKharej Inputs [4]\033[0m")
+    print("5  \033[93mKharej Inputs [5]\033[0m")
+    print("6  \033[93mKharej Inputs [6]\033[0m")
+    print("7  \033[93mKharej Inputs [7]\033[0m")
+    print("8  \033[93mKharej Inputs [8]\033[0m")
+    print("9  \033[93mKharej Inputs [9]\033[0m")
+    print("10 \033[93mKharej Inputs [10]\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    print("11 \033[92mIRAN Inputs \033[0m")
+    print("0. \033[94mback to the previous menu\033[0m")
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        choice = input("\033[38;5;205mEnter your choice Please: \033[0m")
+        if choice == "1":
+            robot_multi_gre6_kharej1()
+            break
+        elif choice == "2":
+            robot_multi_gre6_kharej2()
+            break
+        elif choice == "3":
+            robot_multi_gre6_kharej3()
+            break
+        elif choice == "4":
+            robot_multi_gre6_kharej4()
+            break
+        elif choice == "5":
+            robot_multi_gre6_kharej5()
+            break
+        elif choice == "6":
+            robot_multi_gre6_kharej6()
+            break
+        elif choice == "7":
+            robot_multi_gre6_kharej7()
+            break
+        elif choice == "8":
+            robot_multi_gre6_kharej8()
+            break
+        elif choice == "9":
+            robot_multi_gre6_kharej9()
+            break
+        elif choice == "10":
+            robot_multi_gre6_kharej10()
+            break
+        elif choice == "11":
+            robot_multimenu_gre6_iranserver()
+            break
+        elif choice == "0":
+            clear()
+            robotreconfig_multi_gre6()
+            break
+        else:
+            print("Invalid choice.")
+
+
+def robot_multimenu_gre6_iranserver():
+    os.system("clear")
+    print("\033[92m ^ ^\033[0m")
+    print("\033[92m(\033[91mO,O\033[92m)\033[0m")
+    print(
+        "\033[92m(   ) \033[92mReconfig Robot \033[92mGRE6 \033[93m IRAN Menu\033[0m")
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93mChoose what to do:\033[0m")
+    print("1  \033[93mIRAN Inputs [1]\033[0m")
+    print("2  \033[93mIRAN Inputs [2]\033[0m")
+    print("3  \033[93mIRAN Inputs [3]\033[0m")
+    print("4  \033[93mIRAN Inputs [4]\033[0m")
+    print("5  \033[93mIRAN Inputs [5]\033[0m")
+    print("6  \033[93mIRAN Inputs [6]\033[0m")
+    print("7  \033[93mIRAN Inputs [7]\033[0m")
+    print("8  \033[93mIRAN Inputs [8]\033[0m")
+    print("9  \033[93mIRAN Inputs [9]\033[0m")
+    print("10 \033[93mIRAN Inputs [10]\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    print("0. \033[94mback to the previous menu\033[0m")
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        choice = input("\033[38;5;205mEnter your choice Please: \033[0m")
+        if choice == "1":
+            robot_multi_gre6_iranserver1()
+            break
+        elif choice == "2":
+            robot_multi_gre6_iranserver2()
+            break
+        elif choice == "3":
+            robot_multi_gre6_iranserver3()
+            break
+        elif choice == "4":
+            robot_multi_gre6_iranserver4()
+            break
+        elif choice == "5":
+            robot_multi_gre6_iranserver5()
+            break
+        elif choice == "6":
+            robot_multi_gre6_iranserver6()
+            break
+        elif choice == "7":
+            robot_multi_gre6_iranserver7()
+            break
+        elif choice == "8":
+            robot_multi_gre6_iranserver8()
+            break
+        elif choice == "9":
+            robot_multi_gre6_iranserver9()
+            break
+        elif choice == "10":
+            robot_multi_gre6_iranserver10()
+            break
+        elif choice == "0":
+            clear()
+            robot_multimenu_gre6_kharej()
+            break
+        else:
+            print("Invalid choice.")
+
+def multigre61_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:801a::1'
+    inputs['private_iran_ip'] = '2002:801a::2'
+
+    inputs['ip6ip6_method'] = '1'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [1] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '1'
+
+    return inputs
+
+
+def generate_bash_script_multigre61_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej1.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej1.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej1.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej1.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej1.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre61kharej(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej1_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre61kharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej1.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej1_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['ip6ip6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharej1():
+    inputs = multigre61_kharejuser_input()
+    store_inputs_multigre61kharej(inputs)
+    generate_bash_script_multigre61_kharej(inputs)
+    create_script_multigre61kharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+# 2
+def multigre62_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:811a::1'
+    inputs['private_iran_ip'] = '2002:811a::2'
+
+    inputs['ip6ip6_method'] = '2'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [2] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '2'
+
+    return inputs
+
+
+def generate_bash_script_multigre62_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej2.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej2.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej2.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej2.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej2.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre62kharej(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej2_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre62kharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej2.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej2_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['ip6ip6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharej2():
+    inputs = multigre62_kharejuser_input()
+    store_inputs_multigre62kharej(inputs)
+    generate_bash_script_multigre62_kharej(inputs)
+    create_script_multigre62kharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#3
+def multigre63_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:821a::1'
+    inputs['private_iran_ip'] = '2002:821a::2'
+
+    inputs['ip6ip6_method'] = '3'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [3] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '3'
+
+    return inputs
+
+
+def generate_bash_script_multigre63_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej3.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej3.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej3.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej3.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej3.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre63kharej(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej3_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre63kharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej3.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej3_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['ip6ip6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharej3():
+    inputs = multigre63_kharejuser_input()
+    store_inputs_multigre63kharej(inputs)
+    generate_bash_script_multigre63_kharej(inputs)
+    create_script_multigre63kharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#4
+def multigre64_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:831a::1'
+    inputs['private_iran_ip'] = '2002:831a::2'
+
+    inputs['ip6ip6_method'] = '4'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [4] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '4'
+
+    return inputs
+
+
+def generate_bash_script_multigre64_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej4.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej4.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej4.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej4.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej4.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre64kharej(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej4_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre64kharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej4.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej4_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['ip6ip6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharej4():
+    inputs = multigre64_kharejuser_input()
+    store_inputs_multigre64kharej(inputs)
+    generate_bash_script_multigre64_kharej(inputs)
+    create_script_multigre64kharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#5
+def multigre65_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:841a::1'
+    inputs['private_iran_ip'] = '2002:841a::2'
+
+    inputs['ip6ip6_method'] = '5'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [5] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '5'
+
+    return inputs
+
+
+def generate_bash_script_multigre65_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej5.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej5.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej5.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej5.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej5.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre65kharej(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej5_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre65kharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej5.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej5_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['ip6ip6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharej5():
+    inputs = multigre65_kharejuser_input()
+    store_inputs_multigre65kharej(inputs)
+    generate_bash_script_multigre65_kharej(inputs)
+    create_script_multigre65kharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+#6
+def multigre66_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:851a::1'
+    inputs['private_iran_ip'] = '2002:851a::2'
+
+    inputs['ip6ip6_method'] = '6'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [6] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '6'
+
+    return inputs
+
+
+def generate_bash_script_multigre66_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej6.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej6.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej6.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej6.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej6.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre66kharej(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej6_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre66kharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej6.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej6_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['ip6ip6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharej6():
+    inputs = multigre66_kharejuser_input()
+    store_inputs_multigre66kharej(inputs)
+    generate_bash_script_multigre66_kharej(inputs)
+    create_script_multigre66kharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#7
+def multigre67_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:861a::1'
+    inputs['private_iran_ip'] = '2002:861a::2'
+
+    inputs['ip6ip6_method'] = '7'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [7] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '7'
+
+    return inputs
+
+
+def generate_bash_script_multigre67_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej7.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej7.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej7.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej7.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej7.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre67kharej(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej7_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre67kharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej7.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej7_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['ip6ip6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharej7():
+    inputs = multigre67_kharejuser_input()
+    store_inputs_multigre67kharej(inputs)
+    generate_bash_script_multigre67_kharej(inputs)
+    create_script_multigre67kharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#8
+def multigre68_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:871a::1'
+    inputs['private_iran_ip'] = '2002:871a::2'
+
+    inputs['ip6ip6_method'] = '8'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [8] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '8'
+
+    return inputs
+
+
+def generate_bash_script_multigre68_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej8.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej8.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej8.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej8.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej8.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre68kharej(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej8_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre68kharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej8.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej8_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['ip6ip6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharej8():
+    inputs = multigre68_kharejuser_input()
+    store_inputs_multigre68kharej(inputs)
+    generate_bash_script_multigre68_kharej(inputs)
+    create_script_multigre68kharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#9
+def multigre69_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:881a::1'
+    inputs['private_iran_ip'] = '2002:881a::2'
+
+    inputs['ip6ip6_method'] = '9'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [9] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '9'
+
+    return inputs
+
+
+def generate_bash_script_multigre69_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej9.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej9.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej9.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej9.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej9.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre69kharej(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej9_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre69kharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej9.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej9_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['ip6ip6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharej9():
+    inputs = multigre69_kharejuser_input()
+    store_inputs_multigre69kharej(inputs)
+    generate_bash_script_multigre69_kharej(inputs)
+    create_script_multigre69kharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#10
+
+def multigre610_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:891a::1'
+    inputs['private_iran_ip'] = '2002:891a::2'
+
+    inputs['ip6ip6_method'] = '10'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [10] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '10'
+
+    return inputs
+
+
+def generate_bash_script_multigre610_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej10.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej10.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej10.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej10.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej10.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre610kharej(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej10_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre610kharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej10.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej10_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['ip6ip6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharej10():
+    inputs = multigre610_kharejuser_input()
+    store_inputs_multigre610kharej(inputs)
+    generate_bash_script_multigre610_kharej(inputs)
+    create_script_multigre610kharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+def multigre6_iranserveruser_input1():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:801a::1'
+    inputs['private_iran_ip'] = '2002:801a::2'
+
+    inputs['gre6_method'] = '11'
+    inputs['iranserver_choose'] = '1'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [1] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '11' 
+    inputs['uninstall_input7'] = '1' 
+
+    return inputs
+
+def generate_bash_script_multigre6_iranserver1(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran1.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran1.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran1.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran1.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran1.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6iranserver1(inputs):
+    with open("/usr/local/bin/multi_gre6_iran1_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6iranserver1():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran1.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran1_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iranserver1():
+    inputs = multigre6_iranserveruser_input1()
+    store_inputs_multigre6iranserver1(inputs)
+    generate_bash_script_multigre6_iranserver1(inputs)
+    create_script_multigre6iranserver1() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+#iran server 2
+
+def multigre6_iranserveruser_input2():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:811a::1'
+    inputs['private_iran_ip'] = '2002:811a::2'
+
+    inputs['gre6_method'] = '11'
+    inputs['iranserver_choose'] = '2'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [2] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '11' 
+    inputs['uninstall_input7'] = '2' 
+
+    return inputs
+
+def generate_bash_script_multigre6_iranserver2(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran2.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran2.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran2.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran2.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran2.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6iranserver2(inputs):
+    with open("/usr/local/bin/multi_gre6_iran2_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6iranserver2():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran2.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran2_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iranserver2():
+    inputs = multigre6_iranserveruser_input2()
+    store_inputs_multigre6iranserver2(inputs)
+    generate_bash_script_multigre6_iranserver2(inputs)
+    create_script_multigre6iranserver2() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+# iran server 3
+
+def multigre6_iranserveruser_input3():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:821a::1'
+    inputs['private_iran_ip'] = '2002:821a::2'
+
+    inputs['gre6_method'] = '11'
+    inputs['iranserver_choose'] = '3'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [3] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '11' 
+    inputs['uninstall_input7'] = '3' 
+
+    return inputs
+
+def generate_bash_script_multigre6_iranserver3(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran3.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran3.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran3.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran3.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran3.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6iranserver3(inputs):
+    with open("/usr/local/bin/multi_gre6_iran3_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6iranserver3():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran3.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran3_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iranserver3():
+    inputs = multigre6_iranserveruser_input3()
+    store_inputs_multigre6iranserver3(inputs)
+    generate_bash_script_multigre6_iranserver3(inputs)
+    create_script_multigre6iranserver3() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+# iran server 4
+
+def multigre6_iranserveruser_input4():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:831a::1'
+    inputs['private_iran_ip'] = '2002:831a::2'
+
+    inputs['gre6_method'] = '11'
+    inputs['iranserver_choose'] = '4'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [4] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '11' 
+    inputs['uninstall_input7'] = '4' 
+
+    return inputs
+
+def generate_bash_script_multigre6_iranserver4(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran4.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran4.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran4.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran4.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran4.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6iranserver4(inputs):
+    with open("/usr/local/bin/multi_gre6_iran4_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6iranserver4():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran4.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran4_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iranserver4():
+    inputs = multigre6_iranserveruser_input4()
+    store_inputs_multigre6iranserver4(inputs)
+    generate_bash_script_multigre6_iranserver4(inputs)
+    create_script_multigre6iranserver4() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+# iran server 5
+
+def multigre6_iranserveruser_input5():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:841a::1'
+    inputs['private_iran_ip'] = '2002:841a::2'
+
+    inputs['gre6_method'] = '11'
+    inputs['iranserver_choose'] = '5'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [5] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '11' 
+    inputs['uninstall_input7'] = '5' 
+
+    return inputs
+
+def generate_bash_script_multigre6_iranserver5(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran5.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran5.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran5.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran5.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran5.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6iranserver5(inputs):
+    with open("/usr/local/bin/multi_gre6_iran5_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6iranserver5():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran5.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran5_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iranserver5():
+    inputs = multigre6_iranserveruser_input5()
+    store_inputs_multigre6iranserver5(inputs)
+    generate_bash_script_multigre6_iranserver5(inputs)
+    create_script_multigre6iranserver5() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+# iran server 6
+
+def multigre6_iranserveruser_input6():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:851a::1'
+    inputs['private_iran_ip'] = '2002:851a::2'
+
+    inputs['gre6_method'] = '11'
+    inputs['iranserver_choose'] = '6'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [6] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '11' 
+    inputs['uninstall_input7'] = '6' 
+
+    return inputs
+
+def generate_bash_script_multigre6_iranserver6(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran6.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran6.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran6.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran6.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran6.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6iranserver6(inputs):
+    with open("/usr/local/bin/multi_gre6_iran6_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6iranserver6():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran6.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran6_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iranserver6():
+    inputs = multigre6_iranserveruser_input6()
+    store_inputs_multigre6iranserver6(inputs)
+    generate_bash_script_multigre6_iranserver6(inputs)
+    create_script_multigre6iranserver6() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+#7
+
+def multigre6_iranserveruser_input7():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:861a::1'
+    inputs['private_iran_ip'] = '2002:861a::2'
+
+    inputs['gre6_method'] = '11'
+    inputs['iranserver_choose'] = '7'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [7] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '11' 
+    inputs['uninstall_input7'] = '7' 
+
+    return inputs
+
+def generate_bash_script_multigre6_iranserver7(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran7.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran7.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran7.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran7.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran7.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6iranserver7(inputs):
+    with open("/usr/local/bin/multi_gre6_iran7_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6iranserver7():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran7.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran7_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iranserver7():
+    inputs = multigre6_iranserveruser_input7()
+    store_inputs_multigre6iranserver7(inputs)
+    generate_bash_script_multigre6_iranserver7(inputs)
+    create_script_multigre6iranserver7() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+# iran server 8
+
+def multigre6_iranserveruser_input7():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:861a::1'
+    inputs['private_iran_ip'] = '2002:861a::2'
+
+    inputs['gre6_method'] = '11'
+    inputs['iranserver_choose'] = '7'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [7] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '11' 
+    inputs['uninstall_input7'] = '7' 
+
+    return inputs
+
+def generate_bash_script_multigre6_iranserver7(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran7.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran7.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran7.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran7.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran7.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6iranserver7(inputs):
+    with open("/usr/local/bin/multi_gre6_iran7_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6iranserver7():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran7.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran7_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iranserver7():
+    inputs = multigre6_iranserveruser_input7()
+    store_inputs_multigre6iranserver7(inputs)
+    generate_bash_script_multigre6_iranserver7(inputs)
+    create_script_multigre6iranserver7() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+# iran server 8
+
+def multigre6_iranserveruser_input8():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:871a::1'
+    inputs['private_iran_ip'] = '2002:871a::2'
+
+    inputs['gre6_method'] = '11'
+    inputs['iranserver_choose'] = '8'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [8] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '11' 
+    inputs['uninstall_input7'] = '8' 
+
+    return inputs
+
+def generate_bash_script_multigre6_iranserver8(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran8.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran8.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran8.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran8.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran8.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6iranserver8(inputs):
+    with open("/usr/local/bin/multi_gre6_iran8_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6iranserver8():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran8.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran8_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iranserver8():
+    inputs = multigre6_iranserveruser_input8()
+    store_inputs_multigre6iranserver8(inputs)
+    generate_bash_script_multigre6_iranserver8(inputs)
+    create_script_multigre6iranserver8() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+# iran server 9
+
+def multigre6_iranserveruser_input9():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:881a::1'
+    inputs['private_iran_ip'] = '2002:881a::2'
+
+    inputs['gre6_method'] = '11'
+    inputs['iranserver_choose'] = '9'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [9] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '11' 
+    inputs['uninstall_input7'] = '9' 
+
+    return inputs
+
+def generate_bash_script_multigre6_iranserver9(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran9.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran9.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran9.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran9.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran9.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6iranserver9(inputs):
+    with open("/usr/local/bin/multi_gre6_iran9_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6iranserver9():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran9.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran9_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iranserver9():
+    inputs = multigre6_iranserveruser_input9()
+    store_inputs_multigre6iranserver9(inputs)
+    generate_bash_script_multigre6_iranserver9(inputs)
+    create_script_multigre6iranserver9() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+# iran server 10
+
+def multigre6_iranserveruser_input10():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:891a::1'
+    inputs['private_iran_ip'] = '2002:891a::2'
+
+    inputs['gre6_method'] = '11'
+    inputs['iranserver_choose'] = '10'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [10] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '11' 
+    inputs['uninstall_input7'] = '10' 
+
+    return inputs
+
+def generate_bash_script_multigre6_iranserver10(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran10.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran10.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran10.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran10.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran10.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6iranserver10(inputs):
+    with open("/usr/local/bin/multi_gre6_iran10_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6iranserver10():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran10.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran10_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iranserver10():
+    inputs = multigre6_iranserveruser_input10()
+    store_inputs_multigre6iranserver10(inputs)
+    generate_bash_script_multigre6_iranserver10(inputs)
+    create_script_multigre6iranserver10() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+
+# kharej 1 iran 5
+
+def robot_multimenu_gre6_iran():
+    os.system("clear")
+    print("\033[92m ^ ^\033[0m")
+    print("\033[92m(\033[91mO,O\033[92m)\033[0m")
+    print(
+        "\033[92m(   ) \033[92mReconfig Robot \033[92mGRE6 \033[93m IRAN Menu\033[0m")
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93mChoose what to do:\033[0m")
+    print("1  \033[93mIRAN Inputs [1]\033[0m")
+    print("2  \033[93mIRAN Inputs [2]\033[0m")
+    print("3  \033[93mIRAN Inputs [3]\033[0m")
+    print("4  \033[93mIRAN Inputs [4]\033[0m")
+    print("5  \033[93mIRAN Inputs [5]\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    print("6 \033[92mKharej Inputs \033[0m")
+    print("0. \033[94mback to the previous menu\033[0m")
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        choice = input("\033[38;5;205mEnter your choice Please: \033[0m")
+        if choice == "1":
+            robot_multi_gre6_iran1()
+            break
+        elif choice == "2":
+            robot_multi_gre6_iran2()
+            break
+        elif choice == "3":
+            robot_multi_gre6_iran3()
+            break
+        elif choice == "4":
+            robot_multi_gre6_iran4()
+            break
+        elif choice == "5":
+            robot_multi_gre6_iran5()
+            break
+        elif choice == "6":
+            robot_multimenu_gre6_kharejserver()
+            break
+        elif choice == "0":
+            clear()
+            robotreconfig_multi_gre6()
+            break
+        else:
+            print("Invalid choice.")
+
+
+def robot_multimenu_gre6_kharejserver():
+    os.system("clear")
+    print("\033[92m ^ ^\033[0m")
+    print("\033[92m(\033[91mO,O\033[92m)\033[0m")
+    print(
+        "\033[92m(   ) \033[92mReconfig Robot \033[92mGRE6 \033[93m Kharej Menu\033[0m")
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93mChoose what to do:\033[0m")
+    print("1  \033[93mKharej Inputs [1]\033[0m")
+    print("2  \033[93mKharej Inputs [2]\033[0m")
+    print("3  \033[93mKharej Inputs [3]\033[0m")
+    print("4  \033[93mKharej Inputs [4]\033[0m")
+    print("5  \033[93mKharej Inputs [5]\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    print("0. \033[94mback to the previous menu\033[0m")
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        choice = input("\033[38;5;205mEnter your choice Please: \033[0m")
+        if choice == "1":
+            robot_multi_gre6_kharejserver1()
+            break
+        elif choice == "2":
+            robot_multi_gre6_kharejserver2()
+            break
+        elif choice == "3":
+            robot_multi_gre6_kharejserver3()
+            break
+        elif choice == "4":
+            robot_multi_gre6_kharejserver4()
+            break
+        elif choice == "5":
+            robot_multi_gre6_kharejserver5()
+            break
+        elif choice == "0":
+            clear()
+            robot_multimenu_gre6_iran()
+            break
+        else:
+            print("Invalid choice.")
+
+def multigre61_iranuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '2'
+    inputs['private_kharej_ip'] = '2002:801a::1'
+    inputs['private_iran_ip'] = '2002:801a::2'
+
+    inputs['gre6_method'] = '1'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN [1] \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '2'
+    inputs['uninstall_input5'] = '1'
+
+    return inputs
+
+
+def generate_bash_script_multigre61_iran(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran1.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran1.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran1.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran1.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran1.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre61iran(inputs):
+    with open("/usr/local/bin/multi_gre6_iran1_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre61iran():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran1.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran1_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iran1():
+    inputs = multigre61_iranuser_input()
+    store_inputs_multigre61iran(inputs)
+    generate_bash_script_multigre61_iran(inputs)
+    create_script_multigre61iran()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+# 2
+
+def multigre62_iranuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '2'
+    inputs['private_kharej_ip'] = '2002:811a::1'
+    inputs['private_iran_ip'] = '2002:811a::2'
+
+    inputs['gre6_method'] = '2'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN [2] \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '2'
+    inputs['uninstall_input5'] = '2'
+
+    return inputs
+
+
+def generate_bash_script_multigre62_iran(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran2.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran2.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran2.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran2.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran2.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre62iran(inputs):
+    with open("/usr/local/bin/multi_gre6_iran2_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre62iran():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran2.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran2_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iran2():
+    inputs = multigre62_iranuser_input()
+    store_inputs_multigre62iran(inputs)
+    generate_bash_script_multigre62_iran(inputs)
+    create_script_multigre62iran()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+#3
+
+def multigre63_iranuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '2'
+    inputs['private_kharej_ip'] = '2002:821a::1'
+    inputs['private_iran_ip'] = '2002:821a::2'
+
+    inputs['gre6_method'] = '3'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN [3] \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '2'
+    inputs['uninstall_input5'] = '3'
+
+    return inputs
+
+
+def generate_bash_script_multigre63_iran(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran3.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran3.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran3.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran3.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran3.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre63iran(inputs):
+    with open("/usr/local/bin/multi_gre6_iran3_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre63iran():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran3.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran3_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iran3():
+    inputs = multigre63_iranuser_input()
+    store_inputs_multigre63iran(inputs)
+    generate_bash_script_multigre63_iran(inputs)
+    create_script_multigre63iran()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#4
+
+def multigre64_iranuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '2'
+    inputs['private_kharej_ip'] = '2002:831a::1'
+    inputs['private_iran_ip'] = '2002:831a::2'
+
+    inputs['gre6_method'] = '4'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN [4] \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '2'
+    inputs['uninstall_input5'] = '4'
+
+    return inputs
+
+
+def generate_bash_script_multigre64_iran(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran4.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran4.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran4.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran4.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran4.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre64iran(inputs):
+    with open("/usr/local/bin/multi_gre6_iran4_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre64iran():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran4.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran4_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iran4():
+    inputs = multigre64_iranuser_input()
+    store_inputs_multigre64iran(inputs)
+    generate_bash_script_multigre64_iran(inputs)
+    create_script_multigre64iran()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#5
+
+def multigre65_iranuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '3'
+    inputs['multi_choose'] = '2'
+    inputs['private_kharej_ip'] = '2002:841a::1'
+    inputs['private_iran_ip'] = '2002:841a::2'
+
+    inputs['gre6_method'] = '5'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN [5] \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input(
+        "\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '6'
+    inputs['uninstall_input4'] = '2'
+    inputs['uninstall_input5'] = '5'
+
+    return inputs
+
+
+def generate_bash_script_multigre65_iran(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_iran5.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_iran5.sh"
+    service_path = "/etc/systemd/system/robot_gre6_iran5.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_iran5.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_iran5.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre65iran(inputs):
+    with open("/usr/local/bin/multi_gre6_iran5_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre65iran():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_iran5.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_iran5_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_iran5():
+    inputs = multigre65_iranuser_input()
+    store_inputs_multigre65iran(inputs)
+    generate_bash_script_multigre65_iran(inputs)
+    create_script_multigre65iran()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+    
+
+# kharej server 1
+
+def multigre6_kharejserveruser_input1():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '2'
+
+    inputs['private_kharej_ip'] = '2002:801a::1'
+    inputs['private_iran_ip'] = '2002:801a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '1'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN [1] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '2'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '1' 
+
+    return inputs
+
+def generate_bash_script_multigre6_kharejserver1(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej1.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej1.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej1.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej1.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej1.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6kharejserver1(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej1_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6kharejserver1():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej1.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej1_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharejserver1():
+    inputs = multigre6_kharejserveruser_input1()
+    store_inputs_multigre6kharejserver1(inputs)
+    generate_bash_script_multigre6_kharejserver1(inputs)
+    create_script_multigre6kharejserver1() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+
+# kharej server 2
+
+def multigre6_kharejserveruser_input2():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '2'
+
+    inputs['private_kharej_ip'] = '2002:811a::1'
+    inputs['private_iran_ip'] = '2002:811a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '2'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN [2] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '2'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '2' 
+
+    return inputs
+
+def generate_bash_script_multigre6_kharejserver2(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej2.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej2.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej2.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej2.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej2.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6kharejserver2(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej2_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6kharejserver2():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej2.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej2_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharejserver2():
+    inputs = multigre6_kharejserveruser_input2()
+    store_inputs_multigre6kharejserver2(inputs)
+    generate_bash_script_multigre6_kharejserver2(inputs)
+    create_script_multigre6kharejserver2() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+# kharej server 3
+
+def multigre6_kharejserveruser_input3():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '2'
+
+    inputs['private_kharej_ip'] = '2002:821a::1'
+    inputs['private_iran_ip'] = '2002:821a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '3'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN [3] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '2'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '3' 
+
+    return inputs
+
+def generate_bash_script_multigre6_kharejserver3(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej3.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej3.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej3.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej3.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej3.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6kharejserver3(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej3_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6kharejserver3():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej3.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej3_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharejserver3():
+    inputs = multigre6_kharejserveruser_input3()
+    store_inputs_multigre6kharejserver3(inputs)
+    generate_bash_script_multigre6_kharejserver3(inputs)
+    create_script_multigre6kharejserver3() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+# kharej server 4
+
+def multigre6_kharejserveruser_input4():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '2'
+
+    inputs['private_kharej_ip'] = '2002:831a::1'
+    inputs['private_iran_ip'] = '2002:831a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '4'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN [4] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '2'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '4' 
+
+    return inputs
+
+def generate_bash_script_multigre6_kharejserver4(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej4.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej4.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej4.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej4.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej4.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6kharejserver4(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej4_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6kharejserver4():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej4.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej4_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharejserver4():
+    inputs = multigre6_kharejserveruser_input4()
+    store_inputs_multigre6kharejserver4(inputs)
+    generate_bash_script_multigre6_kharejserver4(inputs)
+    create_script_multigre6kharejserver4() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+# kharej server 5
+
+def multigre6_kharejserveruser_input5():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '3'
+    inputs['gre62_choose'] = '2'
+
+    inputs['private_kharej_ip'] = '2002:841a::1'
+    inputs['private_iran_ip'] = '2002:841a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '5'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN [5] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['additional_ips'] = input("\033[93mHow many \033[92madditional IPs \033[93mdo you need?\033[0m ")
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '3'
+    inputs['uninstall_input5'] = '2'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '5' 
+
+    return inputs
+
+def generate_bash_script_multigre6_kharejserver5(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6_kharej5.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6_kharej5.sh"
+    service_path = "/etc/systemd/system/robot_gre6_kharej5.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6_kharej5.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6_kharej5.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6kharejserver5(inputs):
+    with open("/usr/local/bin/multi_gre6_kharej5_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6kharejserver5():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6_kharej5.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6_kharej5_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['additional_ips']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6_kharejserver5():
+    inputs = multigre6_kharejserveruser_input5()
+    store_inputs_multigre6kharejserver5(inputs)
+    generate_bash_script_multigre6_kharejserver5(inputs)
+    create_script_multigre6kharejserver5() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+def robotreconfig_multi_gre6sec():
+    os.system("clear")
+    print("\033[92m ^ ^\033[0m")
+    print("\033[92m(\033[91mO,O\033[92m)\033[0m")
+    print("\033[92m(   ) \033[92mReconfig Robot \033[92mGRE6 + IPSEC \033[93mMenu\033[0m")
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93mChoose what to do:\033[0m")
+    print("1  \033[93mKharej [5] IRAN [1]\033[0m")
+    print("2  \033[92mKharej [1] IRAN [5]\033[0m")
+    print("0. \033[94mback to the previous menu\033[0m")
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        choice = input("\033[38;5;205mEnter your choice Please: \033[0m")
+        if choice == "1":
+            robot_multimenu_gre6sec_kharej()
+            break
+        elif choice == "2":
+            robot_multimenu_gre6sec_iran()
+            break
+        elif choice == "0":
+            clear()
+            robot_multi_mnu()
+            break
+        else:
+            print("Invalid choice.")
+
+def robot_multimenu_gre6sec_kharej():
+    os.system("clear")
+    print("\033[92m ^ ^\033[0m")
+    print("\033[92m(\033[91mO,O\033[92m)\033[0m")
+    print(
+        "\033[92m(   ) \033[92mReconfig Robot \033[92mGRE6 IPSEC \033[93m Kharej Menu\033[0m")
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93mChoose what to do:\033[0m")
+    print("1  \033[93mKharej Inputs [1]\033[0m")
+    print("2  \033[93mKharej Inputs [2]\033[0m")
+    print("3  \033[93mKharej Inputs [3]\033[0m")
+    print("4  \033[93mKharej Inputs [4]\033[0m")
+    print("5  \033[93mKharej Inputs [5]\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    print("6 \033[92mIRAN Inputs \033[0m")
+    print("0. \033[94mback to the previous menu\033[0m")
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        choice = input("\033[38;5;205mEnter your choice Please: \033[0m")
+        if choice == "1":
+            robot_multi_gre6sec_kharej1()
+            break
+        elif choice == "2":
+            robot_multi_gre6sec_kharej2()
+            break
+        elif choice == "3":
+            robot_multi_gre6sec_kharej3()
+            break
+        elif choice == "4":
+            robot_multi_gre6sec_kharej4()
+            break
+        elif choice == "5":
+            robot_multi_gre6sec_kharej5()
+            break
+        elif choice == "6":
+            robot_multimenu_gre6sec_iranserver()
+            break
+        elif choice == "0":
+            clear()
+            robotreconfig_multi_gre6sec()
+            break
+        else:
+            print("Invalid choice.")
+
+
+def robot_multimenu_gre6sec_iranserver():
+    os.system("clear")
+    print("\033[92m ^ ^\033[0m")
+    print("\033[92m(\033[91mO,O\033[92m)\033[0m")
+    print(
+        "\033[92m(   ) \033[92mReconfig Robot \033[92mGRE6 IPSEC \033[93m IRAN Menu\033[0m")
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93mChoose what to do:\033[0m")
+    print("1  \033[93mIRAN Inputs [1]\033[0m")
+    print("2  \033[93mIRAN Inputs [2]\033[0m")
+    print("3  \033[93mIRAN Inputs [3]\033[0m")
+    print("4  \033[93mIRAN Inputs [4]\033[0m")
+    print("5  \033[93mIRAN Inputs [5]\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    print("0. \033[94mback to the previous menu\033[0m")
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        choice = input("\033[38;5;205mEnter your choice Please: \033[0m")
+        if choice == "1":
+            robot_multi_gre6sec_iranserver1()
+            break
+        elif choice == "2":
+            robot_multi_gre6sec_iranserver2()
+            break
+        elif choice == "3":
+            robot_multi_gre6sec_iranserver3()
+            break
+        elif choice == "4":
+            robot_multi_gre6sec_iranserver4()
+            break
+        elif choice == "5":
+            robot_multi_gre6sec_iranserver5()
+            break
+        elif choice == "0":
+            clear()
+            robot_multimenu_gre6sec_kharej()
+            break
+        else:
+            print("Invalid choice.")
+
+
+def multigre61sec_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '4'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:801a::1'
+    inputs['private_iran_ip'] = '2002:801a::2'
+
+    inputs['gre6_method'] = '1'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [1] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['secret_key'] = input(
+        "\033[93mEnter \033[92mSecret Key\033[93m: \033[0m")
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '7'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '1'
+
+    return inputs
+
+
+def generate_bash_script_multigre61sec_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_kharej1.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_kharej1.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_kharej1.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_kharej1.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_kharej1.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre61seckharej(inputs):
+    with open("/usr/local/bin/multi_gre6sec_kharej1_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre61seckharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_kharej1.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_kharej1_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_kharej1():
+    inputs = multigre61sec_kharejuser_input()
+    store_inputs_multigre61seckharej(inputs)
+    generate_bash_script_multigre61sec_kharej(inputs)
+    create_script_multigre61seckharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#2
+def multigre62sec_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '4'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:811a::1'
+    inputs['private_iran_ip'] = '2002:811a::2'
+
+    inputs['gre6_method'] = '2'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [2] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['secret_key'] = input(
+        "\033[93mEnter \033[92mSecret Key\033[93m: \033[0m")
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '7'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '2'
+
+    return inputs
+
+
+def generate_bash_script_multigre62sec_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_kharej2.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_kharej2.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_kharej2.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_kharej2.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_kharej2.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre62seckharej(inputs):
+    with open("/usr/local/bin/multi_gre6sec_kharej2_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre62seckharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_kharej2.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_kharej2_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_kharej2():
+    inputs = multigre62sec_kharejuser_input()
+    store_inputs_multigre62seckharej(inputs)
+    generate_bash_script_multigre62sec_kharej(inputs)
+    create_script_multigre62seckharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#3
+def multigre63sec_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '4'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:821a::1'
+    inputs['private_iran_ip'] = '2002:821a::2'
+
+    inputs['gre6_method'] = '3'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [3] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['secret_key'] = input(
+        "\033[93mEnter \033[92mSecret Key\033[93m: \033[0m")
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '7'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '3'
+
+    return inputs
+
+
+def generate_bash_script_multigre63sec_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_kharej3.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_kharej3.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_kharej3.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_kharej3.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_kharej3.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre63seckharej(inputs):
+    with open("/usr/local/bin/multi_gre6sec_kharej3_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre63seckharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_kharej3.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_kharej3_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_kharej3():
+    inputs = multigre63sec_kharejuser_input()
+    store_inputs_multigre63seckharej(inputs)
+    generate_bash_script_multigre63sec_kharej(inputs)
+    create_script_multigre63seckharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#4
+def multigre64sec_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '4'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:831a::1'
+    inputs['private_iran_ip'] = '2002:831a::2'
+
+    inputs['gre6_method'] = '4'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [4] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['secret_key'] = input(
+        "\033[93mEnter \033[92mSecret Key\033[93m: \033[0m")
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '7'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '4'
+
+    return inputs
+
+
+def generate_bash_script_multigre64sec_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_kharej4.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_kharej4.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_kharej4.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_kharej4.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_kharej4.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre64seckharej(inputs):
+    with open("/usr/local/bin/multi_gre6sec_kharej4_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre64seckharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_kharej4.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_kharej4_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_kharej4():
+    inputs = multigre64sec_kharejuser_input()
+    store_inputs_multigre64seckharej(inputs)
+    generate_bash_script_multigre64sec_kharej(inputs)
+    create_script_multigre64seckharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#5
+
+def multigre65sec_kharejuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '4'
+    inputs['multi_choose'] = '1'
+    inputs['private_kharej_ip'] = '2002:841a::1'
+    inputs['private_iran_ip'] = '2002:841a::2'
+
+    inputs['gre6_method'] = '5'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej [5] \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['secret_key'] = input(
+        "\033[93mEnter \033[92mSecret Key\033[93m: \033[0m")
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '7'
+    inputs['uninstall_input4'] = '1'
+    inputs['uninstall_input5'] = '5'
+
+    return inputs
+
+
+def generate_bash_script_multigre65sec_kharej(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_kharej5.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_kharej5.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_kharej5.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_kharej5.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_kharej5.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre65seckharej(inputs):
+    with open("/usr/local/bin/multi_gre6sec_kharej5_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre65seckharej():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_kharej5.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_kharej5_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_kharej5():
+    inputs = multigre65sec_kharejuser_input()
+    store_inputs_multigre65seckharej(inputs)
+    generate_bash_script_multigre65sec_kharej(inputs)
+    create_script_multigre65seckharej()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#iran server 1
+def multigre6sec_iranserveruser_input1():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '4'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:801a::1'
+    inputs['private_iran_ip'] = '2002:801a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '1'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    inputs['server_number'] = '1'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['secret_key'] = input("\033[93mEnter \033[92mSecret Key: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [1] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '4'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '1'
+    inputs['uninstall_input8'] = '0'  
+
+    return inputs
+
+def generate_bash_script_multigre6sec_iranserver1(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_iran1.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_iran1.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_iran1.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_iran1.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_iran1.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6seciranserver1(inputs):
+    with open("/usr/local/bin/multi_gre6sec_iran1_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6seciranserver1():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_iran1.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_iran1_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input8']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['server_number']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_iranserver1():
+    inputs = multigre6sec_iranserveruser_input1()
+    store_inputs_multigre6seciranserver1(inputs)
+    generate_bash_script_multigre6sec_iranserver1(inputs)
+    create_script_multigre6seciranserver1() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+#iran server 2
+def multigre6sec_iranserveruser_input2():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '4'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:811a::1'
+    inputs['private_iran_ip'] = '2002:811a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '2'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    inputs['server_number'] = '2'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['secret_key'] = input("\033[93mEnter \033[92mSecret Key: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [2] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '4'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '2'
+    inputs['uninstall_input8'] = '1' 
+
+    return inputs
+
+def generate_bash_script_multigre6sec_iranserver2(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_iran2.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_iran2.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_iran2.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_iran2.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_iran2.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6seciranserver2(inputs):
+    with open("/usr/local/bin/multi_gre6sec_iran2_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6seciranserver2():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_iran2.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_iran2_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input8']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['server_number']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_iranserver2():
+    inputs = multigre6sec_iranserveruser_input2()
+    store_inputs_multigre6seciranserver2(inputs)
+    generate_bash_script_multigre6sec_iranserver2(inputs)
+    create_script_multigre6seciranserver2() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+#iran server 3
+def multigre6sec_iranserveruser_input3():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '4'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:821a::1'
+    inputs['private_iran_ip'] = '2002:821a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '3'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    inputs['server_number'] = '3'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['secret_key'] = input("\033[93mEnter \033[92mSecret Key: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [3] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '4'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '3'
+    inputs['uninstall_input8'] = '2' 
+
+    return inputs
+
+def generate_bash_script_multigre6sec_iranserver3(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_iran3.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_iran3.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_iran3.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_iran3.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_iran3.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6seciranserver3(inputs):
+    with open("/usr/local/bin/multi_gre6sec_iran3_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6seciranserver3():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_iran3.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_iran3_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input8']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['server_number']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_iranserver3():
+    inputs = multigre6sec_iranserveruser_input3()
+    store_inputs_multigre6seciranserver3(inputs)
+    generate_bash_script_multigre6sec_iranserver3(inputs)
+    create_script_multigre6seciranserver3() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+#iran server 4
+def multigre6sec_iranserveruser_input4():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '4'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:831a::1'
+    inputs['private_iran_ip'] = '2002:831a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '4'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    inputs['server_number'] = '4'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['secret_key'] = input("\033[93mEnter \033[92mSecret Key: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [4] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '4'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '4'
+    inputs['uninstall_input8'] = '3' 
+
+    return inputs
+
+def generate_bash_script_multigre6sec_iranserver4(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_iran4.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_iran4.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_iran4.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_iran4.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_iran4.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6seciranserver4(inputs):
+    with open("/usr/local/bin/multi_gre6sec_iran4_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6seciranserver4():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_iran4.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_iran4_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input8']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['server_number']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_iranserver4():
+    inputs = multigre6sec_iranserveruser_input4()
+    store_inputs_multigre6seciranserver4(inputs)
+    generate_bash_script_multigre6sec_iranserver4(inputs)
+    create_script_multigre6seciranserver4() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+#iran server 5
+def multigre6sec_iranserveruser_input5():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '4'
+    inputs['gre62_choose'] = '1'
+
+    inputs['private_kharej_ip'] = '2002:841a::1'
+    inputs['private_iran_ip'] = '2002:841a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '5'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    inputs['server_number'] = '5'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['secret_key'] = input("\033[93mEnter \033[92mSecret Key: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej [5] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '4'
+    inputs['uninstall_input5'] = '1'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '5'
+    inputs['uninstall_input8'] = '4' 
+
+    return inputs
+
+def generate_bash_script_multigre6sec_iranserver5(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_iran5.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_iran5.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_iran5.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_iran5.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_iran5.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6seciranserver5(inputs):
+    with open("/usr/local/bin/multi_gre6sec_iran5_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6seciranserver5():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_iran5.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_iran5_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input8']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['server_number']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_iranserver5():
+    inputs = multigre6sec_iranserveruser_input5()
+    store_inputs_multigre6seciranserver5(inputs)
+    generate_bash_script_multigre6sec_iranserver5(inputs)
+    create_script_multigre6seciranserver5() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+# 1 kharej 5 iran
+
+def robot_multimenu_gre6sec_iran():
+    os.system("clear")
+    print("\033[92m ^ ^\033[0m")
+    print("\033[92m(\033[91mO,O\033[92m)\033[0m")
+    print(
+        "\033[92m(   ) \033[92mReconfig Robot \033[92mGRE6 IPSEC \033[93m IRAN Menu\033[0m")
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93mChoose what to do:\033[0m")
+    print("1  \033[93mIRAN Inputs [1]\033[0m")
+    print("2  \033[93mIRAN Inputs [2]\033[0m")
+    print("3  \033[93mIRAN Inputs [3]\033[0m")
+    print("4  \033[93mIRAN Inputs [4]\033[0m")
+    print("5  \033[93mIRAN Inputs [5]\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    print("6 \033[92mKharej Inputs \033[0m")
+    print("0. \033[94mback to the previous menu\033[0m")
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        choice = input("\033[38;5;205mEnter your choice Please: \033[0m")
+        if choice == "1":
+            robot_multi_gre6sec_iran1()
+            break
+        elif choice == "2":
+            robot_multi_gre6sec_iran2()
+            break
+        elif choice == "3":
+            robot_multi_gre6sec_iran3()
+            break
+        elif choice == "4":
+            robot_multi_gre6sec_iran4()
+            break
+        elif choice == "5":
+            robot_multi_gre6sec_iran5()
+            break
+        elif choice == "6":
+            robot_multimenu_gre6sec_kharejserver()
+            break
+        elif choice == "0":
+            clear()
+            robotreconfig_multi_gre6sec()
+            break
+        else:
+            print("Invalid choice.")
+
+
+def robot_multimenu_gre6sec_kharejserver():
+    os.system("clear")
+    print("\033[92m ^ ^\033[0m")
+    print("\033[92m(\033[91mO,O\033[92m)\033[0m")
+    print(
+        "\033[92m(   ) \033[92mReconfig Robot \033[92mGRE6 IPSEC \033[93m Kharej Menu\033[0m")
+    print('\033[92m "-"\033[93m══════════════════════════════════\033[0m')
+    print("\033[93m╭───────────────────────────────────────╮\033[0m")
+    print("\033[93mChoose what to do:\033[0m")
+    print("1  \033[93mKharej Inputs [1]\033[0m")
+    print("2  \033[93mKharej Inputs [2]\033[0m")
+    print("3  \033[93mKharej Inputs [3]\033[0m")
+    print("4  \033[93mKharej Inputs [4]\033[0m")
+    print("5  \033[93mKharej Inputs [5]\033[0m")
+    print("\033[93m───────────────────────────────────────\033[0m")
+    print("0. \033[94mback to the previous menu\033[0m")
+    print("\033[93m╰───────────────────────────────────────╯\033[0m")
+
+    while True:
+        choice = input("\033[38;5;205mEnter your choice Please: \033[0m")
+        if choice == "1":
+            robot_multi_gre6sec_kharejserver1()
+            break
+        elif choice == "2":
+            robot_multi_gre6sec_kharejserver2()
+            break
+        elif choice == "3":
+            robot_multi_gre6sec_kharejserver3()
+            break
+        elif choice == "4":
+            robot_multi_gre6sec_kharejserver4()
+            break
+        elif choice == "5":
+            robot_multi_gre6sec_kharejserver5()
+            break
+        elif choice == "0":
+            clear()
+            robot_multimenu_gre6sec_iran()
+            break
+        else:
+            print("Invalid choice.")
+
+def multigre61sec_iranuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '4'
+    inputs['multi_choose'] = '2'
+    inputs['private_kharej_ip'] = '2002:801a::1'
+    inputs['private_iran_ip'] = '2002:801a::2'
+
+    inputs['gre6_method'] = '1'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN [1] \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['secret_key'] = input(   
+        "\033[93mEnter \033[92mSecret Key\033[93m: \033[0m")
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '7'
+    inputs['uninstall_input4'] = '2'
+    inputs['uninstall_input5'] = '1'
+
+    return inputs
+
+
+def generate_bash_script_multigre61sec_iran(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_iran1.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_iran1.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_iran1.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_iran1.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_iran1.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre61seciran(inputs):
+    with open("/usr/local/bin/multi_gre6sec_iran1_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre61seciran():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_iran1.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_iran1_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_iran1():
+    inputs = multigre61sec_iranuser_input()
+    store_inputs_multigre61seciran(inputs)
+    generate_bash_script_multigre61sec_iran(inputs)
+    create_script_multigre61seciran()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#2
+def multigre62sec_iranuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '4'
+    inputs['multi_choose'] = '2'
+    inputs['private_kharej_ip'] = '2002:811a::1'
+    inputs['private_iran_ip'] = '2002:811a::2'
+
+    inputs['gre6_method'] = '2'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN [2] \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['secret_key'] = input(   
+        "\033[93mEnter \033[92mSecret Key\033[93m: \033[0m")
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '7'
+    inputs['uninstall_input4'] = '2'
+    inputs['uninstall_input5'] = '2'
+
+    return inputs
+
+
+def generate_bash_script_multigre62sec_iran(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_iran2.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_iran2.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_iran2.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_iran2.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_iran2.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre62seciran(inputs):
+    with open("/usr/local/bin/multi_gre6sec_iran2_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre62seciran():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_iran2.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_iran2_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_iran2():
+    inputs = multigre62sec_iranuser_input()
+    store_inputs_multigre62seciran(inputs)
+    generate_bash_script_multigre62sec_iran(inputs)
+    create_script_multigre62seciran()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#3
+def multigre63sec_iranuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '4'
+    inputs['multi_choose'] = '2'
+    inputs['private_kharej_ip'] = '2002:821a::1'
+    inputs['private_iran_ip'] = '2002:821a::2'
+
+    inputs['gre6_method'] = '3'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN [3] \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['secret_key'] = input(   
+        "\033[93mEnter \033[92mSecret Key\033[93m: \033[0m")
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '7'
+    inputs['uninstall_input4'] = '2'
+    inputs['uninstall_input5'] = '3'
+
+    return inputs
+
+
+def generate_bash_script_multigre63sec_iran(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_iran3.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_iran3.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_iran3.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_iran3.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_iran3.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre63seciran(inputs):
+    with open("/usr/local/bin/multi_gre6sec_iran3_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre63seciran():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_iran3.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_iran3_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_iran3():
+    inputs = multigre63sec_iranuser_input()
+    store_inputs_multigre63seciran(inputs)
+    generate_bash_script_multigre63sec_iran(inputs)
+    create_script_multigre63seciran()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#4
+def multigre64sec_iranuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '4'
+    inputs['multi_choose'] = '2'
+    inputs['private_kharej_ip'] = '2002:831a::1'
+    inputs['private_iran_ip'] = '2002:831a::2'
+
+    inputs['gre6_method'] = '4'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN [4] \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['secret_key'] = input(   
+        "\033[93mEnter \033[92mSecret Key\033[93m: \033[0m")
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '7'
+    inputs['uninstall_input4'] = '2'
+    inputs['uninstall_input5'] = '4'
+
+    return inputs
+
+
+def generate_bash_script_multigre64sec_iran(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_iran4.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_iran4.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_iran4.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_iran4.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_iran4.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre64seciran(inputs):
+    with open("/usr/local/bin/multi_gre6sec_iran4_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre64seciran():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_iran4.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_iran4_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_iran4():
+    inputs = multigre64sec_iranuser_input()
+    store_inputs_multigre64seciran(inputs)
+    generate_bash_script_multigre64sec_iran(inputs)
+    create_script_multigre64seciran()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#5
+def multigre65sec_iranuser_input():
+
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '4'
+    inputs['multi_choose'] = '2'
+    inputs['private_kharej_ip'] = '2002:841a::1'
+    inputs['private_iran_ip'] = '2002:841a::2'
+
+    inputs['gre6_method'] = '5'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    print(
+        "\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['iran_ip'] = input(
+        "\033[93mEnter \033[92mIRAN [5] \033[93mIPV4 address: \033[0m")
+    inputs['kharej_ip'] = input(
+        "\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['secret_key'] = input(   
+        "\033[93mEnter \033[92mSecret Key\033[93m: \033[0m")
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input(
+        "\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input(
+        "\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print(
+        "\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '12'
+    inputs['uninstall_input3'] = '7'
+    inputs['uninstall_input4'] = '2'
+    inputs['uninstall_input5'] = '5'
+
+    return inputs
+
+
+def generate_bash_script_multigre65sec_iran(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_kharej_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_iran5.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_iran5.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_iran5.service"
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_iran5.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_iran5.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+
+def store_inputs_multigre65seciran(inputs):
+    with open("/usr/local/bin/multi_gre6sec_iran5_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre65seciran():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_iran5.py")
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_iran5_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['multi_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_iran5():
+    inputs = multigre65sec_iranuser_input()
+    store_inputs_multigre65seciran(inputs)
+    generate_bash_script_multigre65sec_iran(inputs)
+    create_script_multigre65seciran()
+    print(
+        "\033[92mInputs have been saved and the service has been created successfully\033[0m")
+    
+#kharej server 1
+def multigre6sec_kharejserveruser_input1():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '4'
+    inputs['gre62_choose'] = '2'
+
+    inputs['private_kharej_ip'] = '2002:801a::1'
+    inputs['private_iran_ip'] = '2002:801a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '1'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    inputs['server_number'] = '1'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['secret_key'] = input("\033[93mEnter \033[92mSecret Key: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN [1] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '4'
+    inputs['uninstall_input5'] = '2'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '1'
+    inputs['uninstall_input8'] = '0'  
+
+    return inputs
+
+def generate_bash_script_multigre6sec_kharejserver1(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_kharej1.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_kharej1.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_kharej1.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_kharej1.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_kharej1.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6seckharejserver1(inputs):
+    with open("/usr/local/bin/multi_gre6sec_kharej1_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6seckharejserver1():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_kharej1.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_kharej1_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input8']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['server_number']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_kharejserver1():
+    inputs = multigre6sec_kharejserveruser_input1()
+    store_inputs_multigre6seckharejserver1(inputs)
+    generate_bash_script_multigre6sec_kharejserver1(inputs)
+    create_script_multigre6seckharejserver1() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+#kharej server 2
+def multigre6sec_kharejserveruser_input2():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '4'
+    inputs['gre62_choose'] = '2'
+
+    inputs['private_kharej_ip'] = '2002:811a::1'
+    inputs['private_iran_ip'] = '2002:811a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '2'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    inputs['server_number'] = '2'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['secret_key'] = input("\033[93mEnter \033[92mSecret Key: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN [2] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '4'
+    inputs['uninstall_input5'] = '2'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '2'
+    inputs['uninstall_input8'] = '1'  
+
+    return inputs
+
+def generate_bash_script_multigre6sec_kharejserver2(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_kharej2.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_kharej2.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_kharej2.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_kharej2.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_kharej2.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6seckharejserver2(inputs):
+    with open("/usr/local/bin/multi_gre6sec_kharej2_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6seckharejserver2():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_kharej2.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_kharej2_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input8']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['server_number']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_kharejserver2():
+    inputs = multigre6sec_kharejserveruser_input2()
+    store_inputs_multigre6seckharejserver2(inputs)
+    generate_bash_script_multigre6sec_kharejserver2(inputs)
+    create_script_multigre6seckharejserver2() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+#3
+def multigre6sec_kharejserveruser_input3():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '4'
+    inputs['gre62_choose'] = '2'
+
+    inputs['private_kharej_ip'] = '2002:821a::1'
+    inputs['private_iran_ip'] = '2002:821a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '3'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    inputs['server_number'] = '3'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['secret_key'] = input("\033[93mEnter \033[92mSecret Key: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN [3] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '4'
+    inputs['uninstall_input5'] = '2'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '3'
+    inputs['uninstall_input8'] = '2'  
+
+    return inputs
+
+def generate_bash_script_multigre6sec_kharejserver3(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_kharej3.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_kharej3.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_kharej3.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_kharej3.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_kharej3.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6seckharejserver3(inputs):
+    with open("/usr/local/bin/multi_gre6sec_kharej3_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6seckharejserver3():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_kharej3.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_kharej3_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input8']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['server_number']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_kharejserver3():
+    inputs = multigre6sec_kharejserveruser_input3()
+    store_inputs_multigre6seckharejserver3(inputs)
+    generate_bash_script_multigre6sec_kharejserver3(inputs)
+    create_script_multigre6seckharejserver3() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+#4
+def multigre6sec_kharejserveruser_input4():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '4'
+    inputs['gre62_choose'] = '2'
+
+    inputs['private_kharej_ip'] = '2002:831a::1'
+    inputs['private_iran_ip'] = '2002:831a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '4'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    inputs['server_number'] = '4'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['secret_key'] = input("\033[93mEnter \033[92mSecret Key: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN [4] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '4'
+    inputs['uninstall_input5'] = '2'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '4'
+    inputs['uninstall_input8'] = '3'  
+
+    return inputs
+
+def generate_bash_script_multigre6sec_kharejserver4(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_kharej4.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_kharej4.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_kharej4.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_kharej4.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_kharej4.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6seckharejserver4(inputs):
+    with open("/usr/local/bin/multi_gre6sec_kharej4_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6seckharejserver4():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_kharej4.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_kharej4_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input8']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['server_number']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_kharejserver4():
+    inputs = multigre6sec_kharejserveruser_input4()
+    store_inputs_multigre6seckharejserver4(inputs)
+    generate_bash_script_multigre6sec_kharejserver4(inputs)
+    create_script_multigre6seckharejserver4() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
+
+#5
+def multigre6sec_kharejserveruser_input5():
+    
+    inputs = {}
+
+    inputs['input_value'] = '3'
+    inputs['local_tunnel'] = '10'
+    inputs['gre6_choose'] = '1'
+    inputs['gre61_choose'] = '4'
+    inputs['gre62_choose'] = '2'
+
+    inputs['private_kharej_ip'] = '2002:841a::1'
+    inputs['private_iran_ip'] = '2002:841a::2'
+
+    inputs['gre6_method'] = '6'
+    inputs['iranserver_choose'] = '5'
+    inputs['reset1'] = 'y'
+    inputs['reset2'] = '2'
+    inputs['reset3'] = '2'
+    inputs['server_number'] = '5'
+    print("\033[93m╭────────────────────────────────────────────────────────╮\033[0m")
+    inputs['secret_key'] = input("\033[93mEnter \033[92mSecret Key: \033[0m")
+    inputs['kharej_ip'] = input("\033[93mEnter \033[92mKharej \033[93mIPV4 address: \033[0m")
+    inputs['iran_ip'] = input("\033[93mEnter \033[92mIRAN [5] \033[93mIPV4 address: \033[0m")
+    
+
+    inputs['set_mtu_6to4'] = 'n'
+    inputs['set_mtu_gre6'] = 'n'
+    inputs['ping_count'] = input("\033[93mEnter the \033[92mping count\033[93m [1-5]:\033[0m ")
+    inputs['ping_interval'] = input("\033[93mEnter the \033[92mping interval\033[93m in seconds:\033[0m ")
+    print("\033[93m╰────────────────────────────────────────────────────────╯\033[0m")
+
+    inputs['uninstall_input1'] = '3'
+    inputs['uninstall_input2'] = '10'
+    inputs['uninstall_input3'] = '2' 
+    inputs['uninstall_input4'] = '4'
+    inputs['uninstall_input5'] = '2'
+    inputs['uninstall_input6'] = '6' 
+    inputs['uninstall_input7'] = '5'
+    inputs['uninstall_input8'] = '4'  
+
+    return inputs
+
+def generate_bash_script_multigre6sec_kharejserver5(inputs):
+    bash_script = f"""#!/bin/bash
+while true; do
+    ping -c {inputs['ping_count']} -W {inputs['ping_interval']} {inputs['private_iran_ip']}
+    if [ $? -ne 0 ]; then
+        echo "Ping failed, running script.."
+        python3 /usr/local/bin/robot_gre6sec_kharej5.py
+    fi
+    sleep {inputs['ping_interval']}
+done
+"""
+
+    script_path = "/usr/local/bin/robot_gre6sec_kharej5.sh"
+    service_path = "/etc/systemd/system/robot_gre6sec_kharej5.service"
+
+
+    with open(script_path, "w") as script_file:
+        script_file.write(bash_script)
+
+    os.chmod(script_path, 0o755)
+
+    service_content = f"""[Unit]
+Description=Ping Check Service
+
+[Service]
+ExecStart={script_path}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"""
+    with open(service_path, "w") as service_file:
+        service_file.write(service_content)
+
+    subprocess.run(["systemctl", "daemon-reload"])
+    subprocess.run(["systemctl", "enable", "robot_gre6sec_kharej5.service"])
+    subprocess.run(["systemctl", "restart", "robot_gre6sec_kharej5.service"])
+
+    print(f"\033[92mscript saved and service created\033[0m")
+
+def store_inputs_multigre6seckharejserver5(inputs):
+    with open("/usr/local/bin/multi_gre6sec_kharej5_inputs.txt", "w") as f:
+        for key, value in inputs.items():
+            f.write(f"{key}={value}\n")
+
+
+def create_script_multigre6seckharejserver5():
+    directory = "/usr/local/bin"
+    script_path = os.path.join(directory, "robot_gre6sec_kharej5.py")
+
+
+    lines = [
+        "import time",
+        "import subprocess",
+        "import os",
+        "",
+        "def read_inputs():",
+        "    inputs = {}",
+        "    with open('/usr/local/bin/multi_gre6sec_kharej5_inputs.txt', 'r') as f:",
+        "        for line in f:",
+        "            key, value = line.strip().split('=')",
+        "            inputs[key] = value",
+        "    return inputs",
+        "",
+        "def run_script(inputs):",
+        "    subprocess.run(['rm', '-f', 'light_script.py'])",
+        "    subprocess.run(['wget', 'https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/releases/download/ubuntu24/light_script.py'])",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input5']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input6']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input7']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['uninstall_input8']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "    process = subprocess.Popen(['python3', 'light_script.py'], stdin=subprocess.PIPE, text=True)",
+        "    time.sleep(10)",
+        "",
+        "    process.stdin.write(f\"{inputs['input_value']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['local_tunnel']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre61_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre62_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['gre6_method']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iranserver_choose']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset1']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset2']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['reset3']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['server_number']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['secret_key']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['kharej_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['iran_ip']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_6to4']}\\n\")",
+        "    process.stdin.flush()",
+        "    time.sleep(5)",
+        "",
+        "    process.stdin.write(f\"{inputs['set_mtu_gre6']}\\n\")",
+        "    process.stdin.flush()",
+        "",
+        "    process.stdin.close()",
+        "    process.wait()",
+        "",
+        "def main():",
+        "    inputs = read_inputs()",
+        "",
+        "    run_script(inputs)",
+        "",
+        "main()"
+    ]
+
+    with open(script_path, "w") as script_file:
+        script_file.write("\n".join(lines))
+
+    print(f"\033[92mScript saved\033[0m")
+
+
+def robot_multi_gre6sec_kharejserver5():
+    inputs = multigre6sec_kharejserveruser_input5()
+    store_inputs_multigre6seckharejserver5(inputs)
+    generate_bash_script_multigre6sec_kharejserver5(inputs)
+    create_script_multigre6seckharejserver5() 
+    print("\033[92mInputs have been saved and the service has been created successfully\033[0m")
 
 robot_menu()
