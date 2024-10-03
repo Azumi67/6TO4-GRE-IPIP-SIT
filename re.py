@@ -1,4 +1,4 @@
- import sys
+import sys
 import re
 import os
 import shutil
@@ -35,6 +35,7 @@ def clear():
 
 def robot_menu():
     os.system("clear")
+    logo()
     print("\033[92m ^ ^\033[0m")
     print("\033[92m(\033[91mO,O\033[92m)\033[0m")
     print("\033[92m(   ) \033[92mReconfig Robot\033[93m Menu\033[0m")
@@ -42,7 +43,7 @@ def robot_menu():
     print("\033[93m╭───────────────────────────────────────╮\033[0m")
     print("\033[93mChoose what to do:\033[0m")
     print("1  \033[93mSingle\033[0m")
-    print("2  \033[92mMulti \033[97m[IP6IP6 & IPSEC Added]\033[0m")
+    print("2  \033[92mMulti \033[97m[IP6IP6 & GRE6 Added]\033[0m")
     print("0. \033[94mback to the main script\033[0m")
     print("\033[93m╰───────────────────────────────────────╯\033[0m")
 
