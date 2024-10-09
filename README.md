@@ -1204,6 +1204,9 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
 - سپس برای هر کانفیگ یا پرایوت ایپی های هر کلاینت ، یک mtu متفاوت وارد میکنم.
 - سپس از من سوال میشود که ایا میخواهم ipsec encryption انجام شود یا خیر. من گزینه y را میزنم و secret key را وارد میکنم
 - سپس از من سوال میشود که ایا میخواهم ریست تایمر ipsec فعال شود یا خیر که گزینه y را وارد میکنم و عدد 2 دقیقه را انتخاب میکنم
+
+![green-dot-clipart-3](https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/756f468e-8d6c-45bd-9a4a-a9d056011147)**کلاینت ایران اول**
+
  <p align="right">
   <img src="https://github.com/user-attachments/assets/f36aae7b-aab0-4f02-ad1c-c85e95377580" alt="Image" />
 </p>
@@ -1213,8 +1216,11 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
 - پرایوت ایپی کانفیگ اول در سرور خارج 192.168.1.1 بود، پس در کلاینت اول ایپی پرایوت 192.168.1.2 خواهد بود
 - در سرور خارج ipsec encryption فعال بود، پس باید در کلاینت ایران اول هم فعال باشد و secret key هم یکسان خواهد بود
 - ریست تایمر هم که فعال و دو دقیقه بود
+
+![green-dot-clipart-3](https://github.com/Azumi67/6TO4-GRE-IPIP-SIT/assets/119934376/756f468e-8d6c-45bd-9a4a-a9d056011147)**کلاینت ایران دوم**
+
   <p align="right">
-  <img src="https://github.com/user-attachments/assets/5d8c7f45-0db6-42c8-8123-bf4c60cca72d" alt="Image" />
+  <img src="https://github.com/user-attachments/assets/37261453-9bf1-425d-ad55-8791266b93c0" alt="Image" />
 </p>
 
 - ایپی پابلیک 4 کلاینت دوم ایران را وارد میکنم و سپس ایپی پابلیک خارج را وارد میکنم. ایپی پابلیک خارج در همه کلاینت ها یکسان میباشد
@@ -1229,6 +1235,10 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
 - توضیح کوتاهی برای edit local میدم
 - در اینجا میشود ایپی پابلیک ها و پرایوت ایپی های مربوطه را عوض کرد
 - پس از انجام تغییرات گزینه save را بزنید.
+
+-------------------
+  </details>
+</div>
   
 <div align="right">
   <details>
