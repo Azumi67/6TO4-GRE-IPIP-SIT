@@ -1249,7 +1249,7 @@ Geneve is an extension of the original Virtual Extensible LAN (VXLAN) protocol a
 - پورت کلاینت دوم که 8001 بود و mtu هم بسته به نیاز خود وارد نمایید
 - من ipsec را فعال میکنم و secret key را ازومی قرار میدهم
  <p align="right">
-  <img src="https://github.com/user-attachments/assets/1bf6f6f9-1b21-495a-b57f-8eb1e6d91e1c" alt="Image" />
+  <img src="https://github.com/user-attachments/assets/cec38942-190a-4f1e-9d03-663401d87ff8" alt="Image" />
 </p>
 
 - توضیح کوتاهی برای edit l2tp میدم
